@@ -13,45 +13,42 @@ module.exports = {
       },
       colors: {
         primary: {
-          50: '#f0f9ff',
-          100: '#e0f2fe',
-          200: '#bae6fd',
-          300: '#7dd3fc',
-          400: '#38bdf8',
-          500: '#0ea5e9', // Main brand color
-          600: '#0284c7',
-          700: '#0369a1',
-          800: '#075985',
-          900: '#0c4a6e',
-          950: '#082f49',
+          50: '#E6E8F0',
+          100: '#CCD0E1',
+          200: '#99A1C3',
+          300: '#6672A5',
+          400: '#334486',
+          500: '#00144F', // Main brand color (navy blue)
+          600: '#000F3D',
+          700: '#000C3D', // Darker navy
+          800: '#00092C',
+          900: '#00071A',
         },
         secondary: {
-          50: '#f5f3ff',
-          100: '#ede9fe',
-          200: '#ddd6fe',
-          300: '#c4b5fd',
-          400: '#a78bfa',
-          500: '#8b5cf6', // Secondary brand color
-          600: '#7c3aed',
-          700: '#6d28d9',
-          800: '#5b21b6',
-          900: '#4c1d95',
-          950: '#2e1065',
+          50: '#FEF9E7',
+          100: '#FCF3CF',
+          200: '#F9E79F',
+          300: '#F7DB6F',
+          400: '#F5CF3F',
+          500: '#F5B017', // Secondary brand color (gold)
+          600: '#D2A106', // Darker gold
+          700: '#A17C05',
+          800: '#715703',
+          900: '#403102',
         },
         accent: {
-          50: '#fff7ed',
-          100: '#ffedd5',
-          200: '#fed7aa',
-          300: '#fdba74',
-          400: '#fb923c',
-          500: '#f97316',
-          600: '#ea580c',
-          700: '#c2410c',
-          800: '#9a3412',
-          900: '#7c2d12',
-          950: '#431407',
+          50: '#FEF9E7',
+          100: '#FCF3CF',
+          200: '#F9E79F',
+          300: '#F7DB6F',
+          400: '#F5CF3F',
+          500: '#F5B017', // Accent color (gold)
+          600: '#D2A106', // Darker gold
+          700: '#A17C05',
+          800: '#715703',
+          900: '#403102',
         },
-        dark: '#1e293b',
+        dark: '#000C3D', // Dark navy
         light: '#f8fafc',
       },
       backgroundImage: {

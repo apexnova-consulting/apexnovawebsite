@@ -1,13 +1,24 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 
 const Hero = () => {
   return (
-    <section className="relative bg-gradient-to-r from-primary-900 to-primary-700 text-white pt-32 pb-16 md:pt-40 md:pb-24">
-      <div className="absolute inset-0 bg-dark opacity-50"></div>
+    <section className="relative text-white min-h-screen flex items-center">
+      {/* Background image */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/images/hero-background.jpg"
+          alt="Executive Communication"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-primary-700 opacity-70"></div>
+      </div>
 
-      <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-16 md:pt-40 md:pb-24">
         <div className="max-w-3xl mx-auto text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
             Elevate Your Executive Communication
@@ -18,10 +29,10 @@ const Hero = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Link href="/coaching" className="btn btn-accent text-lg py-3 px-8">
+            <Link href="/coaching" className="btn btn-accent text-lg py-3 px-8 bg-secondary-500 hover:bg-secondary-600">
               Join Our Coaching Program
             </Link>
-            <Link href="/speechflow-ai" className="btn bg-white text-primary-700 hover:bg-gray-100 text-lg py-3 px-8">
+            <Link href="https://www.speechflowai.com" className="btn bg-white text-primary-700 hover:bg-gray-100 text-lg py-3 px-8">
               Try SpeechFlow AI
             </Link>
           </div>

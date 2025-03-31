@@ -3,6 +3,7 @@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function DigitalProducts() {
   // Sample products data - in a real app, this would come from a CMS or API
@@ -33,20 +34,6 @@ export default function DigitalProducts() {
         "Anxiety-reduction techniques",
         "Progress tracking metrics",
         "Reflection prompts and exercises"
-      ]
-    },
-    {
-      id: 3,
-      title: "Leadership Voice Masterclass",
-      description: "Video course to develop your authentic leadership voice and presence. Learn from expert coaches and practice with guided sessions.",
-      price: 99.99,
-      category: "Course",
-      image: "/images/product-3.jpg", // Replace with actual image path
-      features: [
-        "10 hours of video content",
-        "Voice exercises and practice sessions",
-        "Live Q&A recordings with coaches",
-        "Lifetime access to updates"
       ]
     },
     {
@@ -98,20 +85,32 @@ export default function DigitalProducts() {
     .map(product => product.category)
     .filter((category, index, array) => array.indexOf(category) === index);
 
+  // Calculate total value of all products
+  const totalProductsValue = products.reduce((total, product) => total + product.price, 0);
+  const bundlePrice = 149.99;
+
   return (
     <main>
       <Navbar />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-16 bg-gray-50">
+      <section className="pt-32 pb-16 bg-gradient-to-r from-primary-600 to-primary-500 text-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               Digital Products & Resources
             </h1>
-            <p className="text-xl text-gray-600 mb-8">
+            <p className="text-xl text-gray-100 mb-8">
               Enhance your communication skills with premium resources designed by executive communication experts.
             </p>
+            <div className="relative h-80 w-full rounded-lg overflow-hidden">
+              <Image
+                src="/images/digital-products-hero.jpg"
+                alt="Digital communication resources"
+                fill
+                className="object-cover"
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -193,37 +192,37 @@ export default function DigitalProducts() {
           <div className="bg-white rounded-lg shadow-xl overflow-hidden">
             <div className="grid grid-cols-1 lg:grid-cols-2">
               <div className="p-8 md:p-12 lg:p-16">
-                <div className="inline-block px-4 py-1 rounded-full bg-primary-100 text-primary-800 font-medium text-sm mb-4">
+                <div className="inline-block px-4 py-1 rounded-full bg-primary-100 text-primary-500 font-medium text-sm mb-4">
                   SPECIAL BUNDLE
                 </div>
-                <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary-500">
                   Complete Communication Mastery Bundle
                 </h2>
                 <p className="text-lg text-gray-600 mb-6">
-                  Get all our premium resources at a 40% discount. This bundle includes all e-books, courses, and toolkits for a complete communication transformation.
+                  Get all our premium resources at a discounted price. This bundle includes all e-books, courses, and toolkits for a complete communication transformation.
                 </p>
 
                 <ul className="space-y-3 mb-8">
                   <li className="flex items-start">
-                    <svg className="h-5 w-5 text-primary-600 mt-0.5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <svg className="h-5 w-5 text-secondary-500 mt-0.5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                     </svg>
-                    <span>All 6 digital products included</span>
+                    <span>All 5 digital products included</span>
                   </li>
                   <li className="flex items-start">
-                    <svg className="h-5 w-5 text-primary-600 mt-0.5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <svg className="h-5 w-5 text-secondary-500 mt-0.5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                     </svg>
-                    <span>40% savings compared to individual purchases</span>
+                    <span>Significant savings compared to individual purchases</span>
                   </li>
                   <li className="flex items-start">
-                    <svg className="h-5 w-5 text-primary-600 mt-0.5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <svg className="h-5 w-5 text-secondary-500 mt-0.5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                     </svg>
                     <span>Free quarterly updates to all materials</span>
                   </li>
                   <li className="flex items-start">
-                    <svg className="h-5 w-5 text-primary-600 mt-0.5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <svg className="h-5 w-5 text-secondary-500 mt-0.5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                     </svg>
                     <span>Bonus: 3 coaching session recordings</span>
@@ -231,16 +230,19 @@ export default function DigitalProducts() {
                 </ul>
 
                 <div className="flex items-center mb-8">
-                  <span className="text-3xl font-bold text-primary-600">$199.99</span>
-                  <span className="ml-3 text-lg text-gray-500 line-through">$329.94</span>
+                  <span className="text-3xl font-bold text-primary-500">${bundlePrice.toFixed(2)}</span>
+                  <span className="ml-3 text-lg text-gray-500 line-through">${totalProductsValue.toFixed(2)}</span>
                 </div>
 
-                <Link href="/digital-products/bundle" className="btn btn-primary text-lg py-3 px-8">
+                <button
+                  onClick={() => alert('To integrate with Stripe, please connect your account using the Stripe API key.')}
+                  className="btn bg-secondary-500 hover:bg-secondary-600 text-white text-lg py-3 px-8"
+                >
                   Get The Bundle
-                </Link>
+                </button>
               </div>
 
-              <div className="bg-primary-100 p-8 md:p-12 lg:p-16 flex items-center justify-center">
+              <div className="bg-primary-50 p-8 md:p-12 lg:p-16 flex items-center justify-center">
                 <div>
                   <div className="bg-white rounded-lg shadow-lg p-6 mb-6">
                     <h3 className="text-lg font-bold mb-2">What's Included:</h3>
@@ -248,18 +250,18 @@ export default function DigitalProducts() {
                       {products.map((product) => (
                         <li key={product.id} className="flex justify-between">
                           <span>{product.title}</span>
-                          <span className="text-gray-500">${product.price}</span>
+                          <span className="text-gray-500">${product.price.toFixed(2)}</span>
                         </li>
                       ))}
                     </ul>
                     <div className="mt-4 pt-4 border-t border-gray-200 flex justify-between font-bold">
                       <span>Total Value:</span>
-                      <span>$329.94</span>
+                      <span>${totalProductsValue.toFixed(2)}</span>
                     </div>
                   </div>
 
-                  <div className="bg-accent-500 text-white rounded-lg p-4 text-center">
-                    <p className="font-bold">Save $129.95 (40% Off)</p>
+                  <div className="bg-secondary-500 text-white rounded-lg p-4 text-center">
+                    <p className="font-bold">Save ${(totalProductsValue - bundlePrice).toFixed(2)} ({Math.round((1 - bundlePrice / totalProductsValue) * 100)}% Off)</p>
                   </div>
                 </div>
               </div>
@@ -328,7 +330,7 @@ export default function DigitalProducts() {
                 ))}
               </div>
               <p className="text-gray-600 italic mb-4">
-                "The Leadership Voice Masterclass was worth every penny. The video lessons and practice sessions helped me develop a commanding presence."
+                "The Communication Confidence Course was exactly what I needed. The practical exercises helped me become a more effective speaker in just weeks."
               </p>
               <div className="flex items-center">
                 <div className="text-sm">
