@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 
 const DigitalProductsTeaser = () => {
@@ -55,7 +57,7 @@ const DigitalProductsTeaser = () => {
                   {product.category}
                 </div>
               </div>
-              
+
               <div className="p-6">
                 <h3 className="text-xl font-bold mb-2">
                   {product.title}
@@ -75,7 +77,7 @@ const DigitalProductsTeaser = () => {
             </div>
           ))}
         </div>
-        
+
         <div className="mt-12 text-center">
           <Link href="/digital-products" className="btn btn-primary">
             View All Products

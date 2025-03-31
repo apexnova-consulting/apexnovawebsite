@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import Image from 'next/image';
 
@@ -56,12 +58,12 @@ const Testimonials = () => {
                 <path d="M13 14.725c0-5.141 3.892-10.519 10-11.725l.984 2.126c-2.215.835-4.163 3.742-4.38 5.746 2.491.392 4.396 2.547 4.396 5.149 0 3.182-2.584 4.979-5.199 4.979-3.015 0-5.801-2.305-5.801-6.275zm-13 0c0-5.141 3.892-10.519 10-11.725l.984 2.126c-2.215.835-4.163 3.742-4.38 5.746 2.491.392 4.396 2.547 4.396 5.149 0 3.182-2.584 4.979-5.199 4.979-3.015 0-5.801-2.305-5.801-6.275z" />
               </svg>
             </div>
-            
+
             <div className="mb-8">
               <p className="text-xl italic text-gray-700 mb-6">
                 "{testimonials[activeIndex].quote}"
               </p>
-              
+
               <div className="flex items-center">
                 <div className="w-12 h-12 rounded-full bg-gray-300 mr-4 overflow-hidden">
                   {/* Replace with actual image */}
@@ -77,23 +79,22 @@ const Testimonials = () => {
                 </div>
               </div>
             </div>
-            
+
             <div className="flex justify-between items-center">
               <div className="flex space-x-1">
                 {testimonials.map((_, index) => (
                   <button
                     key={index}
                     onClick={() => setActiveIndex(index)}
-                    className={`w-3 h-3 rounded-full ${
-                      index === activeIndex 
-                        ? 'bg-primary-600' 
+                    className={`w-3 h-3 rounded-full ${index === activeIndex
+                        ? 'bg-primary-600'
                         : 'bg-gray-300 hover:bg-gray-400'
-                    }`}
+                      }`}
                     aria-label={`Go to testimonial ${index + 1}`}
                   />
                 ))}
               </div>
-              
+
               <div className="flex space-x-2">
                 <button
                   onClick={prevTestimonial}

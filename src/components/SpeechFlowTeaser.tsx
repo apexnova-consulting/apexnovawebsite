@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -10,11 +12,11 @@ const SpeechFlowTeaser = () => {
             <h2 className="text-3xl md:text-4xl font-bold mb-6 text-dark">
               Introducing SpeechFlow AI
             </h2>
-            
+
             <p className="text-lg mb-6 text-gray-700">
               Get instant speech feedback and AI-driven coaching in real-time. SpeechFlow AI helps you overcome communication anxiety and master public speaking through personalized feedback.
             </p>
-            
+
             <div className="space-y-4 mb-8">
               <div className="flex items-start">
                 <svg className="w-5 h-5 text-secondary-600 mt-1 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -22,21 +24,21 @@ const SpeechFlowTeaser = () => {
                 </svg>
                 <p className="text-gray-700">Real-time speech feedback and analysis</p>
               </div>
-              
+
               <div className="flex items-start">
                 <svg className="w-5 h-5 text-secondary-600 mt-1 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                 </svg>
                 <p className="text-gray-700">AI-powered coaching tailored to your needs</p>
               </div>
-              
+
               <div className="flex items-start">
                 <svg className="w-5 h-5 text-secondary-600 mt-1 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                 </svg>
                 <p className="text-gray-700">Personalized improvement plans</p>
               </div>
-              
+
               <div className="flex items-start">
                 <svg className="w-5 h-5 text-secondary-600 mt-1 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
@@ -44,7 +46,7 @@ const SpeechFlowTeaser = () => {
                 <p className="text-gray-700">Confidence-building exercises</p>
               </div>
             </div>
-            
+
             <Link href="/speechflow-ai" className="btn btn-secondary inline-flex items-center">
               Learn More About SpeechFlow AI
               <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -52,7 +54,7 @@ const SpeechFlowTeaser = () => {
               </svg>
             </Link>
           </div>
-          
+
           <div className="order-1 lg:order-2 relative">
             <div className="relative rounded-lg shadow-xl overflow-hidden w-full aspect-video bg-gray-200">
               {/* Replace with actual image later */}
@@ -63,7 +65,7 @@ const SpeechFlowTeaser = () => {
                   </svg>
                 </div>
               </div>
-              
+
               {/* Play button overlay */}
               <div className="absolute inset-0 flex items-center justify-center group cursor-pointer">
                 <div className="bg-secondary-600 rounded-full p-4 text-white shadow-lg transform transition-transform group-hover:scale-110">
@@ -74,7 +76,7 @@ const SpeechFlowTeaser = () => {
                 </div>
               </div>
             </div>
-            
+
             <div className="absolute -bottom-6 -right-6 bg-primary-600 text-white py-3 px-6 rounded-lg shadow-lg">
               <p className="font-bold">Try SpeechFlow AI Free</p>
             </div>

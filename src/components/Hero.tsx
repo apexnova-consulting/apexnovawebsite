@@ -1,20 +1,22 @@
+'use client';
+
 import Link from 'next/link';
 
 const Hero = () => {
   return (
     <section className="relative bg-gradient-to-r from-primary-900 to-primary-700 text-white pt-32 pb-16 md:pt-40 md:pb-24">
       <div className="absolute inset-0 bg-dark opacity-50"></div>
-      
+
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
             Elevate Your Executive Communication
           </h1>
-          
+
           <p className="text-xl md:text-2xl mb-8 text-gray-200">
             Expert coaching and AI-powered solutions to transform your leadership presence and public speaking skills.
           </p>
-          
+
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link href="/coaching" className="btn btn-accent text-lg py-3 px-8">
               Join Our Coaching Program
@@ -25,7 +27,7 @@ const Hero = () => {
           </div>
         </div>
       </div>
-      
+
       <div className="absolute bottom-0 left-0 right-0">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" className="w-full h-auto">
           <path fill="#ffffff" fillOpacity="1" d="M0,288L48,272C96,256,192,224,288,197.3C384,171,480,149,576,165.3C672,181,768,235,864,250.7C960,267,1056,245,1152,224C1248,203,1344,181,1392,170.7L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
