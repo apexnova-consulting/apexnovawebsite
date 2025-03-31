@@ -1,3 +1,5 @@
+'use client';
+
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
@@ -91,13 +93,15 @@ export default function DigitalProducts() {
     }
   ];
 
-  // Organize products by category
-  const categories = [...new Set(products.map(product => product.category))];
+  // Organize products by category - using filter instead of Set to avoid TypeScript errors
+  const categories = products
+    .map(product => product.category)
+    .filter((category, index, array) => array.indexOf(category) === index);
 
   return (
     <main>
       <Navbar />
-      
+
       {/* Hero Section */}
       <section className="pt-32 pb-16 bg-gray-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -111,7 +115,7 @@ export default function DigitalProducts() {
           </div>
         </div>
       </section>
-      
+
       {/* Products Display */}
       <section className="py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -121,15 +125,15 @@ export default function DigitalProducts() {
               All Products
             </button>
             {categories.map((category) => (
-              <button 
-                key={category} 
+              <button
+                key={category}
                 className="px-6 py-2 rounded-full bg-gray-200 hover:bg-primary-100 text-gray-800 font-medium transition-colors"
               >
                 {category}
               </button>
             ))}
           </div>
-          
+
           {/* Products Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {products.map((product) => (
@@ -145,7 +149,7 @@ export default function DigitalProducts() {
                     {product.category}
                   </div>
                 </div>
-                
+
                 <div className="p-6">
                   <h3 className="text-xl font-bold mb-2">
                     {product.title}
@@ -153,7 +157,7 @@ export default function DigitalProducts() {
                   <p className="text-gray-600 mb-4 h-12 overflow-hidden">
                     {product.description.substring(0, 80)}...
                   </p>
-                  
+
                   <div className="mb-4">
                     <h4 className="font-semibold text-sm text-gray-700 mb-2">KEY FEATURES:</h4>
                     <ul className="text-sm text-gray-600 space-y-1">
@@ -167,7 +171,7 @@ export default function DigitalProducts() {
                       ))}
                     </ul>
                   </div>
-                  
+
                   <div className="flex justify-between items-center">
                     <span className="text-primary-600 font-bold text-xl">
                       ${product.price}
@@ -182,7 +186,7 @@ export default function DigitalProducts() {
           </div>
         </div>
       </section>
-      
+
       {/* Bundle Offer */}
       <section className="py-16 bg-primary-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -198,7 +202,7 @@ export default function DigitalProducts() {
                 <p className="text-lg text-gray-600 mb-6">
                   Get all our premium resources at a 40% discount. This bundle includes all e-books, courses, and toolkits for a complete communication transformation.
                 </p>
-                
+
                 <ul className="space-y-3 mb-8">
                   <li className="flex items-start">
                     <svg className="h-5 w-5 text-primary-600 mt-0.5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -225,17 +229,17 @@ export default function DigitalProducts() {
                     <span>Bonus: 3 coaching session recordings</span>
                   </li>
                 </ul>
-                
+
                 <div className="flex items-center mb-8">
                   <span className="text-3xl font-bold text-primary-600">$199.99</span>
                   <span className="ml-3 text-lg text-gray-500 line-through">$329.94</span>
                 </div>
-                
+
                 <Link href="/digital-products/bundle" className="btn btn-primary text-lg py-3 px-8">
                   Get The Bundle
                 </Link>
               </div>
-              
+
               <div className="bg-primary-100 p-8 md:p-12 lg:p-16 flex items-center justify-center">
                 <div>
                   <div className="bg-white rounded-lg shadow-lg p-6 mb-6">
@@ -253,7 +257,7 @@ export default function DigitalProducts() {
                       <span>$329.94</span>
                     </div>
                   </div>
-                  
+
                   <div className="bg-accent-500 text-white rounded-lg p-4 text-center">
                     <p className="font-bold">Save $129.95 (40% Off)</p>
                   </div>
@@ -263,7 +267,7 @@ export default function DigitalProducts() {
           </div>
         </div>
       </section>
-      
+
       {/* Testimonials */}
       <section className="py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -275,7 +279,7 @@ export default function DigitalProducts() {
               Hear from professionals who have transformed their communication skills with our resources.
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-white rounded-lg shadow-md p-6">
               <div className="flex items-center mb-4 text-amber-400">
@@ -295,7 +299,7 @@ export default function DigitalProducts() {
                 </div>
               </div>
             </div>
-            
+
             <div className="bg-white rounded-lg shadow-md p-6">
               <div className="flex items-center mb-4 text-amber-400">
                 {[...Array(5)].map((_, i) => (
@@ -314,7 +318,7 @@ export default function DigitalProducts() {
                 </div>
               </div>
             </div>
-            
+
             <div className="bg-white rounded-lg shadow-md p-6">
               <div className="flex items-center mb-4 text-amber-400">
                 {[...Array(5)].map((_, i) => (
@@ -336,7 +340,7 @@ export default function DigitalProducts() {
           </div>
         </div>
       </section>
-      
+
       {/* Email Signup */}
       <section className="py-16 bg-primary-900 text-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -347,7 +351,7 @@ export default function DigitalProducts() {
             <p className="text-lg text-primary-100 mb-8">
               Sign up for our newsletter and receive our "10 Techniques to Command a Room" mini-guide for free.
             </p>
-            
+
             <form className="max-w-md mx-auto mb-8">
               <div className="flex flex-col sm:flex-row gap-4">
                 <input
@@ -363,14 +367,14 @@ export default function DigitalProducts() {
                 </button>
               </div>
             </form>
-            
+
             <p className="text-sm text-primary-200">
               We respect your privacy. Unsubscribe at any time.
             </p>
           </div>
         </div>
       </section>
-      
+
       <Footer />
     </main>
   );
