@@ -11,6 +11,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
+    "vercel-build": "./scripts/vercel-build.sh",
     "docker:dev": "docker-compose up",
     "docker:build": "docker build -t apexnova-consulting .",
     "docker:run": "docker run -p 3000:3000 apexnova-consulting",
@@ -41,9 +42,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/username/apexnova-consulting.git"
+    "url": "https://github.com/apexnova-consulting/apexnovawebsite.git"
   },
-  "author": "ApexNova Consulting",
+  "author": "Mike Nielson",
   "license": "MIT",
   "engines": {
     "node": ">=18.0.0"

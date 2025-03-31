@@ -6,12 +6,21 @@ const nextConfig = {
   images: {
     domains: ['images.unsplash.com'],
     formats: ['image/avif', 'image/webp'],
+    unoptimized: process.env.NODE_ENV === 'development',
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**',
+      },
+    ],
   },
   experimental: {
     serverComponentsExternalPackages: [],
+    optimizeCss: true,
   },
   poweredByHeader: false,
   compress: true,
+  productionBrowserSourceMaps: false,
   async headers() {
     return [
       {
