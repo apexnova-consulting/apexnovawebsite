@@ -1,4 +1,6 @@
 /** @type {import('next').NextConfig} */
+const path = require('path');
+
 const nextConfig = {
   output: 'standalone',
   reactStrictMode: true,
@@ -17,6 +19,11 @@ const nextConfig = {
   experimental: {
     serverComponentsExternalPackages: [],
     optimizeCss: false,
+  },
+  webpack: (config) => {
+    config.resolve.alias['@'] = path.resolve(__dirname, 'src');
+    config.resolve.alias['@/components'] = path.resolve(__dirname, 'src/components');
+    return config;
   },
   poweredByHeader: false,
   compress: true,
