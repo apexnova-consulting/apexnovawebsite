@@ -2,22 +2,24 @@
 
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
-import SpeechFlowTeaser from '@/components/SpeechFlowTeaser';
-import DigitalProductsTeaser from '@/components/DigitalProductsTeaser';
+import Services from '@/components/Services';
+import About from '@/components/About';
 import Testimonials from '@/components/Testimonials';
-import NewsletterSignup from '@/components/NewsletterSignup';
+import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 
 export default function Home() {
   return (
-    <main>
+    <div className="min-h-screen bg-gray-50">
       <Navbar />
-      <Hero />
-      <SpeechFlowTeaser />
-      <DigitalProductsTeaser />
-      <Testimonials />
-      <NewsletterSignup />
+      <main>
+        <Hero />
+        <Services />
+        <About />
+        <Testimonials />
+        <Contact />
+      </main>
       <Footer />
-    </main>
+    </div>
   );
 } 
