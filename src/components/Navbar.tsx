@@ -8,6 +8,7 @@ import { usePathname } from 'next/navigation';
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [logoError, setLogoError] = useState(false);
   const pathname = usePathname();
 
   // Handle scroll event to change navbar style
@@ -45,16 +46,24 @@ export default function Navbar() {
         <nav className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            <div className="relative h-12 w-40">
-              <Image
-                src="/images/logo.png"
-                alt="ApexNova Consulting"
-                width={160}
-                height={48}
-                className="object-contain"
-                priority
-              />
-            </div>
+            {logoError ? (
+              <div className="h-12 flex items-center">
+                <span className="text-xl font-bold text-primary-500">ApexNova</span>
+                <span className="text-xl font-bold text-secondary-500">Consulting</span>
+              </div>
+            ) : (
+              <div className="relative h-12 w-40">
+                <Image
+                  src="/images/logo.png"
+                  alt="ApexNova Consulting"
+                  width={160}
+                  height={48}
+                  className="object-contain"
+                  priority
+                  onError={() => setLogoError(true)}
+                />
+              </div>
+            )}
           </Link>
 
           {/* Desktop Navigation */}
@@ -78,6 +87,16 @@ export default function Navbar() {
               `}
             >
               About
+            </Link>
+            <Link
+              href="/services"
+              className={`
+                ${isScrolled ? 'text-gray-700 hover:text-primary-600' : 'text-white hover:text-accent-300'} 
+                ${isActive('/services') ? 'font-semibold' : 'font-medium'} 
+                transition-colors
+              `}
+            >
+              Services
             </Link>
             <Link
               href="/coaching"
@@ -161,6 +180,13 @@ export default function Navbar() {
                 className={`text-gray-700 hover:text-primary-600 ${isActive('/about') ? 'font-semibold' : 'font-medium'} transition-colors py-2`}
               >
                 About
+              </Link>
+              <Link
+                href="/services"
+                onClick={closeMenu}
+                className={`text-gray-700 hover:text-primary-600 ${isActive('/services') ? 'font-semibold' : 'font-medium'} transition-colors py-2`}
+              >
+                Services
               </Link>
               <Link
                 href="/coaching"

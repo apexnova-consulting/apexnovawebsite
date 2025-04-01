@@ -8,33 +8,37 @@ const Hero = () => {
     <section className="relative text-white min-h-screen flex items-center">
       {/* Background image */}
       <div className="absolute inset-0 z-0">
-        <Image
-          src="/images/hero-background.jpg"
-          alt="Executive Communication"
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-primary-700 opacity-70"></div>
+        <div className="relative w-full h-full">
+          <Image
+            src="/images/hero-background.jpg"
+            alt="Executive Communication"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-primary-900/80 to-primary-700/50"></div>
+        </div>
       </div>
 
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-16 md:pt-40 md:pb-24">
-        <div className="max-w-3xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Elevate Your Executive Communication
-          </h1>
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center md:text-left">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+              Elevate Your<br />Executive Communication
+            </h1>
 
-          <p className="text-xl md:text-2xl mb-8 text-gray-200">
-            Expert coaching and AI-powered solutions to transform your leadership presence and public speaking skills.
-          </p>
+            <p className="text-xl md:text-2xl mb-10 text-gray-100 max-w-2xl">
+              Expert coaching and AI-powered solutions to transform your leadership presence and public speaking skills.
+            </p>
 
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Link href="/coaching" className="btn btn-accent text-lg py-3 px-8 bg-secondary-500 hover:bg-secondary-600">
-              Join Our Coaching Program
-            </Link>
-            <Link href="https://www.speechflowai.com" className="btn bg-white text-primary-700 hover:bg-gray-100 text-lg py-3 px-8">
-              Try SpeechFlow AI
-            </Link>
+            <div className="flex flex-col sm:flex-row justify-center md:justify-start gap-4">
+              <a href="/coaching" className="btn btn-accent text-lg py-4 px-8 bg-secondary-500 hover:bg-secondary-600 rounded-md font-semibold transition-all transform hover:scale-105">
+                Join Our Coaching Program
+              </a>
+              <a href="https://www.speechflowai.com/pricing" target="_blank" rel="noopener noreferrer" className="btn bg-white text-primary-700 hover:bg-gray-100 text-lg py-4 px-8 rounded-md font-semibold transition-all transform hover:scale-105">
+                Try SpeechFlow AI
+              </a>
+            </div>
           </div>
         </div>
       </div>
