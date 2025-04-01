@@ -1,7 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { products } from '@/data/products.json';
-import { headers } from 'next/headers';
+import Stripe from 'stripe';
+import productsData from '@/data/products.json';
+import fs from 'fs';
+import path from 'path';
 import { verifyStripeSession } from '@/lib/stripe';
+
+const { products } = productsData;
+
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
+  apiVersion: '2023-10-16',
+});
 
 export async function GET(
   request: NextRequest,
@@ -47,41 +55,31 @@ export async function GET(
     }
 
     // Get the file path
-    const filePath = product.downloadUrl;
-    if (!filePath) {
-      return NextResponse.json(
-        { error: 'Download URL not found' },
-        { status: 404 }
-      );
-    }
+    const filePath = path.join(process.cwd(), 'public', product.filePath);
 
-    // Read the file
-    const file = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}${filePath}`);
-    if (!file.ok) {
+    if (!fs.existsSync(filePath)) {
       return NextResponse.json(
         { error: 'File not found' },
         { status: 404 }
       );
     }
 
-    // Get the file content and headers
-    const fileContent = await file.arrayBuffer();
-    const fileHeaders = file.headers;
+    // Read the file
+    const fileBuffer = fs.readFileSync(filePath);
+    const headers = new Headers();
+    headers.set('Content-Type', 'application/pdf');
+    headers.set('Content-Disposition', `attachment; filename="${product.title}.pdf"`);
 
     // Create response with file content
-    const response = new NextResponse(fileContent, {
-      headers: {
-        'Content-Type': fileHeaders.get('content-type') || 'application/pdf',
-        'Content-Disposition': `attachment; filename="${filePath.split('/').pop()}"`,
-        'Content-Length': fileHeaders.get('content-length') || '',
-      },
+    const response = new NextResponse(fileBuffer, {
+      headers,
     });
 
     return response;
   } catch (error) {
-    console.error('Download error:', error);
+    console.error('Error downloading file:', error);
     return NextResponse.json(
-      { error: 'Internal server error' },
+      { error: 'Error downloading file' },
       { status: 500 }
     );
   }

@@ -1,16 +1,18 @@
 import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
-import { products } from '@/data/products.json';
+import productsData from '@/data/products.json';
+
+const { products } = productsData;
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: '2025-02-24.acacia',
+  apiVersion: '2023-10-16',
 });
 
-export async function POST(req: Request) {
+export async function POST(request: Request) {
   try {
-    const { productId } = await req.json();
+    const { productId } = await request.json();
+    const product = products.find((p) => p.id === productId);
 
-    const product = products.find(p => p.id === productId);
     if (!product) {
       return NextResponse.json(
         { error: 'Product not found' },
@@ -28,7 +30,7 @@ export async function POST(req: Request) {
               name: product.title,
               description: product.description,
             },
-            unit_amount: Math.round(product.price * 100), // Convert to cents
+            unit_amount: product.price * 100, // Convert to cents
           },
           quantity: 1,
         },
