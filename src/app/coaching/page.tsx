@@ -80,7 +80,7 @@ export default function Coaching() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
               <div className="relative h-[600px] w-full">
                 <Image
-                  src="/images/me.png"
+                  src="/images/Me.png"
                   alt="Mike Nielson"
                   fill
                   className="object-contain"
