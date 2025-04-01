@@ -20,55 +20,70 @@ export default function Navbar() {
   const isActive = (path: string) => pathname === path;
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-lg' : 'bg-transparent'
+    <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-lg' : 'bg-black/30 backdrop-blur-sm'
       }`}>
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <Link href="/" className="text-2xl font-bold text-blue-600">
-            ApexNova Consulting
+          <Link href="/" className="text-2xl font-bold">
+            <span className="text-[#00144F]">Apex</span>
+            <span className="text-[#DEB251]">Nova</span>
+            <span className="text-[#00144F]"> Consulting</span>
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-8">
             <Link
               href="/"
-              className={`text-lg font-medium transition-colors ${isActive('/') ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600'
+              className={`text-lg font-medium transition-colors ${isActive('/')
+                  ? 'text-[#DEB251]'
+                  : isScrolled
+                    ? 'text-[#00144F] hover:text-[#DEB251]'
+                    : 'text-white hover:text-[#DEB251]'
                 }`}
             >
               Home
             </Link>
             <Link
               href="/services"
-              className={`text-lg font-medium transition-colors ${isActive('/services') ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600'
+              className={`text-lg font-medium transition-colors ${isActive('/services')
+                  ? 'text-[#DEB251]'
+                  : isScrolled
+                    ? 'text-[#00144F] hover:text-[#DEB251]'
+                    : 'text-white hover:text-[#DEB251]'
                 }`}
             >
               Services
             </Link>
             <Link
               href="/coaching"
-              className={`text-lg font-medium transition-colors ${isActive('/coaching') ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600'
+              className={`text-lg font-medium transition-colors ${isActive('/coaching')
+                  ? 'text-[#DEB251]'
+                  : isScrolled
+                    ? 'text-[#00144F] hover:text-[#DEB251]'
+                    : 'text-white hover:text-[#DEB251]'
                 }`}
             >
               Coaching
             </Link>
             <Link
-              href="/digital-products"
-              className={`text-lg font-medium transition-colors ${isActive('/digital-products') ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600'
-                }`}
-            >
-              Digital Products
-            </Link>
-            <Link
               href="/speechflow-ai"
-              className={`text-lg font-medium transition-colors ${isActive('/speechflow-ai') ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600'
+              className={`text-lg font-medium transition-colors ${isActive('/speechflow-ai')
+                  ? 'text-[#DEB251]'
+                  : isScrolled
+                    ? 'text-[#00144F] hover:text-[#DEB251]'
+                    : 'text-white hover:text-[#DEB251]'
                 }`}
             >
               SpeechFlow AI
             </Link>
             <Link
               href="/contact"
-              className={`text-lg font-medium transition-colors ${isActive('/contact') ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600'
+              className={`text-lg font-medium transition-colors ${isActive('/contact')
+                  ? 'text-[#DEB251]'
+                  : isScrolled
+                    ? 'text-[#00144F] hover:text-[#DEB251]'
+                    : 'text-white hover:text-[#DEB251]'
                 }`}
             >
               Contact
@@ -77,7 +92,8 @@ export default function Navbar() {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-gray-700 hover:text-blue-600"
+            className={`md:hidden ${isScrolled ? 'text-[#00144F]' : 'text-white'
+              } hover:text-[#DEB251] transition-colors`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             <svg
@@ -100,11 +116,11 @@ export default function Navbar() {
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div className="md:hidden py-4">
+          <div className="md:hidden bg-white shadow-lg py-4">
             <div className="flex flex-col space-y-4">
               <Link
                 href="/"
-                className={`text-lg font-medium transition-colors ${isActive('/') ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600'
+                className={`text-lg font-medium transition-colors ${isActive('/') ? 'text-[#DEB251]' : 'text-[#00144F] hover:text-[#DEB251]'
                   }`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
@@ -112,7 +128,7 @@ export default function Navbar() {
               </Link>
               <Link
                 href="/services"
-                className={`text-lg font-medium transition-colors ${isActive('/services') ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600'
+                className={`text-lg font-medium transition-colors ${isActive('/services') ? 'text-[#DEB251]' : 'text-[#00144F] hover:text-[#DEB251]'
                   }`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
@@ -120,23 +136,15 @@ export default function Navbar() {
               </Link>
               <Link
                 href="/coaching"
-                className={`text-lg font-medium transition-colors ${isActive('/coaching') ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600'
+                className={`text-lg font-medium transition-colors ${isActive('/coaching') ? 'text-[#DEB251]' : 'text-[#00144F] hover:text-[#DEB251]'
                   }`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Coaching
               </Link>
               <Link
-                href="/digital-products"
-                className={`text-lg font-medium transition-colors ${isActive('/digital-products') ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600'
-                  }`}
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Digital Products
-              </Link>
-              <Link
                 href="/speechflow-ai"
-                className={`text-lg font-medium transition-colors ${isActive('/speechflow-ai') ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600'
+                className={`text-lg font-medium transition-colors ${isActive('/speechflow-ai') ? 'text-[#DEB251]' : 'text-[#00144F] hover:text-[#DEB251]'
                   }`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
@@ -144,7 +152,7 @@ export default function Navbar() {
               </Link>
               <Link
                 href="/contact"
-                className={`text-lg font-medium transition-colors ${isActive('/contact') ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600'
+                className={`text-lg font-medium transition-colors ${isActive('/contact') ? 'text-[#DEB251]' : 'text-[#00144F] hover:text-[#DEB251]'
                   }`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
