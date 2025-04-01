@@ -2,138 +2,74 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 
 export default function Navbar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [logoError, setLogoError] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
 
-  // Handle scroll event to change navbar style
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 10) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 0);
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Handle navigation links - check if current path matches link
-  const isActive = (path: string) => {
-    return pathname === path;
-  };
-
-  // Toggle mobile menu
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  // Close mobile menu when clicking a link
-  const closeMenu = () => {
-    setIsMenuOpen(false);
-  };
+  const isActive = (path: string) => pathname === path;
 
   return (
-    <header className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md py-3' : 'bg-transparent py-5'}`}>
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <nav className="flex items-center justify-between">
+    <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-lg' : 'bg-transparent'
+      }`}>
+      <div className="container mx-auto px-4">
+        <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center">
-            {logoError ? (
-              <div className="h-12 flex items-center">
-                <span className="text-xl font-bold text-primary-500">ApexNova</span>
-                <span className="text-xl font-bold text-secondary-500">Consulting</span>
-              </div>
-            ) : (
-              <div className="relative h-12 w-40">
-                <Image
-                  src="/images/logo.png"
-                  alt="ApexNova Consulting"
-                  width={160}
-                  height={48}
-                  className="object-contain"
-                  priority
-                  onError={() => setLogoError(true)}
-                />
-              </div>
-            )}
+          <Link href="/" className="text-2xl font-bold text-blue-600">
+            ApexNova Consulting
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex space-x-8">
             <Link
               href="/"
-              className={`
-                ${isScrolled ? 'text-gray-700 hover:text-primary-600' : 'text-white hover:text-accent-300'} 
-                ${isActive('/') ? 'font-semibold' : 'font-medium'} 
-                transition-colors
-              `}
+              className={`text-lg font-medium transition-colors ${isActive('/') ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600'
+                }`}
             >
               Home
             </Link>
             <Link
-              href="/about"
-              className={`
-                ${isScrolled ? 'text-gray-700 hover:text-primary-600' : 'text-white hover:text-accent-300'} 
-                ${isActive('/about') ? 'font-semibold' : 'font-medium'} 
-                transition-colors
-              `}
-            >
-              About
-            </Link>
-            <Link
               href="/services"
-              className={`
-                ${isScrolled ? 'text-gray-700 hover:text-primary-600' : 'text-white hover:text-accent-300'} 
-                ${isActive('/services') ? 'font-semibold' : 'font-medium'} 
-                transition-colors
-              `}
+              className={`text-lg font-medium transition-colors ${isActive('/services') ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600'
+                }`}
             >
               Services
             </Link>
             <Link
               href="/coaching"
-              className={`
-                ${isScrolled ? 'text-gray-700 hover:text-primary-600' : 'text-white hover:text-accent-300'} 
-                ${isActive('/coaching') ? 'font-semibold' : 'font-medium'} 
-                transition-colors
-              `}
+              className={`text-lg font-medium transition-colors ${isActive('/coaching') ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600'
+                }`}
             >
               Coaching
             </Link>
             <Link
+              href="/digital-products"
+              className={`text-lg font-medium transition-colors ${isActive('/digital-products') ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600'
+                }`}
+            >
+              Digital Products
+            </Link>
+            <Link
               href="/speechflow-ai"
-              className={`
-                ${isScrolled ? 'text-gray-700 hover:text-primary-600' : 'text-white hover:text-accent-300'} 
-                ${isActive('/speechflow-ai') ? 'font-semibold' : 'font-medium'} 
-                transition-colors
-              `}
+              className={`text-lg font-medium transition-colors ${isActive('/speechflow-ai') ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600'
+                }`}
             >
               SpeechFlow AI
             </Link>
             <Link
-              href="/digital-products"
-              className={`
-                ${isScrolled ? 'text-gray-700 hover:text-primary-600' : 'text-white hover:text-accent-300'} 
-                ${isActive('/digital-products') ? 'font-semibold' : 'font-medium'} 
-                transition-colors
-              `}
-            >
-              Products
-            </Link>
-            <Link
               href="/contact"
-              className={`
-                bg-accent-500 hover:bg-accent-600 text-white
-                font-medium py-2 px-4 rounded-md transition-colors
-              `}
+              className={`text-lg font-medium transition-colors ${isActive('/contact') ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600'
+                }`}
             >
               Contact
             </Link>
@@ -141,85 +77,83 @@ export default function Navbar() {
 
           {/* Mobile Menu Button */}
           <button
-            onClick={toggleMenu}
-            className="md:hidden focus:outline-none"
-            aria-label="Toggle menu"
+            className="md:hidden text-gray-700 hover:text-blue-600"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className={`h-6 w-6 ${isScrolled ? 'text-gray-800' : 'text-white'}`}
+              className="w-6 h-6"
               fill="none"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
               viewBox="0 0 24 24"
               stroke="currentColor"
             >
-              {isMenuOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              {isMobileMenuOpen ? (
+                <path d="M6 18L18 6M6 6l12 12" />
               ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                <path d="M4 6h16M4 12h16M4 18h16" />
               )}
             </svg>
           </button>
-        </nav>
-      </div>
+        </div>
 
-      {/* Mobile Menu */}
-      {isMenuOpen && (
-        <div className="md:hidden bg-white shadow-lg">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        {/* Mobile Navigation */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden py-4">
             <div className="flex flex-col space-y-4">
               <Link
                 href="/"
-                onClick={closeMenu}
-                className={`text-gray-700 hover:text-primary-600 ${isActive('/') ? 'font-semibold' : 'font-medium'} transition-colors py-2`}
+                className={`text-lg font-medium transition-colors ${isActive('/') ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600'
+                  }`}
+                onClick={() => setIsMobileMenuOpen(false)}
               >
                 Home
               </Link>
               <Link
-                href="/about"
-                onClick={closeMenu}
-                className={`text-gray-700 hover:text-primary-600 ${isActive('/about') ? 'font-semibold' : 'font-medium'} transition-colors py-2`}
-              >
-                About
-              </Link>
-              <Link
                 href="/services"
-                onClick={closeMenu}
-                className={`text-gray-700 hover:text-primary-600 ${isActive('/services') ? 'font-semibold' : 'font-medium'} transition-colors py-2`}
+                className={`text-lg font-medium transition-colors ${isActive('/services') ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600'
+                  }`}
+                onClick={() => setIsMobileMenuOpen(false)}
               >
                 Services
               </Link>
               <Link
                 href="/coaching"
-                onClick={closeMenu}
-                className={`text-gray-700 hover:text-primary-600 ${isActive('/coaching') ? 'font-semibold' : 'font-medium'} transition-colors py-2`}
+                className={`text-lg font-medium transition-colors ${isActive('/coaching') ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600'
+                  }`}
+                onClick={() => setIsMobileMenuOpen(false)}
               >
                 Coaching
               </Link>
               <Link
+                href="/digital-products"
+                className={`text-lg font-medium transition-colors ${isActive('/digital-products') ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600'
+                  }`}
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Digital Products
+              </Link>
+              <Link
                 href="/speechflow-ai"
-                onClick={closeMenu}
-                className={`text-gray-700 hover:text-primary-600 ${isActive('/speechflow-ai') ? 'font-semibold' : 'font-medium'} transition-colors py-2`}
+                className={`text-lg font-medium transition-colors ${isActive('/speechflow-ai') ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600'
+                  }`}
+                onClick={() => setIsMobileMenuOpen(false)}
               >
                 SpeechFlow AI
               </Link>
               <Link
-                href="/digital-products"
-                onClick={closeMenu}
-                className={`text-gray-700 hover:text-primary-600 ${isActive('/digital-products') ? 'font-semibold' : 'font-medium'} transition-colors py-2`}
-              >
-                Products
-              </Link>
-              <Link
                 href="/contact"
-                onClick={closeMenu}
-                className="bg-accent-500 hover:bg-accent-600 text-white font-medium py-2 px-4 rounded-md transition-colors text-center"
+                className={`text-lg font-medium transition-colors ${isActive('/contact') ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600'
+                  }`}
+                onClick={() => setIsMobileMenuOpen(false)}
               >
                 Contact
               </Link>
             </div>
           </div>
-        </div>
-      )}
-    </header>
+        )}
+      </div>
+    </nav>
   );
 } 
