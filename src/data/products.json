@@ -1,0 +1,34 @@
+{
+  "products": [
+    {
+      "id": "comm-confidence-course",
+      "title": "Communication Confidence Course",
+      "description": "A comprehensive course to build your communication confidence and master public speaking.",
+      "price": 49.99,
+      "filePath": "/digital-products/communication-confidence-course.pdf",
+      "thumbnail": "/images/comm-confidence-thumb.jpg",
+      "features": [
+        "8 comprehensive modules",
+        "Video lessons",
+        "Practice exercises",
+        "Downloadable resources",
+        "Lifetime access"
+      ]
+    },
+    {
+      "id": "sales-mastery-guide",
+      "title": "Sales Mastery Guide",
+      "description": "The ultimate guide to mastering sales conversations and closing more deals.",
+      "price": 79.99,
+      "filePath": "/digital-products/sales-mastery-guide.pdf",
+      "thumbnail": "/images/sales-mastery-thumb.jpg",
+      "features": [
+        "Proven sales frameworks",
+        "Script templates",
+        "Objection handling guide",
+        "Case studies",
+        "Action plans"
+      ]
+    }
+  ]
+}

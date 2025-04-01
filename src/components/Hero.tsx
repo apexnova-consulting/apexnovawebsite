@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 const Hero = () => {
   return (
-    <section className="relative text-white min-h-screen flex items-center">
+    <section className="relative h-screen flex items-center">
       {/* Background image */}
       <div className="absolute inset-0 z-0">
         <div className="relative w-full h-full">
@@ -20,10 +20,10 @@ const Hero = () => {
         </div>
       </div>
 
-      <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-16 md:pt-40 md:pb-24">
+      <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           <div className="text-center md:text-left">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight text-white">
               Elevate Your<br />Executive Communication
             </h1>
 
