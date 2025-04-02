@@ -90,13 +90,16 @@ export default function Coaching() {
               <div>
                 <h2 className="text-3xl font-bold mb-6">Meet Your Coach</h2>
                 <p className="text-gray-600 mb-6">
-                  Mike Nielson brings over 20 years of experience in executive coaching and leadership development. His unique approach combines proven methodologies with personalized strategies to help leaders achieve their full potential.
+                  Hi, I'm Mike Nielson, founder of ApexNova Consulting and your executive coach dedicated to transforming the way you communicate and lead. With years of experience in high-stakes corporate environments, I've worked with executives, business professionals, and aspiring leaders to refine their communication skills, master confidence, and overcome mental barriers that hold them back.
                 </p>
                 <p className="text-gray-600 mb-6">
-                  As a certified executive coach and former corporate leader, Mike understands the challenges and opportunities that come with leadership roles. He works closely with executives to develop their skills, enhance their decision-making abilities, and create lasting positive change in their organizations.
+                  But my journey didn't start at the top. I struggled with communication anxiety, phone fear, and the mental hurdles that many professionals face. Instead of letting these challenges define me, I turned them into my strength—learning, adapting, and eventually excelling in corporate sales, securing multi-million dollar deals, and earning leadership roles through the power of effective communication.
+                </p>
+                <p className="text-gray-600 mb-6">
+                  Now, I help others do the same. Through ApexNova Consulting, I provide coaching, digital resources, and actionable strategies to help professionals like you enhance your presence, articulate ideas with clarity, and build unshakable confidence—whether in the boardroom, on stage, or in everyday interactions.
                 </p>
                 <p className="text-gray-600">
-                  Mike's coaching style is direct, practical, and results-oriented. He focuses on helping leaders build strong relationships, communicate effectively, and create high-performing teams while maintaining a healthy work-life balance.
+                  If you've ever felt that your communication skills are holding you back, I'm here to show you that it doesn't have to be that way. Let's transform the way you speak, lead, and influence—because when you master communication, you master your future.
                 </p>
               </div>
             </div>
