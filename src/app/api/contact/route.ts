@@ -3,9 +3,10 @@ import nodemailer from 'nodemailer';
 
 export async function POST(request: Request) {
   try {
-    const { firstName, lastName, email, phone, subject, message } = await request.json();
+    const body = await request.json();
+    const { name, email, message, formType } = body;
 
-    // Create a transporter using SMTP
+    // Create email transporter
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
       port: Number(process.env.SMTP_PORT),
@@ -16,30 +17,45 @@ export async function POST(request: Request) {
       },
     });
 
-    // Email content
-    const mailOptions = {
-      from: process.env.SMTP_USER,
-      to: 'mike.nielson@apexnovaconsulting.com',
-      subject: `New Contact Form Submission: ${subject}`,
-      html: `
-        <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${firstName} ${lastName}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Phone:</strong> ${phone}</p>
-        <p><strong>Subject:</strong> ${subject}</p>
-        <p><strong>Message:</strong></p>
-        <p>${message}</p>
-      `,
-    };
+    // Prepare email content based on form type
+    let subject = '';
+    let emailContent = '';
+
+    if (formType === 'miniChallenge') {
+      subject = 'New Mini Challenge Signup';
+      emailContent = `
+        New Mini Challenge Signup:
+        
+        Name: ${name}
+        Email: ${email}
+        
+        This user has signed up for the free mini challenge.
+      `;
+    } else {
+      subject = 'New Contact Form Submission';
+      emailContent = `
+        New Contact Form Submission:
+        
+        Name: ${name}
+        Email: ${email}
+        Message: ${message}
+      `;
+    }
 
     // Send email
-    await transporter.sendMail(mailOptions);
+    await transporter.sendMail({
+      from: process.env.SMTP_USER,
+      to: 'mike.nielson@apexnovaconsulting.com',
+      subject: subject,
+      text: emailContent,
+      html: emailContent.replace(/\n/g, '<br>'),
+    });
 
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error('Error sending email:', error);
     return NextResponse.json(
-      { error: 'Error sending email' },
+      { error: 'Failed to send message' },
       { status: 500 }
     );
   }
