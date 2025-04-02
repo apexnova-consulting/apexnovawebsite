@@ -51,6 +51,9 @@ export default function SpeechFlowTeaser() {
                 src="/images/speechflow-screenshot.jpg"
                 alt="SpeechFlow AI Interface"
                 fill
+                priority
+                quality={90}
+                sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover"
               />
             </div>

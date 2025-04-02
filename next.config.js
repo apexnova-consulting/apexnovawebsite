@@ -8,7 +8,7 @@ const nextConfig = {
   images: {
     domains: ['images.unsplash.com'],
     formats: ['image/avif', 'image/webp'],
-    unoptimized: process.env.NODE_ENV === 'development',
+    unoptimized: false,
     remotePatterns: [
       {
         protocol: 'https',
