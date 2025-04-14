@@ -74,34 +74,49 @@ export default function Coaching() {
           </div>
         </section>
 
-        {/* Coach Section */}
+        {/* Why Executive Coaching Section */}
         <section className="py-16">
           <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-              <div className="relative h-[600px] w-full">
-                <Image
-                  src="/images/Me.png"
-                  alt="Mike Nielson"
-                  fill
-                  className="object-contain"
-                  priority
-                />
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-8 text-center">Why Executive Coaching Works</h2>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+                <div className="bg-white p-6 rounded-lg shadow-md">
+                  <h3 className="text-xl font-bold mb-3 text-primary-700">Elevated Communication Skills</h3>
+                  <p className="text-gray-600">
+                    Develop powerful communication techniques that enhance your ability to articulate complex ideas, lead compelling presentations, and engage effectively with stakeholders at all levels.
+                  </p>
+                </div>
+
+                <div className="bg-white p-6 rounded-lg shadow-md">
+                  <h3 className="text-xl font-bold mb-3 text-primary-700">Enhanced Leadership Presence</h3>
+                  <p className="text-gray-600">
+                    Cultivate an authentic executive presence that inspires confidence, commands attention, and establishes you as a trusted authority in your organization and industry.
+                  </p>
+                </div>
+
+                <div className="bg-white p-6 rounded-lg shadow-md">
+                  <h3 className="text-xl font-bold mb-3 text-primary-700">Strategic Decision Making</h3>
+                  <p className="text-gray-600">
+                    Strengthen your ability to evaluate situations objectively, make sound decisions under pressure, and communicate those decisions with clarity and conviction.
+                  </p>
+                </div>
+
+                <div className="bg-white p-6 rounded-lg shadow-md">
+                  <h3 className="text-xl font-bold mb-3 text-primary-700">Breakthrough Performance</h3>
+                  <p className="text-gray-600">
+                    Identify and overcome limiting beliefs and behaviors that may be holding you back, transforming potential roadblocks into stepping stones for accelerated professional growth.
+                  </p>
+                </div>
               </div>
-              <div>
-                <h2 className="text-3xl font-bold mb-6">Meet Your Coach</h2>
-                <p className="text-gray-600 mb-6">
-                  Hi, I'm Mike Nielson, founder of ApexNova Consulting and your executive coach dedicated to transforming the way you communicate and lead. With years of experience in high-stakes corporate environments, I've worked with executives, business professionals, and aspiring leaders to refine their communication skills, master confidence, and overcome mental barriers that hold them back.
-                </p>
-                <p className="text-gray-600 mb-6">
-                  But my journey didn't start at the top. I struggled with communication anxiety, phone fear, and the mental hurdles that many professionals face. Instead of letting these challenges define me, I turned them into my strength—learning, adapting, and eventually excelling in corporate sales, securing multi-million dollar deals, and earning leadership roles through the power of effective communication.
-                </p>
-                <p className="text-gray-600 mb-6">
-                  Now, I help others do the same. Through ApexNova Consulting, I provide coaching, digital resources, and actionable strategies to help professionals like you enhance your presence, articulate ideas with clarity, and build unshakable confidence—whether in the boardroom, on stage, or in everyday interactions.
-                </p>
-                <p className="text-gray-600">
-                  If you've ever felt that your communication skills are holding you back, I'm here to show you that it doesn't have to be that way. Let's transform the way you speak, lead, and influence—because when you master communication, you master your future.
-                </p>
-              </div>
+
+              <p className="text-gray-700 text-center mb-6">
+                At ApexNova Consulting, our coaching programs are designed to address the unique challenges faced by today's executives. We combine proven coaching methodologies with innovative tools and technologies to deliver measurable results.
+              </p>
+
+              <p className="text-gray-700 text-center">
+                Whether you're preparing for a critical presentation, navigating organizational change, or seeking to elevate your overall leadership effectiveness, our tailored coaching programs provide the guidance, feedback, and support you need to excel.
+              </p>
             </div>
           </div>
         </section>

@@ -3,7 +3,6 @@ import type { Metadata } from 'next';
 import { Inter, Poppins } from 'next/font/google';
 import ScrollToTop from '@/components/ScrollToTop';
 import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -37,7 +36,6 @@ export default function RootLayout({
       <body className={`${inter.variable} ${poppins.variable} font-sans`}>
         <Navbar />
         {children}
-        <Footer />
         <ScrollToTop />
       </body>
     </html>
