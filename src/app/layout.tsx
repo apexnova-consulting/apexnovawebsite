@@ -2,6 +2,8 @@ import '../styles/globals.css';
 import type { Metadata } from 'next';
 import { Inter, Poppins } from 'next/font/google';
 import ScrollToTop from '@/components/ScrollToTop';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -17,11 +19,16 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: 'ApexNova Consulting - Executive Communication Coaching',
-  description: 'Transform your executive communication skills with AI-powered coaching and expert guidance.',
+  title: 'ApexNova Consulting',
+  description: 'Executive Communication, Team Building, and Business Coaching Services',
   keywords: 'executive coaching, communication coaching, leadership, public speaking, SpeechFlow AI, communication skills',
   icons: {
-    icon: '/favicon/favicon.ico',
+    icon: [
+      {
+        url: '/favicon.ico',
+        sizes: 'any',
+      },
+    ],
   },
 };
 
@@ -33,7 +40,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} ${poppins.variable} font-sans`}>
+        <Navbar />
         {children}
+        <Footer />
         <ScrollToTop />
       </body>
     </html>
