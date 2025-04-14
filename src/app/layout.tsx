@@ -22,14 +22,6 @@ export const metadata: Metadata = {
   title: 'ApexNova Consulting',
   description: 'Executive Communication, Team Building, and Business Coaching Services',
   keywords: 'executive coaching, communication coaching, leadership, public speaking, SpeechFlow AI, communication skills',
-  icons: {
-    icon: [
-      {
-        url: '/favicon.ico',
-        sizes: 'any',
-      },
-    ],
-  },
 };
 
 export default function RootLayout({
@@ -39,6 +31,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/favicon.ico" />
+      </head>
       <body className={`${inter.variable} ${poppins.variable} font-sans`}>
         <Navbar />
         {children}
