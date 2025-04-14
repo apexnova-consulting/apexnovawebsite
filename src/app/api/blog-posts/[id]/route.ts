@@ -2,21 +2,31 @@ import { NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
 
+interface BlogPost {
+  id: number;
+  title: string;
+  content: string;
+  date: string;
+  category: string;
+  readTime: string;
+  author: string;
+}
+
 const BLOG_POSTS_FILE = path.join(process.cwd(), 'src/data/blog-posts.json');
 
 // Helper function to read blog posts
-function readBlogPosts() {
+function readBlogPosts(): BlogPost[] {
   try {
     const data = fs.readFileSync(BLOG_POSTS_FILE, 'utf8');
-    return JSON.parse(data);
+    return JSON.parse(data).posts || [];
   } catch (error) {
     return [];
   }
 }
 
 // Helper function to write blog posts
-function writeBlogPosts(posts: any[]) {
-  fs.writeFileSync(BLOG_POSTS_FILE, JSON.stringify(posts, null, 2));
+function writeBlogPosts(posts: BlogPost[]) {
+  fs.writeFileSync(BLOG_POSTS_FILE, JSON.stringify({ posts }, null, 2));
 }
 
 export async function GET(
@@ -24,7 +34,7 @@ export async function GET(
   { params }: { params: { id: string } }
 ) {
   const posts = readBlogPosts();
-  const post = posts.find((p: { id: number }) => p.id === parseInt(params.id));
+  const post = posts.find((p: BlogPost) => p.id === parseInt(params.id));
 
   if (!post) {
     return NextResponse.json({ error: 'Post not found' }, { status: 404 });
@@ -40,7 +50,7 @@ export async function PUT(
   try {
     const updatedPost = await request.json();
     const posts = readBlogPosts();
-    const index = posts.findIndex((p: { id: number }) => p.id === parseInt(params.id));
+    const index = posts.findIndex((p: BlogPost) => p.id === parseInt(params.id));
 
     if (index === -1) {
       return NextResponse.json({ error: 'Post not found' }, { status: 404 });
@@ -61,7 +71,7 @@ export async function DELETE(
 ) {
   try {
     const posts = readBlogPosts();
-    const filteredPosts = posts.filter((p: { id: number }) => p.id !== parseInt(params.id));
+    const filteredPosts = posts.filter((p: BlogPost) => p.id !== parseInt(params.id));
 
     if (filteredPosts.length === posts.length) {
       return NextResponse.json({ error: 'Post not found' }, { status: 404 });
