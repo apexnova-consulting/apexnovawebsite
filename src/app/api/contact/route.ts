@@ -3,53 +3,34 @@ import nodemailer from 'nodemailer';
 
 export async function POST(request: Request) {
   try {
-    const body = await request.json();
-    const { name, email, message, formType } = body;
+    const { name, email, subject, message } = await request.json();
 
-    // Create email transporter
+    // Create a transporter
     const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: Number(process.env.SMTP_PORT),
-      secure: true,
+      service: 'gmail',
       auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASSWORD,
       },
     });
 
-    // Prepare email content based on form type
-    let subject = '';
-    let emailContent = '';
-
-    if (formType === 'miniChallenge') {
-      subject = 'New Mini Challenge Signup';
-      emailContent = `
-        New Mini Challenge Signup:
-        
-        Name: ${name}
-        Email: ${email}
-        
-        This user has signed up for the free mini challenge.
-      `;
-    } else {
-      subject = 'New Contact Form Submission';
-      emailContent = `
-        New Contact Form Submission:
-        
-        Name: ${name}
-        Email: ${email}
-        Message: ${message}
-      `;
-    }
+    // Email content
+    const mailOptions = {
+      from: process.env.EMAIL_USER,
+      to: 'info@apexnovaconsulting.com',
+      subject: `New Contact Form Submission: ${subject}`,
+      html: `
+        <h2>New Contact Form Submission</h2>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Subject:</strong> ${subject}</p>
+        <p><strong>Message:</strong></p>
+        <p>${message}</p>
+      `,
+    };
 
     // Send email
-    await transporter.sendMail({
-      from: process.env.SMTP_USER,
-      to: 'mike.nielson@apexnovaconsulting.com',
-      subject: subject,
-      text: emailContent,
-      html: emailContent.replace(/\n/g, '<br>'),
-    });
+    await transporter.sendMail(mailOptions);
 
     return NextResponse.json({ success: true });
   } catch (error) {
