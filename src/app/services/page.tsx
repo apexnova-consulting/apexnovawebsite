@@ -14,10 +14,10 @@ export default function Services() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <h1 className="text-4xl md:text-5xl font-bold mb-6 text-center">
-              Our Services
+              Communication Coaching Services
             </h1>
             <p className="text-xl text-center text-gray-100 mb-8">
-              We offer specialized expertise to help you sell better, communicate more effectively, and leverage AI for better business outcomes.
+              Overcome anxiety, develop confidence, and master the art of impactful communication
             </p>
           </div>
         </div>
@@ -29,46 +29,45 @@ export default function Services() {
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold mb-6 text-primary-500">
-                How We Can Help You Grow
+                Our Coaching Solutions
               </h2>
               <p className="text-xl text-gray-600 max-w-4xl mx-auto">
-                At ApexNova Consulting, we focus on three core areas that drive business growth and success:
+                We help professionals at all levels transform communication anxiety into confidence through our specialized coaching programs:
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-              {/* Service 1: Sales Performance Optimization */}
+              {/* Service 1: One-on-One Coaching */}
               <div className="bg-white rounded-xl shadow-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
                 <div className="h-56 bg-gradient-to-br from-primary-600 to-primary-800 flex items-center justify-center">
-                  <h3 className="text-2xl font-bold text-white text-center px-6">Sales Performance Optimization</h3>
+                  <h3 className="text-2xl font-bold text-white text-center px-6">One-on-One Coaching</h3>
                 </div>
                 <div className="p-6">
                   <p className="text-gray-600 mb-6">
-                    Transform your sales process to close more deals and increase customer lifetime value through proven
-                    frameworks and strategies.
+                    Personalized coaching tailored to your specific communication challenges and goals with direct feedback and guidance.
                   </p>
                   <ul className="space-y-3 mb-8">
                     <li className="flex items-start">
                       <svg className="h-5 w-5 text-secondary-500 mt-0.5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                       </svg>
-                      <span>Sales process audit & optimization</span>
+                      <span>Customized improvement plan</span>
                     </li>
                     <li className="flex items-start">
                       <svg className="h-5 w-5 text-secondary-500 mt-0.5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                       </svg>
-                      <span>Upsell & renewal strategy development</span>
+                      <span>Video analysis and feedback</span>
                     </li>
                     <li className="flex items-start">
                       <svg className="h-5 w-5 text-secondary-500 mt-0.5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                       </svg>
-                      <span>Sales team training & enablement</span>
+                      <span>SpeechFlow AI integration</span>
                     </li>
                   </ul>
                   <a
-                    href="/services#sales-performance"
+                    href="#individual-coaching"
                     className="text-primary-600 font-semibold hover:text-primary-700 flex items-center"
                   >
                     Learn More
@@ -79,37 +78,37 @@ export default function Services() {
                 </div>
               </div>
 
-              {/* Service 2: Communication Coaching */}
+              {/* Service 2: Group Workshops */}
               <div className="bg-white rounded-xl shadow-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
                 <div className="h-56 bg-gradient-to-br from-secondary-500 to-secondary-600 flex items-center justify-center">
-                  <h3 className="text-2xl font-bold text-white text-center px-6">Communication Coaching</h3>
+                  <h3 className="text-2xl font-bold text-white text-center px-6">Group Workshops</h3>
                 </div>
                 <div className="p-6">
                   <p className="text-gray-600 mb-6">
-                    Elevate how you pitch, present, and negotiate through personalized coaching to help you communicate with clarity and confidence.
+                    Interactive team-based communication training to build collective confidence and improve organizational communication.
                   </p>
                   <ul className="space-y-3 mb-8">
                     <li className="flex items-start">
                       <svg className="h-5 w-5 text-secondary-500 mt-0.5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                       </svg>
-                      <span>Executive presence development</span>
+                      <span>Team communication dynamics</span>
                     </li>
                     <li className="flex items-start">
                       <svg className="h-5 w-5 text-secondary-500 mt-0.5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                       </svg>
-                      <span>Sales presentation mastery</span>
+                      <span>Practical group exercises</span>
                     </li>
                     <li className="flex items-start">
                       <svg className="h-5 w-5 text-secondary-500 mt-0.5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                       </svg>
-                      <span>Public speaking & pitch coaching</span>
+                      <span>Customized for your organization</span>
                     </li>
                   </ul>
                   <a
-                    href="/services#communication-coaching"
+                    href="#group-workshops"
                     className="text-primary-600 font-semibold hover:text-primary-700 flex items-center"
                   >
                     Learn More
@@ -120,37 +119,37 @@ export default function Services() {
                 </div>
               </div>
 
-              {/* Service 3: AI Automation Services */}
+              {/* Service 3: Digital Programs */}
               <div className="bg-white rounded-xl shadow-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
                 <div className="h-56 bg-gradient-to-br from-primary-800 to-primary-900 flex items-center justify-center">
-                  <h3 className="text-2xl font-bold text-white text-center px-6">AI Automation Services</h3>
+                  <h3 className="text-2xl font-bold text-white text-center px-6">Digital Programs</h3>
                 </div>
                 <div className="p-6">
                   <p className="text-gray-600 mb-6">
-                    Implement custom AI solutions to streamline your workflows, enhance customer engagement, and drive better business outcomes.
+                    Self-paced digital courses and resources designed to help you build communication confidence on your own schedule.
                   </p>
                   <ul className="space-y-3 mb-8">
                     <li className="flex items-start">
                       <svg className="h-5 w-5 text-secondary-500 mt-0.5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                       </svg>
-                      <span>Sales & marketing automation</span>
+                      <span>Comprehensive training modules</span>
                     </li>
                     <li className="flex items-start">
                       <svg className="h-5 w-5 text-secondary-500 mt-0.5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                       </svg>
-                      <span>AI-powered customer engagement</span>
+                      <span>Practice exercises and templates</span>
                     </li>
                     <li className="flex items-start">
                       <svg className="h-5 w-5 text-secondary-500 mt-0.5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                       </svg>
-                      <span>Workflow optimization & efficiency</span>
+                      <span>Lifetime access to materials</span>
                     </li>
                   </ul>
                   <a
-                    href="/services#ai-automation"
+                    href="#digital-programs"
                     className="text-primary-600 font-semibold hover:text-primary-700 flex items-center"
                   >
                     Learn More
@@ -165,99 +164,35 @@ export default function Services() {
         </div>
       </section>
 
-      {/* Sales Performance Optimization Section */}
-      <section id="sales-performance" className="py-20 bg-gray-50">
+      {/* Individual Coaching Section */}
+      <section id="individual-coaching" className="py-20 bg-gray-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
                 <h2 className="text-3xl md:text-4xl font-bold mb-6 text-primary-500">
-                  Sales Performance Optimization
+                  One-on-One Coaching
                 </h2>
                 <p className="text-lg text-gray-700 mb-6">
-                  For SaaS teams and entrepreneurs struggling with messy sales cycles, low retention, or inconsistent deal flow.
-                  We help you build a systematized, repeatable sales process that drives more revenue.
+                  For professionals who struggle with communication anxiety, lack of confidence, or ineffective speaking. Our personalized coaching helps you develop a confident authentic voice that resonates with your audience.
                 </p>
                 <div className="space-y-4 mb-8">
                   <div className="bg-white p-4 rounded-lg shadow-md">
-                    <h3 className="text-xl font-semibold mb-2 text-primary-600">Sales Process Audit & Rebuild</h3>
+                    <h3 className="text-xl font-semibold mb-2 text-primary-600">Anxiety Management</h3>
                     <p className="text-gray-600">
-                      We analyze your current sales approach, identify gaps and opportunities, then build a streamlined
-                      process aligned with your business goals and customer journey.
+                      Learn proven techniques to transform nervousness into positive energy and overcome fear of public speaking, presentations, or difficult conversations.
                     </p>
                   </div>
-                  <div className="bg-white p-4 rounded-lg shadow-md">
-                    <h3 className="text-xl font-semibold mb-2 text-primary-600">Customer Retention Strategy</h3>
-                    <p className="text-gray-600">
-                      Develop effective frameworks for renewals, upsells, and cross-sells to maximize customer
-                      lifetime value and reduce churn.
-                    </p>
-                  </div>
-                  <div className="bg-white p-4 rounded-lg shadow-md">
-                    <h3 className="text-xl font-semibold mb-2 text-primary-600">Sales Team Enablement</h3>
-                    <p className="text-gray-600">
-                      Equip your team with the tools, training, and frameworks they need to consistently hit targets
-                      and close deals more effectively.
-                    </p>
-                  </div>
-                </div>
-                <Link
-                  href="/contact"
-                  className="btn bg-secondary-500 hover:bg-secondary-600 text-white text-lg py-3 px-8 rounded-md inline-flex items-center"
-                >
-                  Get Started
-                  <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                  </svg>
-                </Link>
-              </div>
-              <div className="relative h-[500px] rounded-lg overflow-hidden shadow-xl bg-gradient-to-br from-primary-600 to-primary-800 flex items-center justify-center">
-                <div className="text-center text-white p-8">
-                  <h3 className="text-2xl font-bold mb-4">Transform Your Sales Process</h3>
-                  <p className="text-lg opacity-90">Build a system that consistently drives revenue growth</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Communication Coaching Section */}
-      <section id="communication-coaching" className="py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div className="relative h-[500px] rounded-lg overflow-hidden shadow-xl bg-gradient-to-br from-secondary-500 to-secondary-600 flex items-center justify-center">
-                <div className="text-center text-white p-8">
-                  <h3 className="text-2xl font-bold mb-4">Master Your Communication</h3>
-                  <p className="text-lg opacity-90">Develop the skills to influence and inspire</p>
-                </div>
-              </div>
-              <div>
-                <h2 className="text-3xl md:text-4xl font-bold mb-6 text-primary-500">
-                  Communication Coaching
-                </h2>
-                <p className="text-lg text-gray-700 mb-6">
-                  Whether you're pitching to investors, presenting to clients, or leading your team, effective communication
-                  is the key to success. Our coaching helps you develop the skills and confidence to excel in any situation.
-                </p>
-                <div className="space-y-4 mb-8">
                   <div className="bg-white p-4 rounded-lg shadow-md">
                     <h3 className="text-xl font-semibold mb-2 text-primary-600">Executive Presence</h3>
                     <p className="text-gray-600">
-                      Develop the confidence and charisma needed to command attention and inspire others in any setting.
+                      Develop the confidence, poise, and authentic voice needed to command attention and inspire trust in leadership situations.
                     </p>
                   </div>
                   <div className="bg-white p-4 rounded-lg shadow-md">
-                    <h3 className="text-xl font-semibold mb-2 text-primary-600">Presentation Skills</h3>
+                    <h3 className="text-xl font-semibold mb-2 text-primary-600">Presentation Mastery</h3>
                     <p className="text-gray-600">
-                      Master the art of delivering compelling presentations that engage your audience and drive results.
-                    </p>
-                  </div>
-                  <div className="bg-white p-4 rounded-lg shadow-md">
-                    <h3 className="text-xl font-semibold mb-2 text-primary-600">Negotiation Mastery</h3>
-                    <p className="text-gray-600">
-                      Learn proven techniques for successful negotiations that create value for all parties involved.
+                      Perfect your delivery, storytelling, and slide design to create compelling presentations that engage and persuade your audience.
                     </p>
                   </div>
                 </div>
@@ -265,7 +200,136 @@ export default function Services() {
                   href="/contact"
                   className="btn bg-secondary-500 hover:bg-secondary-600 text-white text-lg py-3 px-8 rounded-md inline-flex items-center"
                 >
-                  Get Started
+                  Schedule a Consultation
+                  <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                  </svg>
+                </Link>
+              </div>
+              <div className="bg-primary-600 rounded-lg p-8 text-white">
+                <h3 className="text-2xl font-bold mb-6">Program Details</h3>
+                <div className="space-y-5">
+                  <div className="flex items-start">
+                    <svg className="h-6 w-6 text-accent-500 mt-0.5 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <div>
+                      <h4 className="font-semibold">8-Week Transformation</h4>
+                      <p className="text-white/80">Our core program includes 8 weekly one-hour sessions with your dedicated coach</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <svg className="h-6 w-6 text-accent-500 mt-0.5 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <div>
+                      <h4 className="font-semibold">AI-Enhanced Practice</h4>
+                      <p className="text-white/80">SpeechFlow AI access for daily practice with real-time feedback between sessions</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <svg className="h-6 w-6 text-accent-500 mt-0.5 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <div>
+                      <h4 className="font-semibold">Video Analysis</h4>
+                      <p className="text-white/80">Detailed feedback on your recorded presentations or conversations</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <svg className="h-6 w-6 text-accent-500 mt-0.5 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <div>
+                      <h4 className="font-semibold">Pricing</h4>
+                      <p className="text-white/80">Starting at $299 per session or $1,999 for the complete 8-week program</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Group Workshops Section */}
+      <section id="group-workshops" className="py-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <div className="bg-secondary-500 rounded-lg p-8 text-white">
+                <h3 className="text-2xl font-bold mb-6">Workshop Formats</h3>
+                <div className="space-y-5">
+                  <div className="flex items-start">
+                    <svg className="h-6 w-6 text-white mt-0.5 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <div>
+                      <h4 className="font-semibold">Half-Day Intensive</h4>
+                      <p className="text-white/80">4-hour focused training session on a specific communication challenge</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <svg className="h-6 w-6 text-white mt-0.5 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <div>
+                      <h4 className="font-semibold">Full-Day Workshop</h4>
+                      <p className="text-white/80">Comprehensive 8-hour program covering multiple aspects of team communication</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <svg className="h-6 w-6 text-white mt-0.5 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <div>
+                      <h4 className="font-semibold">Multi-Session Series</h4>
+                      <p className="text-white/80">4-6 week program with weekly 2-hour sessions for progressive skill development</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <svg className="h-6 w-6 text-white mt-0.5 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <div>
+                      <h4 className="font-semibold">Pricing</h4>
+                      <p className="text-white/80">Starting at $1,999 for half-day workshops; custom pricing for larger teams</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <h2 className="text-3xl md:text-4xl font-bold mb-6 text-primary-500">
+                  Group Workshops
+                </h2>
+                <p className="text-lg text-gray-700 mb-6">
+                  Transform your team's communication effectiveness through interactive workshops that address common challenges and build collective confidence. Ideal for leadership teams, sales departments, or cross-functional groups.
+                </p>
+                <div className="space-y-4 mb-8">
+                  <div className="bg-white p-4 rounded-lg shadow-md">
+                    <h3 className="text-xl font-semibold mb-2 text-primary-600">Team Presentation Skills</h3>
+                    <p className="text-gray-600">
+                      Help your team deliver compelling, confident presentations with a consistent approach that reflects your organization's voice.
+                    </p>
+                  </div>
+                  <div className="bg-white p-4 rounded-lg shadow-md">
+                    <h3 className="text-xl font-semibold mb-2 text-primary-600">Difficult Conversations</h3>
+                    <p className="text-gray-600">
+                      Equip your team with frameworks and skills to navigate challenging interactions with confidence, clarity and empathy.
+                    </p>
+                  </div>
+                  <div className="bg-white p-4 rounded-lg shadow-md">
+                    <h3 className="text-xl font-semibold mb-2 text-primary-600">Leadership Communication</h3>
+                    <p className="text-gray-600">
+                      Develop your leadership team's ability to communicate vision, provide feedback, and inspire action through authentic communication.
+                    </p>
+                  </div>
+                </div>
+                <Link
+                  href="/contact"
+                  className="btn bg-secondary-500 hover:bg-secondary-600 text-white text-lg py-3 px-8 rounded-md inline-flex items-center"
+                >
+                  Request Workshop Information
                   <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
                   </svg>
@@ -276,36 +340,35 @@ export default function Services() {
         </div>
       </section>
 
-      {/* AI Automation Section */}
-      <section id="ai-automation" className="py-20 bg-gray-50">
+      {/* Digital Programs Section */}
+      <section id="digital-programs" className="py-20 bg-gray-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
                 <h2 className="text-3xl md:text-4xl font-bold mb-6 text-primary-500">
-                  AI Automation Services
+                  Digital Programs
                 </h2>
                 <p className="text-lg text-gray-700 mb-6">
-                  Leverage the power of AI to streamline your operations, enhance customer engagement, and drive better
-                  business outcomes. Our solutions are tailored to your specific needs and goals.
+                  Self-paced digital courses and resources for professionals who want to improve their communication skills on their own schedule. Our comprehensive programs provide the structure and tools you need to build confidence at your own pace.
                 </p>
                 <div className="space-y-4 mb-8">
                   <div className="bg-white p-4 rounded-lg shadow-md">
-                    <h3 className="text-xl font-semibold mb-2 text-primary-600">Sales Automation</h3>
+                    <h3 className="text-xl font-semibold mb-2 text-primary-600">Communication Confidence Course</h3>
                     <p className="text-gray-600">
-                      Implement AI-powered tools to automate repetitive tasks, qualify leads, and optimize your sales process.
+                      Our flagship 6-module course covering everything from anxiety management to storytelling and delivery techniques.
                     </p>
                   </div>
                   <div className="bg-white p-4 rounded-lg shadow-md">
-                    <h3 className="text-xl font-semibold mb-2 text-primary-600">Customer Engagement</h3>
+                    <h3 className="text-xl font-semibold mb-2 text-primary-600">Presentation Templates</h3>
                     <p className="text-gray-600">
-                      Use AI to deliver personalized experiences, predict customer needs, and improve satisfaction.
+                      Professional slide templates and presentation frameworks designed to help you create compelling visual support.
                     </p>
                   </div>
                   <div className="bg-white p-4 rounded-lg shadow-md">
-                    <h3 className="text-xl font-semibold mb-2 text-primary-600">Workflow Optimization</h3>
+                    <h3 className="text-xl font-semibold mb-2 text-primary-600">Communication Workbooks</h3>
                     <p className="text-gray-600">
-                      Streamline your operations with AI-driven automation that reduces manual work and increases efficiency.
+                      Downloadable resources with exercises and journaling prompts to build your communication skills over time.
                     </p>
                   </div>
                 </div>
@@ -313,18 +376,73 @@ export default function Services() {
                   href="/contact"
                   className="btn bg-secondary-500 hover:bg-secondary-600 text-white text-lg py-3 px-8 rounded-md inline-flex items-center"
                 >
-                  Get Started
+                  Browse Digital Products
                   <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
                   </svg>
                 </Link>
               </div>
-              <div className="relative h-[500px] rounded-lg overflow-hidden shadow-xl bg-gradient-to-br from-primary-800 to-primary-900 flex items-center justify-center">
-                <div className="text-center text-white p-8">
-                  <h3 className="text-2xl font-bold mb-4">Automate Your Success</h3>
-                  <p className="text-lg opacity-90">Let AI handle the routine while you focus on growth</p>
+              <div className="bg-primary-800 rounded-lg p-8 text-white">
+                <h3 className="text-2xl font-bold mb-6">Available Programs</h3>
+                <div className="space-y-5">
+                  <div className="bg-primary-700 p-4 rounded-lg">
+                    <h4 className="font-bold text-xl mb-2">Communication Confidence Masterclass</h4>
+                    <div className="flex justify-between items-center">
+                      <p className="text-white/80">Comprehensive 6-module course</p>
+                      <span className="bg-accent-500 text-white px-3 py-1 rounded-full text-sm font-semibold">$299</span>
+                    </div>
+                  </div>
+                  <div className="bg-primary-700 p-4 rounded-lg">
+                    <h4 className="font-bold text-xl mb-2">Presentation Anxiety Toolkit</h4>
+                    <div className="flex justify-between items-center">
+                      <p className="text-white/80">3-module mini-course</p>
+                      <span className="bg-accent-500 text-white px-3 py-1 rounded-full text-sm font-semibold">$99</span>
+                    </div>
+                  </div>
+                  <div className="bg-primary-700 p-4 rounded-lg">
+                    <h4 className="font-bold text-xl mb-2">Executive Presence Blueprint</h4>
+                    <div className="flex justify-between items-center">
+                      <p className="text-white/80">4-module course with templates</p>
+                      <span className="bg-accent-500 text-white px-3 py-1 rounded-full text-sm font-semibold">$199</span>
+                    </div>
+                  </div>
+                  <div className="bg-primary-700 p-4 rounded-lg">
+                    <h4 className="font-bold text-xl mb-2">Communication Confidence Bundle</h4>
+                    <div className="flex justify-between items-center">
+                      <p className="text-white/80">All courses and resources</p>
+                      <span className="bg-accent-500 text-white px-3 py-1 rounded-full text-sm font-semibold">$499</span>
+                    </div>
+                  </div>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 bg-gradient-to-r from-primary-600 to-primary-500 text-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              Ready to Transform Your Communication?
+            </h2>
+            <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
+              Take the first step toward overcoming communication anxiety and becoming a confident, impactful communicator.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                href="/contact"
+                className="bg-white text-primary-600 hover:bg-gray-100 px-8 py-3 rounded-lg font-semibold transition-colors"
+              >
+                Schedule a Consultation
+              </Link>
+              <Link
+                href="/mini-challenge"
+                className="bg-accent-500 hover:bg-accent-600 text-white px-8 py-3 rounded-lg font-semibold transition-colors"
+              >
+                Join Our Free Challenge
+              </Link>
             </div>
           </div>
         </div>

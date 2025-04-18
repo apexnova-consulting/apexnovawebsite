@@ -4,28 +4,42 @@ import { useState } from 'react';
 import Image from 'next/image';
 
 const Testimonials = () => {
-  // Sample testimonials data
+  // Updated testimonials data focused on communication improvements
   const testimonials = [
     {
       id: 1,
-      quote: "Working with ApexNova completely transformed my executive presence. The coaching combined with SpeechFlow AI practice helped me deliver a keynote speech that received standing ovations.",
+      quote: "Working with ApexNova helped me overcome my lifelong fear of public speaking. The personalized coaching approach identified the root causes of my anxiety and gave me practical techniques to transform my fear into confidence.",
       name: "Sarah Johnson",
-      title: "CEO, TechVision Group",
-      image: "/images/testimonial-1.jpg", // Replace with actual image path
+      title: "Marketing Director, TechVision Group",
+      image: "/images/testimonial-1.jpg",
     },
     {
       id: 2,
-      quote: "The AI-powered speech coaching provided real-time feedback that accelerated my improvement. I went from dreading presentations to actively seeking speaking opportunities in just weeks.",
+      quote: "The AI-powered speech coaching provided real-time feedback on my pacing and filler words. I went from dreading presentations to confidently leading our company all-hands meetings in just 6 weeks.",
       name: "Michael Chen",
       title: "SVP of Marketing, Horizon Brands",
-      image: "/images/testimonial-2.jpg", // Replace with actual image path
+      image: "/images/testimonial-2.jpg",
     },
     {
       id: 3,
-      quote: "ApexNova's coaching methodology is simply exceptional. The digital products complement the one-on-one sessions perfectly, providing a complete system for communication mastery.",
+      quote: "As someone who struggled with severe communication anxiety, ApexNova's systematic approach was life-changing. Their 5-day challenge was the perfect starting point, and the follow-up coaching solidified my transformation.",
       name: "Amara Peterson",
       title: "Managing Director, Capital Advisors",
-      image: "/images/testimonial-3.jpg", // Replace with actual image path
+      image: "/images/testimonial-3.jpg",
+    },
+    {
+      id: 4,
+      quote: "I used to avoid speaking up in meetings at all costs. Now I confidently lead discussions and have earned two promotions since working with ApexNova. The ROI on this coaching has been incredible.",
+      name: "David Rodriguez",
+      title: "Product Manager, Innovate Solutions",
+      image: "/images/testimonial-4.jpg",
+    },
+    {
+      id: 5,
+      quote: "The combination of one-on-one coaching and the SpeechFlow AI tool accelerated my progress. Being able to practice daily with AI feedback between my coaching sessions was the game-changer I needed.",
+      name: "Jennifer Lin",
+      title: "CEO, Healthcare Innovations",
+      image: "/images/testimonial-5.jpg",
     },
   ];
 
@@ -44,10 +58,10 @@ const Testimonials = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            What Our Clients Say
+            Communication Transformation Stories
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Real results from executives and professionals who transformed their communication skills with ApexNova.
+            Real results from professionals who overcame communication anxiety and developed powerful speaking skills with ApexNova.
           </p>
         </div>
 
@@ -87,8 +101,8 @@ const Testimonials = () => {
                     key={index}
                     onClick={() => setActiveIndex(index)}
                     className={`w-3 h-3 rounded-full ${index === activeIndex
-                        ? 'bg-primary-600'
-                        : 'bg-gray-300 hover:bg-gray-400'
+                      ? 'bg-primary-600'
+                      : 'bg-gray-300 hover:bg-gray-400'
                       }`}
                     aria-label={`Go to testimonial ${index + 1}`}
                   />

@@ -4,15 +4,18 @@ import { useState, FormEvent } from 'react';
 
 export default function NewsletterSignup() {
   const [email, setEmail] = useState<string>('');
+  const [name, setName] = useState<string>('');
   const [formStatus, setFormStatus] = useState({
     submitted: false,
     error: false,
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    
+    setIsSubmitting(true);
+
     // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!email || !emailRegex.test(email)) {
@@ -21,46 +24,68 @@ export default function NewsletterSignup() {
         error: true,
         message: 'Please enter a valid email address.'
       });
+      setIsSubmitting(false);
       return;
     }
-    
-    // In a real implementation, you would submit this data to your backend
-    // Here we're just simulating success for demonstration
-    try {
-      // Simulate API call delay
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      // Success case
+
+    if (!name.trim()) {
       setFormStatus({
-        submitted: true,
-        error: false,
-        message: 'Thank you for signing up! Check your email for the free mini-challenge.'
+        submitted: false,
+        error: true,
+        message: 'Please enter your name.'
       });
-      
-      // Reset form
-      setEmail('');
+      setIsSubmitting(false);
+      return;
+    }
+
+    try {
+      // Send data to API endpoint
+      const response = await fetch('/api/mini-challenge-signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name, email }),
+      });
+
+      if (response.ok) {
+        // Success case
+        setFormStatus({
+          submitted: true,
+          error: false,
+          message: `Thank you, ${name}! Check your email for Day 1 of your Communication Confidence Challenge.`
+        });
+
+        // Reset form
+        setEmail('');
+        setName('');
+      } else {
+        throw new Error('Failed to submit');
+      }
     } catch (error) {
       setFormStatus({
         submitted: false,
         error: true,
         message: 'Something went wrong. Please try again later.'
       });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
   return (
-    <section className="py-20 bg-gradient-to-r from-primary-800 to-primary-600 text-white">
+    <section id="mini-challenge" className="py-20 bg-gradient-to-r from-primary-800 to-primary-600 text-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Free Communication Mini-Challenge
+                FREE 5-Day Communication Confidence Challenge
               </h2>
               <p className="text-xl text-primary-100 mb-8">
-                Sign up for our newsletter and receive a free 5-day mini-challenge to improve your executive communication skills.
+                Conquer your communication anxiety and speak with impact in just 5 days with our proven step-by-step system.
               </p>
-              
+
               <div className="space-y-6 mb-8">
                 <div className="flex items-start">
                   <div className="flex-shrink-0 mt-1">
@@ -69,11 +94,11 @@ export default function NewsletterSignup() {
                     </svg>
                   </div>
                   <div className="ml-3">
-                    <h3 className="text-lg font-semibold">5-Day Challenge</h3>
-                    <p className="text-primary-100">Simple daily exercises that take less than 10 minutes</p>
+                    <h3 className="text-lg font-semibold">Daily Email Lessons</h3>
+                    <p className="text-primary-100">Simple 10-minute exercises delivered to your inbox each morning</p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start">
                   <div className="flex-shrink-0 mt-1">
                     <svg className="h-6 w-6 text-accent-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -81,11 +106,11 @@ export default function NewsletterSignup() {
                     </svg>
                   </div>
                   <div className="ml-3">
-                    <h3 className="text-lg font-semibold">Free Journal PDF</h3>
-                    <p className="text-primary-100">Download our communication reflection journal</p>
+                    <h3 className="text-lg font-semibold">Anxiety-Reduction Techniques</h3>
+                    <p className="text-primary-100">Science-backed methods to calm your nerves before speaking</p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start">
                   <div className="flex-shrink-0 mt-1">
                     <svg className="h-6 w-6 text-accent-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -93,16 +118,28 @@ export default function NewsletterSignup() {
                     </svg>
                   </div>
                   <div className="ml-3">
-                    <h3 className="text-lg font-semibold">Proven Techniques</h3>
-                    <p className="text-primary-100">Strategies used by professional communicators</p>
+                    <h3 className="text-lg font-semibold">Communication Confidence Workbook</h3>
+                    <p className="text-primary-100">FREE PDF download with exercises and reflection prompts</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start">
+                  <div className="flex-shrink-0 mt-1">
+                    <svg className="h-6 w-6 text-accent-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <div className="ml-3">
+                    <h3 className="text-lg font-semibold">Special Coaching Offer</h3>
+                    <p className="text-primary-100">Exclusive discount on our coaching programs for challenge participants</p>
                   </div>
                 </div>
               </div>
             </div>
-            
+
             <div className="bg-white text-gray-800 p-8 rounded-lg shadow-lg">
-              <h3 className="text-2xl font-bold mb-4">Get Your Free Mini-Challenge</h3>
-              
+              <h3 className="text-2xl font-bold mb-4">Start Your Transformation Today</h3>
+
               {formStatus.submitted ? (
                 <div className="bg-green-50 p-4 rounded-md mb-6">
                   <div className="flex">
@@ -117,9 +154,9 @@ export default function NewsletterSignup() {
               ) : (
                 <>
                   <p className="text-gray-600 mb-6">
-                    Enter your email below to receive the free mini-challenge and be the first to know about new resources and special offers.
+                    Join thousands of professionals who have overcome communication anxiety and found their confident voice.
                   </p>
-                  
+
                   {formStatus.error && (
                     <div className="bg-red-50 p-4 rounded-md mb-6">
                       <div className="flex">
@@ -132,8 +169,24 @@ export default function NewsletterSignup() {
                       </div>
                     </div>
                   )}
-                  
+
                   <form onSubmit={handleSubmit} className="space-y-4">
+                    <div>
+                      <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+                        Your Name
+                      </label>
+                      <input
+                        id="name"
+                        name="name"
+                        type="text"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-primary-500 focus:border-primary-500"
+                        placeholder="John Smith"
+                        required
+                      />
+                    </div>
+
                     <div>
                       <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
                         Email Address
@@ -149,24 +202,25 @@ export default function NewsletterSignup() {
                         required
                       />
                     </div>
-                    
+
                     <button
                       type="submit"
-                      className="w-full bg-accent-500 hover:bg-accent-600 text-white font-medium py-3 px-4 rounded-md transition-colors"
+                      disabled={isSubmitting}
+                      className={`w-full ${isSubmitting ? 'bg-gray-400' : 'bg-accent-500 hover:bg-accent-600'} text-white font-medium py-3 px-4 rounded-md transition-colors`}
                     >
-                      Send Me the Challenge
+                      {isSubmitting ? 'Signing up...' : 'Join The Challenge Now'}
                     </button>
                   </form>
-                  
+
                   <p className="text-sm text-gray-500 mt-4">
                     We respect your privacy. Unsubscribe at any time.
                   </p>
                 </>
               )}
-              
+
               <div className="mt-8 pt-6 border-t border-gray-200">
                 <p className="text-center text-sm text-gray-500">
-                  <span className="font-semibold text-primary-600">Join 5,000+</span> professionals who have completed our mini-challenge
+                  <span className="font-semibold text-primary-600">Join 5,000+</span> professionals who have transformed their communication skills
                 </p>
               </div>
             </div>
