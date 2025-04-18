@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 
 const blogPosts = [
   {
@@ -36,85 +35,76 @@ const blogPosts = [
 
 export default function Blog() {
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Navbar />
-
+    <>
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-primary-600 to-primary-800 text-white py-20">
+      <section className="bg-gradient-to-r from-blue-900 to-blue-700 text-white py-20">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">Insights & Resources</h1>
-            <p className="text-xl text-gray-100">
-              Discover expert insights on executive communication, leadership, and business transformation.
-            </p>
-          </div>
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">Blog</h1>
+          <p className="text-xl max-w-2xl">
+            Insights and strategies to help you elevate your communication skills and leadership presence.
+          </p>
         </div>
       </section>
 
-      {/* Blog Posts */}
-      <section className="py-16">
+      {/* Blog Posts Grid */}
+      <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {blogPosts.map((post) => (
-              <article key={post.id} className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                <div className="aspect-w-16 aspect-h-9 bg-gray-200">
-                  <div className="w-full h-48 bg-gradient-to-br from-primary-500 to-primary-700"></div>
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center text-sm text-gray-500 mb-2">
-                    <span>{post.category}</span>
-                    <span className="mx-2">•</span>
-                    <span>{post.readTime}</span>
+              <Link href={`/blog/${post.id}`} key={post.id} className="block transition-transform hover:scale-105">
+                <div className="bg-white rounded-lg overflow-hidden shadow-md h-full">
+                  <div className="h-48 bg-gray-200">
+                    <img
+                      src={post.image}
+                      alt={post.title}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
-                  <h2 className="text-xl font-bold mb-2 text-gray-900">
-                    <Link href={`/blog/${post.id}`} className="hover:text-primary-600 transition-colors">
-                      {post.title}
-                    </Link>
-                  </h2>
-                  <p className="text-gray-600 mb-4">{post.excerpt}</p>
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm text-gray-500">{post.date}</span>
-                    <Link
-                      href={`/blog/${post.id}`}
-                      className="text-primary-600 hover:text-primary-700 font-medium"
-                    >
-                      Read More →
-                    </Link>
+                  <div className="p-6">
+                    <div className="flex justify-between items-center mb-2">
+                      <span className="text-sm text-blue-600 font-medium">{post.category}</span>
+                      <span className="text-sm text-gray-500">{post.readTime}</span>
+                    </div>
+                    <h2 className="text-xl font-bold mb-2 text-gray-800">{post.title}</h2>
+                    <p className="text-gray-600 mb-4">{post.excerpt}</p>
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm text-gray-500">{post.date}</span>
+                      <span className="text-blue-600 font-medium">Read More →</span>
+                    </div>
                   </div>
                 </div>
-              </article>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Newsletter Section */}
-      <section className="bg-gray-100 py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-2xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-4">Stay Updated</h2>
-            <p className="text-gray-600 mb-8">
-              Subscribe to our newsletter for the latest insights and resources delivered to your inbox.
-            </p>
-            <form className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+      {/* Newsletter Signup */}
+      <section className="py-16 bg-blue-50">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold mb-4 text-gray-800">Subscribe to Our Newsletter</h2>
+          <p className="text-lg mb-8 max-w-2xl mx-auto text-gray-600">
+            Get the latest insights on communication, leadership, and personal development
+            delivered directly to your inbox.
+          </p>
+
+          <div className="max-w-md mx-auto">
+            <div className="flex flex-col sm:flex-row gap-2">
               <input
                 type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-500"
-                required
+                placeholder="Your email address"
+                className="flex-grow px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 border border-gray-300"
               />
-              <button
-                type="submit"
-                className="bg-primary-600 text-white px-6 py-2 rounded-md hover:bg-primary-700 transition-colors"
-              >
+              <button className="bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors">
                 Subscribe
               </button>
-            </form>
+            </div>
+            <p className="text-sm text-gray-500 mt-2">
+              We respect your privacy. Unsubscribe at any time.
+            </p>
           </div>
         </div>
       </section>
-
-      <Footer />
-    </div>
+    </>
   );
 } 
