@@ -1,45 +1,51 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
+import { FaTools, FaComments, FaBook } from 'react-icons/fa';
 
 export default function Hero() {
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image */}
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="/images/hero-background.jpg"
-          alt="ApexNova Consulting Hero Background"
-          fill
-          priority
-          className="object-cover"
-          quality={90}
-        />
-        {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/50" />
-      </div>
+    <section className="bg-gradient-to-b from-gray-50 to-white py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center">
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            Tools & Strategies for Ambitious Professionals
+          </h1>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-12">
+            Empower your career, master communication, and transform your mindset — at your pace.
+          </p>
 
-      {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 text-center">
-        <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-          Master Confident Communication – Overcome Anxiety and Speak with Impact
-        </h1>
-        <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto">
-          Empowering professionals to conquer communication challenges and lead with confidence
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
+            <div className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+              <div className="text-primary-600 text-4xl mb-4">
+                <FaTools />
+              </div>
+              <h3 className="text-xl font-semibold mb-2">Digital Tools & Templates</h3>
+              <p className="text-gray-600">Practical resources to streamline your workflow and boost productivity</p>
+            </div>
+
+            <div className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+              <div className="text-primary-600 text-4xl mb-4">
+                <FaComments />
+              </div>
+              <h3 className="text-xl font-semibold mb-2">Communication Skills Courses</h3>
+              <p className="text-gray-600">Master the art of effective communication in any professional setting</p>
+            </div>
+
+            <div className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+              <div className="text-primary-600 text-4xl mb-4">
+                <FaBook />
+              </div>
+              <h3 className="text-xl font-semibold mb-2">Journals & Mindset Resources</h3>
+              <p className="text-gray-600">Tools for personal growth and mental clarity</p>
+            </div>
+          </div>
+
           <Link
-            href="/mini-challenge"
-            className="bg-accent-500 hover:bg-accent-600 text-white px-8 py-3 rounded-lg font-semibold transition-colors"
+            href="/learning-library"
+            className="inline-block bg-primary-600 text-white px-8 py-3 rounded-md text-lg font-medium hover:bg-primary-700 transition-colors"
           >
-            Join Our 5-Day Communication Challenge
-          </Link>
-          <Link
-            href="/services"
-            className="bg-white/10 hover:bg-white/20 text-white px-8 py-3 rounded-lg font-semibold transition-colors backdrop-blur-sm"
-          >
-            Learn More
+            Browse the Learning Library
           </Link>
         </div>
       </div>

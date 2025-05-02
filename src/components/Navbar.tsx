@@ -1,186 +1,109 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { FaBars, FaTimes } from 'react-icons/fa';
 
 export default function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const pathname = usePathname();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 0);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const isActive = (path: string) => pathname === path;
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-lg' : 'bg-black/30 backdrop-blur-sm'
-      }`}>
-      <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center h-20">
-          {/* Logo */}
-          <Link href="/" className="text-2xl font-bold">
-            <span className="text-[#00144F]">Apex</span>
-            <span className="text-[#DEB251]">Nova</span>
-            <span className="text-[#00144F]"> Consulting</span>
-          </Link>
+    <nav className="bg-white shadow-sm">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between h-16">
+          <div className="flex">
+            <Link href="/" className="flex items-center">
+              <span className="text-2xl font-bold text-primary-600">ApexNova</span>
+            </Link>
+          </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-8">
-            <Link
-              href="/"
-              className={`text-lg font-medium transition-colors ${isActive('/')
-                ? 'text-[#DEB251]'
-                : isScrolled
-                  ? 'text-[#00144F] hover:text-[#DEB251]'
-                  : 'text-white hover:text-[#DEB251]'
-                }`}
-            >
+          <div className="hidden md:flex items-center space-x-8">
+            <Link href="/" className="text-gray-600 hover:text-primary-600">
               Home
             </Link>
-            <Link
-              href="/services"
-              className={`text-lg font-medium transition-colors ${isActive('/services')
-                ? 'text-[#DEB251]'
-                : isScrolled
-                  ? 'text-[#00144F] hover:text-[#DEB251]'
-                  : 'text-white hover:text-[#DEB251]'
-                }`}
-            >
-              Services
+            <Link href="/about" className="text-gray-600 hover:text-primary-600">
+              About
             </Link>
-            <Link
-              href="/coaching"
-              className={`text-lg font-medium transition-colors ${isActive('/coaching')
-                ? 'text-[#DEB251]'
-                : isScrolled
-                  ? 'text-[#00144F] hover:text-[#DEB251]'
-                  : 'text-white hover:text-[#DEB251]'
-                }`}
-            >
-              Coaching
+            <Link href="/learning-library" className="text-gray-600 hover:text-primary-600">
+              Learning Library
             </Link>
-            <Link
-              href="/speechflow-ai"
-              className={`text-lg font-medium transition-colors ${isActive('/speechflow-ai')
-                ? 'text-[#DEB251]'
-                : isScrolled
-                  ? 'text-[#00144F] hover:text-[#DEB251]'
-                  : 'text-white hover:text-[#DEB251]'
-                }`}
-            >
-              SpeechFlow AI
-            </Link>
-            <Link
-              href="/blog"
-              className={`text-lg font-medium transition-colors ${isActive('/blog')
-                ? 'text-[#DEB251]'
-                : isScrolled
-                  ? 'text-[#00144F] hover:text-[#DEB251]'
-                  : 'text-white hover:text-[#DEB251]'
-                }`}
-            >
+            <Link href="/blog" className="text-gray-600 hover:text-primary-600">
               Blog
             </Link>
-            <Link
-              href="/contact"
-              className={`text-lg font-medium transition-colors ${isActive('/contact')
-                ? 'text-[#DEB251]'
-                : isScrolled
-                  ? 'text-[#00144F] hover:text-[#DEB251]'
-                  : 'text-white hover:text-[#DEB251]'
-                }`}
-            >
+            <Link href="/shop" className="text-gray-600 hover:text-primary-600">
+              Shop
+            </Link>
+            <Link href="/contact" className="text-gray-600 hover:text-primary-600">
               Contact
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            className={`md:hidden ${isScrolled ? 'text-[#00144F]' : 'text-white'
-              } hover:text-[#DEB251] transition-colors`}
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
+          {/* Mobile menu button */}
+          <div className="md:hidden flex items-center">
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="text-gray-600 hover:text-primary-600"
             >
-              {isMobileMenuOpen ? (
-                <path d="M6 18L18 6M6 6l12 12" />
+              {isMenuOpen ? (
+                <FaTimes className="h-6 w-6" />
               ) : (
-                <path d="M4 6h16M4 12h16M4 18h16" />
+                <FaBars className="h-6 w-6" />
               )}
-            </svg>
-          </button>
-        </div>
-
-        {/* Mobile Navigation */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden bg-white shadow-lg py-4">
-            <div className="flex flex-col space-y-4">
-              <Link
-                href="/"
-                className={`text-lg font-medium transition-colors ${isActive('/') ? 'text-[#DEB251]' : 'text-[#00144F] hover:text-[#DEB251]'
-                  }`}
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Home
-              </Link>
-              <Link
-                href="/services"
-                className={`text-lg font-medium transition-colors ${isActive('/services') ? 'text-[#DEB251]' : 'text-[#00144F] hover:text-[#DEB251]'
-                  }`}
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Services
-              </Link>
-              <Link
-                href="/coaching"
-                className={`text-lg font-medium transition-colors ${isActive('/coaching') ? 'text-[#DEB251]' : 'text-[#00144F] hover:text-[#DEB251]'
-                  }`}
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Coaching
-              </Link>
-              <Link
-                href="/speechflow-ai"
-                className={`text-lg font-medium transition-colors ${isActive('/speechflow-ai') ? 'text-[#DEB251]' : 'text-[#00144F] hover:text-[#DEB251]'
-                  }`}
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                SpeechFlow AI
-              </Link>
-              <Link
-                href="/blog"
-                className={`text-lg font-medium transition-colors ${isActive('/blog') ? 'text-[#DEB251]' : 'text-[#00144F] hover:text-[#DEB251]'
-                  }`}
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Blog
-              </Link>
-              <Link
-                href="/contact"
-                className={`text-lg font-medium transition-colors ${isActive('/contact') ? 'text-[#DEB251]' : 'text-[#00144F] hover:text-[#DEB251]'
-                  }`}
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Contact
-              </Link>
-            </div>
+            </button>
           </div>
-        )}
+        </div>
       </div>
+
+      {/* Mobile Navigation */}
+      {isMenuOpen && (
+        <div className="md:hidden">
+          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <Link
+              href="/"
+              className="block px-3 py-2 text-gray-600 hover:text-primary-600"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Home
+            </Link>
+            <Link
+              href="/about"
+              className="block px-3 py-2 text-gray-600 hover:text-primary-600"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              About
+            </Link>
+            <Link
+              href="/learning-library"
+              className="block px-3 py-2 text-gray-600 hover:text-primary-600"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Learning Library
+            </Link>
+            <Link
+              href="/blog"
+              className="block px-3 py-2 text-gray-600 hover:text-primary-600"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Blog
+            </Link>
+            <Link
+              href="/shop"
+              className="block px-3 py-2 text-gray-600 hover:text-primary-600"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Shop
+            </Link>
+            <Link
+              href="/contact"
+              className="block px-3 py-2 text-gray-600 hover:text-primary-600"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Contact
+            </Link>
+          </div>
+        </div>
+      )}
     </nav>
   );
 } 
