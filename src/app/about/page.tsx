@@ -1,50 +1,207 @@
 'use client';
 
-import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import Image from 'next/image';
+import Link from 'next/link';
+import { FaRocket, FaLightbulb, FaUsers, FaChartLine, FaArrowRight } from 'react-icons/fa';
+
+const values = [
+  {
+    icon: FaRocket,
+    title: 'Innovation',
+    description: 'Pushing boundaries and embracing new technologies to deliver cutting-edge solutions.'
+  },
+  {
+    icon: FaLightbulb,
+    title: 'Excellence',
+    description: 'Committed to delivering the highest quality in everything we do.'
+  },
+  {
+    icon: FaUsers,
+    title: 'Collaboration',
+    description: 'Building strong partnerships and fostering a culture of teamwork.'
+  },
+  {
+    icon: FaChartLine,
+    title: 'Growth',
+    description: 'Continuously learning and evolving to better serve our clients.'
+  }
+];
+
+const team = [
+  {
+    name: 'Mike Nielson',
+    role: 'Founder & CEO',
+    image: '/images/team/mike.jpg',
+    bio: 'With over 15 years of experience in executive coaching and communication strategy.'
+  },
+  {
+    name: 'Sarah Johnson',
+    role: 'Head of Learning',
+    image: '/images/team/sarah.jpg',
+    bio: 'Expert in curriculum development and adult learning methodologies.'
+  },
+  {
+    name: 'David Chen',
+    role: 'Lead Coach',
+    image: '/images/team/david.jpg',
+    bio: 'Specializes in leadership development and team dynamics.'
+  }
+];
 
 export default function About() {
   return (
-    <main className="min-h-screen bg-white">
-      <Navbar />
+    <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+      {/* Hero Section */}
+      <section className="relative py-20 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary-900/5 to-primary-900/10" />
+        <div className="absolute inset-0">
+          <Image
+            src="/images/pattern.svg"
+            alt="Background Pattern"
+            fill
+            className="object-cover opacity-5"
+          />
+        </div>
 
-      <section className="py-20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-8 text-center">
-            Empowering Professionals with Tools, Strategies, and Self-Paced Growth
-          </h1>
-
-          <div className="prose prose-lg max-w-none">
-            <p className="text-xl text-gray-600 mb-6">
-              At ApexNova Consulting, we believe personal and professional transformation begins with mastering the way you communicate. Whether you're navigating leadership challenges, building confidence in the workplace, or overcoming mindset barriers, our platform offers practical resources to support your journey.
-            </p>
-
-            <p className="text-xl text-gray-600 mb-6">
-              We specialize in digital tools, strategic frameworks, and guided content designed to help ambitious professionals like you gain clarity, boost confidence, and take control of your growth — all on your own time.
-            </p>
-
-            <p className="text-xl text-gray-600 mb-6">
-              Explore our library of downloadable journals, skill-building templates, mindset-enhancing tools, and curated content to help you level up in communication, career, and confidence.
-            </p>
-
-            <p className="text-xl text-gray-600 mb-6">
-              ApexNova is where self-development meets strategy — and where your next breakthrough begins.
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              About ApexNova
+            </h1>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Empowering professionals to reach their full potential through innovative learning solutions and expert guidance.
             </p>
           </div>
 
-          <div className="mt-12 grid md:grid-cols-2 gap-8">
-            <div className="bg-gray-50 p-6 rounded-lg">
-              <h3 className="text-xl font-semibold mb-4">Our Approach</h3>
-              <p className="text-gray-600">
-                We combine practical tools with strategic frameworks to create a comprehensive learning experience that adapts to your schedule and learning style.
-              </p>
+          {/* Mission Section */}
+          <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 mb-20">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <div>
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">
+                  Our Mission
+                </h2>
+                <p className="text-lg text-gray-600 mb-6">
+                  At ApexNova, we're dedicated to transforming how professionals learn and grow. We combine cutting-edge technology with proven methodologies to create an engaging, effective learning experience.
+                </p>
+                <p className="text-lg text-gray-600 mb-8">
+                  Our platform provides the tools, resources, and support needed to excel in today's fast-paced business environment.
+                </p>
+                <Link
+                  href="/learning-library"
+                  className="inline-flex items-center gap-2 bg-primary-600 text-white px-6 py-3 rounded-xl text-lg font-medium hover:bg-primary-700 transition-all duration-200 transform hover:scale-105"
+                >
+                  Explore Our Resources
+                  <FaArrowRight className="w-5 h-5" />
+                </Link>
+              </div>
+              <div className="relative h-[400px] rounded-xl overflow-hidden">
+                <Image
+                  src="/images/about/mission.jpg"
+                  alt="Our Mission"
+                  fill
+                  className="object-cover"
+                />
+              </div>
             </div>
+          </div>
 
-            <div className="bg-gray-50 p-6 rounded-lg">
-              <h3 className="text-xl font-semibold mb-4">Our Promise</h3>
-              <p className="text-gray-600">
-                Every resource we create is designed to deliver immediate value while building long-term skills that will serve you throughout your career.
-              </p>
+          {/* Values Section */}
+          <div className="mb-20">
+            <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">
+              Our Core Values
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {values.map((value, index) => (
+                <div
+                  key={index}
+                  className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+                >
+                  <div className="text-primary-600 mb-4">
+                    <value.icon className="w-8 h-8" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                    {value.title}
+                  </h3>
+                  <p className="text-gray-600">
+                    {value.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Team Section */}
+          <div className="mb-20">
+            <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">
+              Meet Our Team
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {team.map((member, index) => (
+                <div
+                  key={index}
+                  className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+                >
+                  <div className="relative h-64">
+                    <Image
+                      src={member.image}
+                      alt={member.name}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-semibold text-gray-900 mb-1">
+                      {member.name}
+                    </h3>
+                    <p className="text-primary-600 font-medium mb-3">
+                      {member.role}
+                    </p>
+                    <p className="text-gray-600">
+                      {member.bio}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* CTA Section */}
+          <div className="bg-gradient-to-r from-primary-900 to-primary-800 rounded-2xl overflow-hidden">
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary-900/50 to-primary-800/50" />
+              <div className="absolute inset-0">
+                <Image
+                  src="/images/pattern.svg"
+                  alt="Background Pattern"
+                  fill
+                  className="object-cover opacity-10"
+                />
+              </div>
+              <div className="relative px-6 py-12 sm:px-12 sm:py-16 lg:px-16 lg:py-20 text-center">
+                <h2 className="text-3xl font-bold text-white mb-4">
+                  Ready to Transform Your Career?
+                </h2>
+                <p className="text-xl text-gray-200 mb-8 max-w-3xl mx-auto">
+                  Join thousands of professionals who have already enhanced their skills with ApexNova.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Link
+                    href="/learning-library"
+                    className="inline-flex items-center gap-2 bg-accent-500 text-white px-8 py-4 rounded-xl text-lg font-medium hover:bg-accent-600 transition-all duration-200 transform hover:scale-105"
+                  >
+                    Explore Resources
+                    <FaArrowRight className="w-5 h-5" />
+                  </Link>
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white px-8 py-4 rounded-xl text-lg font-medium hover:bg-white/20 transition-all duration-200 transform hover:scale-105 border border-white/20"
+                  >
+                    Contact Us
+                    <FaArrowRight className="w-5 h-5" />
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
         </div>
