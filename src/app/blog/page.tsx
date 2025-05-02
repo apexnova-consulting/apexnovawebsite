@@ -1,6 +1,5 @@
 'use client';
 
-import Footer from '@/components/Footer';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
@@ -76,7 +75,7 @@ export default function Blog() {
         <div className="absolute inset-0">
           <Image
             src="/images/pattern.svg"
-            alt="Background Pattern"
+            alt=""
             fill
             className="object-cover opacity-5"
           />
@@ -211,8 +210,6 @@ export default function Blog() {
           </div>
         </div>
       </section>
-
-      <Footer />
     </main>
   );
 } 

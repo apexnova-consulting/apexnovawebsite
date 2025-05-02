@@ -28,27 +28,6 @@ const values = [
   }
 ];
 
-const team = [
-  {
-    name: 'Mike Nielson',
-    role: 'Founder & CEO',
-    image: '/images/team/mike.jpg',
-    bio: 'With over 15 years of experience in executive coaching and communication strategy.'
-  },
-  {
-    name: 'Sarah Johnson',
-    role: 'Head of Learning',
-    image: '/images/team/sarah.jpg',
-    bio: 'Expert in curriculum development and adult learning methodologies.'
-  },
-  {
-    name: 'David Chen',
-    role: 'Lead Coach',
-    image: '/images/team/david.jpg',
-    bio: 'Specializes in leadership development and team dynamics.'
-  }
-];
-
 export default function About() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
@@ -58,7 +37,7 @@ export default function About() {
         <div className="absolute inset-0">
           <Image
             src="/images/pattern.svg"
-            alt="Background Pattern"
+            alt=""
             fill
             className="object-cover opacity-5"
           />
@@ -131,41 +110,6 @@ export default function About() {
             </div>
           </div>
 
-          {/* Team Section */}
-          <div className="mb-20">
-            <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">
-              Meet Our Team
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {team.map((member, index) => (
-                <div
-                  key={index}
-                  className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
-                >
-                  <div className="relative h-64">
-                    <Image
-                      src={member.image}
-                      alt={member.name}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-semibold text-gray-900 mb-1">
-                      {member.name}
-                    </h3>
-                    <p className="text-primary-600 font-medium mb-3">
-                      {member.role}
-                    </p>
-                    <p className="text-gray-600">
-                      {member.bio}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
           {/* CTA Section */}
           <div className="bg-gradient-to-r from-primary-900 to-primary-800 rounded-2xl overflow-hidden">
             <div className="relative">
@@ -173,7 +117,7 @@ export default function About() {
               <div className="absolute inset-0">
                 <Image
                   src="/images/pattern.svg"
-                  alt="Background Pattern"
+                  alt=""
                   fill
                   className="object-cover opacity-10"
                 />
