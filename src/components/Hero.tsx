@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { FaTools, FaComments, FaBook } from 'react-icons/fa';
+import { FaTools, FaComments, FaBook, FaArrowRight } from 'react-icons/fa';
 import Image from 'next/image';
 
 export default function Hero() {
@@ -59,15 +59,17 @@ export default function Hero() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/learning-library"
-              className="inline-block bg-accent-500 text-white px-8 py-4 rounded-xl text-lg font-medium hover:bg-accent-600 transition-colors transform hover:scale-105 duration-200 shadow-lg hover:shadow-accent-500/25"
+              className="inline-flex items-center gap-2 bg-primary-600 text-white px-6 py-3 rounded-xl text-lg font-medium hover:bg-primary-700 transition-all duration-200 transform hover:scale-105"
             >
-              Browse the Learning Library
+              Browse Learning Library
+              <FaArrowRight className="w-5 h-5" />
             </Link>
             <Link
-              href="/shop"
-              className="inline-block bg-white/10 backdrop-blur-sm text-white px-8 py-4 rounded-xl text-lg font-medium hover:bg-white/20 transition-colors transform hover:scale-105 duration-200 border border-white/20"
+              href="/contact"
+              className="inline-flex items-center gap-2 bg-white text-primary-600 px-6 py-3 rounded-xl text-lg font-medium hover:bg-gray-50 transition-all duration-200 transform hover:scale-105 border border-primary-600"
             >
-              Explore Digital Products
+              Connect With Us
+              <FaArrowRight className="w-5 h-5" />
             </Link>
           </div>
         </div>
