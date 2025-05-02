@@ -1,11 +1,10 @@
 'use client';
 
-import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
-import { FaTools, FaComments, FaBook, FaFilter } from 'react-icons/fa';
+import { FaTools, FaComments, FaBook, FaFilter, FaArrowRight } from 'react-icons/fa';
 
 interface Product {
   id: string;
@@ -77,10 +76,19 @@ export default function LearningLibrary() {
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-      <Navbar />
+      {/* Hero Section */}
+      <section className="relative py-20 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary-900/5 to-primary-900/10" />
+        <div className="absolute inset-0">
+          <Image
+            src="/images/pattern.svg"
+            alt="Background Pattern"
+            fill
+            className="object-cover opacity-5"
+          />
+        </div>
 
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
               Learning Library
@@ -143,13 +151,31 @@ export default function LearningLibrary() {
                   </p>
                   <Link
                     href={product.link}
-                    className="inline-block w-full text-center bg-primary-600 text-white px-4 py-3 rounded-xl hover:bg-primary-700 transition-colors"
+                    className="inline-flex items-center gap-2 w-full justify-center bg-primary-600 text-white px-4 py-3 rounded-xl hover:bg-primary-700 transition-all duration-200 transform hover:scale-[1.02]"
                   >
                     {product.type === 'download' ? 'Download Now' : 'Learn More'}
+                    <FaArrowRight className="w-4 h-4" />
                   </Link>
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* Call to Action */}
+          <div className="mt-20 text-center">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              Ready to Transform Your Skills?
+            </h2>
+            <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+              Join thousands of professionals who have already enhanced their communication and leadership abilities with our resources.
+            </p>
+            <Link
+              href="/shop"
+              className="inline-flex items-center gap-2 bg-accent-500 text-white px-8 py-4 rounded-xl text-lg font-medium hover:bg-accent-600 transition-all duration-200 transform hover:scale-105"
+            >
+              Explore All Resources
+              <FaArrowRight className="w-5 h-5" />
+            </Link>
           </div>
         </div>
       </section>

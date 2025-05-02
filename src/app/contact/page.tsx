@@ -1,9 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { FaInstagram, FaEnvelope, FaLinkedin, FaTwitter, FaMapMarkerAlt, FaPhone, FaClock, FaRocket } from 'react-icons/fa';
+import { FaInstagram, FaEnvelope, FaMapMarkerAlt, FaPhone, FaRocket } from 'react-icons/fa';
 import Image from 'next/image';
 
 const inquiryTypes = [
@@ -107,8 +106,6 @@ export default function Contact() {
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-      <Navbar />
-
       {/* Hero Section */}
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary-900/5 to-primary-900/10" />
@@ -132,27 +129,20 @@ export default function Contact() {
           </div>
 
           {/* Contact Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
             <div className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
               <div className="text-primary-600 mb-4">
                 <FaMapMarkerAlt className="w-8 h-8" />
               </div>
               <h3 className="text-lg font-semibold mb-2">Our Location</h3>
-              <p className="text-gray-600">San Francisco, CA</p>
+              <p className="text-gray-600">New Jersey</p>
             </div>
             <div className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
               <div className="text-primary-600 mb-4">
                 <FaPhone className="w-8 h-8" />
               </div>
               <h3 className="text-lg font-semibold mb-2">Phone</h3>
-              <p className="text-gray-600">+1 (555) 123-4567</p>
-            </div>
-            <div className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
-              <div className="text-primary-600 mb-4">
-                <FaClock className="w-8 h-8" />
-              </div>
-              <h3 className="text-lg font-semibold mb-2">Business Hours</h3>
-              <p className="text-gray-600">Mon-Fri: 9AM - 5PM PST</p>
+              <p className="text-gray-600">(973) 348-5008</p>
             </div>
           </div>
 
@@ -418,24 +408,6 @@ export default function Contact() {
                 aria-label="Instagram"
               >
                 <FaInstagram className="w-8 h-8" />
-              </a>
-              <a
-                href="https://linkedin.com/company/apexnovaconsulting"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-600 hover:text-primary-600 transition-all duration-200 transform hover:scale-110"
-                aria-label="LinkedIn"
-              >
-                <FaLinkedin className="w-8 h-8" />
-              </a>
-              <a
-                href="https://twitter.com/apexnovaconsult"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-600 hover:text-primary-600 transition-all duration-200 transform hover:scale-110"
-                aria-label="Twitter"
-              >
-                <FaTwitter className="w-8 h-8" />
               </a>
               <a
                 href="mailto:partnerships@apexnovaconsulting.com"
