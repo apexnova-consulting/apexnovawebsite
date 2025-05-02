@@ -400,22 +400,18 @@ export default function Contact() {
               Connect With Us
             </h2>
             <div className="flex justify-center space-x-8">
-              <a
-                href="https://instagram.com/apexnovaconsulting"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-600 hover:text-primary-600 transition-all duration-200 transform hover:scale-110"
-                aria-label="Instagram"
-              >
-                <FaInstagram className="w-8 h-8" />
-              </a>
-              <a
-                href="mailto:partnerships@apexnovaconsulting.com"
-                className="text-gray-600 hover:text-primary-600 transition-all duration-200 transform hover:scale-110"
-                aria-label="Email"
-              >
-                <FaEnvelope className="w-8 h-8" />
-              </a>
+              <div className="flex items-center gap-3 text-gray-600 hover:text-primary-600 transition-colors">
+                <FaInstagram className="w-5 h-5" />
+                <a href="https://instagram.com/apexnova_consulting" target="_blank" rel="noopener noreferrer">
+                  @apexnova_consulting
+                </a>
+              </div>
+              <div className="flex items-center gap-3 text-gray-600 hover:text-primary-600 transition-colors">
+                <FaEnvelope className="w-5 h-5" />
+                <a href="mailto:info@apexnovaconsulting.com">
+                  info@apexnovaconsulting.com
+                </a>
+              </div>
             </div>
           </div>
         </div>
