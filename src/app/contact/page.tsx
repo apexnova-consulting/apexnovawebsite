@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { FaEnvelope, FaMapMarkerAlt, FaPhone, FaInstagram } from 'react-icons/fa';
+import { FaEnvelope, FaMapMarkerAlt, FaPhone, FaInstagram, FaCheck } from 'react-icons/fa';
 import Image from 'next/image';
 
 const programs = [
@@ -13,9 +13,61 @@ const programs = [
   { id: 'assessment', name: 'Free Communication Assessment Results' }
 ];
 
+const digitalProducts = [
+  {
+    id: 'presentation-templates',
+    name: 'Executive Presentation Templates Bundle',
+    price: '$97',
+    description: 'Professional templates for technical presentations, including board meetings, team updates, and project proposals.',
+    includes: [
+      '10 PowerPoint/Keynote templates',
+      'Slide library with 50+ layouts',
+      'Data visualization templates',
+      'Executive summary templates'
+    ]
+  },
+  {
+    id: 'communication-workbook',
+    name: 'Technical Communication Workbook',
+    price: '$47',
+    description: 'A comprehensive workbook to help you structure and simplify complex technical concepts.',
+    includes: [
+      'Message structuring frameworks',
+      'Audience analysis templates',
+      'Technical storytelling guides',
+      'Practice exercises'
+    ]
+  },
+  {
+    id: 'anxiety-toolkit',
+    name: 'Speaking Anxiety Management Toolkit',
+    price: '$67',
+    description: 'Digital toolkit with exercises and techniques to manage presentation anxiety.',
+    includes: [
+      'Anxiety assessment tools',
+      'Breathing exercise guides',
+      'Pre-presentation routines',
+      'Confidence building exercises'
+    ]
+  },
+  {
+    id: 'leadership-journal',
+    name: 'Communication Leadership Journal',
+    price: '$37',
+    description: 'Digital journal with prompts and exercises to develop your leadership communication style.',
+    includes: [
+      '90-day journal template',
+      'Daily reflection prompts',
+      'Progress tracking tools',
+      'Goal setting frameworks'
+    ]
+  }
+];
+
 const inquiryTypes = [
   { id: 'program', name: 'Program Interest', description: 'Learn more about our programs or schedule a consultation' },
   { id: 'assessment', name: 'Assessment Follow-up', description: 'Discuss your assessment results and next steps' },
+  { id: 'digital-products', name: 'Digital Products', description: 'Purchase our templates, toolkits, and resources' },
   { id: 'partnership', name: 'Partnership Opportunity', description: 'Explore business partnerships and collaborations' },
   { id: 'speaking', name: 'Speaking Engagement', description: 'Book a speaker for your event or organization' },
   { id: 'other', name: 'Other Inquiry', description: 'Other questions or requests' }
@@ -30,10 +82,9 @@ export default function Contact() {
     role: '',
     inquiryType: '',
     programInterest: '',
-    message: '',
-    assessmentScore: '',
+    digitalProductInterest: '',
     timeframe: '',
-    budget: '',
+    message: '',
     hearAbout: ''
   });
 
@@ -67,10 +118,9 @@ export default function Contact() {
         role: '',
         inquiryType: '',
         programInterest: '',
-        message: '',
-        assessmentScore: '',
+        digitalProductInterest: '',
         timeframe: '',
-        budget: '',
+        message: '',
         hearAbout: ''
       });
     } catch (error) {
@@ -226,25 +276,49 @@ export default function Contact() {
                 </select>
               </div>
 
-              <div>
-                <label htmlFor="programInterest" className="block text-sm font-medium text-gray-700 mb-1">
-                  Program of Interest
-                </label>
-                <select
-                  id="programInterest"
-                  name="programInterest"
-                  value={formData.programInterest}
-                  onChange={(e) => setFormData({ ...formData, programInterest: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                >
-                  <option value="">Select a program</option>
-                  {programs.map((program) => (
-                    <option key={program.id} value={program.id}>
-                      {program.name}
-                    </option>
-                  ))}
-                </select>
-              </div>
+              {formData.inquiryType === 'digital-products' && (
+                <div>
+                  <label htmlFor="digitalProductInterest" className="block text-sm font-medium text-gray-700 mb-4">
+                    Available Digital Products
+                  </label>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {digitalProducts.map((product) => (
+                      <div
+                        key={product.id}
+                        className={`relative border-2 rounded-xl p-6 transition-all duration-200 ${formData.digitalProductInterest === product.id
+                            ? 'border-blue-500 bg-blue-50'
+                            : 'border-gray-200 hover:border-blue-200'
+                          }`}
+                      >
+                        <input
+                          type="radio"
+                          name="digitalProductInterest"
+                          id={product.id}
+                          value={product.id}
+                          checked={formData.digitalProductInterest === product.id}
+                          onChange={(e) => setFormData({ ...formData, digitalProductInterest: e.target.value })}
+                          className="sr-only"
+                        />
+                        <label htmlFor={product.id} className="cursor-pointer">
+                          <div className="flex justify-between items-start mb-2">
+                            <h3 className="text-lg font-semibold text-gray-900">{product.name}</h3>
+                            <span className="text-lg font-bold text-blue-900">{product.price}</span>
+                          </div>
+                          <p className="text-gray-600 mb-4">{product.description}</p>
+                          <ul className="space-y-2">
+                            {product.includes.map((item, idx) => (
+                              <li key={idx} className="flex items-center text-sm text-gray-600">
+                                <FaCheck className="w-4 h-4 text-blue-500 mr-2 flex-shrink-0" />
+                                <span>{item}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </label>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
 
               <div>
                 <label htmlFor="timeframe" className="block text-sm font-medium text-gray-700 mb-1">
@@ -277,7 +351,9 @@ export default function Contact() {
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  placeholder="Tell us about your communication goals and any specific challenges you'd like to address..."
+                  placeholder={formData.inquiryType === 'digital-products'
+                    ? "Any specific questions about the digital products or special requirements?"
+                    : "Tell us about your communication goals and any specific challenges you'd like to address..."}
                   required
                 ></textarea>
               </div>
