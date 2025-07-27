@@ -92,8 +92,8 @@ export default function Hero() {
 
           <div className="relative h-[600px] rounded-2xl overflow-hidden shadow-2xl">
             <Image
-              src="/images/hero/executive-speaking.jpg"
-              alt="Professional overcoming communication anxiety"
+              src="/images/hero/technical-leader.jpg"
+              alt="Technical leader presenting with confidence"
               fill
               className="object-cover"
             />
@@ -107,10 +107,10 @@ export default function Hero() {
                   </div>
                   <div>
                     <p className="font-medium text-gray-900">
-                      "ApexNova helped me break through years of anxiety and imposter syndrome. I now lead my team with authentic confidence I never thought possible."
+                      "The program transformed my career. I went from avoiding presentations to confidently leading our quarterly board meetings."
                     </p>
                     <p className="text-sm text-gray-600 mt-2">
-                      Rachel K., VP of Product → Chief Product Officer
+                      David K., Senior Engineering Manager → VP of Engineering
                     </p>
                   </div>
                 </div>
