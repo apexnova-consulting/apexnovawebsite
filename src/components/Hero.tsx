@@ -51,17 +51,17 @@ export default function Hero() {
 
             <div className="flex flex-col sm:flex-row gap-4">
               <a
-                href="/breakthrough-call"
+                href="/contact"
                 className="inline-flex items-center justify-center gap-2 bg-blue-900 text-white px-8 py-4 rounded-xl text-lg font-medium hover:bg-blue-800 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl"
               >
-                Book Your Breakthrough Call
+                Schedule a Consultation
                 <FaArrowRight className="w-5 h-5" />
               </a>
               <a
-                href="/assessment"
+                href="/services"
                 className="inline-flex items-center justify-center gap-2 bg-white text-blue-900 px-8 py-4 rounded-xl text-lg font-medium hover:bg-gray-50 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl border-2 border-blue-900"
               >
-                Take Free Assessment
+                View Our Services
                 <FaArrowRight className="w-5 h-5" />
               </a>
             </div>
@@ -74,7 +74,7 @@ export default function Hero() {
                     className="w-12 h-12 rounded-full border-2 border-white bg-gray-200 overflow-hidden relative"
                   >
                     <Image
-                      src={`/images/testimonials/avatar${i}.jpg`}
+                      src={`/images/avatars/professional-${i}.jpg`}
                       alt={`Client ${i}`}
                       fill
                       className="object-cover"
@@ -92,7 +92,7 @@ export default function Hero() {
 
           <div className="relative h-[600px] rounded-2xl overflow-hidden shadow-2xl">
             <Image
-              src="/images/hero-transformation.jpg"
+              src="/images/hero/executive-speaking.jpg"
               alt="Professional overcoming communication anxiety"
               fill
               className="object-cover"

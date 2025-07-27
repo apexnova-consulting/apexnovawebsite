@@ -85,10 +85,10 @@ export default function FAQ() {
             Still have questions? We're here to help you break through to your next level.
           </p>
           <a
-            href="/breakthrough-call"
+            href="/contact"
             className="inline-flex items-center justify-center gap-2 bg-blue-900 text-white px-8 py-4 rounded-xl text-lg font-medium hover:bg-blue-800 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl"
           >
-            Book Your Breakthrough Call
+            Schedule a Consultation
           </a>
         </div>
       </div>

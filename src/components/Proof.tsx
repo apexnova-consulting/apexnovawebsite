@@ -24,19 +24,19 @@ const testimonials = [
     quote: "The mental health-focused approach was exactly what I needed. Other programs taught techniques but never addressed my deep-rooted anxiety. ApexNova helped me find my authentic voice.",
     author: "Jennifer M.",
     role: "Senior Director → VP of Operations",
-    image: "/images/testimonials/testimonial1.jpg"
+    image: "/images/testimonials/executive-1.jpg"
   },
   {
     quote: "I was skeptical about another coaching program, but ApexNova's focus on the emotional barriers holding me back made all the difference. My team now sees me as the confident leader I always knew I could be.",
     author: "David L.",
     role: "Engineering Manager → Director of Engineering",
-    image: "/images/testimonials/testimonial2.jpg"
+    image: "/images/testimonials/executive-2.jpg"
   },
   {
     quote: "As someone who struggled with anxiety and imposter syndrome, ApexNova's approach was transformative. I now present to the board with genuine confidence, not just practiced techniques.",
     author: "Sarah K.",
     role: "Product Lead → Chief Product Officer",
-    image: "/images/testimonials/testimonial3.jpg"
+    image: "/images/testimonials/executive-3.jpg"
   }
 ];
 
@@ -98,10 +98,10 @@ export default function Proof() {
 
         <div className="mt-16 text-center">
           <a
-            href="/breakthrough-call"
+            href="/contact"
             className="inline-flex items-center justify-center gap-2 bg-blue-900 text-white px-8 py-4 rounded-xl text-lg font-medium hover:bg-blue-800 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl"
           >
-            Book Your Breakthrough Call
+            Schedule a Consultation
             <FaChartLine className="w-5 h-5" />
           </a>
         </div>

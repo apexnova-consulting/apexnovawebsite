@@ -24,8 +24,6 @@ export default function Navbar() {
     { href: '/services', label: 'Services' },
     { href: '/results', label: 'Results' },
     { href: '/about', label: 'About' },
-    { href: '/resources', label: 'Free Resources' },
-    { href: '/blog', label: 'Blog' },
     { href: '/contact', label: 'Contact' }
   ];
 
@@ -49,8 +47,8 @@ export default function Navbar() {
                 key={link.href}
                 href={link.href}
                 className={`relative text-sm font-medium transition-colors duration-200 ${pathname === link.href
-                    ? 'text-blue-900'
-                    : 'text-gray-700 hover:text-blue-900'
+                  ? 'text-blue-900'
+                  : 'text-gray-700 hover:text-blue-900'
                   }`}
               >
                 {link.label}
@@ -85,8 +83,8 @@ export default function Navbar() {
       {/* Mobile Navigation Menu */}
       <div
         className={`lg:hidden transition-all duration-300 ease-in-out ${isOpen
-            ? 'max-h-screen opacity-100'
-            : 'max-h-0 opacity-0 pointer-events-none'
+          ? 'max-h-screen opacity-100'
+          : 'max-h-0 opacity-0 pointer-events-none'
           }`}
       >
         <div className="px-4 pt-2 pb-4 space-y-2 bg-white shadow-lg">
@@ -96,8 +94,8 @@ export default function Navbar() {
               href={link.href}
               onClick={() => setIsOpen(false)}
               className={`block px-4 py-2 rounded-lg text-base font-medium transition-colors duration-200 ${pathname === link.href
-                  ? 'bg-blue-50 text-blue-900'
-                  : 'text-gray-700 hover:bg-gray-50 hover:text-blue-900'
+                ? 'bg-blue-50 text-blue-900'
+                : 'text-gray-700 hover:bg-gray-50 hover:text-blue-900'
                 }`}
             >
               {link.label}

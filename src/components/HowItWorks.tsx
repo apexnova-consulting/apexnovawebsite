@@ -63,10 +63,10 @@ export default function HowItWorks() {
 
         <div className="mt-16 text-center">
           <a
-            href="/breakthrough-call"
+            href="/contact"
             className="inline-flex items-center justify-center gap-2 bg-blue-900 text-white px-8 py-4 rounded-xl text-lg font-medium hover:bg-blue-800 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl"
           >
-            Start Your Transformation
+            Schedule a Consultation
             <FaRocket className="w-5 h-5" />
           </a>
         </div>
