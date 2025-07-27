@@ -1,6 +1,9 @@
-import { FaStar, FaUsers, FaRocket, FaChartLine, FaArrowRight } from 'react-icons/fa';
+'use client';
 
-const services = [
+import { FaStar, FaUsers, FaRocket, FaChartLine, FaArrowRight, FaCheck } from 'react-icons/fa';
+import Image from 'next/image';
+
+const premiumServices = [
   {
     tier: "Premium",
     name: "Executive Communication Intensive",
@@ -14,7 +17,8 @@ const services = [
       "Results guarantee: Improved confidence scores or money back"
     ],
     icon: FaStar,
-    primary: true
+    primary: true,
+    image: "/images/services/executive.jpg"
   },
   {
     tier: "Professional",
@@ -29,7 +33,8 @@ const services = [
       "Career advancement support"
     ],
     icon: FaUsers,
-    primary: false
+    primary: false,
+    image: "/images/services/leadership.jpg"
   },
   {
     tier: "Accelerated",
@@ -44,11 +49,12 @@ const services = [
       "Rehearsal and feedback sessions"
     ],
     icon: FaRocket,
-    primary: false
+    primary: false,
+    image: "/images/services/presentation.jpg"
   }
 ];
 
-const monthlyServices = [
+const professionalServices = [
   {
     name: "Monthly Executive Coaching",
     price: "$4,500/month",
@@ -57,7 +63,9 @@ const monthlyServices = [
       "Monthly strategy sessions",
       "Presentation prep as needed",
       "Email/Slack support"
-    ]
+    ],
+    icon: FaChartLine,
+    image: "/images/services/coaching.jpg"
   },
   {
     name: "Communication Confidence Audit",
@@ -67,13 +75,15 @@ const monthlyServices = [
       "Personalized development roadmap",
       "Video analysis",
       "30-day action plan"
-    ]
+    ],
+    icon: FaStar,
+    image: "/images/services/audit.jpg"
   }
 ];
 
 export default function Services() {
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <span className="text-blue-900 font-semibold text-sm uppercase tracking-wider">
@@ -87,11 +97,12 @@ export default function Services() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {services.map((service) => (
+        {/* Premium Services */}
+        <div className="grid md:grid-cols-3 gap-8 mb-20">
+          {premiumServices.map((service) => (
             <div
               key={service.name}
-              className={`relative bg-white rounded-2xl shadow-xl overflow-hidden ${service.primary ? 'ring-2 ring-blue-900' : ''
+              className={`relative bg-white rounded-2xl shadow-xl overflow-hidden transform transition-all duration-300 hover:-translate-y-2 ${service.primary ? 'ring-2 ring-blue-900' : ''
                 }`}
             >
               {service.primary && (
@@ -99,23 +110,31 @@ export default function Services() {
                   Most Popular
                 </div>
               )}
-              <div className="p-8">
-                <div className="flex items-center justify-between mb-4">
-                  <div>
-                    <h3 className="text-lg font-medium text-blue-900">{service.tier}</h3>
-                    <div className="mt-1 text-2xl font-bold text-gray-900">{service.price}</div>
-                  </div>
-                  <div className="bg-blue-100 p-3 rounded-xl">
-                    <service.icon className="w-6 h-6 text-blue-900" />
+              <div className="relative h-48">
+                <Image
+                  src={service.image}
+                  alt={service.name}
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                <div className="absolute bottom-4 left-4 right-4">
+                  <div className="text-white">
+                    <div className="text-sm font-medium">{service.tier}</div>
+                    <div className="text-2xl font-bold">{service.price}</div>
                   </div>
                 </div>
-                <h4 className="text-xl font-bold text-gray-900 mb-2">{service.name}</h4>
-                <p className="text-gray-600 mb-2">{service.duration}</p>
-                <p className="text-gray-600 mb-6">{service.description}</p>
-                <ul className="space-y-3 mb-8">
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                  {service.name}
+                </h3>
+                <p className="text-gray-500 text-sm mb-2">{service.duration}</p>
+                <p className="text-gray-600 mb-4">{service.description}</p>
+                <ul className="space-y-3 mb-6">
                   {service.features.map((feature, index) => (
                     <li key={index} className="flex items-start">
-                      <FaChartLine className="w-5 h-5 text-blue-900 mt-1 mr-3" />
+                      <FaCheck className="w-5 h-5 text-blue-600 mt-0.5 mr-3" />
                       <span className="text-gray-600">{feature}</span>
                     </li>
                   ))}
@@ -123,46 +142,95 @@ export default function Services() {
                 <a
                   href="/contact"
                   className={`block text-center py-3 px-6 rounded-xl font-medium transition-all duration-200 ${service.primary
-                    ? 'bg-blue-900 text-white hover:bg-blue-800'
-                    : 'bg-white text-blue-900 border-2 border-blue-900 hover:bg-blue-50'
+                      ? 'bg-blue-900 text-white hover:bg-blue-800'
+                      : 'bg-white text-blue-900 border-2 border-blue-900 hover:bg-blue-50'
                     }`}
                 >
                   Schedule Your Consultation
-                  <FaArrowRight className="w-5 h-5 ml-2" />
+                  <FaArrowRight className="inline-block ml-2 w-5 h-5" />
                 </a>
               </div>
             </div>
           ))}
         </div>
 
+        {/* Professional Services */}
         <div className="grid md:grid-cols-2 gap-8">
-          {monthlyServices.map((service) => (
+          {professionalServices.map((service) => (
             <div
               key={service.name}
-              className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300"
+              className="bg-white rounded-2xl shadow-lg overflow-hidden transform transition-all duration-300 hover:-translate-y-2"
             >
-              <div className="flex justify-between items-start mb-4">
-                <div>
-                  <h3 className="text-xl font-bold text-gray-900">{service.name}</h3>
-                  <div className="text-2xl font-bold text-blue-900 mt-1">{service.price}</div>
+              <div className="relative h-48">
+                <Image
+                  src={service.image}
+                  alt={service.name}
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                <div className="absolute bottom-4 left-4 right-4">
+                  <div className="text-white">
+                    <div className="text-2xl font-bold">{service.price}</div>
+                  </div>
                 </div>
               </div>
-              <ul className="space-y-3 mb-6">
-                {service.features.map((feature, index) => (
-                  <li key={index} className="flex items-start">
-                    <FaChartLine className="w-5 h-5 text-blue-900 mt-1 mr-3" />
-                    <span className="text-gray-600">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-              <a
-                href="/schedule"
-                className="block text-center py-3 px-6 rounded-xl font-medium bg-white text-blue-900 border-2 border-blue-900 hover:bg-blue-50 transition-all duration-200"
-              >
-                Learn More
-              </a>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                  {service.name}
+                </h3>
+                <ul className="space-y-3 mb-6">
+                  {service.features.map((feature, index) => (
+                    <li key={index} className="flex items-start">
+                      <FaCheck className="w-5 h-5 text-blue-600 mt-0.5 mr-3" />
+                      <span className="text-gray-600">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+                <a
+                  href="/contact"
+                  className="block text-center py-3 px-6 rounded-xl font-medium bg-white text-blue-900 border-2 border-blue-900 hover:bg-blue-50 transition-all duration-200"
+                >
+                  Learn More
+                  <FaArrowRight className="inline-block ml-2 w-5 h-5" />
+                </a>
+              </div>
             </div>
           ))}
+        </div>
+
+        {/* CTA Section */}
+        <div className="mt-20">
+          <div className="bg-blue-900 rounded-2xl overflow-hidden">
+            <div className="relative px-6 py-12 sm:px-12 sm:py-16 lg:px-16 lg:py-20">
+              <div className="relative z-10">
+                <div className="text-center">
+                  <h2 className="text-3xl font-bold text-white mb-4">
+                    Not Sure Which Program Is Right for You?
+                  </h2>
+                  <p className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
+                    Schedule a free strategy call to discuss your goals and get personalized recommendations.
+                  </p>
+                  <a
+                    href="/contact"
+                    className="inline-flex items-center justify-center gap-2 bg-white text-blue-900 px-8 py-4 rounded-xl text-lg font-medium hover:bg-blue-50 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                  >
+                    Schedule Your Strategy Call
+                    <FaArrowRight className="w-5 h-5" />
+                  </a>
+                </div>
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-900/50 to-blue-800/50" />
+              <div className="absolute inset-0">
+                <Image
+                  src="/images/pattern.svg"
+                  alt=""
+                  fill
+                  className="object-cover opacity-10"
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
