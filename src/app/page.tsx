@@ -3,9 +3,10 @@
 import Hero from '@/components/Hero';
 import PainPoints from '@/components/PainPoints';
 import Solution from '@/components/Solution';
+import HowItWorks from '@/components/HowItWorks';
+import Proof from '@/components/Proof';
 import Services from '@/components/Services';
-import Testimonials from '@/components/Testimonials';
-import NewsletterSignup from '@/components/NewsletterSignup';
+import FAQ from '@/components/FAQ';
 import Footer from '@/components/Footer';
 
 export default function Home() {
@@ -14,9 +15,10 @@ export default function Home() {
       <Hero />
       <PainPoints />
       <Solution />
+      <HowItWorks />
+      <Proof />
       <Services />
-      <Testimonials />
-      <NewsletterSignup />
+      <FAQ />
       <Footer />
     </main>
   );

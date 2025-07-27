@@ -5,9 +5,9 @@ import Image from 'next/image';
 import { FaArrowRight, FaCheck, FaChartLine } from 'react-icons/fa';
 
 const benefits = [
-  'For CTOs, VPs, and Senior Leaders Who Struggle with Presentation Anxiety',
-  'Transform Nervous Energy into Executive Presence',
-  '90-Day Proven System Used by 200+ Technical Leaders'
+  'Break Free from Communication Anxiety & Self-Doubt',
+  'Transform Mental Blocks into Leadership Presence',
+  'Trusted by 200+ High-Performing Professionals'
 ];
 
 export default function Hero() {
@@ -27,15 +27,15 @@ export default function Hero() {
           <div>
             <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue-100 text-blue-900 font-medium text-sm mb-6">
               <FaChartLine className="w-4 h-4 mr-2" />
-              87% Report Significant Confidence Improvement
+              92% Report Breakthrough in Communication Confidence
             </div>
 
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-              Stop Letting Communication Anxiety Limit Your Leadership Potential
+              Turn Your Communication Anxiety Into Your Greatest Leadership Asset
             </h1>
 
             <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-              We help technical leaders and sales professionals overcome speaking fears so they can confidently present to executives, lead high-performing teams, and accelerate their career advancement.
+              Break through the emotional barriers holding you back. We help ambitious professionals transform anxiety into authentic confidence, so you can speak with power, lead with clarity, and achieve the impact you know you're capable of.
             </p>
 
             <div className="space-y-4 mb-8">
@@ -51,17 +51,17 @@ export default function Hero() {
 
             <div className="flex flex-col sm:flex-row gap-4">
               <a
-                href="/assessment"
+                href="/breakthrough-call"
                 className="inline-flex items-center justify-center gap-2 bg-blue-900 text-white px-8 py-4 rounded-xl text-lg font-medium hover:bg-blue-800 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl"
               >
-                Get Your Free Assessment
+                Book Your Breakthrough Call
                 <FaArrowRight className="w-5 h-5" />
               </a>
               <a
-                href="/schedule"
+                href="/assessment"
                 className="inline-flex items-center justify-center gap-2 bg-white text-blue-900 px-8 py-4 rounded-xl text-lg font-medium hover:bg-gray-50 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl border-2 border-blue-900"
               >
-                Schedule Strategy Call
+                Take Free Assessment
                 <FaArrowRight className="w-5 h-5" />
               </a>
             </div>
@@ -83,17 +83,17 @@ export default function Hero() {
                 ))}
               </div>
               <div className="text-sm text-gray-600">
-                <span className="font-semibold text-blue-900">200+ Technical Leaders</span>
+                <span className="font-semibold text-blue-900">Join 200+ Leaders</span>
                 <br />
-                transformed their communication
+                who transformed their communication
               </div>
             </div>
           </div>
 
           <div className="relative h-[600px] rounded-2xl overflow-hidden shadow-2xl">
             <Image
-              src="/images/hero-presentation.jpg"
-              alt="Technical leader giving confident presentation"
+              src="/images/hero-transformation.jpg"
+              alt="Professional overcoming communication anxiety"
               fill
               className="object-cover"
             />
@@ -107,10 +107,10 @@ export default function Hero() {
                   </div>
                   <div>
                     <p className="font-medium text-gray-900">
-                      "Within 90 days, I went from dreading board presentations to leading with confidence. I got promoted to CTO 6 months later."
+                      "ApexNova helped me break through years of anxiety and imposter syndrome. I now lead my team with authentic confidence I never thought possible."
                     </p>
                     <p className="text-sm text-gray-600 mt-2">
-                      Sarah K., VP of Engineering → CTO
+                      Rachel K., VP of Product → Chief Product Officer
                     </p>
                   </div>
                 </div>
