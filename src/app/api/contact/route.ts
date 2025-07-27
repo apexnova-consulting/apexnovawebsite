@@ -1,36 +1,41 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: 'info@apexnovaconsulting.com',
+    pass: process.env.EMAIL_PASSWORD
+  }
+});
+
 export async function POST(request: Request) {
   try {
-    const { name, email, subject, message } = await request.json();
+    const data = await request.json();
 
-    // Create a transporter
-    const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASSWORD,
-      },
-    });
-
-    // Email content
-    const mailOptions = {
-      from: process.env.EMAIL_USER,
-      to: 'info@apexnovaconsulting.com',
-      subject: `New Contact Form Submission: ${subject}`,
-      html: `
-        <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Subject:</strong> ${subject}</p>
-        <p><strong>Message:</strong></p>
-        <p>${message}</p>
-      `,
-    };
+    // Prepare email content
+    let emailContent = `
+      New Contact Form Submission\n
+      Name: ${data.name}
+      Email: ${data.email}
+      Phone: ${data.phone}
+      Company: ${data.company}
+      Role: ${data.role}
+      Inquiry Type: ${data.inquiryType}
+      Program Interest: ${data.programInterest}
+      Digital Product Interest: ${data.digitalProductInterest || 'None'}
+      Timeframe: ${data.timeframe}
+      Message: ${data.message}
+      How they heard about us: ${data.hearAbout}
+    `;
 
     // Send email
-    await transporter.sendMail(mailOptions);
+    await transporter.sendMail({
+      from: 'info@apexnovaconsulting.com',
+      to: 'info@apexnovaconsulting.com',
+      subject: `New Contact Form Submission - ${data.inquiryType}`,
+      text: emailContent
+    });
 
     return NextResponse.json({ success: true });
   } catch (error) {

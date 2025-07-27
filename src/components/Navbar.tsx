@@ -35,12 +35,19 @@ export default function Navbar() {
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            <div className="relative">
-              <span className={`text-2xl font-bold bg-gradient-to-r from-blue-900 via-blue-700 to-blue-800 bg-clip-text text-transparent transition-all duration-300 ${isScrolled ? 'text-2xl' : 'text-3xl'
-                }`}>
-                ApexNova
-              </span>
-              <div className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-blue-900 via-blue-700 to-blue-800 transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />
+            <div className="relative h-12 w-48 transform transition-transform duration-300 hover:scale-105">
+              <Image
+                src="/images/logo/apexnova-full.png"
+                alt="ApexNova Consulting"
+                fill
+                className="object-contain"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/0 via-yellow-400/30 to-yellow-400/0 animate-shimmer" />
+            </div>
+            <div className="hidden md:block ml-2">
+              <p className="text-sm text-blue-900 font-medium">
+                "Learn, Adopt, Execute"
+              </p>
             </div>
           </Link>
 
@@ -56,13 +63,13 @@ export default function Navbar() {
                   }`}
               >
                 {link.label}
-                <span className={`absolute -bottom-1 left-0 w-full h-0.5 bg-blue-900 transform origin-left transition-transform duration-300 ${pathname === link.href ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
+                <span className={`absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-yellow-400 to-yellow-500 transform origin-left transition-transform duration-300 ${pathname === link.href ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
                   }`} />
               </Link>
             ))}
             <a
               href="/contact"
-              className="inline-flex items-center gap-2 bg-blue-900 text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-blue-800 transition-all duration-200 transform hover:scale-105 shadow-md hover:shadow-lg group"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-900 to-blue-800 text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:from-blue-800 hover:to-blue-700 transition-all duration-200 transform hover:scale-105 shadow-md hover:shadow-lg group"
             >
               <FaCalendar className="w-4 h-4 transition-transform duration-200 group-hover:rotate-12" />
               <span>Schedule Strategy Call</span>
@@ -106,7 +113,7 @@ export default function Navbar() {
           ))}
           <a
             href="/contact"
-            className="block px-4 py-2 bg-blue-900 text-white rounded-lg text-base font-medium hover:bg-blue-800 transition-colors duration-200 text-center mt-4"
+            className="block px-4 py-2 bg-gradient-to-r from-blue-900 to-blue-800 text-white rounded-lg text-base font-medium hover:from-blue-800 hover:to-blue-700 transition-colors duration-200 text-center mt-4"
           >
             Schedule Strategy Call
           </a>

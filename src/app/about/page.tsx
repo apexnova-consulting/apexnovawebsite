@@ -1,30 +1,28 @@
 'use client';
 
-import Footer from '@/components/Footer';
 import Image from 'next/image';
-import Link from 'next/link';
 import { FaRocket, FaLightbulb, FaUsers, FaChartLine, FaArrowRight } from 'react-icons/fa';
 
 const values = [
   {
     icon: FaRocket,
     title: 'Innovation',
-    description: 'Pushing boundaries and embracing new technologies to deliver cutting-edge solutions.'
+    description: 'Pioneering neuroscience-based techniques that transform technical leaders into confident communicators.'
   },
   {
     icon: FaLightbulb,
     title: 'Excellence',
-    description: 'Committed to delivering the highest quality in everything we do.'
+    description: 'Delivering proven frameworks that consistently produce measurable results and career advancement.'
   },
   {
     icon: FaUsers,
-    title: 'Collaboration',
-    description: 'Building strong partnerships and fostering a culture of teamwork.'
+    title: 'Transformation',
+    description: 'Creating lasting change by addressing both the technical and emotional aspects of communication.'
   },
   {
     icon: FaChartLine,
-    title: 'Growth',
-    description: 'Continuously learning and evolving to better serve our clients.'
+    title: 'Results',
+    description: '87% confidence improvement, 73% promotion rate, and $47k average salary increase.'
   }
 ];
 
@@ -33,7 +31,7 @@ export default function About() {
     <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
       {/* Hero Section */}
       <section className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary-900/5 to-primary-900/10" />
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/5 to-blue-900/10" />
         <div className="absolute inset-0">
           <Image
             src="/images/pattern.svg"
@@ -49,7 +47,7 @@ export default function About() {
               About ApexNova
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Empowering professionals to reach their full potential through innovative learning solutions and expert guidance.
+              We help technical leaders overcome communication anxiety and transform it into their greatest professional asset.
             </p>
           </div>
 
@@ -61,26 +59,45 @@ export default function About() {
                   Our Mission
                 </h2>
                 <p className="text-lg text-gray-600 mb-6">
-                  At ApexNova, we're dedicated to transforming how professionals learn and grow. We combine cutting-edge technology with proven methodologies to create an engaging, effective learning experience.
+                  At ApexNova, we understand the unique challenges technical leaders face. Our mission is to transform communication anxiety from a career obstacle into a powerful catalyst for professional growth.
                 </p>
                 <p className="text-lg text-gray-600 mb-8">
-                  Our platform provides the tools, resources, and support needed to excel in today's fast-paced business environment.
+                  Through our neuroscience-based approach, we've helped hundreds of technical professionals overcome speaking anxiety, master high-stakes presentations, and advance into senior leadership roles. Our proven frameworks combine technical precision with emotional intelligence, ensuring you can communicate complex ideas with confidence and impact.
                 </p>
-                <Link
-                  href="/learning-library"
-                  className="inline-flex items-center gap-2 bg-primary-600 text-white px-6 py-3 rounded-xl text-lg font-medium hover:bg-primary-700 transition-all duration-200 transform hover:scale-105"
+                <a
+                  href="/contact"
+                  className="inline-flex items-center gap-2 bg-blue-900 text-white px-6 py-3 rounded-xl text-lg font-medium hover:bg-blue-800 transition-all duration-200 transform hover:scale-105"
                 >
-                  Explore Our Resources
+                  Schedule Your Consultation
                   <FaArrowRight className="w-5 h-5" />
-                </Link>
+                </a>
               </div>
               <div className="relative h-[400px] rounded-xl overflow-hidden">
                 <Image
-                  src="/images/about/mission.jpg"
-                  alt="Our Mission"
+                  src="/images/mission/leadership.jpg"
+                  alt="Technical Leadership Transformation"
                   fill
                   className="object-cover"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent">
+                  <div className="absolute bottom-8 left-8 right-8 bg-white/95 backdrop-blur-sm rounded-xl p-6">
+                    <div className="flex items-start gap-4">
+                      <div className="flex-shrink-0">
+                        <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center">
+                          <FaChartLine className="w-6 h-6 text-blue-900" />
+                        </div>
+                      </div>
+                      <div>
+                        <p className="font-medium text-gray-900">
+                          "The program's focus on both technical and emotional aspects of communication was exactly what I needed to break through."
+                        </p>
+                        <p className="text-sm text-gray-600 mt-2">
+                          Sarah K., Engineering Director → CTO
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -96,7 +113,7 @@ export default function About() {
                   key={index}
                   className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
                 >
-                  <div className="text-primary-600 mb-4">
+                  <div className="text-blue-900 mb-4">
                     <value.icon className="w-8 h-8" />
                   </div>
                   <h3 className="text-xl font-semibold text-gray-900 mb-3">
@@ -111,9 +128,9 @@ export default function About() {
           </div>
 
           {/* CTA Section */}
-          <div className="bg-gradient-to-r from-primary-900 to-primary-800 rounded-2xl overflow-hidden">
+          <div className="bg-blue-900 rounded-2xl overflow-hidden">
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary-900/50 to-primary-800/50" />
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-900/50 to-blue-800/50" />
               <div className="absolute inset-0">
                 <Image
                   src="/images/pattern.svg"
@@ -124,34 +141,32 @@ export default function About() {
               </div>
               <div className="relative px-6 py-12 sm:px-12 sm:py-16 lg:px-16 lg:py-20 text-center">
                 <h2 className="text-3xl font-bold text-white mb-4">
-                  Ready to Transform Your Career?
+                  Ready to Transform Your Communication Impact?
                 </h2>
                 <p className="text-xl text-gray-200 mb-8 max-w-3xl mx-auto">
-                  Join thousands of professionals who have already enhanced their skills with ApexNova.
+                  Join hundreds of technical leaders who have overcome communication anxiety and advanced their careers with ApexNova.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Link
-                    href="/learning-library"
-                    className="inline-flex items-center gap-2 bg-accent-500 text-white px-8 py-4 rounded-xl text-lg font-medium hover:bg-accent-600 transition-all duration-200 transform hover:scale-105"
-                  >
-                    Explore Resources
-                    <FaArrowRight className="w-5 h-5" />
-                  </Link>
-                  <Link
+                  <a
                     href="/contact"
-                    className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white px-8 py-4 rounded-xl text-lg font-medium hover:bg-white/20 transition-all duration-200 transform hover:scale-105 border border-white/20"
+                    className="inline-flex items-center gap-2 bg-white text-blue-900 px-8 py-4 rounded-xl text-lg font-medium hover:bg-blue-50 transition-all duration-200 transform hover:scale-105"
                   >
-                    Contact Us
+                    Schedule Your Consultation
                     <FaArrowRight className="w-5 h-5" />
-                  </Link>
+                  </a>
+                  <a
+                    href="/contact"
+                    className="inline-flex items-center gap-2 bg-blue-800 text-white px-8 py-4 rounded-xl text-lg font-medium hover:bg-blue-700 transition-all duration-200 transform hover:scale-105"
+                  >
+                    Explore Our Programs
+                    <FaArrowRight className="w-5 h-5" />
+                  </a>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </section>
-
-      <Footer />
     </main>
   );
 } 
