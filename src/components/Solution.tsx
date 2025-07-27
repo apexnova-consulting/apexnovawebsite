@@ -1,21 +1,38 @@
-import { FaBrain, FaComments, FaUserTie } from 'react-icons/fa';
+'use client';
+
+import { FaBrain, FaComments, FaUserTie, FaArrowRight, FaCheck } from 'react-icons/fa';
 import Image from 'next/image';
 
 const pillars = [
   {
     icon: FaBrain,
     title: "Anxiety Mastery",
-    description: "Transform nervous energy into confident presence using neuroscience-based techniques that work specifically for technical professionals."
+    description: "Transform nervous energy into confident presence using neuroscience-based techniques that work specifically for technical professionals.",
+    benefits: [
+      "Proven anxiety management techniques",
+      "Real-time stress response strategies",
+      "Confidence building exercises"
+    ]
   },
   {
     icon: FaComments,
     title: "Technical Translation",
-    description: "Learn proven frameworks to communicate complex concepts clearly to non-technical executives and stakeholders."
+    description: "Learn proven frameworks to communicate complex concepts clearly to non-technical executives and stakeholders.",
+    benefits: [
+      "Executive communication frameworks",
+      "Storytelling for technical concepts",
+      "Stakeholder engagement strategies"
+    ]
   },
   {
     icon: FaUserTie,
     title: "Leadership Communication",
-    description: "Build the executive presence needed to lead teams effectively and influence key decisions at the highest levels."
+    description: "Build the executive presence needed to lead teams effectively and influence key decisions at the highest levels.",
+    benefits: [
+      "Executive presence development",
+      "Team leadership communication",
+      "Strategic influence techniques"
+    ]
   }
 ];
 
@@ -38,28 +55,30 @@ export default function Solution() {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-center mb-20">
-          <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl">
+          <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl transform hover:scale-[1.02] transition-transform duration-300">
             <Image
-              src="/images/executive-presence.jpg"
+              src="/images/hero/executive-presence.jpg"
               alt="Technical leader presenting with confidence"
               fill
               className="object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent">
-              <div className="absolute bottom-8 left-8 right-8 bg-white/90 backdrop-blur-sm rounded-xl p-6">
-                <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0">
-                    <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center">
-                      <FaUserTie className="w-6 h-6 text-blue-900" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent">
+              <div className="absolute bottom-8 left-8 right-8">
+                <div className="bg-white/95 backdrop-blur-sm rounded-xl p-6 shadow-lg">
+                  <div className="flex items-start gap-4">
+                    <div className="flex-shrink-0">
+                      <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center">
+                        <FaUserTie className="w-6 h-6 text-blue-900" />
+                      </div>
                     </div>
-                  </div>
-                  <div>
-                    <p className="font-medium text-gray-900">
-                      "The program helped me transform from a nervous presenter to someone the CEO specifically requests for investor meetings."
-                    </p>
-                    <p className="text-sm text-gray-600 mt-2">
-                      Michael R., Technical Director
-                    </p>
+                    <div>
+                      <p className="font-medium text-gray-900">
+                        "The program helped me transform from a nervous presenter to someone the CEO specifically requests for investor meetings."
+                      </p>
+                      <p className="text-sm text-gray-600 mt-2">
+                        Michael R., Technical Director → VP of Engineering
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -70,7 +89,7 @@ export default function Solution() {
             {pillars.map((pillar, index) => (
               <div
                 key={index}
-                className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300"
+                className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
               >
                 <div className="flex items-start gap-4">
                   <div className="flex-shrink-0">
@@ -82,9 +101,17 @@ export default function Solution() {
                     <h3 className="text-xl font-semibold text-gray-900 mb-2">
                       {pillar.title}
                     </h3>
-                    <p className="text-gray-600">
+                    <p className="text-gray-600 mb-4">
                       {pillar.description}
                     </p>
+                    <ul className="space-y-2">
+                      {pillar.benefits.map((benefit, idx) => (
+                        <li key={idx} className="flex items-center text-gray-600">
+                          <FaCheck className="w-4 h-4 text-blue-600 mr-2 flex-shrink-0" />
+                          <span>{benefit}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
               </div>
@@ -115,11 +142,11 @@ export default function Solution() {
 
         <div className="text-center">
           <a
-            href="/schedule"
+            href="/contact"
             className="inline-flex items-center justify-center gap-2 bg-blue-900 text-white px-8 py-4 rounded-xl text-lg font-medium hover:bg-blue-800 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl"
           >
-            Schedule Your Free Strategy Call
-            <FaUserTie className="w-5 h-5" />
+            Schedule Your Strategy Call
+            <FaArrowRight className="w-5 h-5" />
           </a>
         </div>
       </div>

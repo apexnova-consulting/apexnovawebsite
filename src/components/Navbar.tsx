@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { FaBars, FaTimes, FaCalendar } from 'react-icons/fa';
+import Image from 'next/image';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -34,10 +35,13 @@ export default function Navbar() {
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            <span className={`text-2xl font-bold bg-gradient-to-r from-blue-900 via-blue-700 to-blue-800 bg-clip-text text-transparent transition-all duration-300 ${isScrolled ? 'text-2xl' : 'text-3xl'
-              }`}>
-              ApexNova
-            </span>
+            <div className="relative">
+              <span className={`text-2xl font-bold bg-gradient-to-r from-blue-900 via-blue-700 to-blue-800 bg-clip-text text-transparent transition-all duration-300 ${isScrolled ? 'text-2xl' : 'text-3xl'
+                }`}>
+                ApexNova
+              </span>
+              <div className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-blue-900 via-blue-700 to-blue-800 transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
@@ -46,23 +50,22 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`relative text-sm font-medium transition-colors duration-200 ${pathname === link.href
-                  ? 'text-blue-900'
-                  : 'text-gray-700 hover:text-blue-900'
+                className={`relative group text-sm font-medium transition-colors duration-200 ${pathname === link.href
+                    ? 'text-blue-900'
+                    : 'text-gray-700 hover:text-blue-900'
                   }`}
               >
                 {link.label}
-                {pathname === link.href && (
-                  <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-blue-900 transform origin-left transition-transform duration-300" />
-                )}
+                <span className={`absolute -bottom-1 left-0 w-full h-0.5 bg-blue-900 transform origin-left transition-transform duration-300 ${pathname === link.href ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
+                  }`} />
               </Link>
             ))}
             <a
-              href="/schedule"
-              className="inline-flex items-center gap-2 bg-blue-900 text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-blue-800 transition-all duration-200 transform hover:scale-105 shadow-md hover:shadow-lg"
+              href="/contact"
+              className="inline-flex items-center gap-2 bg-blue-900 text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-blue-800 transition-all duration-200 transform hover:scale-105 shadow-md hover:shadow-lg group"
             >
-              <FaCalendar className="w-4 h-4" />
-              Schedule Strategy Call
+              <FaCalendar className="w-4 h-4 transition-transform duration-200 group-hover:rotate-12" />
+              <span>Schedule Strategy Call</span>
             </a>
           </div>
 
@@ -83,8 +86,8 @@ export default function Navbar() {
       {/* Mobile Navigation Menu */}
       <div
         className={`lg:hidden transition-all duration-300 ease-in-out ${isOpen
-          ? 'max-h-screen opacity-100'
-          : 'max-h-0 opacity-0 pointer-events-none'
+            ? 'max-h-screen opacity-100'
+            : 'max-h-0 opacity-0 pointer-events-none'
           }`}
       >
         <div className="px-4 pt-2 pb-4 space-y-2 bg-white shadow-lg">
@@ -94,15 +97,15 @@ export default function Navbar() {
               href={link.href}
               onClick={() => setIsOpen(false)}
               className={`block px-4 py-2 rounded-lg text-base font-medium transition-colors duration-200 ${pathname === link.href
-                ? 'bg-blue-50 text-blue-900'
-                : 'text-gray-700 hover:bg-gray-50 hover:text-blue-900'
+                  ? 'bg-blue-50 text-blue-900'
+                  : 'text-gray-700 hover:bg-gray-50 hover:text-blue-900'
                 }`}
             >
               {link.label}
             </Link>
           ))}
           <a
-            href="/schedule"
+            href="/contact"
             className="block px-4 py-2 bg-blue-900 text-white rounded-lg text-base font-medium hover:bg-blue-800 transition-colors duration-200 text-center mt-4"
           >
             Schedule Strategy Call

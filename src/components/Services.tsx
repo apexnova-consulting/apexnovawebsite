@@ -142,8 +142,8 @@ export default function Services() {
                 <a
                   href="/contact"
                   className={`block text-center py-3 px-6 rounded-xl font-medium transition-all duration-200 ${service.primary
-                      ? 'bg-blue-900 text-white hover:bg-blue-800'
-                      : 'bg-white text-blue-900 border-2 border-blue-900 hover:bg-blue-50'
+                    ? 'bg-blue-900 text-white hover:bg-blue-800'
+                    : 'bg-white text-blue-900 border-2 border-blue-900 hover:bg-blue-50'
                     }`}
                 >
                   Schedule Your Consultation
@@ -188,7 +188,7 @@ export default function Services() {
                   ))}
                 </ul>
                 <a
-                  href="/contact"
+                  href="/services"
                   className="block text-center py-3 px-6 rounded-xl font-medium bg-white text-blue-900 border-2 border-blue-900 hover:bg-blue-50 transition-all duration-200"
                 >
                   Learn More
