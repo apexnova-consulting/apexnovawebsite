@@ -1,14 +1,11 @@
-'use client';
-
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { FaBars, FaTimes, FaCalendar } from 'react-icons/fa';
+import Image from 'next/image';
+import { FaBars, FaTimes } from 'react-icons/fa';
 
-export default function Navbar() {
+const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,102 +16,92 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navLinks = [
-    { href: '/', label: 'Home' },
-    { href: '/services', label: 'Services' },
-    { href: '/results', label: 'Results' },
-    { href: '/about', label: 'About' },
-    { href: '/contact', label: 'Contact' }
+  const navigation = [
+    { name: 'Services', href: '/services' },
+    { name: 'Workshop', href: '/workshop' },
+    { name: 'Cohort Course', href: '/cohort-course' },
+    { name: 'Resources', href: '/toolkit-download' },
   ];
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white/90 backdrop-blur-md shadow-lg' : 'bg-transparent'
-      }`}>
+    <nav
+      className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-gray-900 shadow-lg' : 'bg-transparent'
+        }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
-          {/* Logo */}
-          <Link href="/" className="flex items-center group">
-            <div className="flex items-center">
-              <div className="text-2xl font-bold">
-                <span className="text-blue-900">Apex</span>
-                <span className="text-yellow-500">Nova</span>
-              </div>
-              <div className="hidden md:block ml-2 pl-2 border-l-2 border-gray-200">
-                <p className="text-sm text-blue-900 font-medium italic">
-                  "Learn, Adopt, Execute"
-                </p>
-              </div>
-            </div>
-          </Link>
-
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`relative group text-sm font-medium transition-colors duration-200 ${pathname === link.href
-                    ? 'text-blue-900'
-                    : 'text-gray-700 hover:text-blue-900'
-                  }`}
-              >
-                {link.label}
-                <span className={`absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-yellow-400 to-yellow-500 transform origin-left transition-transform duration-300 ${pathname === link.href ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
-                  }`} />
-              </Link>
-            ))}
-            <a
-              href="/contact"
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-900 to-blue-800 text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:from-blue-800 hover:to-blue-700 transition-all duration-200 transform hover:scale-105 shadow-md hover:shadow-lg group"
-            >
-              <FaCalendar className="w-4 h-4 transition-transform duration-200 group-hover:rotate-12" />
-              <span>Schedule Strategy Call</span>
-            </a>
+        <div className="flex justify-between h-16">
+          <div className="flex items-center">
+            <Link href="/" className="flex-shrink-0">
+              <Image
+                src="/images/logo/apexnova-full.png"
+                alt="ApexNova"
+                width={140}
+                height={32}
+                className="h-8 w-auto"
+              />
+            </Link>
           </div>
 
-          {/* Mobile Navigation Button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden text-gray-700 hover:text-blue-900 focus:outline-none"
-          >
-            {isOpen ? (
-              <FaTimes className="h-6 w-6" />
-            ) : (
-              <FaBars className="h-6 w-6" />
-            )}
-          </button>
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex md:items-center md:space-x-8">
+            {navigation.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                className="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium"
+              >
+                {item.name}
+              </Link>
+            ))}
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white font-medium px-4 py-2 rounded-lg transition-colors"
+            >
+              Book a Call
+            </Link>
+          </div>
+
+          {/* Mobile menu button */}
+          <div className="flex items-center md:hidden">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none"
+            >
+              <span className="sr-only">Open main menu</span>
+              {isOpen ? (
+                <FaTimes className="block h-6 w-6" />
+              ) : (
+                <FaBars className="block h-6 w-6" />
+              )}
+            </button>
+          </div>
         </div>
       </div>
 
-      {/* Mobile Navigation Menu */}
-      <div
-        className={`lg:hidden transition-all duration-300 ease-in-out ${isOpen
-            ? 'max-h-screen opacity-100'
-            : 'max-h-0 opacity-0 pointer-events-none'
-          }`}
-      >
-        <div className="px-4 pt-2 pb-4 space-y-2 bg-white shadow-lg">
-          {navLinks.map((link) => (
+      {/* Mobile menu */}
+      <div className={`md:hidden ${isOpen ? 'block' : 'hidden'}`}>
+        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-gray-900">
+          {navigation.map((item) => (
             <Link
-              key={link.href}
-              href={link.href}
+              key={item.name}
+              href={item.href}
+              className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
               onClick={() => setIsOpen(false)}
-              className={`block px-4 py-2 rounded-lg text-base font-medium transition-colors duration-200 ${pathname === link.href
-                  ? 'bg-blue-50 text-blue-900'
-                  : 'text-gray-700 hover:bg-gray-50 hover:text-blue-900'
-                }`}
             >
-              {link.label}
+              {item.name}
             </Link>
           ))}
-          <a
+          <Link
             href="/contact"
-            className="block px-4 py-2 bg-gradient-to-r from-blue-900 to-blue-800 text-white rounded-lg text-base font-medium hover:from-blue-800 hover:to-blue-700 transition-colors duration-200 text-center mt-4"
+            className="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-medium px-4 py-2 rounded-lg transition-colors mt-4"
+            onClick={() => setIsOpen(false)}
           >
-            Schedule Strategy Call
-          </a>
+            Book a Call
+          </Link>
         </div>
       </div>
     </nav>
   );
-} 
+};
+
+export default Navbar;

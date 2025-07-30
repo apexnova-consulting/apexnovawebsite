@@ -1,101 +1,148 @@
-'use client';
-
+import React from 'react';
 import Link from 'next/link';
-import { FaInstagram, FaEnvelope, FaArrowRight } from 'react-icons/fa';
+import Image from 'next/image';
+import { FaLinkedin, FaTwitter, FaYoutube } from 'react-icons/fa';
 
-const navigation = {
-  main: [
-    { name: 'Home', href: '/' },
-    { name: 'Services', href: '/services' },
-    { name: 'Results', href: '/results' },
-    { name: 'About', href: '/about' },
-    { name: 'Contact', href: '/contact' }
-  ],
-  social: [
-    {
-      name: 'Instagram',
-      href: 'https://instagram.com/apexnova_consulting',
-      icon: FaInstagram
-    },
-    {
-      name: 'Email',
-      href: 'mailto:info@apexnovaconsulting.com',
-      icon: FaEnvelope
-    }
-  ]
-};
+const Footer = () => {
+  const navigation = {
+    services: [
+      { name: 'AI Adoption-as-a-Service™', href: '/#core-offer' },
+      { name: 'Executive Workshops', href: '/workshop' },
+      { name: 'Enablement Coaching', href: '/services#coaching' },
+      { name: 'Leader Cohort Course', href: '/cohort-course' }
+    ],
+    resources: [
+      { name: 'AI-Ready Teams™ Toolkit', href: '/toolkit-download' },
+      { name: 'Blog', href: '/blog' },
+      { name: 'Case Studies', href: '/case-studies' },
+      { name: 'Learning Library', href: '/learning-library' }
+    ],
+    company: [
+      { name: 'About Us', href: '/about' },
+      { name: 'Contact', href: '/contact' },
+      { name: 'Privacy Policy', href: '/privacy-policy' },
+      { name: 'Terms of Service', href: '/terms-of-service' }
+    ],
+    social: [
+      {
+        name: 'LinkedIn',
+        href: 'https://linkedin.com/company/apexnova',
+        icon: FaLinkedin
+      },
+      {
+        name: 'Twitter',
+        href: 'https://twitter.com/apexnova',
+        icon: FaTwitter
+      },
+      {
+        name: 'YouTube',
+        href: 'https://youtube.com/@apexnova',
+        icon: FaYoutube
+      }
+    ]
+  };
 
-export default function Footer() {
   return (
-    <footer className="bg-gray-900">
-      <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+    <footer className="bg-gray-900" aria-labelledby="footer-heading">
+      <h2 id="footer-heading" className="sr-only">
+        Footer
+      </h2>
+      <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
           <div className="space-y-8 xl:col-span-1">
-            <div className="text-2xl font-bold">
-              <span className="text-white">Apex</span>
-              <span className="text-yellow-500">Nova</span>
-            </div>
+            <Link href="/" className="flex items-center">
+              <Image
+                src="/images/logo/apexnova-full.png"
+                alt="ApexNova"
+                width={180}
+                height={40}
+                className="h-10 w-auto"
+              />
+            </Link>
             <p className="text-gray-400 text-base">
-              Transforming technical leaders into confident communicators through proven frameworks and personalized coaching.
+              Transforming AI investments into business outcomes through proven enablement strategies.
             </p>
             <div className="flex space-x-6">
               {navigation.social.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
-                  className="text-gray-400 hover:text-white transition-colors duration-200"
-                  target={item.name === 'Instagram' ? '_blank' : undefined}
-                  rel={item.name === 'Instagram' ? 'noopener noreferrer' : undefined}
+                  className="text-gray-400 hover:text-gray-300"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <span className="sr-only">{item.name}</span>
-                  <item.icon className="h-6 w-6" />
+                  <item.icon className="h-6 w-6" aria-hidden="true" />
                 </a>
               ))}
             </div>
           </div>
           <div className="mt-12 grid grid-cols-2 gap-8 xl:mt-0 xl:col-span-2">
-            <div>
-              <h3 className="text-sm font-semibold text-white tracking-wider uppercase">
-                Navigation
-              </h3>
-              <ul className="mt-4 space-y-4">
-                {navigation.main.map((item) => (
-                  <li key={item.name}>
-                    <Link
-                      href={item.href}
-                      className="text-base text-gray-400 hover:text-white transition-colors duration-200"
-                    >
-                      {item.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+            <div className="md:grid md:grid-cols-2 md:gap-8">
+              <div>
+                <h3 className="text-sm font-semibold text-gray-200 tracking-wider uppercase">
+                  Services
+                </h3>
+                <ul role="list" className="mt-4 space-y-4">
+                  {navigation.services.map((item) => (
+                    <li key={item.name}>
+                      <Link
+                        href={item.href}
+                        className="text-base text-gray-400 hover:text-gray-300"
+                      >
+                        {item.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="mt-12 md:mt-0">
+                <h3 className="text-sm font-semibold text-gray-200 tracking-wider uppercase">
+                  Resources
+                </h3>
+                <ul role="list" className="mt-4 space-y-4">
+                  {navigation.resources.map((item) => (
+                    <li key={item.name}>
+                      <Link
+                        href={item.href}
+                        className="text-base text-gray-400 hover:text-gray-300"
+                      >
+                        {item.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
-            <div>
-              <h3 className="text-sm font-semibold text-white tracking-wider uppercase">
-                Get Started
-              </h3>
-              <div className="mt-4 space-y-4">
-                <a
-                  href="/contact"
-                  className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white px-6 py-3 rounded-xl text-base font-medium hover:bg-white/20 transition-all duration-200 transform hover:scale-105"
-                >
-                  Schedule Strategy Call
-                  <FaArrowRight className="w-5 h-5" />
-                </a>
-                <p className="text-gray-400 text-sm mt-2">
-                  Take the first step towards transforming your communication impact.
-                </p>
+            <div className="md:grid md:grid-cols-1 md:gap-8">
+              <div>
+                <h3 className="text-sm font-semibold text-gray-200 tracking-wider uppercase">
+                  Company
+                </h3>
+                <ul role="list" className="mt-4 space-y-4">
+                  {navigation.company.map((item) => (
+                    <li key={item.name}>
+                      <Link
+                        href={item.href}
+                        className="text-base text-gray-400 hover:text-gray-300"
+                      >
+                        {item.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           </div>
         </div>
-        <div className="mt-12 pt-8 border-t border-gray-800">
-          <p className="text-base text-gray-400 text-center">
-            &copy; {new Date().getFullYear()} ApexNova Consulting. All rights reserved.
+        <div className="mt-12 border-t border-gray-700 pt-8">
+          <p className="text-base text-gray-400 xl:text-center">
+            &copy; {new Date().getFullYear()} ApexNova. All rights reserved. AI Adoption-as-a-Service™ and AI-Ready Teams™ are trademarks of ApexNova.
           </p>
         </div>
       </div>
     </footer>
   );
-} 
+};
+
+export default Footer;

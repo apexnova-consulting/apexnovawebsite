@@ -1,25 +1,25 @@
 'use client';
 
-import Hero from '@/components/Hero';
-import PainPoints from '@/components/PainPoints';
-import Solution from '@/components/Solution';
-import HowItWorks from '@/components/HowItWorks';
-import Proof from '@/components/Proof';
-import Services from '@/components/Services';
-import FAQ from '@/components/FAQ';
+import AIHero from '@/components/AIHero';
+import ProblemSection from '@/components/ProblemSection';
+import CoreOffer from '@/components/CoreOffer';
+import ServicesGrid from '@/components/ServicesGrid';
+import WhyWereFounded from '@/components/WhyWereFounded';
+import LeadMagnet from '@/components/LeadMagnet';
+import Testimonials from '@/components/Testimonials';
 import Footer from '@/components/Footer';
 
 export default function Home() {
   return (
     <main>
-      <Hero />
-      <PainPoints />
-      <Solution />
-      <HowItWorks />
-      <Proof />
-      <Services />
-      <FAQ />
+      <AIHero />
+      <ProblemSection />
+      <CoreOffer />
+      <ServicesGrid />
+      <WhyWereFounded />
+      <Testimonials />
+      <LeadMagnet />
       <Footer />
     </main>
   );
-} 
+}
