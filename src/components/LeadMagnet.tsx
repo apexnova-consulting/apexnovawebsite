@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import { FaGift } from 'react-icons/fa';
 
@@ -46,11 +48,11 @@ const LeadMagnet = () => {
                 Download the Free AI Enablement Toolkit
               </h2>
             </div>
-
+            
             <p className="text-xl text-gray-300 mb-8">
               Get instant access to our proven frameworks, templates, and guides:
             </p>
-
+            
             <ul className="space-y-4 mb-8">
               {[
                 "AI Tool Selection Framework",
@@ -105,8 +107,7 @@ const LeadMagnet = () => {
               </button>
 
               {message && (
-                <p className={`text-center ${message.includes('Success') ? 'text-green-600' : 'text-red-600'
-                  }`}>
+                <p className={`text-center ${message.includes('Success') ? 'text-green-600' : 'text-red-600'}`}>
                   {message}
                 </p>
               )}

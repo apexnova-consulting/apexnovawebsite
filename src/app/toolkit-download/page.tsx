@@ -63,7 +63,7 @@ export default function ToolkitDownload() {
             <p className="text-xl text-gray-600 mb-8">
               Check your email for your AI-Ready Teams™ Toolkit download link.
             </p>
-            <Link
+            <Link 
               href="/"
               className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-lg transition-colors"
             >
@@ -77,7 +77,7 @@ export default function ToolkitDownload() {
                 AI-Ready Teams™ Toolkit
               </h1>
               <p className="text-xl text-gray-600 mb-8">
-                Everything you need to kickstart your AI enablement journey.
+                Everything you need to kickstart your AI enablement journey. 
                 Get instant access to our battle-tested templates, frameworks, and guides.
               </p>
 

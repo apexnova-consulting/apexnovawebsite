@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import { FaGraduationCap, FaUsers, FaClock, FaCalendarAlt, FaCheck } from 'react-icons/fa';
 import Link from 'next/link';
+import { FaGraduationCap, FaUsers, FaClock, FaCalendarAlt, FaCheck } from 'react-icons/fa';
 
 export default function CohortCourse() {
   const [email, setEmail] = useState('');
