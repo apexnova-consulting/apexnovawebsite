@@ -23,6 +23,7 @@ export async function POST(request: Request) {
         <p><strong>Message:</strong></p>
         <p>${message}</p>
       `,
+      isAdminEmail: true
     });
 
     if (!adminEmailResult.success) {
@@ -52,10 +53,11 @@ export async function POST(request: Request) {
           <p>Best regards,<br>The ApexNova Team</p>
         </div>
       `,
+      isAdminEmail: false
     });
 
     if (!userEmailResult.success) {
-      throw new Error('Failed to send confirmation email');
+      console.warn('Failed to send user confirmation email, but form was processed');
     }
 
     return NextResponse.json(
