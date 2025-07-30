@@ -1,25 +1,13 @@
 import { NextResponse } from 'next/server';
-import nodemailer from 'nodemailer';
+import { sendEmail } from '@/lib/email';
 
 export async function POST(request: Request) {
   try {
     const data = await request.json();
     const { fullName, email, phone, company, role, inquiryType, timeframe, message, source } = data;
 
-    // Create transporter
-    const transporter = nodemailer.createTransport({
-      host: process.env.EMAIL_HOST || 'smtp.gmail.com',
-      port: Number(process.env.EMAIL_PORT) || 587,
-      secure: false,
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASSWORD,
-      },
-    });
-
     // Email to admin
-    await transporter.sendMail({
-      from: process.env.EMAIL_FROM || 'noreply@apexnovaconsulting.com',
+    const adminEmailResult = await sendEmail({
       to: 'info@apexnovaconsulting.com',
       subject: `New Contact Form Submission - ${inquiryType}`,
       html: `
@@ -37,9 +25,12 @@ export async function POST(request: Request) {
       `,
     });
 
+    if (!adminEmailResult.success) {
+      throw new Error('Failed to send admin notification');
+    }
+
     // Confirmation email to user
-    await transporter.sendMail({
-      from: process.env.EMAIL_FROM || 'noreply@apexnovaconsulting.com',
+    const userEmailResult = await sendEmail({
       to: email,
       subject: 'Thank you for contacting ApexNova',
       html: `
@@ -62,6 +53,10 @@ export async function POST(request: Request) {
         </div>
       `,
     });
+
+    if (!userEmailResult.success) {
+      throw new Error('Failed to send confirmation email');
+    }
 
     return NextResponse.json(
       { message: 'Message sent successfully' },
