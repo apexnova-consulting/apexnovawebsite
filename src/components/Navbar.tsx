@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { FaBars, FaTimes } from 'react-icons/fa';
 
 const Navbar = () => {
@@ -35,13 +34,10 @@ const Navbar = () => {
         <div className="flex justify-between h-16">
           <div className="flex items-center">
             <Link href="/" className="flex-shrink-0">
-              <Image
-                src="/images/logo/apexnova-logo.svg"
-                alt="ApexNova"
-                width={140}
-                height={32}
-                className="h-8 w-auto"
-              />
+              <div className="flex items-center">
+                <span className="text-blue-500 font-bold text-2xl">Apex</span>
+                <span className="text-white font-bold text-2xl">Nova</span>
+              </div>
             </Link>
           </div>
 

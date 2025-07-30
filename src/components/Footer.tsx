@@ -1,6 +1,5 @@
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { FaLinkedin, FaTwitter, FaYoutube } from 'react-icons/fa';
 
 const Footer = () => {
@@ -48,13 +47,10 @@ const Footer = () => {
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
           <div className="space-y-8 xl:col-span-1">
             <Link href="/" className="flex items-center">
-              <Image
-                src="/images/logo/apexnova-logo.svg"
-                alt="ApexNova"
-                width={180}
-                height={40}
-                className="h-10 w-auto"
-              />
+              <div className="flex items-center">
+                <span className="text-blue-500 font-bold text-2xl">Apex</span>
+                <span className="text-white font-bold text-2xl">Nova</span>
+              </div>
             </Link>
             <p className="text-gray-400 text-base">
               Transforming AI investments into business outcomes through proven enablement strategies.
