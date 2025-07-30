@@ -27,14 +27,16 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-gray-900 shadow-lg' : 'bg-transparent'}`}
+      className={`fixed w-full z-50 transition-all duration-300 ${
+        isScrolled ? 'bg-gray-900 shadow-lg' : 'bg-gray-900'
+      }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
             <Link href="/" className="flex-shrink-0">
               <Image
-                src="/images/logo/apexnova-full.png"
+                src="/images/logo/apexnova-logo.svg"
                 alt="ApexNova"
                 width={140}
                 height={32}

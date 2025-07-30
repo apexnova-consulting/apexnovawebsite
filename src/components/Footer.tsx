@@ -12,10 +12,7 @@ const Footer = () => {
       { name: 'Leader Cohort Course', href: '/cohort-course' }
     ],
     resources: [
-      { name: 'AI-Ready Teams™ Toolkit', href: '/toolkit-download' },
-      { name: 'Blog', href: '/blog' },
-      { name: 'Case Studies', href: '/case-studies' },
-      { name: 'Learning Library', href: '/learning-library' }
+      { name: 'AI-Ready Teams™ Toolkit', href: '/toolkit-download' }
     ],
     company: [
       { name: 'About Us', href: '/about' },
@@ -52,7 +49,7 @@ const Footer = () => {
           <div className="space-y-8 xl:col-span-1">
             <Link href="/" className="flex items-center">
               <Image
-                src="/images/logo/apexnova-full.png"
+                src="/images/logo/apexnova-logo.svg"
                 alt="ApexNova"
                 width={180}
                 height={40}
