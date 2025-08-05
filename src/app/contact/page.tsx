@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { FaEnvelope, FaPhone, FaMapMarker } from 'react-icons/fa';
+import { FaEnvelope, FaPhone, FaCalendar } from 'react-icons/fa';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -65,9 +65,9 @@ export default function Contact() {
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
         <div className="text-center mb-16">
-          <h1 className="text-4xl font-bold mb-4">Let's Transform Your AI Investment</h1>
+          <h1 className="text-4xl font-bold mb-4">Let's Connect</h1>
           <p className="text-xl text-gray-600">
-            Take the first step towards successful AI adoption. We're here to help you succeed.
+            Take the first step towards transforming your communication and AI adoption journey.
           </p>
         </div>
 
@@ -79,10 +79,10 @@ export default function Contact() {
               
               <div className="space-y-6">
                 <div className="flex items-start">
-                  <FaMapMarker className="text-blue-600 w-5 h-5 mt-1 mr-4" />
+                  <FaEnvelope className="text-blue-600 w-5 h-5 mt-1 mr-4" />
                   <div>
-                    <h3 className="font-semibold">Location</h3>
-                    <p className="text-gray-600">New Jersey</p>
+                    <h3 className="font-semibold">Email</h3>
+                    <p className="text-gray-600">info@apexnovaconsulting.com</p>
                   </div>
                 </div>
 
@@ -95,10 +95,10 @@ export default function Contact() {
                 </div>
 
                 <div className="flex items-start">
-                  <FaEnvelope className="text-blue-600 w-5 h-5 mt-1 mr-4" />
+                  <FaCalendar className="text-blue-600 w-5 h-5 mt-1 mr-4" />
                   <div>
-                    <h3 className="font-semibold">Email</h3>
-                    <p className="text-gray-600">info@apexnovaconsulting.com</p>
+                    <h3 className="font-semibold">Book a Call</h3>
+                    <p className="text-gray-600">Schedule a discovery call directly on our calendar.</p>
                   </div>
                 </div>
               </div>
@@ -195,12 +195,10 @@ export default function Contact() {
                       required
                     >
                       <option value="">Select inquiry type</option>
-                      <option value="ai-adoption">AI Adoption-as-a-Service™</option>
+                      <option value="communication-coaching">Communication Coaching</option>
+                      <option value="ai-adoption">AI Adoption Services</option>
                       <option value="workshop">Executive Workshop</option>
-                      <option value="cohort">Leader Cohort Course</option>
-                      <option value="coaching">Fractional AI Coach</option>
-                      <option value="assessment">AI ROI Assessment</option>
-                      <option value="partnership">Partnership Opportunity</option>
+                      <option value="digital-products">Digital Products</option>
                       <option value="other">Other Inquiry</option>
                     </select>
                   </div>

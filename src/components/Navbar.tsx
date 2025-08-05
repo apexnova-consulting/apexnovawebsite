@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { FaBars, FaTimes } from 'react-icons/fa';
+import { FaBars, FaTimes, FaDownload } from 'react-icons/fa';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,10 +18,12 @@ const Navbar = () => {
   }, []);
 
   const navigation = [
-    { name: 'Services', href: '/services' },
-    { name: 'Workshop', href: '/workshop' },
-    { name: 'Cohort Course', href: '/cohort-course' },
-    { name: 'Resources', href: '/toolkit-download' },
+    { name: 'Home', href: '/' },
+    { name: 'Professionals', href: '/professionals' },
+    { name: 'Companies', href: '/companies' },
+    { name: 'Digital Products', href: '/digital-products' },
+    { name: 'About', href: '/about' },
+    { name: 'Contact', href: '/contact' }
   ];
 
   return (
@@ -42,7 +44,7 @@ const Navbar = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex md:items-center md:space-x-8">
+          <div className="hidden md:flex md:items-center md:space-x-4">
             {navigation.map((item) => (
               <Link
                 key={item.name}
@@ -53,10 +55,11 @@ const Navbar = () => {
               </Link>
             ))}
             <Link
-              href="/contact"
-              className="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white font-medium px-4 py-2 rounded-lg transition-colors"
+              href="/toolkit-download"
+              className="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white font-medium px-4 py-2 rounded-lg transition-colors ml-4"
             >
-              Book a Call
+              <FaDownload className="mr-2" />
+              Free Toolkit
             </Link>
           </div>
 
@@ -91,11 +94,12 @@ const Navbar = () => {
             </Link>
           ))}
           <Link
-            href="/contact"
+            href="/toolkit-download"
             className="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-medium px-4 py-2 rounded-lg transition-colors mt-4"
             onClick={() => setIsOpen(false)}
           >
-            Book a Call
+            <FaDownload className="inline mr-2" />
+            Download Free Toolkit
           </Link>
         </div>
       </div>

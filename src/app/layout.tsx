@@ -2,8 +2,8 @@ import '../styles/globals.css';
 import type { Metadata } from 'next';
 import { Inter, Poppins } from 'next/font/google';
 import Script from 'next/script';
-import ScrollToTop from '@/components/ScrollToTop';
 import Navbar from '@/components/Navbar';
+import ScrollToTop from '@/components/ScrollToTop';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const poppins = Poppins({
@@ -13,20 +13,20 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: 'ApexNova | AI Adoption-as-a-Service™ for Enterprise Teams',
-  description: 'ApexNova helps your team adopt AI tools, automate workflows, and finally see ROI — without overhauling your tech stack or overwhelming your people.',
-  keywords: 'AI adoption, enterprise AI, AI enablement, digital transformation, AI consulting, ChatGPT Enterprise, Microsoft Copilot, Notion AI, AI training, AI workflow automation',
+  title: 'ApexNova Consulting | Communication & AI Enablement Coaching',
+  description: 'Helping professionals and companies master communication, reduce anxiety, and thrive in the age of AI. Coaching, courses, and enablement services.',
+  keywords: 'executive communication coaching, AI enablement, team productivity, communication anxiety, AI adoption, digital transformation, professional development',
   openGraph: {
-    title: 'ApexNova | AI Adoption-as-a-Service™ for Enterprise Teams',
-    description: 'Transform your AI investment into real business outcomes with proven enablement strategies and training systems.',
+    title: 'ApexNova Consulting | Communication & AI Enablement',
+    description: 'Transform your communication skills and AI adoption with proven frameworks and coaching.',
     url: 'https://apexnovaconsulting.com',
-    siteName: 'ApexNova',
+    siteName: 'ApexNova Consulting',
     images: [
       {
         url: 'https://apexnovaconsulting.com/images/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'ApexNova - AI Adoption-as-a-Service'
+        alt: 'ApexNova Consulting'
       }
     ],
     locale: 'en_US',
@@ -34,8 +34,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'ApexNova | AI Adoption-as-a-Service™',
-    description: 'Transform your AI investment into real business outcomes with proven enablement strategies.',
+    title: 'ApexNova | Communication & AI Enablement',
+    description: 'Transform your communication skills and AI adoption with proven frameworks and coaching.',
     images: ['https://apexnovaconsulting.com/images/og-image.jpg'],
   },
   robots: {
@@ -62,9 +62,8 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <head>
-        <link rel="icon" href="/favicon.ico" />
         <link rel="canonical" href="https://apexnovaconsulting.com" />
-
+        
         {/* Google Analytics */}
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
