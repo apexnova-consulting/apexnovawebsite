@@ -1,24 +1,18 @@
 'use client';
 
-import AIHero from '@/components/AIHero';
-import ProblemSection from '@/components/ProblemSection';
-import CoreOffer from '@/components/CoreOffer';
-import ServicesGrid from '@/components/ServicesGrid';
-import WhyWereFounded from '@/components/WhyWereFounded';
-import LeadMagnet from '@/components/LeadMagnet';
-import Testimonials from '@/components/Testimonials';
+import DualHero from '@/components/DualHero';
+import DualServices from '@/components/DualServices';
+import ToolkitCTA from '@/components/ToolkitCTA';
+import DualTestimonials from '@/components/DualTestimonials';
 import Footer from '@/components/Footer';
 
 export default function Home() {
   return (
     <main>
-      <AIHero />
-      <ProblemSection />
-      <CoreOffer />
-      <ServicesGrid />
-      <WhyWereFounded />
-      <Testimonials />
-      <LeadMagnet />
+      <DualHero />
+      <DualServices />
+      <ToolkitCTA />
+      <DualTestimonials />
       <Footer />
     </main>
   );
