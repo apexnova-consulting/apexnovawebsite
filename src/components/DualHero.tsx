@@ -2,7 +2,6 @@
 
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 
 const DualHero = () => {
   return (
@@ -12,7 +11,7 @@ const DualHero = () => {
       </div>
       
       <div className="relative max-w-7xl mx-auto">
-        <div className="text-center mb-16">
+        <div className="text-center">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-6">
             Powerful Communication.
             <br />
@@ -34,49 +33,6 @@ const DualHero = () => {
             >
               Book a Discovery Call
             </Link>
-          </div>
-        </div>
-
-        {/* Trust Bar */}
-        <div className="mt-16">
-          <p className="text-sm text-gray-400 mb-4 text-center">Trusted by forward-thinking professionals and teams</p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center opacity-75">
-            <div className="h-12 flex items-center justify-center">
-              <Image
-                src="/images/clients/client-1.svg"
-                alt="Client Logo"
-                width={120}
-                height={48}
-                className="h-8 w-auto"
-              />
-            </div>
-            <div className="h-12 flex items-center justify-center">
-              <Image
-                src="/images/clients/client-2.svg"
-                alt="Client Logo"
-                width={120}
-                height={48}
-                className="h-8 w-auto"
-              />
-            </div>
-            <div className="h-12 flex items-center justify-center">
-              <Image
-                src="/images/clients/client-3.svg"
-                alt="Client Logo"
-                width={120}
-                height={48}
-                className="h-8 w-auto"
-              />
-            </div>
-            <div className="h-12 flex items-center justify-center">
-              <Image
-                src="/images/clients/client-4.svg"
-                alt="Client Logo"
-                width={120}
-                height={48}
-                className="h-8 w-auto"
-              />
-            </div>
           </div>
         </div>
       </div>
