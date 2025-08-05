@@ -36,7 +36,7 @@ export const sendEmail = async ({
       to: finalRecipient,
       subject: finalSubject,
       html: finalHtml,
-      reply_to: 'info@apexnovaconsulting.com'
+      replyTo: 'info@apexnovaconsulting.com'
     });
 
     return { success: true, data };
