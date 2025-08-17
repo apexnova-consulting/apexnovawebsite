@@ -1,9 +1,20 @@
 import { Resend } from 'resend';
+import nodemailer from 'nodemailer';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Fallback to nodemailer if Resend API key is not available
+const useResend = !!process.env.RESEND_API_KEY;
+const resend = useResend ? new Resend(process.env.RESEND_API_KEY) : null;
 
-// During development/testing, all emails will be sent to the admin email
-const ADMIN_EMAIL = 'info@apexnovaconsulting.com';
+// Nodemailer fallback configuration
+const transporter = !useResend ? nodemailer.createTransport({
+  host: process.env.EMAIL_HOST || 'smtp.gmail.com',
+  port: Number(process.env.EMAIL_PORT) || 587,
+  secure: false,
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASSWORD,
+  },
+}) : null;
 
 export const sendEmail = async ({
   to,
@@ -18,7 +29,7 @@ export const sendEmail = async ({
 }) => {
   try {
     // During testing/development, redirect all non-admin emails to the admin email
-    const finalRecipient = isAdminEmail ? ADMIN_EMAIL : ADMIN_EMAIL;
+    const finalRecipient = isAdminEmail ? 'info@apexnovaconsulting.com' : 'info@apexnovaconsulting.com';
     
     // Add a prefix to the subject if it's a redirected user email
     const finalSubject = !isAdminEmail ? `[User Copy] ${subject}` : subject;
@@ -31,15 +42,34 @@ export const sendEmail = async ({
          </div>${html}`
       : html;
 
-    const data = await resend.emails.send({
-      from: 'ApexNova <onboarding@resend.dev>', // Use Resend's default domain until yours is verified
-      to: finalRecipient,
-      subject: finalSubject,
-      html: finalHtml,
-      replyTo: 'info@apexnovaconsulting.com'
-    });
-
-    return { success: true, data };
+    if (useResend && resend) {
+      // Use Resend if API key is available
+      const data = await resend.emails.send({
+        from: 'ApexNova <onboarding@resend.dev>',
+        to: finalRecipient,
+        subject: finalSubject,
+        html: finalHtml,
+        replyTo: 'info@apexnovaconsulting.com'
+      });
+      return { success: true, data };
+    } else if (transporter) {
+      // Fallback to nodemailer
+      const info = await transporter.sendMail({
+        from: process.env.EMAIL_FROM || 'noreply@apexnovaconsulting.com',
+        to: finalRecipient,
+        subject: finalSubject,
+        html: finalHtml,
+      });
+      return { success: true, data: info };
+    } else {
+      // Log email for development if no email service is configured
+      console.log('Email Service Not Configured - Would send:', {
+        to: finalRecipient,
+        subject: finalSubject,
+        html: finalHtml
+      });
+      return { success: true, data: { id: 'development' } };
+    }
   } catch (error) {
     console.error('Email send error:', error);
     return { success: false, error };

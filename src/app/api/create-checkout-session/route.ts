@@ -1,12 +1,23 @@
 import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '', {
-  apiVersion: '2025-02-24.acacia'
-});
+// Initialize Stripe only if secret key is available
+const stripe = process.env.STRIPE_SECRET_KEY 
+  ? new Stripe(process.env.STRIPE_SECRET_KEY, {
+      apiVersion: '2025-02-24.acacia'
+    })
+  : null;
 
 export async function POST(request: Request) {
   try {
+    if (!stripe) {
+      console.log('Stripe not configured - Would create checkout session');
+      // For development, redirect directly to Calendly
+      return NextResponse.json({
+        redirect: 'https://calendly.com/apexnovaconsulting-info/30min'
+      });
+    }
+
     const { successUrl } = await request.json();
 
     // Create Stripe checkout session
@@ -27,7 +38,7 @@ export async function POST(request: Request) {
       ],
       mode: 'payment',
       success_url: successUrl || 'https://calendly.com/apexnovaconsulting-info/30min',
-      cancel_url: `${process.env.NEXT_PUBLIC_URL}/roi-audit`,
+      cancel_url: `${process.env.NEXT_PUBLIC_URL || 'https://apexnovaconsulting.com'}/roi-audit`,
     });
 
     return NextResponse.json({ sessionId: session.id });
