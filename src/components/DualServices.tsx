@@ -2,119 +2,105 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { FaUserTie, FaBuilding, FaChalkboardTeacher, FaRobot, FaTools, FaChartLine } from 'react-icons/fa';
+import { FaDownload, FaSearch, FaRocket, FaUserTie } from 'react-icons/fa';
 
 const DualServices = () => {
-  const services = {
-    professionals: [
-      {
-        icon: <FaUserTie className="w-8 h-8 text-blue-500" />,
-        title: "1:1 Coaching",
-        description: "Personalized communication coaching to build clarity and confidence."
-      },
-      {
-        icon: <FaChalkboardTeacher className="w-8 h-8 text-blue-500" />,
-        title: "Digital Courses",
-        description: "Self-paced programs to master professional communication."
-      },
-      {
-        icon: <FaTools className="w-8 h-8 text-blue-500" />,
-        title: "Communication Tools",
-        description: "Templates, scripts, and frameworks for immediate impact."
-      }
-    ],
-    companies: [
-      {
-        icon: <FaRobot className="w-8 h-8 text-blue-500" />,
-        title: "AI Adoption-as-a-Service™",
-        description: "Complete enablement solution for enterprise AI tools."
-      },
-      {
-        icon: <FaBuilding className="w-8 h-8 text-blue-500" />,
-        title: "Team Enablement",
-        description: "Custom blueprints and training for your organization."
-      },
-      {
-        icon: <FaChartLine className="w-8 h-8 text-blue-500" />,
-        title: "SOPs & Systems",
-        description: "Documented processes and prompt libraries for scale."
-      }
-    ]
-  };
+  const services = [
+    {
+      icon: <FaDownload className="w-12 h-12 text-blue-500" />,
+      title: "Free AI Toolkit",
+      description: "Get started with our comprehensive guide to AI implementation.",
+      features: [
+        "AI workflow templates",
+        "Quick-win guides",
+        "ROI calculator",
+        "Implementation checklist"
+      ],
+      price: "Free",
+      cta: "Download Now",
+      href: "/toolkit-download"
+    },
+    {
+      icon: <FaSearch className="w-12 h-12 text-blue-500" />,
+      title: "AI ROI Audit",
+      description: "14-day deep dive into your AI opportunities.",
+      features: [
+        "Workflow analysis",
+        "ROI blueprint",
+        "Tool recommendations",
+        "Quick-win roadmap"
+      ],
+      price: "$2.5K pilot / $5K standard",
+      cta: "Book My Audit",
+      href: "/roi-audit"
+    },
+    {
+      icon: <FaRocket className="w-12 h-12 text-blue-500" />,
+      title: "AI Adoption Sprint",
+      description: "90-day implementation and training program.",
+      features: [
+        "Full implementation",
+        "Team training",
+        "Custom workflows",
+        "ROI tracking"
+      ],
+      price: "$25K",
+      cta: "Learn More",
+      href: "/contact"
+    },
+    {
+      icon: <FaUserTie className="w-12 h-12 text-blue-500" />,
+      title: "Fractional AI Enablement",
+      description: "Ongoing advisory and implementation support.",
+      features: [
+        "Monthly strategy",
+        "Custom workshops",
+        "Team coaching",
+        "Progress reviews"
+      ],
+      price: "From $5K/month",
+      cta: "Get Details",
+      href: "/contact"
+    }
+  ];
 
   return (
     <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-3xl sm:text-4xl font-bold text-center mb-16">
-          What We Do
-        </h2>
+        <div className="text-center mb-16">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+            AI Enablement Solutions
+          </h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            From quick wins to full implementation, we help you maximize ROI at every stage.
+          </p>
+        </div>
 
-        <div className="grid lg:grid-cols-2 gap-16">
-          {/* For Professionals */}
-          <div>
-            <div className="text-center mb-12">
-              <h3 className="text-2xl font-bold mb-4">For Professionals</h3>
-              <p className="text-gray-600">
-                Build confidence, clarity, and executive presence through proven frameworks and personalized coaching.
-              </p>
-            </div>
-
-            <div className="space-y-8">
-              {services.professionals.map((service, index) => (
-                <div key={index} className="flex items-start">
-                  <div className="flex-shrink-0 mr-4">
-                    {service.icon}
-                  </div>
-                  <div>
-                    <h4 className="text-xl font-semibold mb-2">{service.title}</h4>
-                    <p className="text-gray-600">{service.description}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-8 text-center">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {services.map((service, index) => (
+            <div key={index} className="bg-gray-50 rounded-xl shadow-lg p-8">
+              <div className="mb-6">{service.icon}</div>
+              <h3 className="text-2xl font-bold mb-4">{service.title}</h3>
+              <p className="text-gray-600 mb-6">{service.description}</p>
+              <ul className="space-y-3 mb-8">
+                {service.features.map((feature, idx) => (
+                  <li key={idx} className="flex items-center text-gray-700">
+                    <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+              <div className="text-xl font-bold text-blue-600 mb-6">
+                {service.price}
+              </div>
               <Link
-                href="/professionals"
-                className="inline-block bg-gray-900 hover:bg-gray-800 text-white font-semibold px-8 py-3 rounded-lg transition-colors"
+                href={service.href}
+                className="block w-full text-center bg-gray-900 hover:bg-gray-800 text-white font-semibold px-6 py-3 rounded-lg transition-colors"
               >
-                Learn More
+                {service.cta}
               </Link>
             </div>
-          </div>
-
-          {/* For Companies */}
-          <div>
-            <div className="text-center mb-12">
-              <h3 className="text-2xl font-bold mb-4">For Companies</h3>
-              <p className="text-gray-600">
-                Transform how your teams adopt and leverage AI tools through systematic enablement.
-              </p>
-            </div>
-
-            <div className="space-y-8">
-              {services.companies.map((service, index) => (
-                <div key={index} className="flex items-start">
-                  <div className="flex-shrink-0 mr-4">
-                    {service.icon}
-                  </div>
-                  <div>
-                    <h4 className="text-xl font-semibold mb-2">{service.title}</h4>
-                    <p className="text-gray-600">{service.description}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-8 text-center">
-              <Link
-                href="/companies"
-                className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3 rounded-lg transition-colors"
-              >
-                Learn More
-              </Link>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>
