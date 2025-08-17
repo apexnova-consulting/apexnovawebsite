@@ -1,24 +1,17 @@
 import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
 
-// Initialize Stripe only if secret key is available
-const stripe = process.env.STRIPE_SECRET_KEY 
-  ? new Stripe(process.env.STRIPE_SECRET_KEY, {
-      apiVersion: '2025-02-24.acacia'
-    })
-  : null;
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '', {
+  apiVersion: '2025-02-24.acacia'
+});
 
 export async function POST(request: Request) {
   try {
-    if (!stripe) {
-      console.log('Stripe not configured - Would create checkout session');
-      // For development, redirect directly to Calendly
-      return NextResponse.json({
-        redirect: 'https://calendly.com/apexnovaconsulting-info/30min'
-      });
-    }
+    const { priceType } = await request.json();
 
-    const { successUrl } = await request.json();
+    // Set price based on type (pilot or standard)
+    const amount = priceType === 'pilot' ? 250000 : 500000; // $2,500 or $5,000 in cents
+    const description = priceType === 'pilot' ? 'AI ROI Audit (Pilot Offer)' : 'AI ROI Audit';
 
     // Create Stripe checkout session
     const session = await stripe.checkout.sessions.create({
@@ -31,14 +24,18 @@ export async function POST(request: Request) {
               name: 'AI ROI Audit',
               description: '14-day workflow audit and ROI blueprint',
             },
-            unit_amount: 250000, // $2,500 in cents
+            unit_amount: amount,
           },
           quantity: 1,
         },
       ],
       mode: 'payment',
-      success_url: successUrl || 'https://calendly.com/apexnovaconsulting-info/30min',
+      success_url: 'https://calendly.com/apexnovaconsulting-info/30min',
       cancel_url: `${process.env.NEXT_PUBLIC_URL || 'https://apexnovaconsulting.com'}/roi-audit`,
+      metadata: {
+        type: priceType,
+        description
+      }
     });
 
     return NextResponse.json({ sessionId: session.id });
