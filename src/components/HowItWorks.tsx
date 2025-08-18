@@ -1,76 +1,84 @@
-import { FaUserCheck, FaRocket, FaStar } from 'react-icons/fa';
+'use client';
 
-const steps = [
-  {
-    icon: FaUserCheck,
-    title: "1. Breakthrough Assessment",
-    description: "Take our proprietary assessment to uncover the hidden emotional barriers holding back your communication potential. Get immediate insights into your unique challenges.",
-    highlight: "15-minute assessment, instant results"
-  },
-  {
-    icon: FaRocket,
-    title: "2. Personalized Transformation Plan",
-    description: "Together, we'll create your custom roadmap to confident communication, blending proven techniques with emotional intelligence strategies tailored to your needs.",
-    highlight: "One 60-minute breakthrough session"
-  },
-  {
-    icon: FaStar,
-    title: "3. Rapid Transformation",
-    description: "Experience breakthrough results as you implement your personalized strategies, supported by our proven framework and expert guidance.",
-    highlight: "See results within 30 days"
-  }
-];
+import React from 'react';
+import { FaSearch, FaRocket, FaChartLine } from 'react-icons/fa';
 
-export default function HowItWorks() {
+const HowItWorks = () => {
+  const steps = [
+    {
+      icon: <FaSearch className="w-12 h-12 text-blue-500" />,
+      title: "Audit",
+      description: "We analyze your current workflows and identify AI opportunities for maximum impact."
+    },
+    {
+      icon: <FaRocket className="w-12 h-12 text-blue-500" />,
+      title: "Enable",
+      description: "We implement custom workflows and train your team for seamless adoption."
+    },
+    {
+      icon: <FaChartLine className="w-12 h-12 text-blue-500" />,
+      title: "Scale",
+      description: "We optimize and expand your AI usage to drive continuous ROI growth."
+    }
+  ];
+
   return (
-    <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
+      <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <span className="text-blue-900 font-semibold text-sm uppercase tracking-wider">
-            Simple Process, Powerful Results
-          </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-4 mb-6">
-            Your Path to Communication Confidence
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+            How It Works
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            A proven three-step system that transforms anxiety into authentic leadership presence.
+            Our proven process for transforming AI investments into measurable results.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-12">
           {steps.map((step, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
-            >
-              <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mb-6">
-                <step.icon className="w-8 h-8 text-blue-900" />
+            <div key={index} className="text-center">
+              <div className="relative mb-8">
+                <div className="flex justify-center mb-6">
+                  {step.icon}
+                </div>
+                {index < steps.length - 1 && (
+                  <div className="hidden md:block absolute top-1/2 left-full w-full h-0.5 bg-blue-200 -translate-y-1/2" />
+                )}
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">
-                {step.title}
-              </h3>
-              <p className="text-gray-600 mb-6">
-                {step.description}
-              </p>
-              <div className="inline-block bg-blue-50 px-4 py-2 rounded-full">
-                <span className="text-blue-900 font-medium text-sm">
-                  {step.highlight}
-                </span>
-              </div>
+              <h3 className="text-2xl font-bold mb-4">{step.title}</h3>
+              <p className="text-gray-600">{step.description}</p>
             </div>
           ))}
         </div>
 
-        <div className="mt-16 text-center">
-          <a
-            href="/contact"
-            className="inline-flex items-center justify-center gap-2 bg-blue-900 text-white px-8 py-4 rounded-xl text-lg font-medium hover:bg-blue-800 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl"
-          >
-            Schedule a Consultation
-            <FaRocket className="w-5 h-5" />
-          </a>
+        {/* Case Study Snapshot */}
+        <div className="mt-20 bg-white rounded-xl shadow-lg p-8">
+          <div className="text-center mb-8">
+            <h3 className="text-2xl font-bold mb-2">Success Story</h3>
+            <p className="text-gray-600">See how we transformed AI adoption for a growing tech company</p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="bg-gray-50 p-6 rounded-lg">
+              <h4 className="font-semibold mb-2">Before</h4>
+              <ul className="space-y-2 text-gray-600">
+                <li>• 2-week employee onboarding</li>
+                <li>• Manual workflow documentation</li>
+                <li>• Low AI tool adoption (25%)</li>
+              </ul>
+            </div>
+            <div className="bg-blue-50 p-6 rounded-lg">
+              <h4 className="font-semibold mb-2">After 90 Days</h4>
+              <ul className="space-y-2 text-gray-600">
+                <li>• 30% faster onboarding</li>
+                <li>• Automated documentation</li>
+                <li>• 85% team AI adoption</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </section>
   );
-} 
+};
+
+export default HowItWorks;

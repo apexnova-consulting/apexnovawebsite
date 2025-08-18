@@ -2,14 +2,14 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { FaDownload, FaSearch, FaRocket, FaUserTie } from 'react-icons/fa';
+import { FaDownload, FaSearch, FaRocket, FaUserTie, FaCheck, FaMinus } from 'react-icons/fa';
 
 const DualServices = () => {
   const services = [
     {
       icon: <FaDownload className="w-12 h-12 text-blue-500" />,
       title: "Free AI Toolkit",
-      description: "Get started with our comprehensive guide to AI implementation.",
+      description: "Start your AI journey with our proven frameworks.",
       features: [
         "AI workflow templates",
         "Quick-win guides",
@@ -17,6 +17,8 @@ const DualServices = () => {
         "Implementation checklist"
       ],
       price: "Free",
+      timeline: "Instant Access",
+      outcome: "Self-guided implementation",
       cta: "Download Now",
       href: "/toolkit-download"
     },
@@ -30,9 +32,12 @@ const DualServices = () => {
         "Tool recommendations",
         "Quick-win roadmap"
       ],
-      price: "$2.5K pilot / $5K standard",
+      price: "$2.5K pilot / $5K",
+      timeline: "14 Days",
+      outcome: "Clear implementation plan",
       cta: "Book My Audit",
-      href: "/roi-audit"
+      href: "/roi-audit",
+      highlight: true
     },
     {
       icon: <FaRocket className="w-12 h-12 text-blue-500" />,
@@ -45,12 +50,14 @@ const DualServices = () => {
         "ROI tracking"
       ],
       price: "$25K",
+      timeline: "90 Days",
+      outcome: "Complete team enablement",
       cta: "Learn More",
       href: "/contact"
     },
     {
       icon: <FaUserTie className="w-12 h-12 text-blue-500" />,
-      title: "Fractional AI Enablement",
+      title: "Fractional AI Coach",
       description: "Ongoing advisory and implementation support.",
       features: [
         "Monthly strategy",
@@ -59,9 +66,22 @@ const DualServices = () => {
         "Progress reviews"
       ],
       price: "From $5K/month",
+      timeline: "Ongoing",
+      outcome: "Continuous optimization",
       cta: "Get Details",
       href: "/contact"
     }
+  ];
+
+  const comparisonFeatures = [
+    { name: "Initial Assessment", toolkit: true, audit: true, sprint: true, coach: true },
+    { name: "ROI Calculator", toolkit: true, audit: true, sprint: true, coach: true },
+    { name: "Workflow Templates", toolkit: true, audit: true, sprint: true, coach: true },
+    { name: "Custom Blueprint", toolkit: false, audit: true, sprint: true, coach: true },
+    { name: "Implementation Support", toolkit: false, audit: false, sprint: true, coach: true },
+    { name: "Team Training", toolkit: false, audit: false, sprint: true, coach: true },
+    { name: "Progress Reviews", toolkit: false, audit: false, sprint: true, coach: true },
+    { name: "Ongoing Advisory", toolkit: false, audit: false, sprint: false, coach: true }
   ];
 
   return (
@@ -76,9 +96,17 @@ const DualServices = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {/* Service Cards */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
           {services.map((service, index) => (
-            <div key={index} className="bg-gray-50 rounded-xl shadow-lg p-8">
+            <div 
+              key={index} 
+              className={`${
+                service.highlight 
+                  ? 'bg-blue-50 border-2 border-blue-200' 
+                  : 'bg-gray-50'
+              } rounded-xl shadow-lg p-8`}
+            >
               <div className="mb-6">{service.icon}</div>
               <h3 className="text-2xl font-bold mb-4">{service.title}</h3>
               <p className="text-gray-600 mb-6">{service.description}</p>
@@ -90,17 +118,58 @@ const DualServices = () => {
                   </li>
                 ))}
               </ul>
-              <div className="text-xl font-bold text-blue-600 mb-6">
+              <div className="text-xl font-bold text-blue-600 mb-2">
                 {service.price}
+              </div>
+              <div className="text-sm text-gray-500 mb-6">
+                {service.timeline} • {service.outcome}
               </div>
               <Link
                 href={service.href}
-                className="block w-full text-center bg-gray-900 hover:bg-gray-800 text-white font-semibold px-6 py-3 rounded-lg transition-colors"
+                className={`block w-full text-center ${
+                  service.highlight
+                    ? 'bg-blue-600 hover:bg-blue-700'
+                    : 'bg-gray-900 hover:bg-gray-800'
+                } text-white font-semibold px-6 py-3 rounded-lg transition-colors`}
               >
                 {service.cta}
               </Link>
             </div>
           ))}
+        </div>
+
+        {/* Comparison Table */}
+        <div className="overflow-x-auto">
+          <table className="w-full border-collapse">
+            <thead>
+              <tr className="border-b-2 border-gray-200">
+                <th className="text-left py-4 px-4">Features</th>
+                <th className="text-center py-4 px-4">Free Toolkit</th>
+                <th className="text-center py-4 px-4 bg-blue-50">ROI Audit</th>
+                <th className="text-center py-4 px-4">90-Day Sprint</th>
+                <th className="text-center py-4 px-4">Fractional Coach</th>
+              </tr>
+            </thead>
+            <tbody>
+              {comparisonFeatures.map((feature, index) => (
+                <tr key={index} className="border-b border-gray-100">
+                  <td className="py-4 px-4">{feature.name}</td>
+                  <td className="text-center py-4 px-4">
+                    {feature.toolkit ? <FaCheck className="inline text-green-500" /> : <FaMinus className="inline text-gray-300" />}
+                  </td>
+                  <td className="text-center py-4 px-4 bg-blue-50">
+                    {feature.audit ? <FaCheck className="inline text-green-500" /> : <FaMinus className="inline text-gray-300" />}
+                  </td>
+                  <td className="text-center py-4 px-4">
+                    {feature.sprint ? <FaCheck className="inline text-green-500" /> : <FaMinus className="inline text-gray-300" />}
+                  </td>
+                  <td className="text-center py-4 px-4">
+                    {feature.coach ? <FaCheck className="inline text-green-500" /> : <FaMinus className="inline text-gray-300" />}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
     </section>
