@@ -1,9 +1,11 @@
 'use client';
 
 import React, { useState } from 'react';
-import { FaEnvelope, FaPhone, FaCalendar } from 'react-icons/fa';
+import Link from 'next/link';
+import { FaEnvelope, FaLinkedin, FaArrowRight, FaBriefcase } from 'react-icons/fa';
 
 export default function Contact() {
+  const [formType, setFormType] = useState<'general' | 'audit'>('general');
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -30,7 +32,7 @@ export default function Contact() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, formType }),
       });
 
       if (response.ok) {
@@ -65,9 +67,9 @@ export default function Contact() {
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
         <div className="text-center mb-16">
-          <h1 className="text-4xl font-bold mb-4">Let's Connect</h1>
+          <h1 className="text-4xl font-bold mb-4">Let's Talk AI ROI</h1>
           <p className="text-xl text-gray-600">
-            Take the first step towards transforming your communication and AI adoption journey.
+            Choose how you'd like to start your AI transformation journey.
           </p>
         </div>
 
@@ -75,7 +77,7 @@ export default function Contact() {
           {/* Contact Information */}
           <div className="lg:col-span-1">
             <div className="bg-white p-8 rounded-xl shadow-lg">
-              <h2 className="text-2xl font-bold mb-6">Contact Information</h2>
+              <h2 className="text-2xl font-bold mb-6">Contact Us</h2>
               
               <div className="space-y-6">
                 <div className="flex items-start">
@@ -87,19 +89,48 @@ export default function Contact() {
                 </div>
 
                 <div className="flex items-start">
-                  <FaPhone className="text-blue-600 w-5 h-5 mt-1 mr-4" />
+                  <FaLinkedin className="text-blue-600 w-5 h-5 mt-1 mr-4" />
                   <div>
-                    <h3 className="font-semibold">Phone</h3>
-                    <p className="text-gray-600">(973) 348-5008</p>
+                    <h3 className="font-semibold">Connect</h3>
+                    <a 
+                      href="https://linkedin.com/company/apexnova"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-600 hover:text-blue-700"
+                    >
+                      LinkedIn
+                    </a>
                   </div>
                 </div>
 
                 <div className="flex items-start">
-                  <FaCalendar className="text-blue-600 w-5 h-5 mt-1 mr-4" />
+                  <FaBriefcase className="text-blue-600 w-5 h-5 mt-1 mr-4" />
                   <div>
-                    <h3 className="font-semibold">Book a Call</h3>
-                    <p className="text-gray-600">Schedule a discovery call directly on our calendar.</p>
+                    <h3 className="font-semibold">Careers / Partners</h3>
+                    <Link
+                      href="/careers"
+                      className="text-blue-600 hover:text-blue-700"
+                    >
+                      View Opportunities
+                    </Link>
                   </div>
+                </div>
+
+                {/* Quick Links */}
+                <div className="pt-6 mt-6 border-t border-gray-200">
+                  <h3 className="font-semibold mb-4">Quick Links</h3>
+                  <ul className="space-y-2">
+                    <li>
+                      <Link href="/roi-audit" className="text-blue-600 hover:text-blue-700">
+                        Book AI ROI Audit →
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/toolkit-download" className="text-blue-600 hover:text-blue-700">
+                        Download Free Toolkit →
+                      </Link>
+                    </li>
+                  </ul>
                 </div>
               </div>
             </div>
@@ -108,6 +139,30 @@ export default function Contact() {
           {/* Contact Form */}
           <div className="lg:col-span-2">
             <div className="bg-white p-8 rounded-xl shadow-lg">
+              {/* Form Type Selector */}
+              <div className="flex mb-8 bg-gray-100 rounded-lg p-1">
+                <button
+                  onClick={() => setFormType('general')}
+                  className={`flex-1 py-2 px-4 rounded-md transition-colors ${
+                    formType === 'general' 
+                      ? 'bg-white shadow-sm' 
+                      : 'hover:bg-gray-200'
+                  }`}
+                >
+                  General Inquiry
+                </button>
+                <button
+                  onClick={() => setFormType('audit')}
+                  className={`flex-1 py-2 px-4 rounded-md transition-colors ${
+                    formType === 'audit' 
+                      ? 'bg-white shadow-sm' 
+                      : 'hover:bg-gray-200'
+                  }`}
+                >
+                  Book AI ROI Audit
+                </button>
+              </div>
+
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
@@ -127,7 +182,7 @@ export default function Contact() {
 
                   <div>
                     <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                      Email Address *
+                      Work Email *
                     </label>
                     <input
                       type="email"
@@ -156,7 +211,7 @@ export default function Contact() {
 
                   <div>
                     <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">
-                      Company/Organization
+                      Company Name *
                     </label>
                     <input
                       type="text"
@@ -165,12 +220,13 @@ export default function Contact() {
                       value={formData.company}
                       onChange={handleChange}
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      required
                     />
                   </div>
 
                   <div>
                     <label htmlFor="role" className="block text-sm font-medium text-gray-700 mb-2">
-                      Current Role
+                      Your Role *
                     </label>
                     <input
                       type="text"
@@ -179,54 +235,58 @@ export default function Contact() {
                       value={formData.role}
                       onChange={handleChange}
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      required
                     />
                   </div>
 
-                  <div>
-                    <label htmlFor="inquiryType" className="block text-sm font-medium text-gray-700 mb-2">
-                      Type of Inquiry *
-                    </label>
-                    <select
-                      id="inquiryType"
-                      name="inquiryType"
-                      value={formData.inquiryType}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      required
-                    >
-                      <option value="">Select inquiry type</option>
-                      <option value="communication-coaching">Communication Coaching</option>
-                      <option value="ai-adoption">AI Adoption Services</option>
-                      <option value="workshop">Executive Workshop</option>
-                      <option value="digital-products">Digital Products</option>
-                      <option value="other">Other Inquiry</option>
-                    </select>
-                  </div>
+                  {formType === 'general' && (
+                    <div>
+                      <label htmlFor="inquiryType" className="block text-sm font-medium text-gray-700 mb-2">
+                        Inquiry Type *
+                      </label>
+                      <select
+                        id="inquiryType"
+                        name="inquiryType"
+                        value={formData.inquiryType}
+                        onChange={handleChange}
+                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        required
+                      >
+                        <option value="">Select inquiry type</option>
+                        <option value="ai-adoption">AI Adoption Services</option>
+                        <option value="enablement">Team Enablement</option>
+                        <option value="partnership">Partnership Opportunity</option>
+                        <option value="press">Press Inquiry</option>
+                        <option value="other">Other</option>
+                      </select>
+                    </div>
+                  )}
 
-                  <div>
-                    <label htmlFor="timeframe" className="block text-sm font-medium text-gray-700 mb-2">
-                      Desired Timeframe
-                    </label>
-                    <select
-                      id="timeframe"
-                      name="timeframe"
-                      value={formData.timeframe}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    >
-                      <option value="">Select timeframe</option>
-                      <option value="immediate">Ready to start immediately</option>
-                      <option value="1month">Within 1 month</option>
-                      <option value="3months">Within 3 months</option>
-                      <option value="6months">Within 6 months</option>
-                      <option value="exploring">Just exploring options</option>
-                    </select>
-                  </div>
+                  {formType === 'audit' && (
+                    <div>
+                      <label htmlFor="timeframe" className="block text-sm font-medium text-gray-700 mb-2">
+                        Implementation Timeframe
+                      </label>
+                      <select
+                        id="timeframe"
+                        name="timeframe"
+                        value={formData.timeframe}
+                        onChange={handleChange}
+                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      >
+                        <option value="">Select timeframe</option>
+                        <option value="immediate">Ready to start immediately</option>
+                        <option value="1month">Within 1 month</option>
+                        <option value="3months">Within 3 months</option>
+                        <option value="exploring">Just exploring options</option>
+                      </select>
+                    </div>
+                  )}
                 </div>
 
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                    Your Message *
+                    {formType === 'audit' ? 'Tell us about your AI adoption goals *' : 'Your Message *'}
                   </label>
                   <textarea
                     id="message"
@@ -262,9 +322,16 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={status === 'loading'}
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-lg transition-colors disabled:opacity-50"
+                  className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-lg transition-colors disabled:opacity-50 flex items-center justify-center"
                 >
-                  {status === 'loading' ? 'Sending...' : 'Submit Inquiry'}
+                  {status === 'loading' ? (
+                    'Sending...'
+                  ) : (
+                    <>
+                      {formType === 'audit' ? 'Book My AI ROI Audit' : 'Send Message'}
+                      <FaArrowRight className="ml-2" />
+                    </>
+                  )}
                 </button>
 
                 {status === 'success' && (
