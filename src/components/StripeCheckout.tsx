@@ -1,50 +1,48 @@
 'use client';
 
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 
-// Initialize Stripe
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
-
 interface StripeCheckoutProps {
-  productId: string;
-  price: number;
-  title: string;
+  priceId: string;
+  buttonText?: string;
+  className?: string;
 }
 
-export default function StripeCheckout({ productId, price, title }: StripeCheckoutProps) {
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
+
+const StripeCheckout: React.FC<StripeCheckoutProps> = ({ 
+  priceId, 
+  buttonText = 'Buy Now',
+  className = ''
+}) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleCheckout = async () => {
+    setIsLoading(true);
     try {
-      setIsLoading(true);
-
-      // Create checkout session
       const response = await fetch('/api/create-checkout-session', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ productId }),
+        body: JSON.stringify({
+          priceId,
+        }),
       });
 
       const { sessionId } = await response.json();
-
-      // Load Stripe
       const stripe = await stripePromise;
+      
       if (!stripe) throw new Error('Stripe failed to load');
 
-      // Redirect to checkout
-      const { error } = await stripe.redirectToCheckout({
-        sessionId,
-      });
-
-      if (error) {
-        console.error('Error:', error);
-        setIsLoading(false);
-      }
-    } catch (error) {
-      console.error('Error:', error);
+      const { error } = await stripe.redirectToCheckout({ sessionId });
+      
+      if (error) throw error;
+    } catch (err) {
+      console.error('Error:', err);
+      alert('Failed to initiate checkout. Please try again.');
+    } finally {
       setIsLoading(false);
     }
   };
@@ -53,9 +51,11 @@ export default function StripeCheckout({ productId, price, title }: StripeChecko
     <button
       onClick={handleCheckout}
       disabled={isLoading}
-      className="w-full bg-primary-600 hover:bg-primary-700 text-white font-semibold py-3 px-6 rounded-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+      className={`w-full bg-teal-500 hover:bg-teal-600 text-white font-semibold py-4 px-8 rounded-lg transition-colors disabled:opacity-50 ${className}`}
     >
-      {isLoading ? 'Processing...' : `Purchase for $${price.toFixed(2)}`}
+      {isLoading ? 'Processing...' : buttonText}
     </button>
   );
-} 
+};
+
+export default StripeCheckout;
