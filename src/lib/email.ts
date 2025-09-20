@@ -9,21 +9,22 @@ interface EmailData {
   name?: string;
   company?: string;
   message?: string;
+  isAdminEmail?: boolean;
 }
 
 export async function sendEmail(emailData: EmailData) {
   try {
-    const { to, subject, html, name, company, message } = emailData;
+    const { to, subject, html, name, company, message, isAdminEmail } = emailData;
 
     // Add custom fields to the email subject if they exist
     let finalSubject = subject;
-    if (name && company) {
+    if (name && company && !isAdminEmail) {
       finalSubject = `${subject} - ${name} from ${company}`;
     }
 
     // Add custom fields to the email body if they exist
     let finalHtml = html;
-    if (name || company || message) {
+    if ((name || company || message) && !isAdminEmail) {
       finalHtml = `
         ${html}
         ${name ? `<p><strong>Name:</strong> ${name}</p>` : ''}
