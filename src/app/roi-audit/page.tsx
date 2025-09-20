@@ -2,45 +2,52 @@
 
 import React, { useState } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
-import { FaCheckCircle, FaArrowRight, FaClock, FaSearch, FaFileAlt } from 'react-icons/fa';
+import { FaCheck, FaArrowRight, FaClock, FaChartLine, FaLightbulb } from 'react-icons/fa';
 
-const stripePromise = loadStripe('pk_live_51OwTzG03iAAJZGvi6lsLjfsvit1cmf2U9bi9Zx2nVTHfb3uXN0hBTDQf2nzKQrmzNWncm7JTOoBblp3xkj8ErVWw005W0yyKSJ');
+// Initialize Stripe
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 
-export default function RoiAudit() {
+export default function ROIAuditPage() {
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState('');
 
   const benefits = [
-    "Identify AI automation opportunities across your workflow",
-    "Calculate potential cost savings and revenue gains",
-    "Get specific tool recommendations and implementation steps",
-    "Receive prioritized quick-wins for immediate impact",
-    "Learn industry benchmarks and competitor insights",
-    "Get a clear ROI measurement framework"
+    {
+      icon: <FaLightbulb className="w-6 h-6 text-teal-500" />,
+      title: "AI Opportunity Analysis",
+      description: "Identify key areas where AI can drive immediate value."
+    },
+    {
+      icon: <FaChartLine className="w-6 h-6 text-teal-500" />,
+      title: "ROI Blueprint",
+      description: "Get a clear roadmap to achieve $50k–$250k in productivity gains."
+    },
+    {
+      icon: <FaClock className="w-6 h-6 text-teal-500" />,
+      title: "Quick Implementation",
+      description: "Start seeing results within 14 days of engagement."
+    }
   ];
 
   const steps = [
     {
-      icon: <FaClock className="w-8 h-8 text-blue-500" />,
+      number: "1",
       title: "Discovery Call",
-      description: "30-minute call to understand your current workflows and challenges."
+      description: "We learn about your team's current AI usage and challenges."
     },
     {
-      icon: <FaSearch className="w-8 h-8 text-blue-500" />,
+      number: "2",
       title: "Workflow Audit",
-      description: "Deep analysis of your processes to identify AI opportunities."
+      description: "Deep-dive analysis of processes and opportunity areas."
     },
     {
-      icon: <FaFileAlt className="w-8 h-8 text-blue-500" />,
+      number: "3",
       title: "ROI Blueprint Delivery",
-      description: "Receive your actionable 1-page implementation plan."
+      description: "Receive your actionable implementation plan."
     }
   ];
 
   const handleCheckout = async () => {
     setIsLoading(true);
-    setError('');
-
     try {
       const response = await fetch('/api/create-checkout-session', {
         method: 'POST',
@@ -48,57 +55,73 @@ export default function RoiAudit() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          priceId: 'roi-audit',
-          successUrl: 'https://calendly.com/apexnovaconsulting-info/30min',
+          priceId: 'price_pilot_audit', // This should match your Stripe price ID
         }),
       });
 
       const { sessionId } = await response.json();
       const stripe = await stripePromise;
-      
-      if (stripe) {
-        const { error } = await stripe.redirectToCheckout({ sessionId });
-        if (error) {
-          setError(error.message || 'Something went wrong. Please try again.');
-        }
-      }
-    } catch (err) {
-      setError('Failed to initiate checkout. Please try again.');
-    }
 
-    setIsLoading(false);
+      if (!stripe) throw new Error('Stripe failed to load');
+
+      const { error } = await stripe.redirectToCheckout({ sessionId });
+
+      if (error) throw error;
+    } catch (err) {
+      console.error('Error:', err);
+      alert('Failed to initiate checkout. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <main className="bg-white">
       {/* Hero Section */}
-      <div className="bg-gray-900 text-white py-20 px-4 sm:px-6 lg:px-8">
+      <section className="bg-gray-900 text-white py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="text-4xl sm:text-5xl font-bold mb-6">
             Find $50k–$250k in Untapped AI ROI
             <br />
-            <span className="text-blue-400">Before Your Competitors Do</span>
+            <span className="text-teal-400">Before Your Competitors Do</span>
           </h1>
-          <p className="text-xl sm:text-2xl text-gray-300 max-w-3xl mx-auto mb-10">
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
             In 14 days, we'll audit your workflows, identify quick wins, and deliver a 1-page ROI blueprint to immediately boost efficiency and revenue.
           </p>
-          <div className="inline-block bg-red-600 text-sm font-semibold px-4 py-2 rounded-full mb-8">
-            Limited to 5 clients/month
+          <div className="inline-block bg-gray-800 rounded-lg p-1 mb-8">
+            <div className="bg-teal-500 text-white px-4 py-2 rounded font-semibold">
+              Limited Time Offer: Valid until Oct 30, 2025
+            </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* How It Works */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+      {/* Benefits Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-16">
-            How It Works
-          </h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            {steps.map((step, index) => (
+          <div className="grid md:grid-cols-3 gap-12">
+            {benefits.map((benefit, index) => (
               <div key={index} className="text-center">
                 <div className="flex justify-center mb-6">
-                  {step.icon}
+                  {benefit.icon}
+                </div>
+                <h3 className="text-xl font-bold mb-4">{benefit.title}</h3>
+                <p className="text-gray-600">{benefit.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Process Section */}
+      <section className="bg-gray-50 py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-16">How It Works</h2>
+          <div className="grid md:grid-cols-3 gap-12">
+            {steps.map((step, index) => (
+              <div key={index} className="text-center">
+                <div className="w-12 h-12 bg-teal-500 text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-6">
+                  {step.number}
                 </div>
                 <h3 className="text-xl font-bold mb-4">{step.title}</h3>
                 <p className="text-gray-600">{step.description}</p>
@@ -108,72 +131,53 @@ export default function RoiAudit() {
         </div>
       </section>
 
-      {/* Benefits */}
+      {/* Pricing Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl font-bold mb-8">
-                What You'll Get
-              </h2>
-              <ul className="space-y-4">
-                {benefits.map((benefit, index) => (
-                  <li key={index} className="flex items-center text-gray-700">
-                    <FaCheckCircle className="text-green-500 mr-3 flex-shrink-0" />
-                    {benefit}
-                  </li>
+        <div className="max-w-3xl mx-auto">
+          <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
+            <div className="p-8 sm:p-12">
+              <div className="text-center mb-8">
+                <h2 className="text-3xl font-bold mb-4">AI ROI Audit</h2>
+                <div className="flex items-center justify-center mb-4">
+                  <span className="text-gray-500 line-through text-2xl">$5,000</span>
+                  <span className="text-4xl font-bold text-teal-600 ml-4">$2,500</span>
+                </div>
+                <p className="text-gray-600">Pilot Program Offer</p>
+              </div>
+
+              <div className="space-y-4 mb-8">
+                {[
+                  "Comprehensive workflow analysis",
+                  "AI opportunity mapping",
+                  "ROI calculation & projections",
+                  "14-day delivery",
+                  "Implementation blueprint",
+                  "30-minute strategy call"
+                ].map((feature, index) => (
+                  <div key={index} className="flex items-center">
+                    <FaCheck className="w-5 h-5 text-teal-500 mr-3" />
+                    <span>{feature}</span>
+                  </div>
                 ))}
-              </ul>
-            </div>
-            <div className="bg-white p-8 rounded-xl shadow-lg">
+              </div>
+
               <div className="text-center">
-                <div className="text-gray-500 line-through text-2xl mb-2">$5,000</div>
-                <div className="text-4xl font-bold text-blue-600 mb-2">$2,500</div>
-                <div className="text-gray-600 mb-6">Pilot Offer (Valid until Oct 30, 2025)</div>
                 <button
                   onClick={handleCheckout}
                   disabled={isLoading}
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-lg transition-colors disabled:opacity-50 flex items-center justify-center"
+                  className="w-full bg-teal-500 hover:bg-teal-600 text-white font-semibold py-4 px-8 rounded-lg transition-colors disabled:opacity-50 flex items-center justify-center"
                 >
-                  {isLoading ? (
-                    'Processing...'
-                  ) : (
-                    <>
-                      Book Your Audit
-                      <FaArrowRight className="ml-2" />
-                    </>
-                  )}
+                  {isLoading ? 'Processing...' : 'Book Your Audit'}
+                  {!isLoading && <FaArrowRight className="ml-2" />}
                 </button>
-                {error && (
-                  <p className="mt-4 text-red-600 text-sm">{error}</p>
-                )}
-                <p className="mt-4 text-sm text-gray-500">
-                  Secure payment via Stripe
+                <p className="text-sm text-gray-500 mt-4">
+                  Limited to 5 clients per month
                 </p>
               </div>
             </div>
           </div>
         </div>
       </section>
-
-      {/* CTA Section */}
-      <section className="bg-gray-900 text-white py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-6">
-            Don't Let Your Competition Get Ahead
-          </h2>
-          <p className="text-xl text-gray-300 mb-8">
-            Book your ROI audit now and start seeing results in just 14 days.
-          </p>
-          <button
-            onClick={handleCheckout}
-            disabled={isLoading}
-            className="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-lg transition-colors disabled:opacity-50"
-          >
-            {isLoading ? 'Processing...' : 'Book Your Audit Now'}
-          </button>
-        </div>
-      </section>
-    </div>
+    </main>
   );
 }

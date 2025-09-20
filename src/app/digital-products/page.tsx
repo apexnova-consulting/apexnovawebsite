@@ -2,98 +2,107 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { FaDownload, FaBook, FaRobot, FaCheck } from 'react-icons/fa';
+import { FaDownload, FaBook, FaVideo, FaArrowRight } from 'react-icons/fa';
 
-export default function DigitalProducts() {
+export default function DigitalProductsPage() {
   const products = [
     {
-      icon: <FaBook className="w-12 h-12 text-blue-500" />,
-      title: "Communication Confidence Course",
-      description: "Master professional communication in 30 days with our comprehensive self-paced program.",
+      icon: <FaBook className="w-12 h-12 text-teal-500" />,
+      title: "AI-Ready Teams™ Toolkit",
+      price: "$97",
+      description: "Complete toolkit to streamline AI adoption and boost team productivity.",
       features: [
-        "6 video-based modules",
+        "50+ workflow templates",
+        "Custom prompt library",
+        "Implementation guides",
+        "Training materials",
+        "ROI tracking sheets"
+      ],
+      cta: "Buy Now",
+      href: "/products/ai-toolkit"
+    },
+    {
+      icon: <FaVideo className="w-12 h-12 text-teal-500" />,
+      title: "Communication Confidence Course",
+      price: "$49",
+      description: "Self-paced course to master professional communication and reduce anxiety.",
+      features: [
+        "6 video modules",
         "Practice exercises",
-        "Templates & scripts",
-        "Progress tracking",
+        "Feedback templates",
+        "Resource library",
         "Lifetime access"
       ],
-      price: "$49",
-      tag: "Most Popular"
+      cta: "Enroll Now",
+      href: "/products/communication-course"
     },
     {
-      icon: <FaRobot className="w-12 h-12 text-blue-500" />,
-      title: "AI-Ready Teams™ Toolkit",
-      description: "Complete framework for implementing AI tools and workflows in your organization.",
-      features: [
-        "Tool selection guide",
-        "Implementation templates",
-        "Training materials",
-        "ROI calculators",
-        "Best practices library"
-      ],
-      price: "$97",
-      tag: "Featured"
-    },
-    {
-      icon: <FaDownload className="w-12 h-12 text-blue-500" />,
+      icon: <FaDownload className="w-12 h-12 text-teal-500" />,
       title: "Executive Communication Toolkit",
-      description: "Essential resources to boost your communication confidence and executive presence.",
-      features: [
-        "Style assessment",
-        "Anxiety management guide",
-        "Presentation templates",
-        "Meeting scripts",
-        "Progress journal"
-      ],
       price: "Free",
-      tag: "Lead Magnet"
+      description: "Essential resources to enhance your executive presence and communication.",
+      features: [
+        "Quick-start guide",
+        "Communication templates",
+        "Confidence exercises",
+        "Meeting scripts",
+        "Progress tracker"
+      ],
+      cta: "Download Now",
+      href: "/toolkit-download"
     }
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <main className="bg-white">
       {/* Hero Section */}
-      <div className="bg-gray-900 text-white py-20 px-4 sm:px-6 lg:px-8">
+      <section className="bg-gray-900 text-white py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="text-4xl sm:text-5xl font-bold mb-6">
-            Digital Products
+            Digital Products & Resources
           </h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Instant access to proven frameworks, courses, and tools for communication excellence and AI enablement.
+            Self-paced tools and training to enhance your team's communication and AI capabilities.
           </p>
         </div>
-      </div>
+      </section>
 
       {/* Products Grid */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-12">
             {products.map((product, index) => (
-              <div key={index} className="bg-white rounded-xl shadow-lg p-8 relative">
-                {product.tag && (
-                  <div className="absolute top-4 right-4 bg-blue-600 text-white text-sm font-semibold px-3 py-1 rounded-full">
-                    {product.tag}
-                  </div>
-                )}
+              <div
+                key={index}
+                className="bg-gray-50 rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow"
+              >
                 <div className="mb-6">{product.icon}</div>
-                <h3 className="text-2xl font-bold mb-4">{product.title}</h3>
-                <p className="text-gray-600 mb-6">{product.description}</p>
-                <ul className="space-y-3 mb-8">
-                  {product.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center text-gray-700">
-                      <FaCheck className="text-green-500 mr-3 flex-shrink-0" />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-                <div className="text-2xl font-bold text-blue-600 mb-6">
+                <h2 className="text-2xl font-bold mb-2">{product.title}</h2>
+                <div className="text-2xl font-bold text-teal-600 mb-6">
                   {product.price}
                 </div>
+                <p className="text-gray-600 mb-6">
+                  {product.description}
+                </p>
+
+                <div className="mb-8">
+                  <h3 className="font-bold mb-4">What's Included:</h3>
+                  <ul className="space-y-3">
+                    {product.features.map((feature, idx) => (
+                      <li key={idx} className="flex items-center text-gray-600">
+                        <span className="w-2 h-2 bg-teal-500 rounded-full mr-3"></span>
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
                 <Link
-                  href={product.price === "Free" ? "/toolkit-download" : "/contact"}
-                  className="block w-full text-center bg-gray-900 hover:bg-gray-800 text-white font-semibold px-6 py-3 rounded-lg transition-colors"
+                  href={product.href}
+                  className="group flex items-center justify-center w-full bg-gray-900 hover:bg-gray-800 text-white font-semibold px-6 py-3 rounded-lg transition-colors"
                 >
-                  {product.price === "Free" ? "Download Now" : "Get Access"}
+                  {product.cta}
+                  <FaArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>
             ))}
@@ -102,57 +111,39 @@ export default function DigitalProducts() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+      <section className="bg-gray-50 py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-16">
+          <h2 className="text-3xl font-bold text-center mb-12">
             Frequently Asked Questions
           </h2>
+
           <div className="space-y-8">
-            <div>
-              <h3 className="text-xl font-semibold mb-4">
-                How do I access the products after purchase?
-              </h3>
-              <p className="text-gray-600">
-                After your purchase is confirmed, you'll receive immediate access via email with login credentials for our digital platform.
-              </p>
-            </div>
-            <div>
-              <h3 className="text-xl font-semibold mb-4">
-                Are updates included?
-              </h3>
-              <p className="text-gray-600">
-                Yes! All paid products include lifetime access and free updates as we continue to improve and expand the content.
-              </p>
-            </div>
-            <div>
-              <h3 className="text-xl font-semibold mb-4">
-                Can I share these with my team?
-              </h3>
-              <p className="text-gray-600">
-                Individual licenses are for personal use only. For team access, please contact us about our corporate licensing options.
-              </p>
-            </div>
+            {[
+              {
+                q: "How do I access the products after purchase?",
+                a: "You'll receive immediate access via email with download links and login credentials where applicable."
+              },
+              {
+                q: "Are updates included?",
+                a: "Yes, all products include lifetime updates at no additional cost."
+              },
+              {
+                q: "Can I share these with my team?",
+                a: "Individual licenses are for personal use. Team licenses are available - contact us for details."
+              },
+              {
+                q: "What if I'm not satisfied?",
+                a: "We offer a 30-day money-back guarantee on all paid products."
+              }
+            ].map((faq, index) => (
+              <div key={index} className="bg-white rounded-lg p-6 shadow-md">
+                <h3 className="text-lg font-bold mb-3">{faq.q}</h3>
+                <p className="text-gray-600">{faq.a}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
-
-      {/* CTA Section */}
-      <section className="bg-gray-900 text-white py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-6">
-            Need Help Choosing?
-          </h2>
-          <p className="text-xl text-gray-300 mb-8">
-            Book a quick call to discuss which solution best fits your needs.
-          </p>
-          <Link 
-            href="/contact"
-            className="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-lg transition-colors"
-          >
-            Schedule Consultation
-          </Link>
-        </div>
-      </section>
-    </div>
+    </main>
   );
 }

@@ -1,5 +1,6 @@
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
+'use client';
+
+import React from 'react';
 
 export default function BlogLayout({
   children,
@@ -8,9 +9,9 @@ export default function BlogLayout({
 }) {
   return (
     <div className="min-h-screen bg-gray-50">
-      <Navbar />
-      <main>{children}</main>
-      <Footer />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        {children}
+      </div>
     </div>
   );
-} 
+}

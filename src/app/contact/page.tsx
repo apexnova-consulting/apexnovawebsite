@@ -1,30 +1,24 @@
 'use client';
 
 import React, { useState } from 'react';
-import Link from 'next/link';
-import { FaEnvelope, FaLinkedin, FaArrowRight, FaBriefcase } from 'react-icons/fa';
+import { FaEnvelope, FaArrowRight } from 'react-icons/fa';
 
-export default function Contact() {
-  const [formType, setFormType] = useState<'general' | 'audit'>('general');
+export default function ContactPage() {
+  const [formType, setFormType] = useState('general');
   const [formData, setFormData] = useState({
-    fullName: '',
+    name: '',
     email: '',
-    phone: '',
     company: '',
-    role: '',
-    inquiryType: '',
-    timeframe: '',
     message: '',
-    source: ''
+    inquiryType: 'general'
   });
-
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-  const [errorMessage, setErrorMessage] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState({ type: '', message: '' });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setStatus('loading');
-    setErrorMessage('');
+    setIsSubmitting(true);
+    setSubmitStatus({ type: '', message: '' });
 
     try {
       const response = await fetch('/api/contact', {
@@ -32,324 +26,201 @@ export default function Contact() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ ...formData, formType }),
+        body: JSON.stringify(formData),
       });
 
-      if (response.ok) {
-        setStatus('success');
-        setFormData({
-          fullName: '',
-          email: '',
-          phone: '',
-          company: '',
-          role: '',
-          inquiryType: '',
-          timeframe: '',
-          message: '',
-          source: ''
-        });
-      } else {
-        setStatus('error');
-        setErrorMessage('Something went wrong. Please try again.');
-      }
+      if (!response.ok) throw new Error('Failed to submit form');
+
+      setSubmitStatus({
+        type: 'success',
+        message: 'Thank you for your message. We will be in touch shortly.'
+      });
+      setFormData({
+        name: '',
+        email: '',
+        company: '',
+        message: '',
+        inquiryType: 'general'
+      });
     } catch (error) {
-      setStatus('error');
-      setErrorMessage('Network error. Please try again.');
+      setSubmitStatus({
+        type: 'error',
+        message: 'Something went wrong. Please try again.'
+      });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
-        <div className="text-center mb-16">
-          <h1 className="text-4xl font-bold mb-4">Let's Talk AI ROI</h1>
-          <p className="text-xl text-gray-600">
-            Choose how you'd like to start your AI transformation journey.
+    <main className="bg-white">
+      {/* Hero Section */}
+      <section className="bg-gray-900 text-white py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto text-center">
+          <h1 className="text-4xl sm:text-5xl font-bold mb-6">
+            Get in Touch
+          </h1>
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            Let's discuss how we can help transform your team's potential.
           </p>
         </div>
+      </section>
 
-        <div className="grid lg:grid-cols-3 gap-12">
-          {/* Contact Information */}
-          <div className="lg:col-span-1">
-            <div className="bg-white p-8 rounded-xl shadow-lg">
-              <h2 className="text-2xl font-bold mb-6">Contact Us</h2>
-              
-              <div className="space-y-6">
-                <div className="flex items-start">
-                  <FaEnvelope className="text-blue-600 w-5 h-5 mt-1 mr-4" />
-                  <div>
-                    <h3 className="font-semibold">Email</h3>
-                    <p className="text-gray-600">info@apexnovaconsulting.com</p>
-                  </div>
+      {/* Contact Forms Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-12">
+            {/* Contact Information */}
+            <div>
+              <h2 className="text-3xl font-bold mb-6">Contact Information</h2>
+              <div className="space-y-6 text-gray-600">
+                <div className="flex items-center">
+                  <FaEnvelope className="w-6 h-6 text-teal-500 mr-3" />
+                  <a href="mailto:info@apexnovaconsulting.com" className="hover:text-teal-600">
+                    info@apexnovaconsulting.com
+                  </a>
                 </div>
+                <p className="text-gray-500">
+                  Serving clients in NYC, NJ, and nationwide through our virtual enablement platform.
+                </p>
+              </div>
 
-                <div className="flex items-start">
-                  <FaLinkedin className="text-blue-600 w-5 h-5 mt-1 mr-4" />
-                  <div>
-                    <h3 className="font-semibold">Connect</h3>
-                    <a 
-                      href="https://linkedin.com/company/apexnova"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-blue-600 hover:text-blue-700"
-                    >
-                      LinkedIn
-                    </a>
-                  </div>
+              {/* Form Type Selector */}
+              <div className="mt-12">
+                <h3 className="text-lg font-semibold mb-4">How can we help?</h3>
+                <div className="grid grid-cols-2 gap-4">
+                  <button
+                    className={`p-4 rounded-lg text-center transition-colors ${formType === 'general'
+                        ? 'bg-teal-500 text-white'
+                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      }`}
+                    onClick={() => setFormType('general')}
+                  >
+                    General Inquiry
+                  </button>
+                  <button
+                    className={`p-4 rounded-lg text-center transition-colors ${formType === 'audit'
+                        ? 'bg-teal-500 text-white'
+                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      }`}
+                    onClick={() => setFormType('audit')}
+                  >
+                    Book AI ROI Audit
+                  </button>
                 </div>
+              </div>
 
-                <div className="flex items-start">
-                  <FaBriefcase className="text-blue-600 w-5 h-5 mt-1 mr-4" />
-                  <div>
-                    <h3 className="font-semibold">Careers / Partners</h3>
-                    <Link
-                      href="/careers"
-                      className="text-blue-600 hover:text-blue-700"
-                    >
-                      View Opportunities
-                    </Link>
-                  </div>
-                </div>
-
-                {/* Quick Links */}
-                <div className="pt-6 mt-6 border-t border-gray-200">
-                  <h3 className="font-semibold mb-4">Quick Links</h3>
-                  <ul className="space-y-2">
-                    <li>
-                      <Link href="/roi-audit" className="text-blue-600 hover:text-blue-700">
-                        Book AI ROI Audit →
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="/toolkit-download" className="text-blue-600 hover:text-blue-700">
-                        Download Free Toolkit →
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
+              {/* Careers/Partner Section */}
+              <div className="mt-12 p-6 bg-gray-50 rounded-lg">
+                <h3 className="text-xl font-bold mb-3">Careers / Partnership</h3>
+                <p className="text-gray-600 mb-4">
+                  Interested in joining or partnering with ApexNova? We're always looking to connect with talented professionals and organizations.
+                </p>
+                <a
+                  href="#"
+                  className="inline-flex items-center text-teal-600 hover:text-teal-700"
+                >
+                  Learn More
+                  <FaArrowRight className="ml-2" />
+                </a>
               </div>
             </div>
-          </div>
 
-          {/* Contact Form */}
-          <div className="lg:col-span-2">
-            <div className="bg-white p-8 rounded-xl shadow-lg">
-              {/* Form Type Selector */}
-              <div className="flex mb-8 bg-gray-100 rounded-lg p-1">
-                <button
-                  onClick={() => setFormType('general')}
-                  className={`flex-1 py-2 px-4 rounded-md transition-colors ${
-                    formType === 'general' 
-                      ? 'bg-white shadow-sm' 
-                      : 'hover:bg-gray-200'
-                  }`}
+            {/* Contact Form */}
+            <div className="bg-gray-50 p-8 rounded-xl">
+              <h2 className="text-2xl font-bold mb-6">
+                {formType === 'general' ? 'Send Us a Message' : 'Book Your AI ROI Audit'}
+              </h2>
+
+              {submitStatus.message && (
+                <div
+                  className={`mb-6 p-4 rounded-lg ${submitStatus.type === 'success'
+                      ? 'bg-green-100 text-green-700'
+                      : 'bg-red-100 text-red-700'
+                    }`}
                 >
-                  General Inquiry
-                </button>
-                <button
-                  onClick={() => setFormType('audit')}
-                  className={`flex-1 py-2 px-4 rounded-md transition-colors ${
-                    formType === 'audit' 
-                      ? 'bg-white shadow-sm' 
-                      : 'hover:bg-gray-200'
-                  }`}
-                >
-                  Book AI ROI Audit
-                </button>
-              </div>
+                  {submitStatus.message}
+                </div>
+              )}
 
               <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="fullName" className="block text-sm font-medium text-gray-700 mb-2">
-                      Full Name *
-                    </label>
-                    <input
-                      type="text"
-                      id="fullName"
-                      name="fullName"
-                      value={formData.fullName}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      required
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                      Work Email *
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      required
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                      Phone Number
-                    </label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">
-                      Company Name *
-                    </label>
-                    <input
-                      type="text"
-                      id="company"
-                      name="company"
-                      value={formData.company}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      required
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="role" className="block text-sm font-medium text-gray-700 mb-2">
-                      Your Role *
-                    </label>
-                    <input
-                      type="text"
-                      id="role"
-                      name="role"
-                      value={formData.role}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      required
-                    />
-                  </div>
-
-                  {formType === 'general' && (
-                    <div>
-                      <label htmlFor="inquiryType" className="block text-sm font-medium text-gray-700 mb-2">
-                        Inquiry Type *
-                      </label>
-                      <select
-                        id="inquiryType"
-                        name="inquiryType"
-                        value={formData.inquiryType}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                        required
-                      >
-                        <option value="">Select inquiry type</option>
-                        <option value="ai-adoption">AI Adoption Services</option>
-                        <option value="enablement">Team Enablement</option>
-                        <option value="partnership">Partnership Opportunity</option>
-                        <option value="press">Press Inquiry</option>
-                        <option value="other">Other</option>
-                      </select>
-                    </div>
-                  )}
-
-                  {formType === 'audit' && (
-                    <div>
-                      <label htmlFor="timeframe" className="block text-sm font-medium text-gray-700 mb-2">
-                        Implementation Timeframe
-                      </label>
-                      <select
-                        id="timeframe"
-                        name="timeframe"
-                        value={formData.timeframe}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      >
-                        <option value="">Select timeframe</option>
-                        <option value="immediate">Ready to start immediately</option>
-                        <option value="1month">Within 1 month</option>
-                        <option value="3months">Within 3 months</option>
-                        <option value="exploring">Just exploring options</option>
-                      </select>
-                    </div>
-                  )}
+                <div>
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+                    Name
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                  />
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                    {formType === 'audit' ? 'Tell us about your AI adoption goals *' : 'Your Message *'}
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-1">
+                    Company
+                  </label>
+                  <input
+                    type="text"
+                    id="company"
+                    name="company"
+                    value={formData.company}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
+                    Message
                   </label>
                   <textarea
                     id="message"
                     name="message"
                     value={formData.message}
-                    onChange={handleChange}
-                    rows={4}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    onChange={handleInputChange}
                     required
-                  ></textarea>
-                </div>
-
-                <div>
-                  <label htmlFor="source" className="block text-sm font-medium text-gray-700 mb-2">
-                    How did you hear about us?
-                  </label>
-                  <select
-                    id="source"
-                    name="source"
-                    value={formData.source}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  >
-                    <option value="">Select an option</option>
-                    <option value="referral">Professional Referral</option>
-                    <option value="linkedin">LinkedIn</option>
-                    <option value="google">Google Search</option>
-                    <option value="event">Professional Event</option>
-                    <option value="other">Other</option>
-                  </select>
+                    rows={4}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                  />
                 </div>
 
                 <button
                   type="submit"
-                  disabled={status === 'loading'}
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-lg transition-colors disabled:opacity-50 flex items-center justify-center"
+                  disabled={isSubmitting}
+                  className="w-full bg-teal-500 hover:bg-teal-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors disabled:opacity-50"
                 >
-                  {status === 'loading' ? (
-                    'Sending...'
-                  ) : (
-                    <>
-                      {formType === 'audit' ? 'Book My AI ROI Audit' : 'Send Message'}
-                      <FaArrowRight className="ml-2" />
-                    </>
-                  )}
+                  {isSubmitting ? 'Sending...' : formType === 'general' ? 'Send Message' : 'Book Audit'}
                 </button>
-
-                {status === 'success' && (
-                  <p className="text-green-600 text-center">
-                    Thank you for your message. We'll be in touch shortly!
-                  </p>
-                )}
-
-                {status === 'error' && (
-                  <p className="text-red-600 text-center">
-                    {errorMessage}
-                  </p>
-                )}
               </form>
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </section>
+    </main>
   );
 }
