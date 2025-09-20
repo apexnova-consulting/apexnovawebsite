@@ -1,20 +1,20 @@
 'use client';
 
 import DualHero from '@/components/DualHero';
-import DualServices from '@/components/DualServices';
+import ServicesSection from '@/components/ServicesSection';
 import HowItWorks from '@/components/HowItWorks';
-import ToolkitCTA from '@/components/ToolkitCTA';
-import DualTestimonials from '@/components/DualTestimonials';
+import CaseStudies from '@/components/CaseStudies';
+import ClosingCTA from '@/components/ClosingCTA';
 import Footer from '@/components/Footer';
 
 export default function Home() {
   return (
-    <main>
+    <main className="bg-gray-50">
       <DualHero />
-      <DualServices />
+      <ServicesSection />
       <HowItWorks />
-      <DualTestimonials />
-      <ToolkitCTA />
+      <CaseStudies />
+      <ClosingCTA />
       <Footer />
     </main>
   );
