@@ -1,6 +1,5 @@
 import React from 'react';
 import Link from 'next/link';
-import { FaLinkedin, FaTwitter, FaYoutube } from 'react-icons/fa';
 
 const Footer = () => {
   const navigation = {
@@ -18,23 +17,6 @@ const Footer = () => {
       { name: 'Contact', href: '/contact' },
       { name: 'Privacy Policy', href: '/privacy-policy' },
       { name: 'Terms of Service', href: '/terms-of-service' }
-    ],
-    social: [
-      {
-        name: 'LinkedIn',
-        href: 'https://linkedin.com/company/apexnova',
-        icon: FaLinkedin
-      },
-      {
-        name: 'Twitter',
-        href: 'https://twitter.com/apexnova',
-        icon: FaTwitter
-      },
-      {
-        name: 'YouTube',
-        href: 'https://youtube.com/@apexnova',
-        icon: FaYoutube
-      }
     ]
   };
 
@@ -55,20 +37,6 @@ const Footer = () => {
             <p className="text-gray-400 text-base">
               Transforming AI investments into business outcomes through proven enablement strategies.
             </p>
-            <div className="flex space-x-6">
-              {navigation.social.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className="text-gray-400 hover:text-gray-300"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <span className="sr-only">{item.name}</span>
-                  <item.icon className="h-6 w-6" aria-hidden="true" />
-                </a>
-              ))}
-            </div>
           </div>
           <div className="mt-12 grid grid-cols-2 gap-8 xl:mt-0 xl:col-span-2">
             <div className="md:grid md:grid-cols-2 md:gap-8">

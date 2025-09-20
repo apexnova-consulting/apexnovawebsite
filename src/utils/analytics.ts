@@ -3,10 +3,6 @@ declare global {
   interface Window {
     gtag: (...args: any[]) => void;
     dataLayer: any[];
-    _linkedin_data_partner_ids: string[];
-    lintrk: any;
-    ttq: any;
-    TiktokAnalyticsObject: string;
   }
 }
 
@@ -22,32 +18,12 @@ export const initGA4 = () => {
   }
 };
 
-// Initialize LinkedIn Insight Tag
-export const initLinkedIn = () => {
-  if (typeof window !== 'undefined' && process.env.NEXT_PUBLIC_LINKEDIN_TAG) {
-    window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
-    window._linkedin_data_partner_ids.push(process.env.NEXT_PUBLIC_LINKEDIN_TAG);
-  }
-};
-
-// Initialize TikTok Pixel
-export const initTikTok = () => {
-  if (typeof window !== 'undefined' && process.env.NEXT_PUBLIC_TIKTOK_PIXEL) {
-    window.TiktokAnalyticsObject = 'ttq';
-    window.ttq = window.ttq || [];
-  }
-};
-
 // Track Page View
 export const trackPageView = (url: string) => {
   if (typeof window !== 'undefined') {
-    // GA4
     window.gtag?.('event', 'page_view', {
       page_location: url,
     });
-
-    // TikTok
-    window.ttq?.track?.('PageView');
   }
 };
 
@@ -57,11 +33,7 @@ export const trackEvent = (
   params: Record<string, any> = {}
 ) => {
   if (typeof window !== 'undefined') {
-    // GA4
     window.gtag?.('event', eventName, params);
-
-    // TikTok
-    window.ttq?.track?.(eventName, params);
   }
 };
 
