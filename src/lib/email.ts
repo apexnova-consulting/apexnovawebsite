@@ -2,48 +2,43 @@ import { Resend } from 'resend';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-export const sendEmail = async ({
-  to,
-  subject,
-  html,
-  isAdminEmail = false,
-}: {
+interface EmailData {
   to: string;
   subject: string;
   html: string;
-  isAdminEmail?: boolean;
-}) => {
+  name?: string;
+  company?: string;
+  message?: string;
+}
+
+export async function sendEmail(emailData: EmailData) {
   try {
-    // During testing/development, redirect all non-admin emails to the admin email
-    const finalRecipient = isAdminEmail ? 'info@apexnovaconsulting.com' : 'info@apexnovaconsulting.com';
+    const { to, subject, html, name, company, message } = emailData;
 
-    // Add a prefix to the subject if it's a redirected user email
-    const finalSubject = !isAdminEmail ? `[User Copy] ${subject}` : subject;
-
-    // Add a note at the top of redirected emails
-    const finalHtml = !isAdminEmail
-      ? `<div style="background: #f0f0f0; padding: 10px; margin-bottom: 20px;">
-           <strong>Note:</strong> This email was intended for ${to}. 
-           It's being sent to the admin email during development.
-         </div>${html}`
-      : html;
-
-    if (!process.env.RESEND_API_KEY) {
-      // Log email for development if Resend is not configured
-      console.log('Resend not configured - Would send:', {
-        to: finalRecipient,
-        subject: finalSubject,
-        html: finalHtml
-      });
-      return { success: true, data: { id: 'development' } };
+    // Add custom fields to the email subject if they exist
+    let finalSubject = subject;
+    if (name && company) {
+      finalSubject = `${subject} - ${name} from ${company}`;
     }
 
+    // Add custom fields to the email body if they exist
+    let finalHtml = html;
+    if (name || company || message) {
+      finalHtml = `
+        ${html}
+        ${name ? `<p><strong>Name:</strong> ${name}</p>` : ''}
+        ${company ? `<p><strong>Company:</strong> ${company}</p>` : ''}
+        ${message ? `<p><strong>Message:</strong> ${message}</p>` : ''}
+      `;
+    }
+
+    // Send email using Resend
     const data = await resend.emails.send({
-      from: 'ApexNova <noreply@apexnovaconsulting.com>',
-      to: finalRecipient,
+      from: 'info@apexnovaconsulting.com',
+      to,
       subject: finalSubject,
       html: finalHtml,
-      replyTo: 'info@apexnovaconsulting.com'
+      reply_to: 'info@apexnovaconsulting.com'
     });
 
     return { success: true, data };
@@ -51,4 +46,4 @@ export const sendEmail = async ({
     console.error('Email send error:', error);
     return { success: false, error };
   }
-};
+}
