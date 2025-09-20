@@ -7,6 +7,9 @@ import Script from 'next/script';
 
 const inter = Inter({ subsets: ['latin'] });
 
+// Your GA4 Measurement ID
+const GA_MEASUREMENT_ID = 'G-8SS5JWNLS6';
+
 export const metadata: Metadata = {
   title: 'ApexNova Consulting | AI Enablement + ROI Consulting',
   description: 'We help executives and teams unlock productivity with AI adoption, training, and enablement. From friction to workflows → measurable results.',
@@ -48,9 +51,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* GA4 */}
+        {/* Google Analytics */}
         <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA4_ID}`}
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
           strategy="afterInteractive"
         />
         <Script id="google-analytics" strategy="afterInteractive">
@@ -58,7 +61,7 @@ export default function RootLayout({
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', '${process.env.NEXT_PUBLIC_GA4_ID}');
+            gtag('config', '${GA_MEASUREMENT_ID}');
           `}
         </Script>
       </head>

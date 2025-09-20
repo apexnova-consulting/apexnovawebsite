@@ -6,15 +6,18 @@ declare global {
   }
 }
 
+// Your GA4 Measurement ID
+const GA_MEASUREMENT_ID = 'G-8SS5JWNLS6';
+
 // Initialize GA4
 export const initGA4 = () => {
-  if (typeof window !== 'undefined' && process.env.NEXT_PUBLIC_GA4_ID) {
+  if (typeof window !== 'undefined') {
     window.dataLayer = window.dataLayer || [];
     window.gtag = function gtag(...args: any[]) {
       window.dataLayer.push(args);
     };
     window.gtag('js', new Date());
-    window.gtag('config', process.env.NEXT_PUBLIC_GA4_ID);
+    window.gtag('config', GA_MEASUREMENT_ID);
   }
 };
 
