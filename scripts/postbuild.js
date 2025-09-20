@@ -12,7 +12,7 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: ${process.env.NEXT_PUBLIC_SITE_URL || 'https://apexnovaconsulting.com'}/sitemap.xml
+Sitemap: https://www.apexnovaconsulting.com/sitemap.xml
 `;
   fs.writeFileSync(robotsPath, robotsContent);
   console.log('robots.txt created successfully.');
@@ -26,4 +26,4 @@ if (!fs.existsSync(sitemapPath)) {
 }
 
 // Log success message
-console.log('Post-build tasks completed successfully.'); 
+console.log('Post-build tasks completed successfully.');
