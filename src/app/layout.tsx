@@ -67,7 +67,9 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <Navbar />
-        {children}
+        <div id="page-content">
+          {children}
+        </div>
         <Footer />
       </body>
     </html>
