@@ -1,8 +1,12 @@
-// GA4 Types
+// Type declarations for analytics scripts
 declare global {
   interface Window {
     gtag: (...args: any[]) => void;
     dataLayer: any[];
+    _linkedin_data_partner_ids: string[];
+    lintrk: any;
+    ttq: any;
+    TiktokAnalyticsObject: string;
   }
 }
 
@@ -29,12 +33,8 @@ export const initLinkedIn = () => {
 // Initialize TikTok Pixel
 export const initTikTok = () => {
   if (typeof window !== 'undefined' && process.env.NEXT_PUBLIC_TIKTOK_PIXEL) {
-    !function (w: any, d: Document, t: string) {
-      var s = d.createElement('script');
-      s.src = 'https://analytics.tiktok.com/i18n/pixel/sdk.js?sdkid=' + process.env.NEXT_PUBLIC_TIKTOK_PIXEL;
-      s.defer = true;
-      d.head.appendChild(s);
-    }(window, document, 'script');
+    window.TiktokAnalyticsObject = 'ttq';
+    window.ttq = window.ttq || [];
   }
 };
 
@@ -42,29 +42,28 @@ export const initTikTok = () => {
 export const trackPageView = (url: string) => {
   if (typeof window !== 'undefined') {
     // GA4
-    window.gtag('event', 'page_view', {
+    window.gtag?.('event', 'page_view', {
       page_location: url,
     });
 
     // TikTok
-    if (window.ttq) {
-      window.ttq.track('PageView');
-    }
+    window.ttq?.track?.('PageView');
   }
 };
 
 // Track Event
 export const trackEvent = (
   eventName: string,
-  params: { [key: string]: any } = {}
+  params: Record<string, any> = {}
 ) => {
   if (typeof window !== 'undefined') {
     // GA4
-    window.gtag('event', eventName, params);
+    window.gtag?.('event', eventName, params);
 
     // TikTok
-    if (window.ttq) {
-      window.ttq.track(eventName, params);
-    }
+    window.ttq?.track?.(eventName, params);
   }
 };
+
+// Export an empty object to satisfy TypeScript module requirements
+export {};
