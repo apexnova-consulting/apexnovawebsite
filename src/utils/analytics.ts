@@ -14,8 +14,8 @@ declare global {
 export const initGA4 = () => {
   if (typeof window !== 'undefined' && process.env.NEXT_PUBLIC_GA4_ID) {
     window.dataLayer = window.dataLayer || [];
-    window.gtag = function gtag() {
-      window.dataLayer.push(arguments);
+    window.gtag = function gtag(...args: any[]) {
+      window.dataLayer.push(args);
     };
     window.gtag('js', new Date());
     window.gtag('config', process.env.NEXT_PUBLIC_GA4_ID);
