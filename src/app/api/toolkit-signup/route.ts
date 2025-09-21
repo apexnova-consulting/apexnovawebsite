@@ -3,21 +3,35 @@ import { sendEmail } from '@/lib/email';
 
 export async function POST(request: Request) {
   try {
-    const { email, name, company } = await request.json();
+    const { name, email, company } = await request.json();
 
-    if (!email || !name || !company) {
-      return NextResponse.json(
-        { message: 'Missing required fields' },
-        { status: 400 }
-      );
-    }
+    // Send confirmation email to user
+    const userEmailResult = await sendEmail({
+      to: email,
+      subject: 'Your AI Enablement Toolkit',
+      html: `
+        <h1>Thank You for Downloading Our AI Enablement Toolkit!</h1>
+        <p>Dear ${name},</p>
+        <p>Thank you for your interest in optimizing your team's AI adoption. Here's your toolkit:</p>
+        <ul>
+          <li><a href="${process.env.NEXT_PUBLIC_URL}/downloads/ai-readiness-assessment.pdf">AI Readiness Assessment Template</a></li>
+          <li><a href="${process.env.NEXT_PUBLIC_URL}/downloads/roi-calculator.xlsx">ROI Calculator Spreadsheet</a></li>
+          <li><a href="${process.env.NEXT_PUBLIC_URL}/downloads/implementation-checklist.pdf">Implementation Checklist</a></li>
+          <li><a href="${process.env.NEXT_PUBLIC_URL}/downloads/quick-start-guide.pdf">Quick-Start Guide</a></li>
+        </ul>
+        <p>Want personalized insights? <a href="https://calendly.com/apexnovaconsulting-info/30min">Book your free mini audit</a>.</p>
+        <p>Best regards,<br>The ApexNova Team</p>
+      `,
+      name,
+      company
+    });
 
-    // Email to admin
+    // Send notification to admin
     const adminEmailResult = await sendEmail({
       to: 'info@apexnovaconsulting.com',
-      subject: 'New AI-Ready Teams™ Toolkit Request',
+      subject: 'New Toolkit Download',
       html: `
-        <h2>New Toolkit Request</h2>
+        <h1>New Toolkit Download</h1>
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Company:</strong> ${company}</p>
@@ -25,51 +39,15 @@ export async function POST(request: Request) {
       isAdminEmail: true
     });
 
-    if (!adminEmailResult.success) {
-      throw new Error('Failed to send admin notification');
+    if (!userEmailResult.success || !adminEmailResult.success) {
+      throw new Error('Failed to send emails');
     }
 
-    // Confirmation email to user
-    const userEmailResult = await sendEmail({
-      to: email,
-      subject: 'Your AI-Ready Teams™ Toolkit Request',
-      html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h1 style="color: #1a56db;">Thank You for Your Interest!</h1>
-          
-          <p>Hi ${name},</p>
-          
-          <p>Thank you for requesting the AI-Ready Teams™ Toolkit. Our team will review your request and send you an invoice shortly.</p>
-          
-          <div style="background-color: #f3f4f6; padding: 20px; border-radius: 8px; margin: 20px 0;">
-            <h3 style="margin-top: 0;">What's Next:</h3>
-            <ol style="padding-left: 20px;">
-              <li>You'll receive an invoice for $97</li>
-              <li>Once payment is processed, we'll send your toolkit access</li>
-              <li>You'll get immediate access to all templates and frameworks</li>
-            </ol>
-          </div>
-          
-          <p>If you have any questions in the meantime, please don't hesitate to reach out.</p>
-          
-          <p>Best regards,<br>The ApexNova Team</p>
-        </div>
-      `,
-      isAdminEmail: false
-    });
-
-    if (!userEmailResult.success) {
-      console.warn('Failed to send user confirmation email, but request was processed');
-    }
-
-    return NextResponse.json(
-      { message: 'Request received successfully' },
-      { status: 200 }
-    );
+    return NextResponse.json({ success: true });
   } catch (error) {
     console.error('Toolkit signup error:', error);
     return NextResponse.json(
-      { message: 'Failed to process request. Please try again.' },
+      { error: 'Failed to process toolkit request' },
       { status: 500 }
     );
   }
