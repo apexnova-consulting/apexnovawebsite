@@ -5,12 +5,12 @@
   "installCommand": "npm install",
   "outputDirectory": ".next",
   "framework": "nextjs",
-  "rewrites": [
-    {
-      "source": "/api/(.*)",
-      "destination": "/api/$1"
-    }
-  ],
+  "regions": ["iad1"],
+  "public": false,
+  "github": {
+    "enabled": true,
+    "silent": false
+  },
   "headers": [
     {
       "source": "/(.*)",
@@ -65,14 +65,6 @@
       ]
     }
   ],
-  "github": {
-    "enabled": true,
-    "silent": false
-  },
-  "regions": [
-    "iad1"
-  ],
-  "public": false,
   "env": {
     "NODE_ENV": "production"
   }

@@ -1,45 +1,52 @@
 /** @type {import('next').NextConfig} */
-const path = require('path');
-
 const nextConfig = {
-  output: 'standalone',
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ['images.unsplash.com'],
-    formats: ['image/avif', 'image/webp'],
-    unoptimized: false,
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: '**',
-      },
-    ],
+    domains: ['www.apexnovaconsulting.com'],
+    unoptimized: true,
   },
+  // Ensure proper handling of client-side navigation
   experimental: {
-    serverComponentsExternalPackages: [],
-    optimizeCss: false,
+    scrollRestoration: true,
   },
-  webpack: (config) => {
-    config.resolve.alias['@'] = path.resolve(__dirname, 'src');
-    config.resolve.alias['@/components'] = path.resolve(__dirname, 'src/components');
-    return config;
+  // Environment variable configuration
+  env: {
+    NEXT_PUBLIC_URL: process.env.NEXT_PUBLIC_URL || 'https://www.apexnovaconsulting.com',
+    NEXT_PUBLIC_GA_ID: process.env.NEXT_PUBLIC_GA_ID,
   },
-  poweredByHeader: false,
-  compress: true,
-  productionBrowserSourceMaps: false,
+  // Optimize build output
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
+  },
+  // Handle redirects
+  async redirects() {
+    return [
+      {
+        source: '/book',
+        destination: '/mini-audit',
+        permanent: true,
+      },
+      {
+        source: '/toolkit',
+        destination: '/toolkit-download',
+        permanent: true,
+      },
+    ];
+  },
+  // Handle headers
   async headers() {
     return [
       {
-        source: '/(.*)',
+        source: '/:path*',
         headers: [
-          {
-            key: 'X-Frame-Options',
-            value: 'DENY',
-          },
           {
             key: 'X-Content-Type-Options',
             value: 'nosniff',
+          },
+          {
+            key: 'X-Frame-Options',
+            value: 'DENY',
           },
           {
             key: 'X-XSS-Protection',
@@ -53,6 +60,6 @@ const nextConfig = {
       },
     ];
   },
-};
+}
 
-module.exports = nextConfig; 
+module.exports = nextConfig
