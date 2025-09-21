@@ -14,8 +14,14 @@ const DualHero = () => {
   return (
     <section className="relative bg-secondary text-white pt-20 pb-20 px-4 sm:px-6 lg:px-8">
       {/* Monthly Openings Banner */}
-      <div className="absolute top-0 left-0 right-0 bg-primary px-4 py-2 text-center text-white">
-        <span role="img" aria-label="rocket">🚀</span> September openings: 2 Free Mini Audits left this month — book now
+      <div className="absolute top-0 left-0 right-0 bg-primary px-4 py-2 text-center">
+        <div className="text-white font-semibold text-sm sm:text-base">
+          <span role="img" aria-label="rocket" className="mr-2">🚀</span>
+          September openings: 2 Free Mini Audits left this month — 
+          <Link href="/mini-audit" className="underline ml-1 hover:text-white/90">
+            book now
+          </Link>
+        </div>
       </div>
 
       <div className="absolute inset-0 overflow-hidden">
@@ -27,7 +33,7 @@ const DualHero = () => {
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-6">
             Transform Your Team's Communication & AI Adoption
             <br />
-            <span className="text-primary">into Measurable Growth</span>
+            <span className="text-primary-light">into Measurable Growth</span>
           </h1>
           <p className="text-xl sm:text-2xl text-gray-300 max-w-3xl mx-auto mb-4">
             Trusted by executives to cut friction, boost adoption, and deliver measurable ROI in 90 days.
@@ -42,7 +48,7 @@ const DualHero = () => {
             </Link>
             <Link 
               href="/toolkit-download"
-              className="inline-flex items-center justify-center bg-transparent hover:bg-white/10 text-white font-semibold px-8 py-4 rounded-lg border border-white/30 transition-colors"
+              className="inline-flex items-center justify-center bg-white/10 hover:bg-white/20 text-white font-semibold px-8 py-4 rounded-lg transition-colors"
             >
               Download Free AI Toolkit
             </Link>
@@ -55,7 +61,7 @@ const DualHero = () => {
                 key={index}
                 className="flex items-center justify-center bg-white/5 backdrop-blur rounded-lg py-4 px-6"
               >
-                <span className="text-primary mr-3">{metric.icon}</span>
+                <span className="text-primary-light mr-3">{metric.icon}</span>
                 <span className="font-semibold">{metric.text}</span>
               </div>
             ))}
