@@ -1,18 +1,20 @@
 'use client';
 
-import DualHero from '@/components/DualHero';
-import ServicesSection from '@/components/ServicesSection';
-import CaseStudies from '@/components/CaseStudies';
+import AISecurityHero from '@/components/AISecurityHero';
+import ProblemAgitation from '@/components/ProblemAgitation';
+import ThreeTierServices from '@/components/ThreeTierServices';
+import AISecurityFramework from '@/components/AISecurityFramework';
+import AISecurityTestimonials from '@/components/AISecurityTestimonials';
 import ClosingCTA from '@/components/ClosingCTA';
-import TestimonialCarousel from '@/components/TestimonialCarousel';
 
 export default function Home() {
   return (
-    <main className="bg-gray-50">
-      <DualHero />
-      <ServicesSection />
-      <CaseStudies />
-      <TestimonialCarousel />
+    <main className="bg-white">
+      <AISecurityHero />
+      <ProblemAgitation />
+      <ThreeTierServices />
+      <AISecurityFramework />
+      <AISecurityTestimonials />
       <ClosingCTA />
     </main>
   );

@@ -4,16 +4,16 @@ import Link from 'next/link';
 const Footer = () => {
   const navigation = {
     services: [
-      { name: 'AI Adoption-as-a-Service™', href: '/#core-offer' },
-      { name: 'Executive Workshops', href: '/workshop' },
-      { name: 'Enablement Coaching', href: '/services#coaching' },
-      { name: 'Leader Cohort Course', href: '/cohort-course' }
+      { name: 'AI Governance & Security', href: '/services/ai-governance' },
+      { name: 'Sales & Marketing Transformation', href: '/services/sales-marketing' },
+      { name: 'Free AI Health Check', href: '/ai-risk-calculator' }
     ],
     resources: [
-      { name: 'AI-Ready Teams™ Toolkit', href: '/toolkit-download' }
+      { name: 'Blog & Insights', href: '/blog' },
+      { name: 'Case Studies', href: '/case-studies' },
+      { name: 'About Us', href: '/about' }
     ],
     company: [
-      { name: 'About Us', href: '/about' },
       { name: 'Contact', href: '/contact' },
       { name: 'Privacy Policy', href: '/privacy-policy' },
       { name: 'Terms of Service', href: '/terms-of-service' }
@@ -21,7 +21,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-gray-900" aria-labelledby="footer-heading">
+    <footer className="bg-secondary-dark" aria-labelledby="footer-heading">
       <h2 id="footer-heading" className="sr-only">
         Footer
       </h2>
@@ -30,12 +30,12 @@ const Footer = () => {
           <div className="space-y-8 xl:col-span-1">
             <Link href="/" className="flex items-center">
               <div className="flex items-center">
-                <span className="text-blue-500 font-bold text-2xl">Apex</span>
+                <span className="text-primary-light font-bold text-2xl">Apex</span>
                 <span className="text-white font-bold text-2xl">Nova</span>
               </div>
             </Link>
             <p className="text-gray-400 text-base">
-              Transforming AI investments into business outcomes through proven enablement strategies.
+              Your Outsourced AI Governance Team. We help you harness the power of AI without the legal, security, and operational risks.
             </p>
           </div>
           <div className="mt-12 grid grid-cols-2 gap-8 xl:mt-0 xl:col-span-2">
@@ -98,7 +98,7 @@ const Footer = () => {
         </div>
         <div className="mt-12 border-t border-gray-700 pt-8">
           <p className="text-base text-gray-400 xl:text-center">
-            &copy; {new Date().getFullYear()} ApexNova. All rights reserved. AI Adoption-as-a-Service™ and AI-Ready Teams™ are trademarks of ApexNova.
+            &copy; {new Date().getFullYear()} ApexNova Consulting. All rights reserved.
           </p>
         </div>
       </div>

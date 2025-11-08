@@ -19,9 +19,9 @@ const Navbar = () => {
 
   const navigation = [
     { name: 'Home', href: '/' },
-    { name: 'Professionals', href: '/professionals' },
-    { name: 'Companies', href: '/companies' },
-    { name: 'Digital Products', href: '/digital-products' },
+    { name: 'AI Governance & Security', href: '/services/ai-governance' },
+    { name: 'Sales & Marketing', href: '/services/sales-marketing' },
+    { name: 'Resources', href: '/blog' },
     { name: 'About', href: '/about' },
     { name: 'Contact', href: '/contact' }
   ];
@@ -29,13 +29,13 @@ const Navbar = () => {
   return (
     <>
       {/* Promo Banner */}
-      <div className="bg-blue-600 py-2 px-4 text-center text-white text-sm">
-        <span className="mr-2">🔥 Limited Time: Book your AI ROI Audit for $2,500 (50% off)</span>
+      <div className="bg-accent py-2 px-4 text-center text-white text-sm">
+        <span className="mr-2">🔒 Free AI Health Check: Discover Your Top 3 Vulnerabilities</span>
         <Link 
-          href="/roi-audit"
-          className="inline-flex items-center text-white hover:text-white/90"
+          href="/ai-risk-calculator"
+          className="inline-flex items-center text-white hover:text-white/90 font-semibold"
         >
-          Book Now
+          Get Started
           <FaArrowRight className="ml-1 w-3 h-3" />
         </Link>
       </div>
@@ -69,10 +69,10 @@ const Navbar = () => {
                 </Link>
               ))}
               <Link
-                href="/roi-audit"
-                className="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white font-medium px-4 py-2 rounded-lg transition-colors ml-4"
+                href="/ai-risk-calculator"
+                className="inline-flex items-center justify-center bg-accent hover:bg-accent-dark text-white font-medium px-4 py-2 rounded-lg transition-colors ml-4"
               >
-                Book My AI ROI Audit
+                Free AI Health Check
               </Link>
             </div>
 
@@ -107,11 +107,11 @@ const Navbar = () => {
               </Link>
             ))}
             <Link
-              href="/roi-audit"
-              className="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-medium px-4 py-2 rounded-lg transition-colors mt-4"
+              href="/ai-risk-calculator"
+              className="block w-full text-center bg-accent hover:bg-accent-dark text-white font-medium px-4 py-2 rounded-lg transition-colors mt-4"
               onClick={() => setIsOpen(false)}
             >
-              Book My AI ROI Audit
+              Free AI Health Check
             </Link>
           </div>
         </div>

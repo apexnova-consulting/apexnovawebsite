@@ -2,219 +2,138 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { FaArrowRight, FaSearch, FaRocket, FaUserTie, FaBook } from 'react-icons/fa';
+import { FaShieldAlt, FaChartLine, FaArrowRight } from 'react-icons/fa';
 
 export default function ServicesPage() {
-  const services = [
-    {
-      icon: <FaSearch className="w-12 h-12 text-teal-500" />,
-      title: "AI ROI Audit",
-      price: "$2.5K → $5K",
-      duration: "14 days",
-      description: "Deep-dive analysis of your current AI tools and communication workflows.",
-      deliverables: [
-        "Comprehensive workflow analysis",
-        "ROI opportunity mapping",
-        "Tool stack assessment",
-        "Quick-win implementation plan",
-        "90-day roadmap"
-      ],
-      outcomes: [
-        "Clear visibility into AI opportunities",
-        "Prioritized action items",
-        "Expected ROI calculations",
-        "Risk mitigation strategies"
-      ],
-      cta: "Book Your Audit",
-      href: "/roi-audit"
-    },
-    {
-      icon: <FaRocket className="w-12 h-12 text-teal-500" />,
-      title: "90-Day Sprint Program",
-      price: "$25K",
-      duration: "90 days",
-      description: "Complete implementation and training program for lasting transformation.",
-      deliverables: [
-        "Custom enablement blueprint",
-        "Workflow documentation",
-        "Team training sessions",
-        "Progress tracking dashboard",
-        "Weekly check-ins"
-      ],
-      outcomes: [
-        "80%+ team adoption rate",
-        "Measurable productivity gains",
-        "Documented processes",
-        "Self-sustaining system"
-      ],
-      cta: "Learn More",
-      href: "/sprint-program"
-    },
-    {
-      icon: <FaUserTie className="w-12 h-12 text-teal-500" />,
-      title: "Fractional Coach",
-      price: "$5K+ monthly",
-      duration: "Ongoing",
-      description: "Dedicated advisory and implementation support for sustainable growth.",
-      deliverables: [
-        "Monthly strategy sessions",
-        "Custom training workshops",
-        "On-demand consulting",
-        "Progress reviews",
-        "ROI reporting"
-      ],
-      outcomes: [
-        "Continuous optimization",
-        "Rapid problem resolution",
-        "Scaling best practices",
-        "Long-term accountability"
-      ],
-      cta: "Get Details",
-      href: "/coaching"
-    }
-  ];
-
-  const digitalProducts = {
-    icon: <FaBook className="w-12 h-12 text-teal-500" />,
-    title: "Digital Products",
-    description: "Self-paced resources for teams and individuals.",
-    products: [
-      {
-        name: "AI-Ready Teams™ Toolkit",
-        price: "$97",
-        features: [
-          "Workflow templates",
-          "Prompt libraries",
-          "SOPs and guides",
-          "Training materials"
-        ]
-      },
-      {
-        name: "Communication Confidence Course",
-        price: "$49",
-        features: [
-          "Video lessons",
-          "Practice exercises",
-          "Feedback templates",
-          "Resource library"
-        ]
-      }
-    ]
-  };
-
   return (
     <main className="bg-white">
       {/* Hero Section */}
-      <section className="bg-gray-900 text-white py-20 px-4 sm:px-6 lg:px-8">
+      <section className="bg-gradient-to-br from-secondary via-secondary-dark to-primary text-white py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-4xl sm:text-5xl font-bold mb-6">
-            Our Solutions
+          <h1 className="text-5xl sm:text-6xl font-bold mb-6">
+            Our Services
           </h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Comprehensive services to transform your team's communication and AI capabilities.
+          <p className="text-2xl text-gray-300 max-w-4xl mx-auto">
+            Choose the solution that fits your needs
           </p>
         </div>
       </section>
 
-      {/* Services Grid */}
+      {/* Services Cards */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-3 gap-12">
-            {services.map((service, index) => (
-              <div
-                key={index}
-                className="bg-gray-50 rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow"
-              >
-                <div className="mb-6">{service.icon}</div>
-                <h2 className="text-2xl font-bold mb-2">{service.title}</h2>
-                <div className="text-2xl font-bold text-teal-600 mb-2">
-                  {service.price}
+          <div className="grid lg:grid-cols-2 gap-12">
+            {/* AI Governance & Security */}
+            <div className="bg-gradient-to-br from-primary to-primary-dark text-white rounded-2xl shadow-2xl overflow-hidden transform hover:scale-105 transition-all">
+              <div className="p-12">
+                <div className="flex justify-center mb-6">
+                  <div className="w-20 h-20 bg-accent rounded-full flex items-center justify-center">
+                    <FaShieldAlt className="w-10 h-10 text-white" />
+                  </div>
                 </div>
-                <div className="text-gray-600 mb-6">
-                  Duration: {service.duration}
-                </div>
-                <p className="text-gray-600 mb-6">
-                  {service.description}
+                <h2 className="text-3xl font-bold mb-4 text-center">
+                  AI Governance & Security
+                </h2>
+                <p className="text-xl text-gray-200 mb-8 text-center">
+                  Our primary service: Secure your AI operations and eliminate risks
                 </p>
-
-                <div className="mb-6">
-                  <h3 className="font-bold mb-3">Deliverables:</h3>
-                  <ul className="space-y-2">
-                    {service.deliverables.map((item, idx) => (
-                      <li key={idx} className="flex items-center text-gray-600">
-                        <span className="w-2 h-2 bg-teal-500 rounded-full mr-3"></span>
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="mb-8">
-                  <h3 className="font-bold mb-3">Outcomes:</h3>
-                  <ul className="space-y-2">
-                    {service.outcomes.map((item, idx) => (
-                      <li key={idx} className="flex items-center text-gray-600">
-                        <span className="w-2 h-2 bg-teal-500 rounded-full mr-3"></span>
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
+                <ul className="space-y-4 mb-8">
+                  <li className="flex items-start">
+                    <span className="text-accent mr-3 mt-1 text-xl">✓</span>
+                    <span>Complete AI tool audits and risk assessments</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-accent mr-3 mt-1 text-xl">✓</span>
+                    <span>Custom governance policies and compliance frameworks</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-accent mr-3 mt-1 text-xl">✓</span>
+                    <span>Team training and security awareness programs</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-accent mr-3 mt-1 text-xl">✓</span>
+                    <span>Ongoing monitoring and optimization</span>
+                  </li>
+                </ul>
                 <Link
-                  href={service.href}
-                  className="group flex items-center justify-center w-full bg-gray-900 hover:bg-gray-800 text-white font-semibold px-6 py-3 rounded-lg transition-colors"
+                  href="/services/ai-governance"
+                  className="group flex items-center justify-center w-full bg-accent hover:bg-accent-dark text-white font-semibold px-8 py-4 rounded-lg transition-all"
                 >
-                  {service.cta}
+                  Explore AI Security Services
                   <FaArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>
-            ))}
+              <div className="bg-accent px-8 py-4 text-center">
+                <p className="font-semibold">Starting at $1,997</p>
+              </div>
+            </div>
+
+            {/* Sales & Marketing */}
+            <div className="bg-gradient-to-br from-gray-50 to-white rounded-2xl shadow-2xl overflow-hidden border-2 border-gray-200 transform hover:scale-105 transition-all">
+              <div className="p-12">
+                <div className="flex justify-center mb-6">
+                  <div className="w-20 h-20 bg-primary rounded-full flex items-center justify-center">
+                    <FaChartLine className="w-10 h-10 text-white" />
+                  </div>
+                </div>
+                <h2 className="text-3xl font-bold mb-4 text-center text-secondary">
+                  Sales & Marketing Transformation
+                </h2>
+                <p className="text-xl text-gray-600 mb-8 text-center">
+                  Our legacy services: Revenue growth and process optimization
+                </p>
+                <ul className="space-y-4 mb-8">
+                  <li className="flex items-start">
+                    <span className="text-primary mr-3 mt-1 text-xl">✓</span>
+                    <span className="text-gray-700">Fractional CMO services</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-primary mr-3 mt-1 text-xl">✓</span>
+                    <span className="text-gray-700">Sales process optimization</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-primary mr-3 mt-1 text-xl">✓</span>
+                    <span className="text-gray-700">Go-to-market strategy</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-primary mr-3 mt-1 text-xl">✓</span>
+                    <span className="text-gray-700">Revenue growth acceleration</span>
+                  </li>
+                </ul>
+                <Link
+                  href="/services/sales-marketing"
+                  className="group flex items-center justify-center w-full bg-primary hover:bg-primary-dark text-white font-semibold px-8 py-4 rounded-lg transition-all"
+                >
+                  Explore Sales & Marketing Services
+                  <FaArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </div>
+              <div className="bg-gray-200 px-8 py-4 text-center">
+                <p className="font-semibold text-secondary">Custom pricing based on scope</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Digital Products Section */}
+      {/* CTA Section */}
       <section className="bg-gray-50 py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <div className="flex justify-center mb-6">
-              {digitalProducts.icon}
-            </div>
-            <h2 className="text-3xl font-bold mb-4">{digitalProducts.title}</h2>
-            <p className="text-xl text-gray-600">{digitalProducts.description}</p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            {digitalProducts.products.map((product, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-xl p-8 shadow-lg"
-              >
-                <h3 className="text-xl font-bold mb-2">{product.name}</h3>
-                <div className="text-2xl font-bold text-teal-600 mb-6">
-                  {product.price}
-                </div>
-                <ul className="space-y-3 mb-8">
-                  {product.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center text-gray-600">
-                      <span className="w-2 h-2 bg-teal-500 rounded-full mr-3"></span>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-                <Link
-                  href="/digital-products"
-                  className="group flex items-center justify-center w-full bg-gray-900 hover:bg-gray-800 text-white font-semibold px-6 py-3 rounded-lg transition-colors"
-                >
-                  Learn More
-                  <FaArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </div>
-            ))}
-          </div>
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-4xl font-bold mb-6 text-secondary">
+            Not Sure Which Service Is Right for You?
+          </h2>
+          <p className="text-xl text-gray-600 mb-8">
+            Start with our free AI Health Check to identify your biggest risks and opportunities.
+          </p>
+          <Link
+            href="/ai-risk-calculator"
+            className="inline-flex items-center justify-center bg-accent hover:bg-accent-dark text-white font-semibold px-8 py-4 rounded-lg transition-all transform hover:scale-105 shadow-lg group text-lg"
+          >
+            Get Your Free AI Health Check
+            <FaArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+          </Link>
         </div>
       </section>
     </main>
   );
-} 
+}
