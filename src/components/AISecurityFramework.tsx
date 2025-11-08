@@ -70,28 +70,27 @@ const AISecurityFramework = () => {
         </div>
 
         {/* Steps */}
-        <div className="space-y-12">
+        <div className="space-y-16">
           {steps.map((step, index) => (
             <div 
               key={index}
               className="relative"
             >
-              {/* Connector Line */}
-              {index < steps.length - 1 && (
-                <div className="hidden lg:block absolute left-1/2 top-32 w-0.5 h-24 bg-accent-light transform -translate-x-1/2"></div>
-              )}
-
               <div className={`flex flex-col lg:flex-row items-center gap-8 ${
                 index % 2 === 1 ? 'lg:flex-row-reverse' : ''
               }`}>
                 {/* Step Number & Icon */}
-                <div className="flex-shrink-0 lg:w-1/3 flex flex-col items-center">
+                <div className="flex-shrink-0 lg:w-1/3 flex flex-col items-center relative">
                   <div className="text-8xl font-bold text-accent-light opacity-20 mb-4">
                     {step.number}
                   </div>
-                  <div className="w-24 h-24 bg-accent rounded-full flex items-center justify-center text-white mb-4">
+                  <div className="w-24 h-24 bg-accent rounded-full flex items-center justify-center text-white mb-4 relative z-10">
                     {step.icon}
                   </div>
+                  {/* Connector Line - positioned to not overlap content */}
+                  {index < steps.length - 1 && (
+                    <div className="hidden lg:block w-0.5 h-16 bg-accent-light opacity-30 mt-4"></div>
+                  )}
                 </div>
 
                 {/* Step Content */}
@@ -130,4 +129,3 @@ const AISecurityFramework = () => {
 };
 
 export default AISecurityFramework;
-

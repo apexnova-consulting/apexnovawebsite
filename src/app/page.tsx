@@ -4,7 +4,7 @@ import AISecurityHero from '@/components/AISecurityHero';
 import ProblemAgitation from '@/components/ProblemAgitation';
 import ThreeTierServices from '@/components/ThreeTierServices';
 import AISecurityFramework from '@/components/AISecurityFramework';
-import AISecurityTestimonials from '@/components/AISecurityTestimonials';
+import InteractiveFAQ from '@/components/InteractiveFAQ';
 import ClosingCTA from '@/components/ClosingCTA';
 
 export default function Home() {
@@ -14,7 +14,7 @@ export default function Home() {
       <ProblemAgitation />
       <ThreeTierServices />
       <AISecurityFramework />
-      <AISecurityTestimonials />
+      <InteractiveFAQ />
       <ClosingCTA />
     </main>
   );
