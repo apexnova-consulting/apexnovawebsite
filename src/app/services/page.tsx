@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { FaShieldAlt, FaChartLine, FaArrowRight } from 'react-icons/fa';
+import { FaShieldAlt, FaChartLine, FaArrowRight, FaUserShield } from 'react-icons/fa';
 
 export default function ServicesPage() {
   return (
@@ -22,9 +22,9 @@ export default function ServicesPage() {
       {/* Services Cards */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="grid lg:grid-cols-3 gap-8">
             {/* AI Governance & Security */}
-            <div className="bg-gradient-to-br from-primary to-primary-dark text-white rounded-2xl shadow-2xl overflow-hidden transform hover:scale-105 transition-all">
+            <div className="bg-gradient-to-br from-primary to-primary-dark text-white rounded-2xl shadow-2xl overflow-hidden transform hover:scale-105 transition-all h-full">
               <div className="p-12">
                 <div className="flex justify-center mb-6">
                   <div className="w-20 h-20 bg-accent rounded-full flex items-center justify-center">
@@ -68,8 +68,53 @@ export default function ServicesPage() {
               </div>
             </div>
 
+            {/* Digital Reputation Revival */}
+            <div className="bg-gradient-to-br from-accent to-accent-dark text-white rounded-2xl shadow-2xl overflow-hidden transform hover:scale-105 transition-all h-full">
+              <div className="p-12">
+                <div className="flex justify-center mb-6">
+                  <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center">
+                    <FaUserShield className="w-10 h-10 text-accent" />
+                  </div>
+                </div>
+                <h2 className="text-3xl font-bold mb-4 text-center">
+                  Digital Reputation Revival
+                </h2>
+                <p className="text-xl text-gray-100 mb-8 text-center">
+                  NEW: Reclaim your online presence and rebuild credibility
+                </p>
+                <ul className="space-y-4 mb-8">
+                  <li className="flex items-start">
+                    <span className="text-white mr-3 mt-1 text-xl">✓</span>
+                    <span>Complete digital footprint cleanup</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-white mr-3 mt-1 text-xl">✓</span>
+                    <span>Reputation management & SEO optimization</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-white mr-3 mt-1 text-xl">✓</span>
+                    <span>AI persona building (ChatGPT, Perplexity)</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-white mr-3 mt-1 text-xl">✓</span>
+                    <span>Authority building & media placements</span>
+                  </li>
+                </ul>
+                <Link
+                  href="/services/digital-reputation-revival"
+                  className="group flex items-center justify-center w-full bg-white hover:bg-gray-100 text-accent font-semibold px-8 py-4 rounded-lg transition-all"
+                >
+                  Explore Reputation Revival
+                  <FaArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </div>
+              <div className="bg-white/20 px-8 py-4 text-center">
+                <p className="font-semibold">Starting at $499</p>
+              </div>
+            </div>
+
             {/* Sales & Marketing */}
-            <div className="bg-gradient-to-br from-gray-50 to-white rounded-2xl shadow-2xl overflow-hidden border-2 border-gray-200 transform hover:scale-105 transition-all">
+            <div className="bg-gradient-to-br from-gray-50 to-white rounded-2xl shadow-2xl overflow-hidden border-2 border-gray-200 transform hover:scale-105 transition-all h-full">
               <div className="p-12">
                 <div className="flex justify-center mb-6">
                   <div className="w-20 h-20 bg-primary rounded-full flex items-center justify-center">

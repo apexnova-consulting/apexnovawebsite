@@ -5,6 +5,7 @@ const Footer = () => {
   const navigation = {
     services: [
       { name: 'AI Governance & Security', href: '/services/ai-governance' },
+      { name: 'Digital Reputation Revival', href: '/services/digital-reputation-revival' },
       { name: 'Sales & Marketing Transformation', href: '/services/sales-marketing' },
       { name: 'Free AI Health Check', href: '/ai-risk-calculator' }
     ],

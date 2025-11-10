@@ -20,6 +20,7 @@ const Navbar = () => {
   const navigation = [
     { name: 'Home', href: '/' },
     { name: 'AI Governance & Security', href: '/services/ai-governance' },
+    { name: 'Reputation Revival', href: '/services/digital-reputation-revival' },
     { name: 'Sales & Marketing', href: '/services/sales-marketing' },
     { name: 'Resources', href: '/blog' },
     { name: 'About', href: '/about' },
