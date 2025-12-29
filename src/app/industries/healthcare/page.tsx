@@ -63,7 +63,7 @@ export default function HealthcarePage() {
   ];
 
   const caseStudy = {
-    company: 'Princeton Medical Group',
+    company: 'Regional Medical Practice',
     location: 'Central New Jersey',
     challenge: 'AI scribe was storing unencrypted PHI and lacked proper consent workflows, risking massive HIPAA fines',
     solution: 'Implemented zero-knowledge AI scribe with encrypted storage and consent management',

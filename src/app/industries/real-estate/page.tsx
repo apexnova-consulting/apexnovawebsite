@@ -60,7 +60,7 @@ export default function RealEstatePage() {
   ];
 
   const caseStudy = {
-    company: 'Empire Title & Escrow',
+    company: 'Regional Title Company',
     location: 'Northern New Jersey',
     challenge: 'Nearly lost $2.3M to a sophisticated AI-generated wire fraud attempt',
     solution: 'Implemented Settlement Shield with multi-factor verification',

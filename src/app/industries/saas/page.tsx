@@ -63,7 +63,7 @@ export default function SaaSPage() {
   ];
 
   const caseStudy = {
-    company: 'CloudMetrics SaaS',
+    company: 'B2B SaaS Company',
     location: 'New York Metro Area',
     challenge: 'AI sales agent was trained on customer support transcripts containing pricing strategies and product roadmaps',
     solution: 'Implemented AI governance with content filtering and data classification protocols',
