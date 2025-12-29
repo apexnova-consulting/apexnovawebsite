@@ -1,5 +1,6 @@
 import jsPDF from 'jspdf';
-import autoTable from 'jspdf-autotable';
+// Note: jspdf-autotable extends jsPDF, imported for side effects
+import 'jspdf-autotable';
 
 interface RoadmapData {
   name: string;
@@ -250,7 +251,7 @@ export function generateRoadmapPDF(data: RoadmapData): jsPDF {
     }
   ];
 
-  phases.forEach((phase, index) => {
+  phases.forEach((phase) => {
     checkPageBreak(55);
     
     // Phase Header
