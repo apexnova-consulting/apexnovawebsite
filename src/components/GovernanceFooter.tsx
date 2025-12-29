@@ -54,7 +54,7 @@ export default function GovernanceFooter() {
             </Link>
             
             <p className="text-slate-400 leading-relaxed max-w-md">
-              Enterprise-grade AI governance for Real Estate, Healthcare, and SaaS companies. 
+              ApexNova Consulting provides enterprise-grade AI governance for Real Estate, Healthcare, and SaaS companies. 
               Stay compliant, secure, and trusted.
             </p>
 

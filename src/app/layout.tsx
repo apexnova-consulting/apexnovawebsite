@@ -15,20 +15,20 @@ const inter = Inter({
 const GA_MEASUREMENT_ID = 'G-8SS5JWNLS6';
 
 export const metadata: Metadata = {
-  title: 'ApexNova AI Governance & Security | NJDPA, HIPAA & Wire Fraud Compliance',
+  title: 'ApexNova Consulting | AI Governance & Security | NJDPA, HIPAA & Wire Fraud Compliance',
   description: 'Enterprise AI governance for Real Estate, Healthcare, and SaaS. NJDPA ready. HIPAA compliant. Wire fraud prevention. Get your free AI risk scan today.',
   keywords: 'AI governance, NJDPA compliance, HIPAA AI compliance, wire fraud prevention, AI security, real estate AI, healthcare AI, SaaS AI governance',
   openGraph: {
-    title: 'ApexNova AI Governance & Security | Enterprise Compliance',
+    title: 'ApexNova Consulting | AI Governance & Security | Enterprise Compliance',
     description: 'Enterprise AI governance for Real Estate, Healthcare, and SaaS. NJDPA ready. HIPAA compliant. Wire fraud prevention.',
     url: 'https://www.apexnovaconsulting.com',
-    siteName: 'ApexNova AI Governance',
+    siteName: 'ApexNova Consulting',
     locale: 'en_US',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'ApexNova AI Governance & Security | Enterprise Compliance',
+    title: 'ApexNova Consulting | AI Governance & Security | Enterprise Compliance',
     description: 'Enterprise AI governance for Real Estate, Healthcare, and SaaS. NJDPA ready. HIPAA compliant. Wire fraud prevention.',
   },
   robots: {
