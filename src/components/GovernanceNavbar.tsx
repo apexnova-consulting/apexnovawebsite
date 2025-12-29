@@ -3,13 +3,13 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  Shield, 
-  Menu, 
-  X, 
-  ChevronDown, 
-  Building2, 
-  HeartPulse, 
+import {
+  Shield,
+  Menu,
+  X,
+  ChevronDown,
+  Building2,
+  HeartPulse,
   Cpu,
   Lock,
   FileCheck,
@@ -32,20 +32,20 @@ export default function GovernanceNavbar() {
   }, []);
 
   const industries = [
-    { 
-      name: 'Real Estate & Title', 
+    {
+      name: 'Real Estate & Title',
       href: '/industries/real-estate',
       icon: Building2,
       description: 'Settlement Shield & NJ Disclosure'
     },
-    { 
-      name: 'Healthcare', 
+    {
+      name: 'Healthcare',
       href: '/industries/healthcare',
       icon: HeartPulse,
       description: 'HIPAA-Compliant AI Scribes'
     },
-    { 
-      name: 'SaaS & GTM', 
+    {
+      name: 'SaaS & GTM',
       href: '/industries/saas',
       icon: Cpu,
       description: 'IP Protection & Trade Secrets'
@@ -106,7 +106,7 @@ export default function GovernanceNavbar() {
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-1">
             {/* Industries Dropdown */}
-            <div 
+            <div
               className="relative"
               onMouseEnter={() => setActiveDropdown('industries')}
               onMouseLeave={() => setActiveDropdown(null)}
@@ -115,7 +115,7 @@ export default function GovernanceNavbar() {
                 <span className="font-medium">Industries</span>
                 <ChevronDown className="w-4 h-4" />
               </button>
-              
+
               <AnimatePresence>
                 {activeDropdown === 'industries' && (
                   <motion.div
@@ -152,7 +152,7 @@ export default function GovernanceNavbar() {
             </div>
 
             {/* Solutions Dropdown */}
-            <div 
+            <div
               className="relative"
               onMouseEnter={() => setActiveDropdown('solutions')}
               onMouseLeave={() => setActiveDropdown(null)}
@@ -161,7 +161,7 @@ export default function GovernanceNavbar() {
                 <span className="font-medium">Solutions</span>
                 <ChevronDown className="w-4 h-4" />
               </button>
-              
+
               <AnimatePresence>
                 {activeDropdown === 'solutions' && (
                   <motion.div
@@ -197,15 +197,15 @@ export default function GovernanceNavbar() {
               </AnimatePresence>
             </div>
 
-            <Link 
-              href="/about" 
+            <Link
+              href="/about"
               className="px-4 py-2 text-slate-300 hover:text-cyber transition-colors font-medium"
             >
               About
             </Link>
 
-            <Link 
-              href="/case-studies" 
+            <Link
+              href="/case-studies"
               className="px-4 py-2 text-slate-300 hover:text-cyber transition-colors font-medium"
             >
               Case Studies

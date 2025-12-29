@@ -12,7 +12,8 @@ import {
   FileWarning,
   Users,
   Database,
-  Mail
+  Mail,
+  Sparkles
 } from 'lucide-react';
 
 interface Question {
@@ -130,8 +131,9 @@ const getRiskLevel = (score: number): RiskLevel => {
 export default function InteractiveRiskCalculator() {
   const [currentStep, setCurrentStep] = useState(0);
   const [answers, setAnswers] = useState<{ [key: string]: number }>({});
-  const [showResults, setShowResults] = useState(false);
   const [showLeadForm, setShowLeadForm] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [showResults, setShowResults] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [leadData, setLeadData] = useState({
     email: '',
@@ -142,15 +144,17 @@ export default function InteractiveRiskCalculator() {
 
   const totalSteps = questions.length;
   const currentQuestion = questions[currentStep];
-  const progress = ((currentStep + 1) / totalSteps) * 100;
+  const progress = showLeadForm ? 100 : ((currentStep + 1) / totalSteps) * 100;
 
   const handleAnswer = (questionId: string, riskValue: number) => {
-    setAnswers({ ...answers, [questionId]: riskValue });
+    const newAnswers = { ...answers, [questionId]: riskValue };
+    setAnswers(newAnswers);
     
+    // If this is the last question, show lead form instead of results
     if (currentStep < totalSteps - 1) {
       setTimeout(() => setCurrentStep(currentStep + 1), 300);
     } else {
-      setTimeout(() => setShowResults(true), 300);
+      setTimeout(() => setShowLeadForm(true), 300);
     }
   };
 
@@ -184,12 +188,18 @@ export default function InteractiveRiskCalculator() {
       });
 
       if (response.ok) {
-        setShowLeadForm(false);
-        // Show full remediation roadmap
-        window.location.href = `/results?score=${riskScore}&email=${encodeURIComponent(leadData.email)}`;
+        // Show success message
+        setShowSuccess(true);
+        
+        // After 3 seconds, show the risk score results
+        setTimeout(() => {
+          setShowSuccess(false);
+          setShowResults(true);
+        }, 3000);
       }
     } catch (error) {
       console.error('Lead submission error:', error);
+      alert('There was an error submitting your information. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -200,7 +210,8 @@ export default function InteractiveRiskCalculator() {
 
   return (
     <div className="w-full max-w-4xl mx-auto">
-      {!showResults ? (
+      {!showLeadForm && !showSuccess && !showResults ? (
+        /* QUESTIONS SECTION */
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -284,13 +295,152 @@ export default function InteractiveRiskCalculator() {
             </div>
           )}
         </motion.div>
-      ) : (
+      ) : showLeadForm && !showSuccess && !showResults ? (
+        /* LEAD CAPTURE FORM - BEFORE SHOWING SCORE */
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           className="bg-slate-900/50 border border-slate-700 rounded-2xl p-8 shadow-2xl"
         >
-          {/* Results Preview */}
+          <div className="text-center mb-8">
+            <div className="flex justify-center mb-4">
+              <Lock className="w-16 h-16 text-cyber animate-pulse" />
+            </div>
+            <h2 className="text-3xl font-bold text-white mb-2">
+              Almost There! 🎯
+            </h2>
+            <p className="text-lg text-slate-300 max-w-2xl mx-auto">
+              Enter your details to unlock your personalized risk score and receive your 
+              <span className="font-bold text-cyber"> 2026 AI Remediation Roadmap</span> via email.
+            </p>
+          </div>
+
+          <form onSubmit={handleSubmitLead} className="space-y-4 max-w-lg mx-auto">
+            <div>
+              <label className="block text-sm font-medium text-slate-300 mb-2">
+                Work Email *
+              </label>
+              <input
+                type="email"
+                required
+                value={leadData.email}
+                onChange={(e) => setLeadData({ ...leadData, email: e.target.value })}
+                className="w-full px-4 py-3 bg-slate-800 border border-slate-600 text-white rounded-lg focus:ring-2 focus:ring-cyber focus:border-transparent"
+                placeholder="john@company.com"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-slate-300 mb-2">
+                Full Name
+              </label>
+              <input
+                type="text"
+                value={leadData.name}
+                onChange={(e) => setLeadData({ ...leadData, name: e.target.value })}
+                className="w-full px-4 py-3 bg-slate-800 border border-slate-600 text-white rounded-lg focus:ring-2 focus:ring-cyber focus:border-transparent"
+                placeholder="John Smith"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-slate-300 mb-2">
+                Company
+              </label>
+              <input
+                type="text"
+                value={leadData.company}
+                onChange={(e) => setLeadData({ ...leadData, company: e.target.value })}
+                className="w-full px-4 py-3 bg-slate-800 border border-slate-600 text-white rounded-lg focus:ring-2 focus:ring-cyber focus:border-transparent"
+                placeholder="Your Company"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-slate-300 mb-2">
+                Industry *
+              </label>
+              <select
+                required
+                value={leadData.industry}
+                onChange={(e) => setLeadData({ ...leadData, industry: e.target.value })}
+                className="w-full px-4 py-3 bg-slate-800 border border-slate-600 text-white rounded-lg focus:ring-2 focus:ring-cyber focus:border-transparent"
+              >
+                <option value="healthcare">Healthcare</option>
+                <option value="title-insurance">Title Insurance / Real Estate</option>
+                <option value="saas">SaaS / Technology</option>
+                <option value="financial">Financial Services</option>
+                <option value="legal">Legal Services</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="w-full bg-gradient-to-r from-trust to-cyber text-slate-950 px-8 py-4 rounded-lg font-bold hover:shadow-cyber-lg transition-all disabled:opacity-50 flex items-center justify-center space-x-2"
+            >
+              {isSubmitting ? (
+                <span>Processing...</span>
+              ) : (
+                <>
+                  <Sparkles className="w-5 h-5" />
+                  <span>Show My Risk Score & Get Roadmap</span>
+                </>
+              )}
+            </button>
+
+            <p className="text-xs text-slate-400 text-center">
+              By submitting, you'll receive your personalized AI Governance Roadmap addressing 
+              the NJ Data Privacy Act. We respect your privacy.
+            </p>
+          </form>
+        </motion.div>
+      ) : showSuccess ? (
+        /* SUCCESS MESSAGE */
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="bg-slate-900/50 border border-trust rounded-2xl p-12 shadow-2xl text-center"
+        >
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ type: "spring", duration: 0.6 }}
+            className="flex justify-center mb-6"
+          >
+            <div className="relative">
+              <CheckCircle className="w-24 h-24 text-trust" />
+              <motion.div
+                className="absolute inset-0 bg-trust rounded-full opacity-20"
+                animate={{ scale: [1, 1.5, 1] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              />
+            </div>
+          </motion.div>
+
+          <h2 className="text-4xl font-bold text-white mb-4">
+            Success! 🎉
+          </h2>
+          <p className="text-xl text-trust font-semibold mb-4">
+            Your Detailed 2026 AI Remediation Roadmap is being sent to your inbox.
+          </p>
+          <p className="text-slate-300 max-w-2xl mx-auto mb-8">
+            Check your email for a comprehensive PDF addressing the <span className="font-bold text-cyber">NJ Data Privacy Act</span> and your specific industry requirements. 
+            Your risk score is being calculated...
+          </p>
+          
+          <div className="flex justify-center">
+            <div className="w-12 h-12 border-4 border-cyber border-t-transparent rounded-full animate-spin"></div>
+          </div>
+        </motion.div>
+      ) : (
+        /* RESULTS - SHOW AFTER SUCCESS MESSAGE */
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="bg-slate-900/50 border border-slate-700 rounded-2xl p-8 shadow-2xl"
+        >
           <div className="text-center mb-8">
             <div className="flex justify-center mb-4">
               {riskLevel.icon}
@@ -306,117 +456,29 @@ export default function InteractiveRiskCalculator() {
             </p>
           </div>
 
-          {/* Conversion Wall */}
-          {!showLeadForm ? (
-            <div className="bg-slate-800/50 border border-cyber/30 rounded-xl p-8 text-center">
-              <Lock className="w-12 h-12 text-cyber mx-auto mb-4" />
-              <h3 className="text-2xl font-bold text-white mb-3">
-                Unlock Your 5-Page Remediation Roadmap
-              </h3>
-              <p className="text-slate-300 mb-6">
-                See exactly which regulations apply to your industry, your compliance gaps, 
-                and step-by-step actions to achieve Apex-Certified status.
-              </p>
-              <button
-                onClick={() => setShowLeadForm(true)}
-                className="inline-flex items-center space-x-2 bg-gradient-to-r from-trust to-cyber text-slate-950 px-8 py-4 rounded-lg font-bold hover:shadow-cyber-lg transition-all"
-              >
-                <Mail className="w-5 h-5" />
-                <span>Get My Free Roadmap</span>
-                <ChevronRight className="w-5 h-5" />
-              </button>
-              <p className="text-xs text-slate-500 mt-4">
-                No credit card required. Instant access via email.
-              </p>
-            </div>
-          ) : (
-            <form onSubmit={handleSubmitLead} className="space-y-4">
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-slate-300 mb-2">
-                    Full Name *
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    value={leadData.name}
-                    onChange={(e) => setLeadData({ ...leadData, name: e.target.value })}
-                    className="w-full px-4 py-3 bg-slate-800 border border-slate-600 text-white rounded-lg focus:ring-2 focus:ring-cyber focus:border-transparent"
-                    placeholder="John Smith"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-slate-300 mb-2">
-                    Work Email *
-                  </label>
-                  <input
-                    type="email"
-                    required
-                    value={leadData.email}
-                    onChange={(e) => setLeadData({ ...leadData, email: e.target.value })}
-                    className="w-full px-4 py-3 bg-slate-800 border border-slate-600 text-white rounded-lg focus:ring-2 focus:ring-cyber focus:border-transparent"
-                    placeholder="john@company.com"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-slate-300 mb-2">
-                  Company Name *
-                </label>
-                <input
-                  type="text"
-                  required
-                  value={leadData.company}
-                  onChange={(e) => setLeadData({ ...leadData, company: e.target.value })}
-                  className="w-full px-4 py-3 bg-slate-800 border border-slate-600 text-white rounded-lg focus:ring-2 focus:ring-cyber focus:border-transparent"
-                  placeholder="Your Company"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-slate-300 mb-2">
-                  Industry *
-                </label>
-                <select
-                  required
-                  value={leadData.industry}
-                  onChange={(e) => setLeadData({ ...leadData, industry: e.target.value })}
-                  className="w-full px-4 py-3 bg-slate-800 border border-slate-600 text-white rounded-lg focus:ring-2 focus:ring-cyber focus:border-transparent"
-                >
-                  <option value="healthcare">Healthcare</option>
-                  <option value="title-insurance">Title Insurance / Real Estate</option>
-                  <option value="saas">SaaS / Technology</option>
-                  <option value="financial">Financial Services</option>
-                  <option value="legal">Legal Services</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
-
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full bg-gradient-to-r from-trust to-cyber text-slate-950 px-8 py-4 rounded-lg font-bold hover:shadow-cyber-lg transition-all disabled:opacity-50 flex items-center justify-center space-x-2"
-              >
-                {isSubmitting ? (
-                  <span>Processing...</span>
-                ) : (
-                  <>
-                    <Shield className="w-5 h-5" />
-                    <span>Get My Remediation Roadmap</span>
-                  </>
-                )}
-              </button>
-
-              <p className="text-xs text-slate-400 text-center">
-                By submitting, you agree to receive our AI Governance Roadmap and occasional insights. 
-                We respect your privacy and won't spam you.
-              </p>
-            </form>
-          )}
+          <div className="bg-slate-800/50 border border-cyber/30 rounded-xl p-8 text-center">
+            <Mail className="w-12 h-12 text-cyber mx-auto mb-4" />
+            <h3 className="text-2xl font-bold text-white mb-3">
+              Check Your Email!
+            </h3>
+            <p className="text-slate-300 mb-6">
+              Your personalized <span className="font-bold text-cyber">2026 AI Remediation Roadmap</span> PDF 
+              has been sent to <span className="font-semibold text-white">{leadData.email}</span>.
+              It includes specific NJDPA compliance steps for your industry.
+            </p>
+            <p className="text-sm text-slate-400 mb-6">
+              Don't see it? Check your spam folder or contact us at info@apexnovaconsulting.com
+            </p>
+            <a
+              href="/contact"
+              className="inline-flex items-center space-x-2 bg-gradient-to-r from-trust to-cyber text-slate-950 px-8 py-4 rounded-lg font-bold hover:shadow-cyber-lg transition-all"
+            >
+              <span>Book Free Strategy Call</span>
+              <ChevronRight className="w-5 h-5" />
+            </a>
+          </div>
         </motion.div>
       )}
     </div>
   );
 }
-

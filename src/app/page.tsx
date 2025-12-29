@@ -8,7 +8,7 @@ export default function Home() {
     <main className="min-h-screen bg-slate-950">
       <GovernanceHero />
       <GovernanceSocialProof />
-      
+
       {/* Interactive Risk Calculator Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-900/50">
         <div className="max-w-7xl mx-auto text-center mb-12">
