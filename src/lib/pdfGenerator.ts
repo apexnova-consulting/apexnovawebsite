@@ -58,11 +58,11 @@ export function generateRoadmapPDF(data: RoadmapData): jsPDF {
   yPosition += 30;
 
   // Risk Score Box
-  const riskColor = data.riskScore >= 75 ? [239, 68, 68] : 
+  const riskColor: [number, number, number] = data.riskScore >= 75 ? [239, 68, 68] : 
                     data.riskScore >= 50 ? [249, 115, 22] : 
                     data.riskScore >= 25 ? [234, 179, 8] : [16, 185, 129];
   
-  doc.setFillColor(...riskColor);
+  doc.setFillColor(riskColor[0], riskColor[1], riskColor[2]);
   doc.roundedRect(60, yPosition, pageWidth - 120, 40, 5, 5, 'F');
   
   doc.setTextColor(255, 255, 255);
@@ -266,9 +266,9 @@ export function generateRoadmapPDF(data: RoadmapData): jsPDF {
     
     // Priority Badge
     doc.setFontSize(8);
-    const priorityColor = phase.priority === 'CRITICAL' ? [239, 68, 68] : 
+    const priorityColor: [number, number, number] = phase.priority === 'CRITICAL' ? [239, 68, 68] : 
                          phase.priority === 'HIGH' ? [249, 115, 22] : [234, 179, 8];
-    doc.setFillColor(...priorityColor);
+    doc.setFillColor(priorityColor[0], priorityColor[1], priorityColor[2]);
     doc.roundedRect(22, yPosition, 30, 6, 2, 2, 'F');
     doc.setTextColor(255, 255, 255);
     doc.text(phase.priority, 23, yPosition + 4.5);

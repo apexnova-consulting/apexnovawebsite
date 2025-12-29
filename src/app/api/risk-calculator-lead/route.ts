@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
-import { insertLead, markRoadmapSent } from '@/lib/supabase';
 import { generateRoadmapPDF } from '@/lib/pdfGenerator';
 
 const resend = process.env.RESEND_API_KEY
@@ -12,23 +11,7 @@ export async function POST(request: Request) {
     const data = await request.json();
     const { email, name, company, industry, riskScore, riskLevel, answers } = data;
 
-    // **STEP 1: Store lead in Supabase**
-    const leadResult = await insertLead({
-      email,
-      name: name || 'Not provided',
-      company: company || 'Not provided',
-      industry,
-      risk_score: riskScore,
-      risk_level: riskLevel,
-      answers
-    });
-
-    if (!leadResult.success) {
-      console.error('Supabase error:', leadResult.error);
-      // Continue anyway - don't fail the entire request
-    }
-
-    // **STEP 2: Generate PDF**
+    // Generate PDF
     const pdf = generateRoadmapPDF({
       name: name || 'Valued Client',
       email,
@@ -43,7 +26,7 @@ export async function POST(request: Request) {
     const pdfBuffer = Buffer.from(pdf.output('arraybuffer'));
     const pdfBase64 = pdfBuffer.toString('base64');
 
-    // **STEP 3: Send emails**
+    // Send emails via Resend
     if (resend) {
       // Send notification to admin
       await resend.emails.send({
@@ -77,6 +60,10 @@ export async function POST(request: Request) {
                 <tr>
                   <td style="padding: 8px; font-weight: bold;">Industry:</td>
                   <td style="padding: 8px;">${industry}</td>
+                </tr>
+                <tr>
+                  <td style="padding: 8px; font-weight: bold;">Date:</td>
+                  <td style="padding: 8px;">${new Date().toLocaleString()}</td>
                 </tr>
               </table>
               
@@ -163,7 +150,7 @@ export async function POST(request: Request) {
               </ol>
               
               <div style="text-align: center; margin: 30px 0;">
-                <a href="${process.env.NEXT_PUBLIC_URL}/contact" 
+                <a href="${process.env.NEXT_PUBLIC_URL || 'https://www.apexnovaconsulting.com'}/contact" 
                    style="display: inline-block; background: linear-gradient(135deg, #10b981 0%, #00f5ff 100%); 
                           color: #0f172a; padding: 16px 32px; text-decoration: none; border-radius: 8px; 
                           font-weight: bold; font-size: 16px;">
@@ -195,9 +182,12 @@ export async function POST(request: Request) {
           },
         ],
       });
-
-      // **STEP 4: Mark roadmap as sent in Supabase**
-      await markRoadmapSent(email);
+    } else {
+      console.error('Resend API key not configured');
+      return NextResponse.json(
+        { error: 'Email service not configured' },
+        { status: 500 }
+      );
     }
 
     return NextResponse.json({ success: true });
