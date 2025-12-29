@@ -1,6 +1,9 @@
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Initialize Resend only if API key exists, otherwise use null
+const resend = process.env.RESEND_API_KEY 
+  ? new Resend(process.env.RESEND_API_KEY)
+  : null;
 
 interface EmailData {
   to: string;
@@ -14,6 +17,15 @@ interface EmailData {
 
 export async function sendEmail(emailData: EmailData) {
   try {
+    // Check if Resend is configured
+    if (!resend) {
+      console.warn('Resend API key not configured, email not sent');
+      return { 
+        success: false, 
+        error: 'Email service not configured. Please set RESEND_API_KEY environment variable.' 
+      };
+    }
+
     const { to, subject, html, name, company, message, isAdminEmail } = emailData;
 
     // Add custom fields to the email subject if they exist

@@ -1,11 +1,22 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = process.env.RESEND_API_KEY 
+  ? new Resend(process.env.RESEND_API_KEY)
+  : null;
 
 export async function POST(request: Request) {
   try {
     const { name, email, company, message } = await request.json();
+
+    if (!resend) {
+      console.warn('Resend API key not configured');
+      // Still return success to not break the frontend, but log it
+      return NextResponse.json({ 
+        success: true, 
+        warning: 'Email notifications disabled - no API key configured' 
+      });
+    }
 
     // Send notification email to admin
     const adminEmailContent = `
