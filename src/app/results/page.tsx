@@ -9,7 +9,6 @@ import {
   AlertTriangle,
   CheckCircle,
   FileText,
-  Users,
   Lock,
   TrendingUp,
   Download,
@@ -20,7 +19,6 @@ import {
 function ResultsContent() {
   const searchParams = useSearchParams();
   const score = parseInt(searchParams.get('score') || '0');
-  const email = searchParams.get('email') || '';
 
   const getRiskLevel = (score: number) => {
     if (score >= 75) return { level: 'Critical', color: 'text-red-500', bgColor: 'bg-red-500/10', borderColor: 'border-red-500/30' };
