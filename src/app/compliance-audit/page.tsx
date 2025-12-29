@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { FileCheck, Shield, CheckCircle2, Clock, Users, ChevronRight, AlertTriangle } from 'lucide-react';
+import { FileCheck, CheckCircle2, Clock, ChevronRight, AlertTriangle } from 'lucide-react';
 
 export default function ComplianceAuditPage() {
   const auditPhases = [
