@@ -48,58 +48,58 @@ const caseStudies = [
 
 export default function CaseStudiesPage() {
   return (
-    <main className="bg-white">
+    <main className="bg-slate-950 min-h-screen">
       {/* Hero Section */}
-      <section className="bg-secondary text-white py-20 px-4 sm:px-6 lg:px-8">
+      <section className="bg-gradient-to-br from-slate-950 via-navy-950 to-slate-950 text-white py-20 px-4 sm:px-6 lg:px-8 pt-32">
         <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-4xl sm:text-5xl font-bold mb-6">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
             Client Success Stories
           </h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Real results from teams that transformed their AI adoption and communication.
+          <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+            Real results from organizations that transformed their AI governance and security.
           </p>
         </div>
       </section>
 
       {/* Case Studies Grid */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-900/50">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-8">
             {caseStudies.map((study) => (
               <div
                 key={study.id}
-                className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow"
+                className="bg-slate-800/50 border border-slate-700 rounded-xl shadow-lg p-8 hover:shadow-cyber-lg hover:border-cyber/50 transition-all duration-300"
               >
-                <div className="text-primary mb-6">
+                <div className="text-cyber mb-6">
                   {study.icon}
                 </div>
-                <div className="text-sm text-primary font-semibold mb-4">
+                <div className="text-sm text-cyber font-semibold mb-4">
                   {study.client}
                 </div>
                 
                 <div className="space-y-6">
                   <div>
-                    <h3 className="font-semibold mb-2">Challenge:</h3>
-                    <p className="text-gray-600">{study.challenge}</p>
+                    <h3 className="font-semibold mb-2 text-white">Challenge:</h3>
+                    <p className="text-slate-300">{study.challenge}</p>
                   </div>
                   
                   <div>
-                    <h3 className="font-semibold mb-2">Solution:</h3>
-                    <p className="text-gray-600">{study.solution}</p>
+                    <h3 className="font-semibold mb-2 text-white">Solution:</h3>
+                    <p className="text-slate-300">{study.solution}</p>
                   </div>
                   
                   <div>
-                    <h3 className="font-semibold mb-2">Outcome:</h3>
-                    <p className="text-gray-600">{study.outcome}</p>
+                    <h3 className="font-semibold mb-2 text-white">Outcome:</h3>
+                    <p className="text-slate-300">{study.outcome}</p>
                   </div>
 
                   <div className="grid grid-cols-3 gap-4 pt-4">
                     {study.metrics.map((metric, index) => (
                       <div
                         key={index}
-                        className="bg-gray-50 p-3 rounded-lg text-center"
+                        className="bg-slate-900/70 border border-slate-600 p-3 rounded-lg text-center hover:border-trust/50 transition-colors"
                       >
-                        <div className="text-sm font-semibold text-primary">
+                        <div className="text-sm font-semibold text-trust">
                           {metric}
                         </div>
                       </div>
@@ -113,19 +113,19 @@ export default function CaseStudiesPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-secondary py-20 px-4 sm:px-6 lg:px-8">
+      <section className="bg-gradient-to-r from-trust to-cyber py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-white mb-6">
-            Ready to Transform Your Team?
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-950 mb-6">
+            Ready to Secure Your AI Operations?
           </h2>
-          <p className="text-xl text-gray-300 mb-8">
-            Book your free mini audit and discover your team's AI potential.
+          <p className="text-xl text-slate-800 mb-8">
+            Get your free AI Health Check and discover your top vulnerabilities.
           </p>
           <Link
-            href="/mini-audit"
-            className="inline-flex items-center justify-center bg-primary hover:bg-primary-dark text-white font-semibold px-8 py-4 rounded-lg transition-colors"
+            href="/ai-risk-calculator"
+            className="inline-flex items-center justify-center bg-slate-950 hover:bg-slate-800 text-white font-bold px-8 py-4 rounded-lg transition-all transform hover:scale-105 shadow-lg"
           >
-            Book Your Free Mini Audit
+            Get Free AI Health Check
             <FaArrowRight className="ml-2" />
           </Link>
         </div>
