@@ -8,55 +8,55 @@ export default function HealthcarePage() {
   const threats = [
     {
       icon: AlertTriangle,
-      title: 'HIPAA Violations',
+      title: 'HIPAA AI Violations',
       stat: '$50K+',
-      description: 'Average penalty per HIPAA violation with AI systems storing PHI incorrectly'
+      description: 'Average penalty per HIPAA violation when AI systems store or process PHI incorrectly'
     },
     {
       icon: Database,
       title: 'AI Scribe Data Leaks',
       stat: '67%',
-      description: 'Of medical AI tools store patient data insecurely or without proper consent'
+      description: 'Of medical AI tools store patient data insecurely or without proper BAAs'
     },
     {
       icon: Lock,
-      title: 'OCR Audits',
-      stat: '2025',
-      description: 'HHS ramping up AI-specific HIPAA audits targeting healthcare providers'
+      title: 'NJ Civil Rights AI Bias',
+      stat: 'Active',
+      description: 'New Jersey law prohibiting discriminatory AI in healthcare decisions — enforceable now'
     }
   ];
 
   const solutions = [
     {
-      title: 'HIPAA-Compliant AI Scribes',
-      description: 'Zero-knowledge architecture ensures patient data never leaves your control',
+      title: 'Safe Scribe Certification',
+      description: 'Complete audit and certification for your AI medical scribes',
       features: [
-        'End-to-end encryption',
-        'On-premise processing options',
-        'Automatic PHI detection',
-        'BAA-compliant deployment',
-        'Audit logging & reporting'
+        'HIPAA-AI compliance verification',
+        'Zero-knowledge architecture audit',
+        'BAA review and enforcement',
+        'NJ Civil Rights AI bias testing',
+        'Apex-Certified Safe Scribe badge'
       ]
     },
     {
-      title: 'AI Governance Framework',
-      description: 'Complete compliance infrastructure for healthcare AI systems',
+      title: 'NJ Civil Rights AI Compliance',
+      description: 'Ensure your AI diagnostic and triage tools meet NJ anti-discrimination laws',
       features: [
-        'Risk assessment protocols',
-        'Staff training programs',
-        'Incident response plans',
-        'Regular compliance audits',
-        'Policy documentation'
+        'AI bias detection and testing',
+        'Algorithmic fairness audits',
+        'Demographic impact analysis',
+        'Compliance documentation',
+        'Legal defensibility framework'
       ]
     },
     {
       title: 'Zero-Knowledge Data Architecture',
       description: 'Patient data encrypted at rest, in transit, and during processing',
       features: [
-        'Homomorphic encryption',
-        'Federated learning support',
-        'Data minimization by design',
-        'Patient consent management',
+        'Homomorphic encryption implementation',
+        'On-premise AI processing options',
+        'PHI auto-detection and redaction',
+        'OCR-ready audit trails',
         'Breach prevention monitoring'
       ]
     }
@@ -112,15 +112,15 @@ export default function HealthcarePage() {
             </div>
 
             <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight">
-              HIPAA-Compliant{' '}
+              HIPAA-AI Compliance &{' '}
               <span className="bg-gradient-to-r from-cyber to-trust bg-clip-text text-transparent">
-                AI for Healthcare
+                'Safe Scribe' Certification
               </span>
             </h1>
 
             <p className="text-xl md:text-2xl text-slate-300 max-w-4xl mx-auto">
-              Deploy AI scribes, diagnostics, and automation — with zero risk of HIPAA violations, 
-              data breaches, or OCR penalties.
+              Navigate HIPAA AI requirements, NJ Civil Rights AI bias laws, and get your 
+              AI scribes certified 'Safe Scribe' compliant — without sacrificing productivity.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-8">
@@ -129,15 +129,15 @@ export default function HealthcarePage() {
                 className="group inline-flex items-center space-x-2 px-8 py-4 bg-gradient-to-r from-trust to-cyber text-slate-950 rounded-lg hover:shadow-cyber-lg transition-all duration-300 font-bold text-lg"
               >
                 <Shield className="w-5 h-5" />
-                <span>Get HIPAA Audit</span>
+                <span>Get Safe Scribe Audit</span>
                 <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
               
               <Link
-                href="/governance-dashboard"
+                href="/audit"
                 className="group inline-flex items-center space-x-2 px-8 py-4 bg-slate-900 border-2 border-cyber text-cyber rounded-lg hover:bg-cyber/10 transition-all duration-300 font-bold text-lg"
               >
-                <span>Free Compliance Check</span>
+                <span>Free Risk Calculator</span>
                 <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>

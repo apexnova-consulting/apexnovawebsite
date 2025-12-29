@@ -8,33 +8,34 @@ export default function RealEstatePage() {
   const threats = [
     {
       icon: DollarSign,
-      title: 'Wire Fraud Epidemic',
+      title: 'AI Voice-Cloning Fraud',
       stat: '$300M+',
-      description: 'Annual losses to AI-enabled wire fraud in real estate transactions'
+      description: 'Criminals use AI to clone voices of attorneys, agents, and title officers to redirect wire transfers'
     },
     {
       icon: FileWarning,
-      title: 'NJ Photo Disclosure Law',
-      stat: 'Jan 2025',
-      description: 'New Jersey requires disclosure of AI-generated property photos'
+      title: 'Identity Theft in Closings',
+      stat: '89%',
+      description: 'Increase in AI-generated fake IDs and deepfake video calls to impersonate buyers/sellers'
     },
     {
       icon: AlertTriangle,
-      title: 'NJDPA Compliance',
+      title: 'NJDPA & Photo Disclosure',
       stat: '$20K',
-      description: 'Per violation penalty for data privacy breaches under NJDPA'
+      description: 'Per violation penalty for consumer data breaches and undisclosed AI-generated property images'
     }
   ];
 
   const solutions = [
     {
-      title: 'Settlement Shield Protocol',
-      description: 'Multi-factor verification system for wire transfer instructions',
+      title: 'Settlement Shield™ Protocol',
+      description: 'Military-grade protection against AI voice cloning and wire fraud',
       features: [
-        'AI-powered email authentication',
-        'Real-time fraud detection',
-        'Secure communication channels',
-        'Audit trail for compliance'
+        'Voice authentication and liveness detection',
+        'Multi-channel verification (email + phone + video)',
+        'AI-powered fraud pattern recognition',
+        'Real-time wire instruction validation',
+        'Secure escrow communication portal'
       ]
     },
     {
@@ -99,15 +100,15 @@ export default function RealEstatePage() {
             </div>
 
             <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight">
-              AI Governance for{' '}
+              The Settlement Shield™:{' '}
               <span className="bg-gradient-to-r from-cyber to-trust bg-clip-text text-transparent">
-                Real Estate & Title
+                Stop AI Voice-Cloning Fraud
               </span>
             </h1>
 
             <p className="text-xl md:text-2xl text-slate-300 max-w-4xl mx-auto">
-              Protect your settlements from wire fraud, comply with NJ disclosure laws, 
-              and meet NJDPA requirements — without slowing down closings.
+              Defend your NJ real estate closings from AI-powered wire fraud, voice-cloning scams, 
+              and identity theft — while staying NJDPA compliant.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-8">
@@ -121,10 +122,10 @@ export default function RealEstatePage() {
               </Link>
               
               <Link
-                href="/governance-dashboard"
+                href="/audit"
                 className="group inline-flex items-center space-x-2 px-8 py-4 bg-slate-900 border-2 border-cyber text-cyber rounded-lg hover:bg-cyber/10 transition-all duration-300 font-bold text-lg"
               >
-                <span>Free Risk Assessment</span>
+                <span>Free Risk Calculator</span>
                 <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>

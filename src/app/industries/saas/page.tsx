@@ -8,38 +8,38 @@ export default function SaaSPage() {
   const threats = [
     {
       icon: FileWarning,
-      title: 'IP Leakage',
-      stat: '43%',
-      description: 'Of AI sales agents inadvertently share proprietary data or trade secrets in conversations'
+      title: 'Training Data Contamination',
+      stat: '78%',
+      description: 'Of sales/CS AI agents are trained on support tickets containing pricing, roadmaps, and trade secrets'
     },
     {
       icon: DollarSign,
-      title: 'NY RAISE Act',
-      stat: 'Active',
-      description: 'New York mandates responsible AI practices for companies operating in the state'
+      title: 'Competitor Intelligence Leaks',
+      stat: '$2M+',
+      description: 'Average value of IP leaked when AI chatbots expose pricing strategies or product plans'
     },
     {
       icon: Lock,
-      title: 'Customer Data Exposure',
-      stat: '$4.5M',
-      description: 'Average cost of a data breach when customer information is leaked via AI systems'
+      title: 'NY RAISE Act Violations',
+      stat: 'Active',
+      description: 'New York law requires responsible AI disclosure — non-compliance means penalties and lawsuits'
     }
   ];
 
   const solutions = [
     {
-      title: 'AI Sales Agent Governance',
-      description: 'Prevent your AI SDRs and chatbots from leaking sensitive business data',
+      title: 'IP Leakage Audit',
+      description: 'Comprehensive scan of your Sales/CS AI agents for trade secret exposure',
       features: [
-        'Real-time content filtering',
-        'Trade secret detection',
-        'Customer data protection',
-        'Conversation audit logs',
-        'Compliance-ready templates'
+        'Training data contamination analysis',
+        'Pricing strategy leak detection',
+        'Product roadmap exposure review',
+        'Customer list protection audit',
+        'Competitor intelligence risk assessment'
       ]
     },
     {
-      title: 'IP Protection Framework',
+      title: 'Zero-Knowledge AI Framework',
       description: 'Keep your competitive advantage secure while leveraging AI',
       features: [
         'Data classification system',
@@ -121,15 +121,15 @@ export default function SaaSPage() {
             </div>
 
             <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight">
-              Secure AI for{' '}
+              IP Leakage Prevention for{' '}
               <span className="bg-gradient-to-r from-cyber to-trust bg-clip-text text-transparent">
-                SaaS & GTM Teams
+                Sales & CS AI Agents
               </span>
             </h1>
 
             <p className="text-xl md:text-2xl text-slate-300 max-w-4xl mx-auto">
-              Deploy AI sales agents, support bots, and automation — without leaking IP, 
-              violating privacy laws, or exposing customer data.
+              Audit your AI sales/CS agents to ensure pricing strategies, product roadmaps, 
+              and trade secrets aren't training public LLMs — or your competitors.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-8">
@@ -138,15 +138,15 @@ export default function SaaSPage() {
                 className="group inline-flex items-center space-x-2 px-8 py-4 bg-gradient-to-r from-trust to-cyber text-slate-950 rounded-lg hover:shadow-cyber-lg transition-all duration-300 font-bold text-lg"
               >
                 <Shield className="w-5 h-5" />
-                <span>Protect Your IP</span>
+                <span>Get IP Leakage Audit</span>
                 <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
               
               <Link
-                href="/governance-dashboard"
+                href="/audit"
                 className="group inline-flex items-center space-x-2 px-8 py-4 bg-slate-900 border-2 border-cyber text-cyber rounded-lg hover:bg-cyber/10 transition-all duration-300 font-bold text-lg"
               >
-                <span>Free Risk Scan</span>
+                <span>Free Risk Calculator</span>
                 <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>

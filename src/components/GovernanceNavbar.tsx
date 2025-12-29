@@ -79,10 +79,10 @@ export default function GovernanceNavbar() {
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
       className={cn(
-        'fixed top-0 w-full z-50 transition-all duration-300',
-        isScrolled 
-          ? 'bg-slate-950/95 backdrop-blur-xl border-b border-slate-800/50 shadow-dark-lg' 
-          : 'bg-transparent'
+        'fixed top-0 w-full z-50 transition-all duration-500',
+        isScrolled
+          ? 'bg-slate-950/70 backdrop-blur-2xl border-b border-cyber/20 shadow-[0_8px_32px_0_rgba(0,245,255,0.1)]'
+          : 'bg-slate-950/30 backdrop-blur-sm'
       )}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
