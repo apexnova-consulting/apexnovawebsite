@@ -95,7 +95,7 @@ export default function GovernanceNavbar() {
             </div>
             <div className="flex flex-col">
               <span className="text-xl font-bold text-white tracking-tight">
-                ApexNova
+                ApexNova Consulting
               </span>
               <span className="text-[10px] text-slate-400 tracking-wider uppercase">
                 AI Governance & Security

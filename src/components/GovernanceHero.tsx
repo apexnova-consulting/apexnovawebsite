@@ -166,7 +166,7 @@ export default function GovernanceHero() {
               <Sparkles className="w-5 h-5 text-cyber" />
             </div>
             <p className="text-lg text-slate-300 mb-8">
-              ApexNova delivers <span className="text-trust font-semibold">enterprise-grade AI governance</span> that keeps you{' '}
+              ApexNova Consulting delivers <span className="text-trust font-semibold">enterprise-grade AI governance</span> that keeps you{' '}
               <span className="text-cyber font-semibold">compliant, secure, and trusted</span> — without slowing down innovation.
             </p>
           </motion.div>

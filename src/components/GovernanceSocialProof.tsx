@@ -33,24 +33,24 @@ export default function GovernanceSocialProof() {
 
   const testimonials = [
     {
-      quote: "ApexNova identified critical HIPAA gaps in our AI scribe implementation that could have cost us millions in fines. Their zero-knowledge architecture gave us peace of mind.",
-      author: "Dr. Sarah Chen",
+      quote: "ApexNova Consulting identified critical HIPAA gaps in our AI scribe implementation that could have cost us millions in fines. Their zero-knowledge architecture gave us peace of mind.",
+      author: "Healthcare Executive",
       role: "Chief Medical Officer",
-      company: "Princeton Medical Group",
+      company: "Major Healthcare Provider",
       industry: "Healthcare"
     },
     {
-      quote: "The Settlement Shield protocol saved our title company from a $2.3M wire fraud attempt. ApexNova's AI governance framework is now mandatory for all our offices.",
-      author: "Michael Rodriguez",
+      quote: "The Settlement Shield protocol saved our title company from a $2.3M wire fraud attempt. ApexNova Consulting's AI governance framework is now mandatory for all our offices.",
+      author: "Title Company Partner",
       role: "Managing Partner",
-      company: "Empire Title & Escrow",
+      company: "Regional Title Company",
       industry: "Real Estate"
     },
     {
-      quote: "We were unknowingly violating NJDPA with our AI sales agents. ApexNova's audit revealed IP leakage risks and got us compliant in 14 days. Worth every penny.",
-      author: "Jennifer Park",
+      quote: "We were unknowingly violating NJDPA with our AI sales agents. ApexNova Consulting's audit revealed IP leakage risks and got us compliant in 14 days. Worth every penny.",
+      author: "SaaS Executive",
       role: "VP of Revenue Operations",
-      company: "CloudMetrics SaaS",
+      company: "Enterprise SaaS Company",
       industry: "SaaS"
     }
   ];
