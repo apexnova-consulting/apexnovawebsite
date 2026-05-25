@@ -1,35 +1,70 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Syne, DM_Sans, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
-import GovernanceNavbar from '@/components/GovernanceNavbar';
-import GovernanceFooter from '@/components/GovernanceFooter';
-import Script from 'next/script';
+import SiteNavbar from '@/components/SiteNavbar';
+import SiteFooter from '@/components/SiteFooter';
+import { Analytics } from '@vercel/analytics/react';
 
-const inter = Inter({ 
+const syne = Syne({
   subsets: ['latin'],
-  variable: '--font-inter',
+  weight: ['400', '600', '700', '800'],
+  variable: '--font-syne',
   display: 'swap',
 });
 
-// Your GA4 Measurement ID
-const GA_MEASUREMENT_ID = 'G-8SS5JWNLS6';
+const dmSans = DM_Sans({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600'],
+  variable: '--font-dm-sans',
+  display: 'swap',
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  weight: ['400', '500'],
+  variable: '--font-jetbrains-mono',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
-  title: 'ApexNova Consulting | AI Governance & Security | NJDPA, HIPAA & Wire Fraud Compliance',
-  description: 'Enterprise AI governance for Real Estate, Healthcare, and SaaS. NJDPA ready. HIPAA compliant. Wire fraud prevention. Get your free AI risk scan today.',
-  keywords: 'AI governance, NJDPA compliance, HIPAA AI compliance, wire fraud prevention, AI security, real estate AI, healthcare AI, SaaS AI governance',
+  title: 'AI Tools for NJ & NYC Businesses | ApexNova Consulting',
+  description:
+    'ApexNova builds custom AI chatbots, automation workflows, and lead capture tools for real estate teams, medical practices, law firms, and local businesses in New Jersey and NYC.',
+  metadataBase: new URL('https://www.apexnovaconsulting.com'),
+  keywords: [
+    'AI consulting NJ',
+    'AI chatbot New Jersey',
+    'business automation NYC',
+    'AI for real estate NJ',
+    'AI for medical practices',
+    'AI for law firms NJ',
+    'Lambertville NJ AI consultant',
+    'small business AI tools',
+  ],
+  authors: [{ name: 'ApexNova Consulting', url: 'https://www.apexnovaconsulting.com' }],
   openGraph: {
-    title: 'ApexNova Consulting | AI Governance & Security | Enterprise Compliance',
-    description: 'Enterprise AI governance for Real Estate, Healthcare, and SaaS. NJDPA ready. HIPAA compliant. Wire fraud prevention.',
+    type: 'website',
+    locale: 'en_US',
     url: 'https://www.apexnovaconsulting.com',
     siteName: 'ApexNova Consulting',
-    locale: 'en_US',
-    type: 'website',
+    title: 'AI Tools for NJ & NYC Businesses | ApexNova Consulting',
+    description:
+      'Custom AI chatbots, automations, and smart workflows for real estate teams, medical practices, law firms, and local businesses across NJ and NYC.',
+    images: [
+      {
+        url: '/images/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'ApexNova Consulting — AI for NJ & NYC Businesses',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'ApexNova Consulting | AI Governance & Security | Enterprise Compliance',
-    description: 'Enterprise AI governance for Real Estate, Healthcare, and SaaS. NJDPA ready. HIPAA compliant. Wire fraud prevention.',
+    title: 'AI Tools for NJ & NYC Businesses | ApexNova Consulting',
+    description:
+      'Custom AI chatbots, automations, and smart workflows for NJ & NYC businesses.',
+    images: ['/images/og-image.png'],
   },
   robots: {
     index: true,
@@ -42,54 +77,46 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  verification: {
-    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
-  },
-  themeColor: '#00f5ff',
-  icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon.ico',
-    apple: '/apple-touch-icon.png',
-  },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: 'ApexNova Consulting',
+  description: 'AI implementation and automation consulting for NJ/NYC businesses',
+  url: 'https://www.apexnovaconsulting.com',
+  telephone: '+19733485008',
+  email: 'info@apexnovaconsulting.com',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Lambertville',
+    addressRegion: 'NJ',
+    postalCode: '08530',
+    addressCountry: 'US',
+  },
+  areaServed: ['New Jersey', 'New York City', 'NYC Tri-State Area'],
+  serviceType: [
+    'AI Consulting',
+    'Chatbot Development',
+    'Workflow Automation',
+    'AI Implementation',
+  ],
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" className={`dark ${syne.variable} ${dmSans.variable} ${jetbrainsMono.variable}`}>
       <head>
-        {/* Google Analytics */}
-        <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
-          strategy="afterInteractive"
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
         />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '${GA_MEASUREMENT_ID}', {
-              page_path: window.location.pathname,
-              send_page_view: true,
-              goals: {
-                'audit_booked': true,
-                'risk_scan_completed': true,
-                'certification_inquiry': true,
-                'contact_submitted': true
-              }
-            });
-          `}
-        </Script>
       </head>
-      <body className={`${inter.variable} font-sans`}>
-        <GovernanceNavbar />
-        <div id="page-content">
-          {children}
-        </div>
-        <GovernanceFooter />
+      <body>
+        <SiteNavbar />
+        <div id="page-content">{children}</div>
+        <SiteFooter />
+        <Analytics />
       </body>
     </html>
   );

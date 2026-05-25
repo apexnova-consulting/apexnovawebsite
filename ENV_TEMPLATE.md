@@ -51,3 +51,4 @@ STRIPE_SECRET_KEY=sk_test_your_stripe_secret
 3. Add each variable above
 4. Redeploy to apply changes
 
+

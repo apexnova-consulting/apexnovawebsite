@@ -75,3 +75,4 @@ COMMENT ON COLUMN leads.risk_level IS 'Risk classification: Critical, High, Mode
 COMMENT ON COLUMN leads.answers IS 'JSON object containing all assessment answers';
 COMMENT ON COLUMN leads.roadmap_sent IS 'Whether the remediation roadmap PDF has been sent via email';
 
+

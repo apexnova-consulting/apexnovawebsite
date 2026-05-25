@@ -1,261 +1,166 @@
-'use client';
-
-import React from 'react';
+import type { Metadata } from 'next';
 import Link from 'next/link';
-import { FaShieldAlt, FaChartLine, FaUsers, FaArrowRight } from 'react-icons/fa';
+import { ArrowRight, MapPin, Wrench, Users, Code } from 'lucide-react';
+
+export const metadata: Metadata = {
+  title: 'About | ApexNova Consulting — NJ-Based AI Implementation',
+  description:
+    "ApexNova is a boutique AI implementation firm based in Lambertville, NJ. Real builds, real people, close enough to meet at your office.",
+  alternates: { canonical: 'https://www.apexnovaconsulting.com/about' },
+};
 
 export default function AboutPage() {
-  const values = [
-    {
-      icon: <FaShieldAlt className="w-8 h-8 text-cyber" />,
-      title: "Security-First Mindset",
-      description: "We believe AI should empower businesses, not expose them to risk. Every solution we design prioritizes data security and compliance."
-    },
-    {
-      icon: <FaChartLine className="w-8 h-8 text-cyber" />,
-      title: "Results-Focused",
-      description: "We measure success by measurable outcomes: reduced risk scores, zero breaches, and full compliance with industry regulations."
-    },
-    {
-      icon: <FaUsers className="w-8 h-8 text-cyber" />,
-      title: "Partnership Approach",
-      description: "We don't just consult—we partner with you. Your success is our success, and we're committed to long-term relationships."
-    }
-  ];
-
   return (
-    <main className="bg-slate-950 min-h-screen">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-slate-950 via-navy-950 to-slate-950 text-white py-20 px-4 sm:px-6 lg:px-8 pt-32">
-        <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
-            Your Outsourced AI Governance Team
-          </h1>
-          <p className="text-xl sm:text-2xl text-slate-300 max-w-4xl mx-auto">
-            ApexNova Consulting helps businesses harness the power of AI without the legal, security, and operational risks.
-          </p>
-        </div>
-      </section>
+    <main style={{ backgroundColor: 'var(--bg-base)' }}>
+      {/* Hero */}
+      <section className="pt-28 pb-20" style={{ background: 'var(--bg-base)' }}>
+        <div className="container-site">
+          <div className="grid lg:grid-cols-2 gap-14 items-start">
+            <div>
+              <p className="section-label mb-4">{'// Who we are'}</p>
+              <h1
+                className="text-[#F0F0FF] mb-6"
+                style={{
+                  fontSize: 'clamp(2.2rem, 5vw, 3.5rem)',
+                  fontFamily: 'Syne, sans-serif',
+                  fontWeight: 800,
+                  lineHeight: 1.1,
+                }}
+              >
+                Real builds. Real humans.{' '}
+                <span className="gradient-text">Based right here in NJ.</span>
+              </h1>
 
-      {/* Mission Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-900/50">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-white">Why We Were Founded</h2>
-            <div className="text-xl text-slate-300 max-w-4xl mx-auto space-y-6">
-              <p>
-                In 2023, we watched businesses rush to adopt AI tools—ChatGPT, Claude, Midjourney, and dozens more—without any governance framework in place. The result? Data leaks, compliance violations, and millions in potential liability.
-              </p>
-              <p>
-                We founded ApexNova Consulting because we saw a critical gap: businesses desperately needed AI to stay competitive, but they lacked the expertise to use it safely. Traditional cybersecurity firms didn't understand AI's unique risks. AI consultants didn't prioritize security. We bridge that gap.
-              </p>
-              <p className="font-semibold text-cyber text-2xl">
-                Our mission is simple: Help you innovate with AI, without the catastrophic risks.
-              </p>
+              <div className="space-y-4 text-[#9898B0]" style={{ fontSize: '1.05rem', lineHeight: 1.8 }}>
+                <p>
+                  ApexNova Consulting was founded on a simple frustration: too many small businesses
+                  were being sold AI hype and getting nothing that actually worked.
+                </p>
+                <p>
+                  We&apos;re a boutique AI implementation firm based in Lambertville, NJ — close enough
+                  to drive to your office, technical enough to build tools that last.
+                </p>
+                <p>
+                  We come from IT consulting and web development. We&apos;ve built websites, deployed AI
+                  chatbots, and automated workflows for real clients. We&apos;re not a governance
+                  paper-factory or an offshore dev shop. We&apos;re builders who happen to work in your
+                  backyard.
+                </p>
+                <p>
+                  Our focus is narrow on purpose. We don&apos;t try to serve Fortune 500 companies or
+                  replace your entire tech stack. We find the part of your business that&apos;s bleeding
+                  time or missing leads and we fix it with AI.
+                </p>
+              </div>
+
+              <div className="flex items-center gap-2 mt-6 text-sm text-[#5A5A72]" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
+                <MapPin size={13} className="text-[#4F6EF7]" />
+                Lambertville, NJ — Serving NJ &amp; NYC Tri-State
+              </div>
             </div>
-          </div>
 
-          {/* Values Grid */}
-          <div className="grid md:grid-cols-3 gap-12 mt-20">
-            {values.map((value, index) => (
-              <div key={index} className="text-center bg-slate-800/50 p-8 rounded-2xl border border-slate-700 hover:border-cyber/50 transition-all">
-                <div className="flex justify-center mb-6">
-                  <div className="w-16 h-16 bg-slate-900 rounded-full flex items-center justify-center border border-cyber/30">
-                    {value.icon}
+            {/* Right side — values/facts */}
+            <div className="flex flex-col gap-4">
+              {[
+                {
+                  icon: Code,
+                  color: '#4F6EF7',
+                  title: "We're builders, not consultants",
+                  desc: "When you hire us, you get working software — not a PowerPoint deck full of recommendations. We build, deploy, and support.",
+                },
+                {
+                  icon: MapPin,
+                  color: '#00D4AA',
+                  title: 'Local is a feature, not a footnote',
+                  desc: "We can meet at your office. We know the NJ/NYC market. We understand the pace of a real estate team in Hoboken or a law firm in Newark. That context is part of what we build.",
+                },
+                {
+                  icon: Wrench,
+                  color: '#7C3AED',
+                  title: 'Narrow focus, deep craft',
+                  desc: "We don't try to do everything. We do AI chatbots, workflow automation, and web development — and we do them well.",
+                },
+                {
+                  icon: Users,
+                  color: '#F59E0B',
+                  title: "You'll work with the person who builds it",
+                  desc: "There's no account manager between you and the builder. When you have a question, you talk to the person who wrote the code.",
+                },
+              ].map((item) => {
+                const Icon = item.icon;
+                return (
+                  <div
+                    key={item.title}
+                    className="card p-5 flex items-start gap-4"
+                  >
+                    <div
+                      className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+                      style={{ background: `${item.color}12`, border: `1px solid ${item.color}25` }}
+                    >
+                      <Icon size={18} style={{ color: item.color }} />
+                    </div>
+                    <div>
+                      <h3
+                        className="text-[#F0F0FF] font-semibold text-sm mb-1"
+                        style={{ fontFamily: 'Syne, sans-serif' }}
+                      >
+                        {item.title}
+                      </h3>
+                      <p className="text-[#9898B0] text-sm leading-relaxed">{item.desc}</p>
+                    </div>
                   </div>
-                </div>
-                <h3 className="text-xl font-bold mb-4 text-white">{value.title}</h3>
-                <p className="text-slate-300 leading-relaxed">{value.description}</p>
-              </div>
-            ))}
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Problem We Solve */}
-      <section className="bg-slate-950 py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-white">The Problem We Solve</h2>
-            <p className="text-xl text-slate-300 max-w-4xl mx-auto">
-              Most companies face the same dilemma when it comes to AI
+      {/* Why local matters */}
+      <section className="py-16" style={{ backgroundColor: 'var(--bg-subtle)' }}>
+        <div className="container-site">
+          <div
+            className="card p-8 md:p-10 max-w-3xl mx-auto text-center"
+            style={{ background: 'rgba(79,110,247,0.06)', borderColor: 'rgba(79,110,247,0.2)' }}
+          >
+            <p className="section-label mb-4 justify-center flex">{'// Why local matters'}</p>
+            <h2
+              className="text-[#F0F0FF] text-2xl md:text-3xl font-bold mb-4"
+              style={{ fontFamily: 'Syne, sans-serif' }}
+            >
+              Most AI firms you&apos;ll find online are remote, offshore, or enterprise-only.
+            </h2>
+            <p className="text-[#9898B0] leading-relaxed">
+              We can meet you at your office. We know the NJ/NYC market. We understand the pace of a
+              real estate team in Hoboken, a medical practice in Princeton, or a law firm in Newark.
+              That context — knowing the local business environment, the client expectations, the pace —
+              is part of what we build into every tool.
+            </p>
+            <p className="text-[#9898B0] mt-3 leading-relaxed">
+              We also work with businesses that enterprise firms won&apos;t even return calls to. If
+              you&apos;re a 10-person law firm or a single-location dental office, you&apos;re exactly who
+              we built this for.
             </p>
           </div>
-
-          <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
-            <div className="bg-slate-900/50 p-8 rounded-2xl border border-alert/30 border-l-4">
-              <h3 className="text-2xl font-bold mb-4 text-white">Without AI Governance</h3>
-              <ul className="space-y-4">
-                <li className="flex items-start">
-                  <span className="text-alert mr-3 mt-1">✗</span>
-                  <span className="text-slate-300">Shadow AI usage across departments</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-alert mr-3 mt-1">✗</span>
-                  <span className="text-slate-300">Data leaks to public AI models</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-alert mr-3 mt-1">✗</span>
-                  <span className="text-slate-300">Compliance violations and fines</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-alert mr-3 mt-1">✗</span>
-                  <span className="text-slate-300">IP and trade secret exposure</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-alert mr-3 mt-1">✗</span>
-                  <span className="text-slate-300">Legal and reputational damage</span>
-                </li>
-              </ul>
-            </div>
-
-            <div className="bg-slate-900/50 p-8 rounded-2xl border border-trust/30 border-l-4">
-              <h3 className="text-2xl font-bold mb-4 text-white">With ApexNova Consulting</h3>
-              <ul className="space-y-4">
-                <li className="flex items-start">
-                  <span className="text-trust mr-3 mt-1">✓</span>
-                  <span className="text-slate-300">Complete visibility of all AI tools</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-trust mr-3 mt-1">✓</span>
-                  <span className="text-slate-300">Data protection and encryption</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-trust mr-3 mt-1">✓</span>
-                  <span className="text-slate-300">Full regulatory compliance</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-trust mr-3 mt-1">✓</span>
-                  <span className="text-slate-300">Secure, approved AI workflows</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-trust mr-3 mt-1">✓</span>
-                  <span className="text-slate-300">Confident, trained team members</span>
-                </li>
-              </ul>
-            </div>
-          </div>
         </div>
       </section>
 
-      {/* Expertise Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-900/50">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-white">Our Expertise</h2>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-              We combine deep technical knowledge with practical business experience
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-slate-800/50 p-8 rounded-xl border border-slate-700">
-              <h3 className="text-xl font-bold mb-4 text-cyber">AI Security</h3>
-              <ul className="space-y-3">
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-trust rounded-full mr-3"></span>
-                  <span className="text-slate-300">Data protection frameworks</span>
-                </li>
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-trust rounded-full mr-3"></span>
-                  <span className="text-slate-300">Secure AI tool configuration</span>
-                </li>
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-trust rounded-full mr-3"></span>
-                  <span className="text-slate-300">Risk assessment methodologies</span>
-                </li>
-              </ul>
-            </div>
-
-            <div className="bg-slate-800/50 p-8 rounded-xl border border-slate-700">
-              <h3 className="text-xl font-bold mb-4 text-cyber">Compliance</h3>
-              <ul className="space-y-3">
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-trust rounded-full mr-3"></span>
-                  <span className="text-slate-300">GDPR, HIPAA, SOC 2</span>
-                </li>
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-trust rounded-full mr-3"></span>
-                  <span className="text-slate-300">Industry-specific regulations</span>
-                </li>
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-trust rounded-full mr-3"></span>
-                  <span className="text-slate-300">Audit preparation and support</span>
-                </li>
-              </ul>
-            </div>
-
-            <div className="bg-slate-800/50 p-8 rounded-xl border border-slate-700">
-              <h3 className="text-xl font-bold mb-4 text-cyber">Implementation</h3>
-              <ul className="space-y-3">
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-trust rounded-full mr-3"></span>
-                  <span className="text-slate-300">Policy development and rollout</span>
-                </li>
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-trust rounded-full mr-3"></span>
-                  <span className="text-slate-300">Team training and enablement</span>
-                </li>
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-trust rounded-full mr-3"></span>
-                  <span className="text-slate-300">Ongoing monitoring and support</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Industries We Serve */}
-      <section className="bg-slate-950 text-white py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-6">Industries We Serve</h2>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-              Specialized expertise in highly regulated sectors
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              { name: 'Healthcare', description: 'HIPAA compliance for AI tools handling PHI' },
-              { name: 'Financial Services', description: 'PCI-DSS and SOX compliance frameworks' },
-              { name: 'Legal', description: 'Attorney-client privilege protection' },
-              { name: 'Technology', description: 'IP protection and secure development' }
-            ].map((industry, index) => (
-              <div key={index} className="bg-slate-800/50 border border-slate-700 p-6 rounded-xl text-center hover:border-cyber/50 transition-all">
-                <h3 className="text-xl font-bold mb-3">{industry.name}</h3>
-                <p className="text-slate-300">{industry.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="bg-gradient-to-br from-slate-900 via-navy-950 to-slate-900 text-white py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl font-bold mb-6">
-            Ready to Secure Your AI Operations?
+      {/* CTA */}
+      <section className="py-20">
+        <div className="container-site text-center">
+          <h2
+            className="text-[#F0F0FF] text-3xl md:text-4xl font-bold mb-4"
+            style={{ fontFamily: 'Syne, sans-serif' }}
+          >
+            Want to see how we work?
           </h2>
-          <p className="text-xl text-slate-300 mb-8">
-            Start with a free AI Health Check and discover your top 3 vulnerabilities.
+          <p className="text-[#9898B0] mb-6 max-w-md mx-auto">
+            Book a free 30-minute AI Audit. No pitch — just a real conversation about your business.
           </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Link
-              href="/governance-dashboard"
-              className="inline-flex items-center justify-center bg-gradient-to-r from-trust to-cyber text-slate-950 font-semibold px-8 py-4 rounded-lg transition-all hover:shadow-cyber-lg group text-lg"
-            >
-              Get Your Free AI Health Check
-              <FaArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-            </Link>
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center bg-transparent border-2 border-cyber hover:bg-cyber/10 text-cyber font-semibold px-8 py-4 rounded-lg transition-colors text-lg"
-            >
-              Contact Us
-            </Link>
-          </div>
+          <Link href="/contact" className="btn-primary">
+            Book My Free AI Audit
+            <ArrowRight size={15} />
+          </Link>
         </div>
       </section>
     </main>

@@ -1,133 +1,138 @@
-'use client';
-
-import React from 'react';
+import type { Metadata } from 'next';
 import Link from 'next/link';
-import { FaArrowRight, FaChartLine, FaLightbulb, FaRocket } from 'react-icons/fa';
+import { ArrowRight } from 'lucide-react';
 
-const caseStudies = [
+export const metadata: Metadata = {
+  title: 'Case Studies | ApexNova Consulting',
+  description: 'Real AI implementation results for NJ/NYC businesses. Case studies coming soon.',
+  alternates: { canonical: 'https://www.apexnovaconsulting.com/case-studies' },
+};
+
+const placeholders = [
   {
-    id: 'fintech-adoption',
-    client: 'Mid-size Fintech Company',
-    challenge: 'Struggling with low AI tool adoption rates (< 20%) and inconsistent usage across teams.',
-    solution: 'Implemented our 90-day AI Adoption Sprint, including custom training programs and workflow optimization.',
-    outcome: 'Achieved 85% sustained adoption rate and reduced process time by 40%.',
-    metrics: [
-      '85% team adoption',
-      '40% faster processes',
-      '$180K annual savings'
-    ],
-    icon: <FaRocket className="w-8 h-8" />
+    industry: 'Real Estate',
+    color: '#00D4AA',
+    emoji: '🏠',
+    title: 'NJ Real Estate Team — Lead Response Automation',
+    teaser: 'How a 5-agent team stopped missing after-hours Zillow leads and added 3 new clients per month.',
+    stat: '+3 clients/mo',
+    statLabel: 'from after-hours leads',
   },
   {
-    id: 'enterprise-transformation',
-    client: 'Enterprise Tech Company',
-    challenge: 'Complex AI implementation causing team resistance and poor ROI on $500K+ investment.',
-    solution: 'Delivered comprehensive enablement blueprint and systematic training approach.',
-    outcome: 'Transformed resistance into enthusiasm with measurable productivity gains.',
-    metrics: [
-      '3× productivity increase',
-      '92% team satisfaction',
-      '$1.2M ROI generated'
-    ],
-    icon: <FaLightbulb className="w-8 h-8" />
+    industry: 'Medical',
+    color: '#3B82F6',
+    emoji: '🏥',
+    title: 'Princeton Dental Office — Patient Intake & Reminders',
+    teaser: 'How a 3-location dental practice automated intake, cut no-shows by 40%, and freed up 15 hours/week.',
+    stat: '–40%',
+    statLabel: 'no-show rate',
   },
   {
-    id: 'saas-optimization',
-    client: 'Growing SaaS Startup',
-    challenge: 'Inefficient communication workflows causing delays in product development.',
-    solution: 'Combined AI enablement with communication coaching for leadership team.',
-    outcome: 'Dramatically improved team collaboration and development speed.',
-    metrics: [
-      '60% less meeting time',
-      '45% faster delivery',
-      '2× customer satisfaction'
-    ],
-    icon: <FaChartLine className="w-8 h-8" />
-  }
+    industry: 'Law Firm',
+    color: '#8B5CF6',
+    emoji: '⚖️',
+    title: 'Newark Immigration Firm — AI Intake Bot',
+    teaser: 'How a bilingual AI intake bot helped a solo immigration attorney handle 2x the consultations.',
+    stat: '2×',
+    statLabel: 'consultations booked',
+  },
 ];
 
 export default function CaseStudiesPage() {
   return (
-    <main className="bg-slate-950 min-h-screen">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-slate-950 via-navy-950 to-slate-950 text-white py-20 px-4 sm:px-6 lg:px-8 pt-32">
-        <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
-            Client Success Stories
+    <main style={{ backgroundColor: 'var(--bg-base)' }}>
+      <section className="pt-28 pb-20">
+        <div className="container-site">
+          <p className="section-label mb-4">{'// Case studies'}</p>
+          <h1
+            className="text-[#F0F0FF] mb-5 max-w-2xl"
+            style={{
+              fontSize: 'clamp(2.2rem, 5vw, 3.5rem)',
+              fontFamily: 'Syne, sans-serif',
+              fontWeight: 800,
+              lineHeight: 1.1,
+            }}
+          >
+            Real results. Real businesses. No made-up stats.
           </h1>
-          <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-            Real results from organizations that transformed their AI governance and security.
+          <p className="text-[#9898B0] max-w-lg mb-14" style={{ fontSize: '1.05rem', lineHeight: 1.7 }}>
+            We&apos;re building detailed case studies as we complete client projects. In the meantime,
+            here&apos;s a preview of what&apos;s coming. Book an audit call and we&apos;ll share what
+            we&apos;ve built for businesses like yours.
           </p>
-        </div>
-      </section>
 
-      {/* Case Studies Grid */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-900/50">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-8">
-            {caseStudies.map((study) => (
+          <div className="grid md:grid-cols-3 gap-5 mb-14">
+            {placeholders.map((cs) => (
               <div
-                key={study.id}
-                className="bg-slate-800/50 border border-slate-700 rounded-xl shadow-lg p-8 hover:shadow-cyber-lg hover:border-cyber/50 transition-all duration-300"
+                key={cs.title}
+                className="card p-7 relative overflow-hidden"
+                style={{ borderColor: `${cs.color}20` }}
               >
-                <div className="text-cyber mb-6">
-                  {study.icon}
+                <div
+                  className="absolute top-0 right-0 w-24 h-24 pointer-events-none"
+                  style={{ background: `radial-gradient(ellipse at top right, ${cs.color}10, transparent 70%)` }}
+                />
+                <div className="flex items-center gap-2 mb-4">
+                  <span className="text-lg">{cs.emoji}</span>
+                  <span
+                    className="industry-badge text-[10px]"
+                    style={{ color: cs.color, borderColor: `${cs.color}40` }}
+                  >
+                    {cs.industry}
+                  </span>
+                  <span
+                    className="ml-auto text-[10px] px-2 py-0.5 rounded-full font-medium"
+                    style={{
+                      background: 'rgba(255,255,255,0.06)',
+                      color: 'var(--text-muted)',
+                      fontFamily: 'JetBrains Mono, monospace',
+                    }}
+                  >
+                    coming soon
+                  </span>
                 </div>
-                <div className="text-sm text-cyber font-semibold mb-4">
-                  {study.client}
-                </div>
-                
-                <div className="space-y-6">
-                  <div>
-                    <h3 className="font-semibold mb-2 text-white">Challenge:</h3>
-                    <p className="text-slate-300">{study.challenge}</p>
-                  </div>
-                  
-                  <div>
-                    <h3 className="font-semibold mb-2 text-white">Solution:</h3>
-                    <p className="text-slate-300">{study.solution}</p>
-                  </div>
-                  
-                  <div>
-                    <h3 className="font-semibold mb-2 text-white">Outcome:</h3>
-                    <p className="text-slate-300">{study.outcome}</p>
-                  </div>
-
-                  <div className="grid grid-cols-3 gap-4 pt-4">
-                    {study.metrics.map((metric, index) => (
-                      <div
-                        key={index}
-                        className="bg-slate-900/70 border border-slate-600 p-3 rounded-lg text-center hover:border-trust/50 transition-colors"
-                      >
-                        <div className="text-sm font-semibold text-trust">
-                          {metric}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
+                <h3
+                  className="text-[#F0F0FF] font-bold mb-2 leading-snug"
+                  style={{ fontFamily: 'Syne, sans-serif', fontSize: '1rem' }}
+                >
+                  {cs.title}
+                </h3>
+                <p className="text-[#9898B0] text-sm leading-relaxed mb-5">{cs.teaser}</p>
+                <div>
+                  <p
+                    className="text-2xl font-bold"
+                    style={{ fontFamily: 'Syne, sans-serif', color: cs.color }}
+                  >
+                    {cs.stat}
+                  </p>
+                  <p className="text-[10px] text-[#5A5A72]" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
+                    {cs.statLabel}
+                  </p>
                 </div>
               </div>
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* CTA Section */}
-      <section className="bg-gradient-to-r from-trust to-cyber py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-950 mb-6">
-            Ready to Secure Your AI Operations?
-          </h2>
-          <p className="text-xl text-slate-800 mb-8">
-            Get your free AI Health Check and discover your top vulnerabilities.
-          </p>
-          <Link
-            href="/ai-risk-calculator"
-            className="inline-flex items-center justify-center bg-slate-950 hover:bg-slate-800 text-white font-bold px-8 py-4 rounded-lg transition-all transform hover:scale-105 shadow-lg"
+          {/* CTA */}
+          <div
+            className="card p-10 text-center max-w-2xl mx-auto"
+            style={{ background: 'rgba(79,110,247,0.05)', borderColor: 'rgba(79,110,247,0.2)' }}
           >
-            Get Free AI Health Check
-            <FaArrowRight className="ml-2" />
-          </Link>
+            <h2
+              className="text-[#F0F0FF] text-2xl font-bold mb-3"
+              style={{ fontFamily: 'Syne, sans-serif' }}
+            >
+              Want to see exactly what we&apos;ve built?
+            </h2>
+            <p className="text-[#9898B0] text-sm mb-6">
+              Book a free audit call and we&apos;ll walk you through specific examples from your
+              industry — what we built, how it works, and what results to expect.
+            </p>
+            <Link href="/contact" className="btn-primary">
+              Book My Free AI Audit
+              <ArrowRight size={15} />
+            </Link>
+          </div>
         </div>
       </section>
     </main>

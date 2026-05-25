@@ -1,222 +1,254 @@
 'use client';
 
-import React, { useState } from 'react';
-import { FaEnvelope, FaArrowRight } from 'react-icons/fa';
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { ArrowRight, Mail, Phone, MapPin, Loader2, CheckCircle } from 'lucide-react';
 
-export default function ContactPage() {
-  const [formType, setFormType] = useState('general');
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    company: '',
-    message: '',
-    inquiryType: 'general'
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState({ type: '', message: '' });
+type FormData = {
+  name: string;
+  email: string;
+  business: string;
+  industry: string;
+  message: string;
+};
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitStatus({ type: '', message: '' });
+function ContactForm() {
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<FormData>();
 
+  const onSubmit = async (data: FormData) => {
+    setStatus('loading');
     try {
-      const response = await fetch('/api/contact', {
+      const res = await fetch('/api/contact', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
       });
-
-      if (!response.ok) throw new Error('Failed to submit form');
-
-      setSubmitStatus({
-        type: 'success',
-        message: 'Thank you for your message. We will be in touch shortly.'
-      });
-      setFormData({
-        name: '',
-        email: '',
-        company: '',
-        message: '',
-        inquiryType: 'general'
-      });
-    } catch (error) {
-      setSubmitStatus({
-        type: 'error',
-        message: 'Something went wrong. Please try again.'
-      });
-    } finally {
-      setIsSubmitting(false);
+      if (res.ok) {
+        setStatus('success');
+        reset();
+      } else {
+        setStatus('error');
+      }
+    } catch {
+      setStatus('error');
     }
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
+  if (status === 'success') {
+    return (
+      <div className="card p-10 text-center flex flex-col items-center gap-4">
+        <CheckCircle size={40} className="text-[#00D4AA]" />
+        <h3
+          className="text-[#F0F0FF] text-xl font-bold"
+          style={{ fontFamily: 'Syne, sans-serif' }}
+        >
+          Message sent!
+        </h3>
+        <p className="text-[#9898B0] text-sm">
+          We usually respond within 4 hours during business hours. We&apos;ll be in touch soon.
+        </p>
+        <button onClick={() => setStatus('idle')} className="btn-secondary text-sm py-2 px-4">
+          Send another message
+        </button>
+      </div>
+    );
+  }
 
   return (
-    <main className="bg-slate-950 min-h-screen">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-slate-950 via-navy-950 to-slate-950 text-white py-20 px-4 sm:px-6 lg:px-8 pt-32">
-        <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-4xl sm:text-5xl font-bold mb-6">
-            Get in Touch
-          </h1>
-          <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-            Let's discuss how ApexNova Consulting can secure your AI operations.
-          </p>
+    <form onSubmit={handleSubmit(onSubmit)} className="card p-8 flex flex-col gap-4">
+      <div className="grid sm:grid-cols-2 gap-4">
+        <div>
+          <label className="block text-xs text-[#9898B0] mb-1.5" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
+            Your name *
+          </label>
+          <input
+            {...register('name', { required: 'Name is required' })}
+            className="input-field"
+            placeholder="Jane Smith"
+          />
+          {errors.name && <p className="text-red-400 text-xs mt-1">{errors.name.message}</p>}
         </div>
-      </section>
+        <div>
+          <label className="block text-xs text-[#9898B0] mb-1.5" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
+            Email address *
+          </label>
+          <input
+            {...register('email', {
+              required: 'Email is required',
+              pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: 'Enter a valid email' },
+            })}
+            type="email"
+            className="input-field"
+            placeholder="jane@yourbusiness.com"
+          />
+          {errors.email && <p className="text-red-400 text-xs mt-1">{errors.email.message}</p>}
+        </div>
+      </div>
 
-      {/* Contact Forms Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-900/50">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12">
-            {/* Contact Information */}
+      <div>
+        <label className="block text-xs text-[#9898B0] mb-1.5" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
+          Business name
+        </label>
+        <input
+          {...register('business')}
+          className="input-field"
+          placeholder="Your business or firm name"
+        />
+      </div>
+
+      <div>
+        <label className="block text-xs text-[#9898B0] mb-1.5" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
+          Industry
+        </label>
+        <select {...register('industry')} className="input-field">
+          <option value="">Select your industry</option>
+          <option value="real-estate">Real Estate & Title</option>
+          <option value="medical">Medical Practice / Healthcare</option>
+          <option value="legal">Law Firm</option>
+          <option value="smb">Local Business / Other</option>
+        </select>
+      </div>
+
+      <div>
+        <label className="block text-xs text-[#9898B0] mb-1.5" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
+          What&apos;s the biggest time-waster or bottleneck in your business right now? *
+        </label>
+        <textarea
+          {...register('message', { required: 'Please tell us a bit about your business' })}
+          className="input-field resize-none"
+          rows={4}
+          placeholder="e.g. We get leads through Zillow after hours and nobody responds until morning..."
+        />
+        {errors.message && <p className="text-red-400 text-xs mt-1">{errors.message.message}</p>}
+      </div>
+
+      <button
+        type="submit"
+        disabled={status === 'loading'}
+        className="btn-primary justify-center mt-1"
+      >
+        {status === 'loading' ? (
+          <>
+            <Loader2 size={16} className="animate-spin" />
+            Sending...
+          </>
+        ) : (
+          <>
+            Send Message
+            <ArrowRight size={15} />
+          </>
+        )}
+      </button>
+
+      {status === 'error' && (
+        <p className="text-red-400 text-sm text-center">
+          Something went wrong. Please email us directly at{' '}
+          <a href="mailto:info@apexnovaconsulting.com" className="underline">
+            info@apexnovaconsulting.com
+          </a>
+        </p>
+      )}
+    </form>
+  );
+}
+
+export default function ContactPage() {
+  return (
+    <main style={{ backgroundColor: 'var(--bg-base)' }}>
+      <section className="pt-28 pb-24">
+        <div className="container-site">
+          <div className="grid lg:grid-cols-2 gap-14 items-start">
+            {/* Left — info */}
             <div>
-              <h2 className="text-3xl font-bold mb-6 text-white">Contact Information</h2>
-              <div className="space-y-6 text-slate-300">
-                <div className="flex items-center">
-                  <FaEnvelope className="w-6 h-6 text-cyber mr-3" />
-                  <a href="mailto:info@apexnovaconsulting.com" className="hover:text-cyber transition-colors">
-                    info@apexnovaconsulting.com
-                  </a>
-                </div>
-                <p className="text-slate-400">
-                  Serving New Jersey and the NYC Tri-State Area with enterprise AI governance.
-                </p>
+              <p className="section-label mb-4">{'// Get in touch'}</p>
+              <h1
+                className="text-[#F0F0FF] mb-5"
+                style={{
+                  fontSize: 'clamp(2.2rem, 4.5vw, 3.2rem)',
+                  fontFamily: 'Syne, sans-serif',
+                  fontWeight: 800,
+                  lineHeight: 1.1,
+                }}
+              >
+                Let&apos;s talk about your business.
+              </h1>
+              <p className="text-[#9898B0] mb-8" style={{ fontSize: '1.05rem', lineHeight: 1.7 }}>
+                Book a free 30-minute AI Audit or send us a message. We&apos;ll get back to you within
+                4 hours on business days.
+              </p>
+
+              {/* Contact details */}
+              <div className="space-y-4 mb-8">
+                {[
+                  { icon: Mail, label: 'Email', value: 'info@apexnovaconsulting.com', href: 'mailto:info@apexnovaconsulting.com', color: '#4F6EF7' },
+                  { icon: Phone, label: 'Phone', value: '(973) 348-5008', href: 'tel:+19733485008', color: '#00D4AA' },
+                  { icon: MapPin, label: 'Location', value: 'Lambertville, NJ — Serving the Tri-State Area', href: null, color: '#7C3AED' },
+                ].map((item) => {
+                  const Icon = item.icon;
+                  return (
+                    <div key={item.label} className="flex items-start gap-3">
+                      <div
+                        className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
+                        style={{ background: `${item.color}12`, border: `1px solid ${item.color}25` }}
+                      >
+                        <Icon size={15} style={{ color: item.color }} />
+                      </div>
+                      <div>
+                        <p className="text-[10px] text-[#5A5A72] uppercase tracking-widest" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
+                          {item.label}
+                        </p>
+                        {item.href ? (
+                          <a href={item.href} className="text-sm text-[#9898B0] hover:text-[#F0F0FF] transition-colors">
+                            {item.value}
+                          </a>
+                        ) : (
+                          <p className="text-sm text-[#9898B0]">{item.value}</p>
+                        )}
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
 
-              {/* Form Type Selector */}
-              <div className="mt-12">
-                <h3 className="text-lg font-semibold mb-4 text-white">How can we help?</h3>
-                <div className="grid grid-cols-2 gap-4">
-                  <button
-                    className={`p-4 rounded-lg text-center transition-colors ${formType === 'general'
-                        ? 'bg-cyber text-slate-950'
-                        : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
-                      }`}
-                    onClick={() => setFormType('general')}
-                  >
-                    General Inquiry
-                  </button>
-                  <button
-                    className={`p-4 rounded-lg text-center transition-colors ${formType === 'audit'
-                        ? 'bg-cyber text-slate-950'
-                        : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
-                      }`}
-                    onClick={() => setFormType('audit')}
-                  >
-                    Book Compliance Audit
-                  </button>
-                </div>
-              </div>
-
-              {/* Careers/Partner Section */}
-              <div className="mt-12 p-6 bg-slate-800/50 border border-slate-700 rounded-lg">
-                <h3 className="text-xl font-bold mb-3 text-white">Careers / Partnership</h3>
-                <p className="text-slate-300 mb-4">
-                  Interested in joining or partnering with ApexNova Consulting? We're always looking to connect with talented professionals and organizations.
-                </p>
-                <a
-                  href="#"
-                  className="inline-flex items-center text-cyber hover:text-trust transition-colors"
+              {/* What happens on the call */}
+              <div
+                className="card p-6"
+                style={{ background: 'rgba(79,110,247,0.05)', borderColor: 'rgba(79,110,247,0.2)' }}
+              >
+                <h3
+                  className="text-[#F0F0FF] font-semibold mb-3"
+                  style={{ fontFamily: 'Syne, sans-serif' }}
                 >
-                  Learn More
-                  <FaArrowRight className="ml-2" />
-                </a>
+                  What happens on the audit call?
+                </h3>
+                <ul className="space-y-2">
+                  {[
+                    'We learn how your business runs today',
+                    'We identify your biggest time-wasters and missed opportunities',
+                    'We show you 2–3 specific ways AI could help your business specifically',
+                    'You get a written summary after the call — free, no strings',
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-2.5 text-sm text-[#9898B0]">
+                      <span className="text-[#4F6EF7] mt-0.5 flex-shrink-0">→</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <p className="text-xs text-[#5A5A72] mt-4" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
+                  No pitch. No 90-minute sales presentation. Just useful information.
+                </p>
               </div>
             </div>
 
-            {/* Contact Form */}
-            <div className="bg-slate-800/50 border border-slate-700 p-8 rounded-xl">
-              <h2 className="text-2xl font-bold mb-6 text-white">
-                {formType === 'general' ? 'Send Us a Message' : 'Book Your Compliance Audit'}
-              </h2>
-
-              {submitStatus.message && (
-                <div
-                  className={`mb-6 p-4 rounded-lg ${submitStatus.type === 'success'
-                      ? 'bg-trust/10 border border-trust/30 text-trust'
-                      : 'bg-alert/10 border border-alert/30 text-alert'
-                    }`}
-                >
-                  {submitStatus.message}
-                </div>
-              )}
-
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-slate-300 mb-1">
-                    Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full px-4 py-2 bg-slate-900 border border-slate-600 text-white rounded-lg focus:ring-2 focus:ring-cyber focus:border-transparent"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-slate-300 mb-1">
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full px-4 py-2 bg-slate-900 border border-slate-600 text-white rounded-lg focus:ring-2 focus:ring-cyber focus:border-transparent"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="company" className="block text-sm font-medium text-slate-300 mb-1">
-                    Company
-                  </label>
-                  <input
-                    type="text"
-                    id="company"
-                    name="company"
-                    value={formData.company}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full px-4 py-2 bg-slate-900 border border-slate-600 text-white rounded-lg focus:ring-2 focus:ring-cyber focus:border-transparent"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-slate-300 mb-1">
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    required
-                    rows={4}
-                    className="w-full px-4 py-2 bg-slate-900 border border-slate-600 text-white rounded-lg focus:ring-2 focus:ring-cyber focus:border-transparent"
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full bg-gradient-to-r from-trust to-cyber text-slate-950 font-bold py-3 px-6 rounded-lg transition-all hover:shadow-cyber-lg disabled:opacity-50"
-                >
-                  {isSubmitting ? 'Sending...' : formType === 'general' ? 'Send Message' : 'Book Audit'}
-                </button>
-              </form>
+            {/* Right — form */}
+            <div>
+              <ContactForm />
             </div>
           </div>
         </div>

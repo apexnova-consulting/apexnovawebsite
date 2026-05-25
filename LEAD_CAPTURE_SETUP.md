@@ -366,3 +366,4 @@ If you need help with setup:
 
 All code is committed and deployed. Just add your Supabase credentials to Vercel environment variables and you're live!
 
+

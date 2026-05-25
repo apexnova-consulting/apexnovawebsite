@@ -1,28 +1,33 @@
-import GovernanceHero from '@/components/GovernanceHero';
-import GovernanceSocialProof from '@/components/GovernanceSocialProof';
-import InteractiveRiskCalculator from '@/components/InteractiveRiskCalculator';
-import ApexCertifiedVault from '@/components/ApexCertifiedVault';
+import type { Metadata } from 'next';
+import HeroSection from '@/components/sections/HeroSection';
+import SocialProofBar from '@/components/sections/SocialProofBar';
+import ProblemSection from '@/components/sections/ProblemSection';
+import ServicesSection from '@/components/sections/ServicesSection';
+import IndustriesSection from '@/components/sections/IndustriesSection';
+import ProcessSection from '@/components/sections/ProcessSection';
+import LeadMagnetSection from '@/components/sections/LeadMagnetSection';
+import PricingSection from '@/components/sections/PricingSection';
+import CTASection from '@/components/sections/CTASection';
 
-export default function Home() {
+export const metadata: Metadata = {
+  title: 'AI Tools for NJ & NYC Businesses | ApexNova Consulting',
+  description:
+    'ApexNova builds custom AI chatbots, automation workflows, and lead capture tools for real estate teams, medical practices, law firms, and local businesses in New Jersey and NYC.',
+  alternates: { canonical: 'https://www.apexnovaconsulting.com' },
+};
+
+export default function HomePage() {
   return (
-    <main className="min-h-screen bg-slate-950">
-      <GovernanceHero />
-      <GovernanceSocialProof />
-
-      {/* Interactive Risk Calculator Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-900/50">
-        <div className="max-w-7xl mx-auto text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            What's Your AI Risk Score?
-          </h2>
-          <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-            Answer 5 questions to discover your vulnerabilities and get a personalized roadmap
-          </p>
-        </div>
-        <InteractiveRiskCalculator />
-      </section>
-
-      <ApexCertifiedVault />
+    <main>
+      <HeroSection />
+      <SocialProofBar />
+      <ProblemSection />
+      <ServicesSection />
+      <IndustriesSection />
+      <ProcessSection />
+      <LeadMagnetSection />
+      <PricingSection />
+      <CTASection />
     </main>
   );
 }
