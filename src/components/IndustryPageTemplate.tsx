@@ -498,7 +498,7 @@ export default function IndustryPageTemplate({ data }: { data: IndustryPageData 
               <ArrowRight size={15} />
             </Link>
             <div className="mt-3 flex items-center justify-center gap-2 text-xs text-[#5A5A72]" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-              <MapPin size={10} className="text-[#4F6EF7]" />
+              <MapPin size={10} className="text-[#2B6BE5]" />
               Based in NJ · Serving the Tri-State Area
             </div>
           </motion.div>

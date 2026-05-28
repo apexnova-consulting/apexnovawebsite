@@ -14,7 +14,7 @@ const services = [
     icon: MessageSquare,
     title: 'AI Chatbots & Lead Capture',
     tagline: 'Never miss another inquiry — ever.',
-    color: '#4F6EF7',
+    color: '#2B6BE5',
     whoItsFor: 'Any business that gets leads through their website, social media, or phone calls.',
     whatsIncluded: [
       'Custom-trained AI chatbot (knows your business, products, pricing)',
@@ -31,7 +31,7 @@ const services = [
     icon: Zap,
     title: 'Workflow Automation',
     tagline: 'Stop doing the same thing twice.',
-    color: '#00D4AA',
+    color: '#E8A020',
     whoItsFor: 'Businesses with repetitive manual tasks: follow-ups, reminders, data entry, notifications.',
     whatsIncluded: [
       'Workflow mapping session (we document your current process)',
@@ -48,7 +48,7 @@ const services = [
     icon: Brain,
     title: 'Custom AI Assistants',
     tagline: 'Internal AI that actually knows your business.',
-    color: '#7C3AED',
+    color: '#1A2E6E',
     whoItsFor:
       'Businesses that want AI tools for their team — not just customers. Document Q&A, onboarding, research, internal support.',
     whatsIncluded: [
@@ -66,7 +66,7 @@ const services = [
     icon: Globe,
     title: 'Website + AI Integration',
     tagline: 'A site that converts, with AI built in.',
-    color: '#F59E0B',
+    color: '#F0A514',
     whoItsFor:
       'Businesses that need a new website or want AI tools integrated into their existing site.',
     whatsIncluded: [
@@ -84,7 +84,7 @@ const services = [
     icon: RefreshCw,
     title: 'AI Maintenance Retainer',
     tagline: 'Your AI should keep getting better.',
-    color: '#F59E0B',
+    color: '#F0A514',
     whoItsFor: 'Past ApexNova clients who want ongoing optimization, updates, and new automations.',
     whatsIncluded: [
       'Monthly performance review and optimization',

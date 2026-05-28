@@ -9,11 +9,11 @@
   --bg-elevated: #1A1A24;
   --bg-subtle: #16161E;
 
-  /* Brand */
-  --brand-primary: #4F6EF7;
-  --brand-secondary: #7C3AED;
-  --brand-accent: #00D4AA;
-  --brand-warm: #F59E0B;
+  /* Brand — Navy + Gold from ApexNova logo */
+  --brand-primary: #2B6BE5;     /* Medium navy-blue — CTAs, links */
+  --brand-secondary: #1A2E6E;   /* Deep navy — logo lettermark color */
+  --brand-accent: #E8A020;      /* Logo gold — highlight moments */
+  --brand-warm: #F0A514;        /* Warm amber-gold */
 
   /* Text */
   --text-primary: #F0F0FF;
@@ -23,18 +23,18 @@
   /* Borders */
   --border-subtle: rgba(255,255,255,0.06);
   --border-default: rgba(255,255,255,0.10);
-  --border-emphasis: rgba(79,110,247,0.40);
+  --border-emphasis: rgba(43,107,229,0.40);
 
   /* Gradients */
-  --gradient-hero: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(79,110,247,0.25) 0%, transparent 70%);
+  --gradient-hero: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(43,107,229,0.25) 0%, transparent 70%);
   --gradient-card: linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%);
-  --gradient-cta: linear-gradient(135deg, #4F6EF7 0%, #7C3AED 100%);
+  --gradient-cta: linear-gradient(135deg, #2B6BE5 0%, #1A2E6E 100%);
 
-  /* Industry vertical colors */
-  --industry-realestate: #00D4AA;
-  --industry-medical: #3B82F6;
-  --industry-legal: #8B5CF6;
-  --industry-smb: #F59E0B;
+  /* Industry vertical colors — all within navy/gold brand family */
+  --industry-realestate: #E8A020;   /* Logo gold */
+  --industry-medical: #3B82F6;      /* Blue — kept distinct */
+  --industry-legal: #4C6FC7;        /* Medium navy-blue */
+  --industry-smb: #F0A514;          /* Warm amber-gold */
 
   /* Glassmorphism */
   --glass-bg: rgba(255,255,255,0.04);
@@ -43,8 +43,9 @@
 
   /* Shadows */
   --shadow-card: 0 1px 3px rgba(0,0,0,0.4), 0 8px 32px rgba(0,0,0,0.3);
-  --shadow-glow-blue: 0 0 40px rgba(79,110,247,0.15);
-  --shadow-glow-teal: 0 0 40px rgba(0,212,170,0.15);
+  --shadow-glow-blue: 0 0 40px rgba(43,107,229,0.15);
+  --shadow-glow-gold: 0 0 40px rgba(232,160,32,0.15);
+  --shadow-glow-teal: 0 0 40px rgba(232,160,32,0.15); /* alias → gold */
 
   /* Typography */
   --font-display: var(--font-syne, 'Syne', sans-serif);
@@ -129,7 +130,7 @@
     border: none;
     cursor: pointer;
     transition: opacity 0.2s, transform 0.1s;
-    box-shadow: 0 4px 20px rgba(79,110,247,0.4);
+    box-shadow: 0 4px 20px rgba(43,107,229,0.4);
     text-decoration: none;
     white-space: nowrap;
   }
@@ -186,7 +187,7 @@
     font-size: 0.8rem;
     font-weight: 500;
     letter-spacing: 0.08em;
-    color: var(--brand-accent);
+    color: var(--brand-accent); /* gold */
     text-transform: lowercase;
   }
 
@@ -244,7 +245,7 @@
   transform: translateX(-50%);
   width: 80%;
   height: 60%;
-  background: radial-gradient(ellipse, rgba(79,110,247,0.22) 0%, transparent 70%);
+  background: radial-gradient(ellipse, rgba(43,107,229,0.22) 0%, transparent 70%);
   animation: mesh-drift-1 12s ease-in-out infinite alternate;
 }
 
@@ -254,7 +255,7 @@
   right: -10%;
   width: 50%;
   height: 50%;
-  background: radial-gradient(ellipse, rgba(0,212,170,0.12) 0%, transparent 70%);
+  background: radial-gradient(ellipse, rgba(232,160,32,0.10) 0%, transparent 70%);
   animation: mesh-drift-2 16s ease-in-out infinite alternate;
 }
 

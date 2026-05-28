@@ -13,14 +13,14 @@ export default function CTASection() {
       {/* Top gradient border */}
       <div
         className="absolute top-0 left-0 right-0 h-px"
-        style={{ background: 'linear-gradient(90deg, transparent, rgba(79,110,247,0.5), rgba(124,58,237,0.5), transparent)' }}
+        style={{ background: 'linear-gradient(90deg, transparent, rgba(43,107,229,0.5), rgba(26,46,110,0.5), transparent)' }}
       />
 
       {/* Subtle bg glow */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: 'radial-gradient(ellipse 60% 60% at 50% 100%, rgba(79,110,247,0.08) 0%, transparent 70%)',
+          background: 'radial-gradient(ellipse 60% 60% at 50% 100%, rgba(43,107,229,0.08) 0%, transparent 70%)',
         }}
       />
 
@@ -72,7 +72,7 @@ export default function CTASection() {
             className="flex items-center gap-2 text-xs text-[#5A5A72] mt-1"
             style={{ fontFamily: 'JetBrains Mono, monospace' }}
           >
-            <MapPin size={11} className="text-[#4F6EF7]" />
+            <MapPin size={11} className="text-[#2B6BE5]" />
             Serving NJ &amp; NYC
             <span className="opacity-40">·</span>
             Usually responds within 4 hours
@@ -83,7 +83,7 @@ export default function CTASection() {
       {/* Bottom gradient border */}
       <div
         className="absolute bottom-0 left-0 right-0 h-px"
-        style={{ background: 'linear-gradient(90deg, transparent, rgba(79,110,247,0.2), transparent)' }}
+        style={{ background: 'linear-gradient(90deg, transparent, rgba(43,107,229,0.2), transparent)' }}
       />
     </section>
   );

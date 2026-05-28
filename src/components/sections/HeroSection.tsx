@@ -58,8 +58,8 @@ function ChatDemo() {
         <div>
           <p className="text-xs font-semibold text-[#F0F0FF]">ApexNova Assistant</p>
           <div className="flex items-center gap-1">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#00D4AA]" />
-            <span className="text-[10px] text-[#00D4AA]" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
+            <span className="w-1.5 h-1.5 rounded-full bg-[#E8A020]" />
+            <span className="text-[10px] text-[#E8A020]" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
               online 24/7
             </span>
           </div>
@@ -79,7 +79,7 @@ function ChatDemo() {
             <div
               className={`max-w-[80%] rounded-2xl px-3 py-2 text-xs leading-relaxed ${
                 msg.role === 'user'
-                  ? 'bg-[#4F6EF7] text-white rounded-br-sm'
+                  ? 'bg-[#2B6BE5] text-white rounded-br-sm'
                   : 'text-[#F0F0FF] rounded-bl-sm'
               }`}
               style={msg.role === 'bot' ? { background: 'var(--glass-bg)', border: '1px solid var(--glass-border)' } : {}}
@@ -184,7 +184,7 @@ export default function HeroSection() {
               className="flex items-center gap-2 text-xs text-[#5A5A72]"
               style={{ fontFamily: 'JetBrains Mono, monospace' }}
             >
-              <MapPin size={11} className="text-[#4F6EF7]" />
+              <MapPin size={11} className="text-[#2B6BE5]" />
               Based in NJ
               <span className="opacity-40">·</span>
               Serving NYC Tri-State
@@ -204,7 +204,7 @@ export default function HeroSection() {
               {/* Glow behind card */}
               <div
                 className="absolute inset-0 rounded-3xl blur-3xl scale-95"
-                style={{ background: 'radial-gradient(ellipse, rgba(79,110,247,0.2) 0%, transparent 70%)' }}
+                style={{ background: 'radial-gradient(ellipse, rgba(43,107,229,0.2) 0%, transparent 70%)' }}
               />
               <div className="relative">
                 {/* Stat chips */}
@@ -215,7 +215,7 @@ export default function HeroSection() {
                   className="absolute -top-3 -left-4 card px-3 py-1.5 flex items-center gap-2 text-xs"
                   style={{ background: 'var(--bg-elevated)' }}
                 >
-                  <span className="text-[#00D4AA] font-bold" style={{ fontFamily: 'JetBrains Mono, monospace' }}>90s</span>
+                  <span className="text-[#E8A020] font-bold" style={{ fontFamily: 'JetBrains Mono, monospace' }}>90s</span>
                   <span className="text-[#9898B0]">response time</span>
                 </motion.div>
                 <motion.div
@@ -225,7 +225,7 @@ export default function HeroSection() {
                   className="absolute -bottom-3 -right-4 card px-3 py-1.5 flex items-center gap-2 text-xs"
                   style={{ background: 'var(--bg-elevated)' }}
                 >
-                  <span className="text-[#4F6EF7] font-bold" style={{ fontFamily: 'JetBrains Mono, monospace' }}>24/7</span>
+                  <span className="text-[#2B6BE5] font-bold" style={{ fontFamily: 'JetBrains Mono, monospace' }}>24/7</span>
                   <span className="text-[#9898B0]">never offline</span>
                 </motion.div>
 

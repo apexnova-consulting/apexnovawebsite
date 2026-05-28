@@ -8,19 +8,19 @@ const problems = [
     icon: Clock,
     title: "You're losing leads after hours",
     body: "Prospects fill out your form at 11pm and hear back the next morning — if they haven't already called your competitor.",
-    color: '#4F6EF7',
+    color: '#2B6BE5',
   },
   {
     icon: ClipboardList,
     title: "You're drowning in repetitive tasks",
     body: "Scheduling, follow-ups, intake forms, reminders. Every day you're doing work a smart system could handle automatically.",
-    color: '#00D4AA',
+    color: '#E8A020',
   },
   {
     icon: Plug,
     title: "You're paying for tools that don't talk to each other",
     body: "You've got five subscriptions and zero integration. Nothing flows. Nothing's automated. You're the human middleware.",
-    color: '#7C3AED',
+    color: '#1A2E6E',
   },
 ];
 
@@ -102,7 +102,7 @@ export default function ProblemSection() {
           style={{ fontFamily: 'DM Sans, sans-serif' }}
         >
           We fix all three.{' '}
-          <a href="#services" className="text-[#4F6EF7] hover:underline">
+          <a href="#services" className="text-[#2B6BE5] hover:underline">
             Here&apos;s how.
           </a>
         </motion.p>

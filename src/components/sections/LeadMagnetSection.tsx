@@ -38,21 +38,21 @@ export default function LeadMagnetSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="card p-8 md:p-10 flex flex-col md:flex-row items-center gap-8"
-          style={{ background: 'rgba(79,110,247,0.06)', borderColor: 'rgba(79,110,247,0.2)' }}
+          style={{ background: 'rgba(43,107,229,0.06)', borderColor: 'rgba(43,107,229,0.2)' }}
         >
           {/* Icon */}
           <div
             className="w-16 h-16 rounded-2xl flex items-center justify-center flex-shrink-0"
-            style={{ background: 'rgba(79,110,247,0.12)', border: '1px solid rgba(79,110,247,0.25)' }}
+            style={{ background: 'rgba(43,107,229,0.12)', border: '1px solid rgba(43,107,229,0.25)' }}
           >
-            <Download size={28} className="text-[#4F6EF7]" />
+            <Download size={28} className="text-[#2B6BE5]" />
           </div>
 
           {/* Copy */}
           <div className="flex-1 text-center md:text-left">
             <p
               className="section-label mb-2"
-              style={{ color: '#4F6EF7' }}
+              style={{ color: '#2B6BE5' }}
             >
               {'// Free resource'}
             </p>
@@ -71,7 +71,7 @@ export default function LeadMagnetSection() {
           <div className="w-full md:w-auto flex-shrink-0">
             {status === 'success' ? (
               <div className="text-center md:text-left">
-                <p className="text-[#00D4AA] text-sm font-semibold mb-1">Guide sent!</p>
+                <p className="text-[#E8A020] text-sm font-semibold mb-1">Guide sent!</p>
                 <p className="text-[#9898B0] text-xs">Check your inbox.</p>
               </div>
             ) : (

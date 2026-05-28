@@ -54,7 +54,7 @@ export default function AboutPage() {
               </div>
 
               <div className="flex items-center gap-2 mt-6 text-sm text-[#5A5A72]" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-                <MapPin size={13} className="text-[#4F6EF7]" />
+                <MapPin size={13} className="text-[#2B6BE5]" />
                 Lambertville, NJ — Serving NJ &amp; NYC Tri-State
               </div>
             </div>
@@ -64,25 +64,25 @@ export default function AboutPage() {
               {[
                 {
                   icon: Code,
-                  color: '#4F6EF7',
+                  color: '#2B6BE5',
                   title: "We're builders, not consultants",
                   desc: "When you hire us, you get working software — not a PowerPoint deck full of recommendations. We build, deploy, and support.",
                 },
                 {
                   icon: MapPin,
-                  color: '#00D4AA',
+                  color: '#E8A020',
                   title: 'Local is a feature, not a footnote',
                   desc: "We can meet at your office. We know the NJ/NYC market. We understand the pace of a real estate team in Hoboken or a law firm in Newark. That context is part of what we build.",
                 },
                 {
                   icon: Wrench,
-                  color: '#7C3AED',
+                  color: '#1A2E6E',
                   title: 'Narrow focus, deep craft',
                   desc: "We don't try to do everything. We do AI chatbots, workflow automation, and web development — and we do them well.",
                 },
                 {
                   icon: Users,
-                  color: '#F59E0B',
+                  color: '#F0A514',
                   title: "You'll work with the person who builds it",
                   desc: "There's no account manager between you and the builder. When you have a question, you talk to the person who wrote the code.",
                 },
@@ -121,7 +121,7 @@ export default function AboutPage() {
         <div className="container-site">
           <div
             className="card p-8 md:p-10 max-w-3xl mx-auto text-center"
-            style={{ background: 'rgba(79,110,247,0.06)', borderColor: 'rgba(79,110,247,0.2)' }}
+            style={{ background: 'rgba(43,107,229,0.06)', borderColor: 'rgba(43,107,229,0.2)' }}
           >
             <p className="section-label mb-4 justify-center flex">{'// Why local matters'}</p>
             <h2

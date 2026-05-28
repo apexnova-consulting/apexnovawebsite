@@ -42,13 +42,13 @@ export default function BlogPage() {
           {/* Coming soon state */}
           <div
             className="card p-10 text-center max-w-2xl mx-auto mb-12"
-            style={{ background: 'rgba(79,110,247,0.04)', borderColor: 'rgba(79,110,247,0.15)' }}
+            style={{ background: 'rgba(43,107,229,0.04)', borderColor: 'rgba(43,107,229,0.15)' }}
           >
             <div
               className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-5"
-              style={{ background: 'rgba(79,110,247,0.1)', border: '1px solid rgba(79,110,247,0.25)' }}
+              style={{ background: 'rgba(43,107,229,0.1)', border: '1px solid rgba(43,107,229,0.25)' }}
             >
-              <BookOpen size={24} className="text-[#4F6EF7]" />
+              <BookOpen size={24} className="text-[#2B6BE5]" />
             </div>
             <h2
               className="text-[#F0F0FF] text-xl font-bold mb-3"

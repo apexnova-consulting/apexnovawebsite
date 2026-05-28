@@ -8,28 +8,28 @@ const steps = [
     title: 'Free AI Audit (30 min)',
     description:
       "We map your current workflow, find the biggest time-wasters, and show you exactly where AI can help. No pitch. Pure value.",
-    color: '#4F6EF7',
+    color: '#2B6BE5',
   },
   {
     number: '02',
     title: 'Build Plan + Proposal',
     description:
       "Within 48 hours you get a clear proposal: what we'll build, what it costs, and what results to expect. No surprises.",
-    color: '#7C3AED',
+    color: '#1A2E6E',
   },
   {
     number: '03',
     title: 'We Build It',
     description:
       "Most projects go live in 2–4 weeks. You stay in the loop via Loom updates and a shared project channel. No disappearing acts.",
-    color: '#00D4AA',
+    color: '#E8A020',
   },
   {
     number: '04',
     title: 'Training + Handoff',
     description:
       "We train you and your team, document everything, and offer monthly retainer support if you want us to keep improving it.",
-    color: '#F59E0B',
+    color: '#F0A514',
   },
 ];
 

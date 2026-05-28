@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 const data: IndustryPageData = {
   badge: 'Real Estate & Title',
   emoji: '🏠',
-  color: '#00D4AA',
+  color: '#E8A020',
   heroHeadline: 'Your next client shouldn\'t go to voicemail.',
   heroSub:
     'We build AI lead responders, listing tools, and CRM automations for NJ/NYC real estate teams. Set it up once. Run forever.',

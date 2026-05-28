@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { MapPin, Mail, Phone, Instagram, Linkedin } from 'lucide-react';
 
 export default function SiteFooter() {
@@ -11,9 +12,12 @@ export default function SiteFooter() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           {/* Brand column */}
           <div className="lg:col-span-1">
-            <Link href="/" className="inline-block mb-3">
+            <Link href="/" className="inline-flex items-center gap-2.5 mb-3 group">
+              <div className="relative w-9 h-9 flex-shrink-0">
+                <Image src="/images/logo.png" alt="ApexNova Consulting" fill className="object-contain" />
+              </div>
               <span
-                className="text-2xl font-extrabold text-[#F0F0FF]"
+                className="text-xl font-extrabold text-[#F0F0FF]"
                 style={{ fontFamily: 'Syne, sans-serif' }}
               >
                 ApexNova
@@ -115,7 +119,7 @@ export default function SiteFooter() {
                   href="mailto:info@apexnovaconsulting.com"
                   className="flex items-center gap-2.5 text-sm text-[#9898B0] hover:text-[#F0F0FF] transition-colors"
                 >
-                  <Mail size={13} className="flex-shrink-0 text-[#4F6EF7]" />
+                  <Mail size={13} className="flex-shrink-0 text-[#2B6BE5]" />
                   info@apexnovaconsulting.com
                 </a>
               </li>
@@ -124,13 +128,13 @@ export default function SiteFooter() {
                   href="tel:+19733485008"
                   className="flex items-center gap-2.5 text-sm text-[#9898B0] hover:text-[#F0F0FF] transition-colors"
                 >
-                  <Phone size={13} className="flex-shrink-0 text-[#4F6EF7]" />
+                  <Phone size={13} className="flex-shrink-0 text-[#2B6BE5]" />
                   (973) 348-5008
                 </a>
               </li>
               <li>
                 <span className="flex items-start gap-2.5 text-sm text-[#9898B0]">
-                  <MapPin size={13} className="flex-shrink-0 text-[#4F6EF7] mt-0.5" />
+                  <MapPin size={13} className="flex-shrink-0 text-[#2B6BE5] mt-0.5" />
                   Lambertville, NJ — Serving the Tri-State Area
                 </span>
               </li>

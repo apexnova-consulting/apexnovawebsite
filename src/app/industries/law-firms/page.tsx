@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 const data: IndustryPageData = {
   badge: 'Law Firms',
   emoji: '⚖️',
-  color: '#8B5CF6',
+  color: '#4C6FC7',
   heroHeadline: 'Every missed intake call is a missed client.',
   heroSub:
     'AI intake bots, document assistants, and client communication workflows for NJ/NYC law firms. 24/7 availability, zero extra staff.',

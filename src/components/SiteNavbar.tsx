@@ -2,14 +2,15 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Menu, X, ChevronDown, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const industries = [
-  { label: 'Real Estate & Title', href: '/industries/real-estate', color: '#00D4AA' },
+  { label: 'Real Estate & Title', href: '/industries/real-estate', color: '#E8A020' },
   { label: 'Medical Practices', href: '/industries/medical', color: '#3B82F6' },
-  { label: 'Law Firms', href: '/industries/law-firms', color: '#8B5CF6' },
-  { label: 'Local Businesses', href: '/industries/smb', color: '#F59E0B' },
+  { label: 'Law Firms', href: '/industries/law-firms', color: '#4C6FC7' },
+  { label: 'Local Businesses', href: '/industries/smb', color: '#F0A514' },
 ];
 
 export default function SiteNavbar() {
@@ -44,15 +45,24 @@ export default function SiteNavbar() {
         <div className="container-site">
           <div className="flex items-center justify-between h-16 md:h-18">
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-2 group">
+            <Link href="/" className="flex items-center gap-3 group">
+              <div className="relative w-9 h-9 flex-shrink-0">
+                <Image
+                  src="/images/logo.png"
+                  alt="ApexNova Consulting"
+                  fill
+                  className="object-contain"
+                  priority
+                />
+              </div>
               <span
-                className="text-xl font-extrabold tracking-tight text-[#F0F0FF]"
+                className="text-lg font-extrabold tracking-tight text-[#F0F0FF]"
                 style={{ fontFamily: 'Syne, sans-serif' }}
               >
                 ApexNova
               </span>
               <span
-                className="hidden sm:block text-[10px] font-medium px-2 py-0.5 rounded-full border border-[#4F6EF7]/40 text-[#4F6EF7]"
+                className="hidden sm:block text-[10px] font-medium px-2 py-0.5 rounded-full border border-[#E8A020]/40 text-[#E8A020]"
                 style={{ fontFamily: 'JetBrains Mono, monospace' }}
               >
                 AI for NJ/NYC
@@ -158,12 +168,17 @@ export default function SiteNavbar() {
               className="fixed top-0 right-0 bottom-0 w-[280px] bg-[#111118] border-l border-white/10 z-50 md:hidden flex flex-col"
             >
               <div className="flex items-center justify-between p-4 border-b border-white/10">
-                <span
-                  className="text-lg font-extrabold text-[#F0F0FF]"
-                  style={{ fontFamily: 'Syne, sans-serif' }}
-                >
-                  ApexNova
-                </span>
+                <div className="flex items-center gap-2">
+                  <div className="relative w-7 h-7 flex-shrink-0">
+                    <Image src="/images/logo.png" alt="ApexNova" fill className="object-contain" />
+                  </div>
+                  <span
+                    className="text-base font-extrabold text-[#F0F0FF]"
+                    style={{ fontFamily: 'Syne, sans-serif' }}
+                  >
+                    ApexNova
+                  </span>
+                </div>
                 <button onClick={() => setMobileOpen(false)} className="p-1 text-[#9898B0]">
                   <X size={20} />
                 </button>

@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 const data: IndustryPageData = {
   badge: 'Local Businesses',
   emoji: '🏪',
-  color: '#F59E0B',
+  color: '#F0A514',
   heroHeadline: "You didn't start a business to spend all day answering the same questions.",
   heroSub:
     'We build AI tools for local NJ/NYC businesses that save time, capture leads, and keep customers happy — automatically.',

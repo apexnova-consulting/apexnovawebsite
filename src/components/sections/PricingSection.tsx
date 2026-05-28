@@ -18,7 +18,7 @@ const tiers = [
     cta: 'Start Here',
     href: '/contact',
     popular: false,
-    color: '#00D4AA',
+    color: '#E8A020',
   },
   {
     name: 'AI Business',
@@ -34,7 +34,7 @@ const tiers = [
     cta: 'Book a Call',
     href: '/contact',
     popular: true,
-    color: '#4F6EF7',
+    color: '#2B6BE5',
   },
   {
     name: 'AI Infrastructure',
@@ -50,7 +50,7 @@ const tiers = [
     cta: "Let's Talk",
     href: '/contact',
     popular: false,
-    color: '#7C3AED',
+    color: '#1A2E6E',
   },
 ];
 
@@ -119,10 +119,10 @@ export default function PricingSection() {
               }`}
               style={{
                 background: tier.popular
-                  ? `linear-gradient(135deg, rgba(79,110,247,0.12) 0%, rgba(124,58,237,0.08) 100%)`
+                  ? `linear-gradient(135deg, rgba(43,107,229,0.12) 0%, rgba(26,46,110,0.08) 100%)`
                   : 'var(--glass-bg)',
                 border: tier.popular
-                  ? '1px solid rgba(79,110,247,0.4)'
+                  ? '1px solid rgba(43,107,229,0.4)'
                   : '1px solid var(--glass-border)',
                 boxShadow: tier.popular
                   ? 'var(--shadow-card), var(--shadow-glow-blue)'
@@ -196,15 +196,15 @@ export default function PricingSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.25 }}
           className="card p-6"
-          style={{ background: 'rgba(245,158,11,0.04)', borderColor: 'rgba(245,158,11,0.2)' }}
+          style={{ background: 'rgba(240,165,20,0.04)', borderColor: 'rgba(240,165,20,0.2)' }}
         >
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div className="flex items-start gap-4">
               <div
                 className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-                style={{ background: 'rgba(245,158,11,0.1)', border: '1px solid rgba(245,158,11,0.25)' }}
+                style={{ background: 'rgba(240,165,20,0.1)', border: '1px solid rgba(240,165,20,0.25)' }}
               >
-                <RefreshCw size={18} style={{ color: '#F59E0B' }} />
+                <RefreshCw size={18} style={{ color: '#F0A514' }} />
               </div>
               <div>
                 <div className="flex items-center gap-2 mb-1">
@@ -217,8 +217,8 @@ export default function PricingSection() {
                   <span
                     className="text-[10px] font-bold px-2 py-0.5 rounded-full"
                     style={{
-                      background: 'rgba(245,158,11,0.15)',
-                      color: '#F59E0B',
+                      background: 'rgba(240,165,20,0.15)',
+                      color: '#F0A514',
                       fontFamily: 'JetBrains Mono, monospace',
                     }}
                   >

@@ -14,20 +14,20 @@ module.exports = {
         'bg-surface': '#111118',
         'bg-elevated': '#1A1A24',
         'bg-subtle': '#16161E',
-        // Brand
-        'brand-primary': '#4F6EF7',
-        'brand-secondary': '#7C3AED',
-        'brand-accent': '#00D4AA',
-        'brand-warm': '#F59E0B',
+        // Brand — Navy + Gold
+        'brand-primary': '#2B6BE5',
+        'brand-secondary': '#1A2E6E',
+        'brand-accent': '#E8A020',
+        'brand-warm': '#F0A514',
         // Text
         'text-primary': '#F0F0FF',
         'text-secondary': '#9898B0',
         'text-muted': '#5A5A72',
         // Industry
-        'industry-re': '#00D4AA',
+        'industry-re': '#E8A020',
         'industry-med': '#3B82F6',
-        'industry-law': '#8B5CF6',
-        'industry-smb': '#F59E0B',
+        'industry-law': '#4C6FC7',
+        'industry-smb': '#F0A514',
       },
       fontFamily: {
         display: ['Syne', 'sans-serif'],
@@ -61,8 +61,8 @@ module.exports = {
         },
       },
       backgroundImage: {
-        'gradient-cta': 'linear-gradient(135deg, #4F6EF7 0%, #7C3AED 100%)',
-        'gradient-hero': 'radial-gradient(ellipse 80% 60% at 50% -10%, rgba(79,110,247,0.25) 0%, transparent 70%)',
+        'gradient-cta': 'linear-gradient(135deg, #2B6BE5 0%, #1A2E6E 100%)',
+        'gradient-hero': 'radial-gradient(ellipse 80% 60% at 50% -10%, rgba(43,107,229,0.25) 0%, transparent 70%)',
       },
       borderRadius: {
         '2xl': '16px',

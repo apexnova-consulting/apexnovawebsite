@@ -11,8 +11,8 @@ const services = [
     description:
       "Never miss another inquiry. We build AI chat assistants trained on your business that answer questions, qualify leads, and book appointments 24/7. Works on your website, Facebook, and Instagram.",
     tag: 'Most Popular',
-    tagColor: '#00D4AA',
-    color: '#4F6EF7',
+    tagColor: '#E8A020',
+    color: '#2B6BE5',
   },
   {
     icon: Zap,
@@ -20,8 +20,8 @@ const services = [
     description:
       "Map your most repetitive processes — follow-ups, reminders, data entry, confirmations — and let AI run them for you. Built on Make, Zapier, or n8n depending on what fits your stack.",
     tag: 'Time Saver',
-    tagColor: '#4F6EF7',
-    color: '#4F6EF7',
+    tagColor: '#2B6BE5',
+    color: '#2B6BE5',
   },
   {
     icon: Brain,
@@ -29,8 +29,8 @@ const services = [
     description:
       "Internal tools that know your business. Document Q&A bots, onboarding assistants, pricing calculators, and intake wizards trained on your data.",
     tag: 'High ROI',
-    tagColor: '#7C3AED',
-    color: '#7C3AED',
+    tagColor: '#1A2E6E',
+    color: '#1A2E6E',
   },
   {
     icon: Globe,
@@ -38,8 +38,8 @@ const services = [
     description:
       "Need a new site that's actually built to convert? We design and develop fast, modern websites and integrate AI tools directly into the stack.",
     tag: 'Full Stack',
-    tagColor: '#F59E0B',
-    color: '#F59E0B',
+    tagColor: '#F0A514',
+    color: '#F0A514',
   },
 ];
 

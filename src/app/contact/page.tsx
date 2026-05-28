@@ -43,7 +43,7 @@ function ContactForm() {
   if (status === 'success') {
     return (
       <div className="card p-10 text-center flex flex-col items-center gap-4">
-        <CheckCircle size={40} className="text-[#00D4AA]" />
+        <CheckCircle size={40} className="text-[#E8A020]" />
         <h3
           className="text-[#F0F0FF] text-xl font-bold"
           style={{ fontFamily: 'Syne, sans-serif' }}
@@ -186,9 +186,9 @@ export default function ContactPage() {
               {/* Contact details */}
               <div className="space-y-4 mb-8">
                 {[
-                  { icon: Mail, label: 'Email', value: 'info@apexnovaconsulting.com', href: 'mailto:info@apexnovaconsulting.com', color: '#4F6EF7' },
-                  { icon: Phone, label: 'Phone', value: '(973) 348-5008', href: 'tel:+19733485008', color: '#00D4AA' },
-                  { icon: MapPin, label: 'Location', value: 'Lambertville, NJ — Serving the Tri-State Area', href: null, color: '#7C3AED' },
+                  { icon: Mail, label: 'Email', value: 'info@apexnovaconsulting.com', href: 'mailto:info@apexnovaconsulting.com', color: '#2B6BE5' },
+                  { icon: Phone, label: 'Phone', value: '(973) 348-5008', href: 'tel:+19733485008', color: '#E8A020' },
+                  { icon: MapPin, label: 'Location', value: 'Lambertville, NJ — Serving the Tri-State Area', href: null, color: '#1A2E6E' },
                 ].map((item) => {
                   const Icon = item.icon;
                   return (
@@ -219,7 +219,7 @@ export default function ContactPage() {
               {/* What happens on the call */}
               <div
                 className="card p-6"
-                style={{ background: 'rgba(79,110,247,0.05)', borderColor: 'rgba(79,110,247,0.2)' }}
+                style={{ background: 'rgba(43,107,229,0.05)', borderColor: 'rgba(43,107,229,0.2)' }}
               >
                 <h3
                   className="text-[#F0F0FF] font-semibold mb-3"
@@ -235,7 +235,7 @@ export default function ContactPage() {
                     'You get a written summary after the call — free, no strings',
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-2.5 text-sm text-[#9898B0]">
-                      <span className="text-[#4F6EF7] mt-0.5 flex-shrink-0">→</span>
+                      <span className="text-[#2B6BE5] mt-0.5 flex-shrink-0">→</span>
                       {item}
                     </li>
                   ))}

@@ -4,10 +4,10 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 
 const verticals = [
-  { label: 'Real Estate Teams', href: '/industries/real-estate', color: '#00D4AA' },
+  { label: 'Real Estate Teams', href: '/industries/real-estate', color: '#E8A020' },
   { label: 'Medical Offices', href: '/industries/medical', color: '#3B82F6' },
-  { label: 'Law Firms', href: '/industries/law-firms', color: '#8B5CF6' },
-  { label: 'Local SMBs', href: '/industries/smb', color: '#F59E0B' },
+  { label: 'Law Firms', href: '/industries/law-firms', color: '#4C6FC7' },
+  { label: 'Local SMBs', href: '/industries/smb', color: '#F0A514' },
 ];
 
 export default function SocialProofBar() {

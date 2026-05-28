@@ -9,9 +9,9 @@ const industries = [
     emoji: '🏠',
     badge: 'Real Estate & Title',
     headline: 'Close more deals. Miss fewer leads.',
-    color: '#00D4AA',
-    bgColor: 'rgba(0,212,170,0.05)',
-    borderColor: 'rgba(0,212,170,0.15)',
+    color: '#E8A020',
+    bgColor: 'rgba(232,160,32,0.05)',
+    borderColor: 'rgba(232,160,32,0.15)',
     intro:
       "Real estate moves fast. Your AI tools should too. We build lead capture bots that respond in seconds, listing description generators that save hours per week, CRM automations that keep every prospect warm, and wire fraud awareness workflows that protect your clients.",
     bullets: [
@@ -47,9 +47,9 @@ const industries = [
     emoji: '⚖️',
     badge: 'Law Firms',
     headline: 'Intake more clients without adding staff.',
-    color: '#8B5CF6',
-    bgColor: 'rgba(139,92,246,0.05)',
-    borderColor: 'rgba(139,92,246,0.15)',
+    color: '#4C6FC7',
+    bgColor: 'rgba(76,111,199,0.05)',
+    borderColor: 'rgba(76,111,199,0.15)',
     intro:
       "Personal injury, immigration, family law, real estate law — your intake process is your first impression and your biggest bottleneck. We build AI intake bots, document assistants, and client communication workflows that make your firm look bigger and run smoother.",
     bullets: [
@@ -66,9 +66,9 @@ const industries = [
     emoji: '🏪',
     badge: 'Local Businesses',
     headline: 'If you run it, we can automate part of it.',
-    color: '#F59E0B',
-    bgColor: 'rgba(245,158,11,0.05)',
-    borderColor: 'rgba(245,158,11,0.15)',
+    color: '#F0A514',
+    bgColor: 'rgba(240,165,20,0.05)',
+    borderColor: 'rgba(240,165,20,0.15)',
     intro:
       "Contractors, restaurants, e-commerce shops, salons, gyms — if you're spending more than 2 hours a week on repetitive business tasks, we can build something that saves most of that time. No jargon. No long contracts. Just tools that work.",
     bullets: [

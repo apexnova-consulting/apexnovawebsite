@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 const placeholders = [
   {
     industry: 'Real Estate',
-    color: '#00D4AA',
+    color: '#E8A020',
     emoji: '🏠',
     title: 'NJ Real Estate Team — Lead Response Automation',
     teaser: 'How a 5-agent team stopped missing after-hours Zillow leads and added 3 new clients per month.',
@@ -29,7 +29,7 @@ const placeholders = [
   },
   {
     industry: 'Law Firm',
-    color: '#8B5CF6',
+    color: '#4C6FC7',
     emoji: '⚖️',
     title: 'Newark Immigration Firm — AI Intake Bot',
     teaser: 'How a bilingual AI intake bot helped a solo immigration attorney handle 2x the consultations.',
@@ -116,7 +116,7 @@ export default function CaseStudiesPage() {
           {/* CTA */}
           <div
             className="card p-10 text-center max-w-2xl mx-auto"
-            style={{ background: 'rgba(79,110,247,0.05)', borderColor: 'rgba(79,110,247,0.2)' }}
+            style={{ background: 'rgba(43,107,229,0.05)', borderColor: 'rgba(43,107,229,0.2)' }}
           >
             <h2
               className="text-[#F0F0FF] text-2xl font-bold mb-3"

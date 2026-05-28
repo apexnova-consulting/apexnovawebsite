@@ -38,19 +38,19 @@ export default function GovernancePage() {
               {[
                 {
                   icon: Shield,
-                  color: '#4F6EF7',
+                  color: '#2B6BE5',
                   title: 'AI Risk Assessment',
                   desc: 'Evaluate your current AI tools and workflows against industry risk frameworks. Identify gaps before they become problems.',
                 },
                 {
                   icon: FileCheck,
-                  color: '#00D4AA',
+                  color: '#E8A020',
                   title: 'Compliance Auditing',
                   desc: 'HIPAA, NJDPA, and AI use policy audits for healthcare, real estate, and legal organizations.',
                 },
                 {
                   icon: Lock,
-                  color: '#7C3AED',
+                  color: '#1A2E6E',
                   title: 'Policy Development',
                   desc: 'Custom AI use policies, vendor evaluation frameworks, and staff training programs.',
                 },
@@ -78,7 +78,7 @@ export default function GovernancePage() {
 
             <div
               className="card p-7 mb-8"
-              style={{ background: 'rgba(79,110,247,0.05)', borderColor: 'rgba(79,110,247,0.2)' }}
+              style={{ background: 'rgba(43,107,229,0.05)', borderColor: 'rgba(43,107,229,0.2)' }}
             >
               <h2
                 className="text-[#F0F0FF] text-xl font-bold mb-3"
@@ -98,7 +98,7 @@ export default function GovernancePage() {
                   'Are considering enterprise AI adoption and need a risk framework first',
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-2.5 text-sm text-[#9898B0]">
-                    <span className="text-[#4F6EF7] mt-0.5 flex-shrink-0">→</span>
+                    <span className="text-[#2B6BE5] mt-0.5 flex-shrink-0">→</span>
                     {item}
                   </li>
                 ))}
