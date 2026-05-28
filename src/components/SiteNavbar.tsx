@@ -208,6 +208,7 @@ export default function SiteNavbar() {
                 {[
                   { label: 'Services', href: '/services' },
                   { label: 'About', href: '/about' },
+                  { label: 'Resources', href: '/resources' },
                   { label: 'Case Studies', href: '/case-studies' },
                   { label: 'Contact', href: '/contact' },
                 ].map((item) => (

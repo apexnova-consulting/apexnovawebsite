@@ -26,6 +26,14 @@ const nextConfig = {
       // Old industry routes
       { source: '/industries/healthcare', destination: '/industries/medical', permanent: true },
       { source: '/industries/saas', destination: '/industries/smb', permanent: true },
+      // Blog → resources
+      { source: '/blog', destination: '/resources', permanent: true },
+      { source: '/blog/:path*', destination: '/resources', permanent: false },
+      // Old download paths → resource pages
+      { source: '/downloads/ai-readiness-assessment.pdf', destination: '/resources/ai-readiness-assessment', permanent: true },
+      { source: '/downloads/roi-calculator.xlsx', destination: '/resources/roi-calculator', permanent: true },
+      { source: '/downloads/implementation-checklist.pdf', destination: '/resources/implementation-checklist', permanent: true },
+      { source: '/downloads/quick-start-guide.pdf', destination: '/resources/quick-start-guide', permanent: true },
       // Old coaching/product routes
       { source: '/book', destination: '/contact', permanent: true },
       { source: '/toolkit', destination: '/contact', permanent: true },

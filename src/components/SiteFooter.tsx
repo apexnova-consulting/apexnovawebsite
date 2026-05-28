@@ -89,9 +89,9 @@ export default function SiteFooter() {
               {[
                 { label: 'Services', href: '/services' },
                 { label: 'About', href: '/about' },
+                { label: 'Free Resources', href: '/resources' },
                 { label: 'Case Studies', href: '/case-studies' },
                 { label: 'Contact', href: '/contact' },
-                { label: 'Blog', href: '/blog' },
               ].map((item) => (
                 <li key={item.href}>
                   <Link
