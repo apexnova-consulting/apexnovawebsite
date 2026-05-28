@@ -1,53 +1,48 @@
 import { NextResponse } from 'next/server';
-import { sendEmail } from '@/lib/email';
+import { sendContactNotification } from '@/lib/email';
 
 export async function POST(request: Request) {
   try {
-    const { name, email, company, message } = await request.json();
+    const body = await request.json();
+    const { name, email, business, industry, message } = body;
 
-    // Send notification email to admin
-    const adminEmailResult = await sendEmail({
-      to: 'info@apexnovaconsulting.com',
-      subject: 'New Contact Form Submission',
-      html: `
-        <h1>New Contact Form Submission</h1>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Company:</strong> ${company}</p>
-        <p><strong>Message:</strong></p>
-        <p>${message}</p>
-      `,
-      isAdminEmail: true
-    });
-
-    if (!adminEmailResult.success) {
-      throw new Error('Failed to send admin notification');
+    // Basic validation
+    if (!name || !email || !message) {
+      return NextResponse.json(
+        { error: 'Name, email, and message are required.' },
+        { status: 400 }
+      );
     }
 
-    // Send confirmation email to user
-    const userEmailResult = await sendEmail({
-      to: email,
-      subject: 'Thank you for contacting ApexNova',
-      html: `
-        <h1>Thank You for Reaching Out</h1>
-        <p>Dear ${name},</p>
-        <p>Thank you for contacting ApexNova Consulting. We have received your message and will get back to you shortly.</p>
-        <p>Best regards,<br>The ApexNova Team</p>
-      `,
-      name,
-      company,
-      message
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return NextResponse.json(
+        { error: 'Please provide a valid email address.' },
+        { status: 400 }
+      );
+    }
+
+    const result = await sendContactNotification({
+      name: String(name).trim(),
+      email: String(email).trim(),
+      business: business ? String(business).trim() : undefined,
+      industry: industry ? String(industry).trim() : undefined,
+      message: String(message).trim(),
     });
 
-    if (!userEmailResult.success) {
-      throw new Error('Failed to send user confirmation');
+    if (!result.success) {
+      console.error('Contact form email failed:', result.error);
+      return NextResponse.json(
+        { error: 'Message could not be sent. Please email info@apexnovaconsulting.com directly.' },
+        { status: 500 }
+      );
     }
 
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error('Contact form error:', error);
     return NextResponse.json(
-      { error: 'Failed to process contact form submission' },
+      { error: 'Something went wrong. Please email info@apexnovaconsulting.com directly.' },
       { status: 500 }
     );
   }
